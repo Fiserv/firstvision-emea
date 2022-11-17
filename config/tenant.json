@@ -1,83 +1,84 @@
 {
-	  "title": "FirstVision - EMEA",
-	  "name": "FirstVisionEMEA",
-	  "brand": "Fiserv",
-	  "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
-	  "solution": [
-	    "financial-institutions"
-	  ],
-	  "brandDescription": "Fiserv, Inc. is a global provider of payments and financial services technology solutions. The Company provides account processing and digital banking solutions, card issuer processing and network services, payments, e-commerce, merchant acquiring and processing, and the Clover cloud-based point-of-sale solution. The Company operates through three segments: Merchant Acceptance (Acceptance), Financial Technology (Fintech) and Payments and Network (Payments). Test",
-	  "categories": [
-	    {
-	      "name": "businessTypes",
-	      "value": "Business Types",
-	      "subcategories": [
-	        {
-	          "name": "valueAddedServices",
-	          "value": "Value Added Services"
-	        }
-	      ]
-	    }
-	  ],
-	  "apiVersions": [
-	      {
-	        "version": "1.0.0",
-	        "versionType": "major",
-	        "releaseNotesPath": "docs/release-notes/2022/march.md",
-	        "apiSpecFileNames": ["openapi"]
-	      }
-	  ],
-	  "product": {
-	    "featured": true,
-	    "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
-	    "description": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-	    "longDescription": "To onboard properly into the Developer Studi as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-	    "apiSpecification": "/v1/apis/FirstVisionEMEA",
-	    "layout": "/v1/layouts/FirstVisionEMEA",
-	    "documentation": "/v1/docs/FirstVisionEMEA",
-	    "documenttree": "/v1/docs/FirstVisionEMEA",
-	    "documenttreeV2": "/v2/docs/FirstVisionEMEA",
-	    "docsCount": "/v2/docs/count/FirstVisionEMEA",
-	    "sandbox": "/v1/sandboxrun/FirstVisionEMEA",
-	    "accessConfig": "/v1/fileAccess/FirstVisionEMEA",
-	    "assets": "/v1/assets/FirstVisionEMEA",    
-	    "feature": [
-	      {
-	        "name": "sandBox",
-	        "value": true
-	      },
-	      {
-	        "name": "plugins",
-	        "value": false
-	      },
-	      {
-	        "name": "industryOptionsAPIExplorer",
-	        "value": false
-	      },
-	      {
-	        "name": "editParameterAPIExplorer",
-	        "value": true
-	      }
-	    ]
-	  },
-	  "supportConfig": [
-	    {
-	      "bug": {
-	        "label": "bug,FirstVisionEMEA",
-	        "template": "bug.md",
-	        "assignees": "narayanan57"
-	      },
-	      "feedback": {
-	        "label": "feedback,FirstVisionEMEA",
-	        "template": "feedback.md",
-	        "assignees": "narayanan57"
-	      },
-	      "enhancement": {
-	        "label": "enhancement,FirstVisionEMEA",
-	        "template": "feature.md",
-	        "assignees": "narayanan57"
-	      }
-	    }
-	  ]
-	}
-
+  "title": "FirstVision - EMEA",
+  "name": "FirstVisionEMEA",
+  "brand": "Fiserv",
+  "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
+  "solution": [
+    "financial-institutions"
+  ],
+  "brandDescription": "Fiserv, Inc. is a global provider of payments and financial services technology solutions. The Company provides account processing and digital banking solutions, card issuer processing and network services, payments, e-commerce, merchant acquiring and processing, and the Clover cloud-based point-of-sale solution. The Company operates through three segments: Merchant Acceptance (Acceptance), Financial Technology (Fintech) and Payments and Network (Payments). Test",
+  "categories": [
+    {
+      "name": "businessTypes",
+      "value": "Business Types",
+      "subcategories": [
+        {
+          "name": "valueAddedServices",
+          "value": "Value Added Services"
+        }
+      ]
+    }
+  ],
+  "apiVersions": [
+    {
+      "version": "1.0.0",
+      "versionType": "major",
+      "releaseNotesPath": "docs/release-notes/2022/march.md",
+      "apiSpecFileNames": [
+        "openapi"
+      ]
+    }
+  ],
+  "product": {
+    "featured": true,
+    "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
+    "description": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
+    "longDescription": "To onboard properly into the Developer Studi as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
+    "apiSpecification": "/v1/apis/FirstVisionEMEA",
+    "layout": "/v1/layouts/FirstVisionEMEA",
+    "documentation": "/v1/docs/FirstVisionEMEA",
+    "documenttree": "/v1/docs/FirstVisionEMEA",
+    "documenttreeV2": "/v2/docs/FirstVisionEMEA",
+    "docsCount": "/v2/docs/count/FirstVisionEMEA",
+    "sandbox": "/v1/sandboxrun/FirstVisionEMEA",
+    "accessConfig": "/v1/fileAccess/FirstVisionEMEA",
+    "assets": "/v1/assets/FirstVisionEMEA",
+    "feature": [
+      {
+        "name": "sandBox",
+        "value": true
+      },
+      {
+        "name": "plugins",
+        "value": false
+      },
+      {
+        "name": "industryOptionsAPIExplorer",
+        "value": false
+      },
+      {
+        "name": "editParameterAPIExplorer",
+        "value": true
+      }
+    ]
+  },
+  "supportConfig": [
+    {
+      "bug": {
+        "label": "bug,FirstVisionEMEA",
+        "template": "bug.md",
+        "assignees": "narayanan57"
+      },
+      "feedback": {
+        "label": "feedback,FirstVisionEMEA",
+        "template": "feedback.md",
+        "assignees": "narayanan57"
+      },
+      "enhancement": {
+        "label": "enhancement,FirstVisionEMEA",
+        "template": "feature.md",
+        "assignees": "narayanan57"
+      }
+    }
+  ]
+}
