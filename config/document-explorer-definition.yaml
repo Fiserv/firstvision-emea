@@ -43,6 +43,17 @@
             - title: Overview of FirstVision terminology
               link: docs/getting-started/OverviewOfFirstVisionTerminology.md
 - sections:
+    - title: API swagger Portal
+      link: docs/swagger/swagger-portal.md
+      open: true
+      sections:
+        - title: FirstVision API QA
+          link: docs/swagger/qa/
+        - title: FirstVision API UAT
+          link: docs/swagger/uat/
+        - title: FirstVision API PROD
+          link: docs/swagger/prod/
+- sections:
     - title: API Guide
       link: docs/API-guide.md
       open: true

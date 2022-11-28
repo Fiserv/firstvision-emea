@@ -24,7 +24,7 @@ The use cases have been created to assist you in finding the right message on th
 
 ##### API Message to Use
 
-This is the API message within the portal that you need to look for. It gives you the section name following by the API message itself. Always use the latest version if there are more than one as older version may be deprecated.
+This is the API message within the portal that you need to look for. It gives you the section name following by the API message itself. Always use the latest version if there are more than one as older version may be deprecated.
 
 ![Latest Version Example](./?path=assets/images/api-message-to-use.png)
 

@@ -22,11 +22,11 @@ FirstVision™ oriented architecture with open APIs enables service consumption 
 
 # API portal link
 
-[FirstVision API QA](https://docs-qa.firstdata.com/org/global/docs/api/qa).
+[FirstVision API QA](./?path=/docs/swagger/qa/).
 
-[FirstVision API UAT](https://docs-qa.firstdata.com/org/global/docs/api/).
+[FirstVision API UAT](./?path=/docs/swagger/uat/).
 
-[FirstVision API PROD](https://docs.firstdata.com/org/global/docs/api/).
+[FirstVision API PROD](./?path=/docs/swagger/prod/).
 
 
 # API Release Notes Page Link
