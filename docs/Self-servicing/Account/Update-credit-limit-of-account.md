@@ -1,26 +1,21 @@
-Update credit limit of an account
-=================================
+# Update credit limit of an account
 
-
-#### Description:
+## Description
 
 Here is how to update the total credit limit of the account. This applies to the overall limit on the account and not individual spend limits.
 
+### API to use: [Credit Limit > Credit Limit Update](https://docs.firstdata.com/org/global/docs/api#credit-limit-update-v1)
 
-#### API to use: [Credit Limit > Credit Limit Update](https://docs.firstdata.com/org/global/docs/api#credit-limit-update-v1)
-
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name   | Description                   |
 |--------------|-------------------------------|
 | **account**  | Account number or card number |
 | **crlim**    | New credit limit              |
 
-### Relevant response variables:
+#### Relevant response variables
 
 | Field name   | Description          |
 |--------------|----------------------|
 | **account**  | Account number       |
 | **crlim**    | Updated credit limit |
-

@@ -1,21 +1,18 @@
-Retrieve plan information (interest and balance at plan level)
-==============================================================
+# Retrieve plan information (interest and balance at plan level)
 
-
-#### Description:
+## Description
 
 Retrieve interest rate information for purchases, cash as well as promotional rates applicable to the account. In addition, this use case also returns balance information.
 
-#### API to use: [Account Management > Account Plan Inquiry](https://docs.firstdata.com/org/global/docs/api#account-plan-inquiry-v1)
+### API to use: [Account Management > Account Plan Inquiry](https://docs.firstdata.com/org/global/docs/api#account-plan-inquiry-v1)
 
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name    | Description                       |
 |---------------|-----------------------------------|
 | **acct**      | Account number or card number     |
 
-
-### Relevant response variables:
+#### Relevant response variables
 
 | Field name            | Description                                                                    |
 |-----------------------|--------------------------------------------------------------------------------|
@@ -34,4 +31,3 @@ Retrieve interest rate information for purchases, cash as well as promotional ra
 | **planDesc**          | Plan description                                                               |
 | **planGotoAer**       | GOTO AER rate                                                                  |
 | **planOpenDte**       | Plan Open Date                                                                 |
-

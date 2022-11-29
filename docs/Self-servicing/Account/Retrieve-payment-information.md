@@ -1,21 +1,18 @@
-Retrieve payment information
-============================
+# Retrieve payment information
 
-#### Description:
+## Description
 
 Retrieve information relevant to the payments of the account, including dates when payments are due as well as amounts.
 
-#### API to use: [Account Management > Account Detail Inquiry](https://docs.firstdata.com/org/global/docs/api#account-detail-inquiry-v3)
+### API to use: [Account Management > Account Detail Inquiry](https://docs.firstdata.com/org/global/docs/api#account-detail-inquiry-v3)
 
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name  | Description                   |
 |-------------|-------------------------------|
 | **account** | Account number or card number |
 
-
-### Relevant response variables:
+#### Relevant response variables
 
 | Field name       | Description                                         |
 |------------------|-----------------------------------------------------|
@@ -27,4 +24,3 @@ Retrieve information relevant to the payments of the account, including dates wh
 | **pmtAmt**       | Payment amount                                      |
 | **dateNextPmt**  | Date that the next payment is due for this account. |
 | **dateNextStmt** | Date of the next statement.                         |
-

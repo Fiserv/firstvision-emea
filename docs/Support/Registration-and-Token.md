@@ -8,17 +8,19 @@ FirstVision API
 
 The FirstVision Product API allows users to discover various financial products Fiserv offers within EMEA and APAC region.
 
-### Registration:
+Registration
+-------------
 
 Every API expects an Access Token to be passed as header parameter (Authorisation). The Access Token will be valid for 60 minutes. Please [contact us](https://docs.firstdata.com/org/global/contactus) to get Client Key and Secret created for you, which can be used for generating Access Token.
 
-### API Calls in Sandbox (Demo) environment:
+API Calls in Sandbox (Demo) environment
+---------------------------------------
 
 Once you've registered, you'll receive Client Key and Secret. Using these details, an Access Token can be created, which has a validity of 60 minutes. The Sandbox environment supports the endpoint 'Generate CC Token with JWT' for generating an Access Token.
 
 Calling 'GenerateCCTokenWith JWT':
 
-URL : https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token/jwt/generate
+URL : 'https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token/jwt/generate'
 
 Method : POST
 
@@ -44,8 +46,6 @@ The client_assertion field is a JWT based off RFC7523 and is a way for the clien
 
 JWT Header
 
-
-
 `{`
 
 `"typ" : "JWT",`
@@ -54,11 +54,7 @@ JWT Header
 
 `}`
 
-
-
 JWT Claims
-
-
 
 `{`
 
@@ -75,7 +71,6 @@ JWT Claims
 `"jti" : "2a7caa12-850f-4fe9-b940-3d52cb804037"`
 
 `}`
-
 
 Below is a description and explanation of the values in this JWT. More information can be found at <https://tools.ietf.org/html/rfc7519>.
 
@@ -110,12 +105,13 @@ client_assertion - JWT
 
 If the request is successful, it'll return an Access Token, which can be used as header parameter (Authorisation) while calling other API endpoints. The Access Token will expire after 60 minutes. The same '/generate' endpoint can be called again to get a new Access Token.
 
-### Calling APIs in other (UAT/Prod) environment and region (EMEA/APAC):
+Calling APIs in other (UAT/Prod) environment and region (EMEA/APAC)
+-------------------------------------------------------------------
 
 The above process and steps can be used for calling APIs in other environment as well, but with following differences:
 
 **Domain Name**: This will be environment and region specific. Instead of '[http://cert.api.firstdata.com](http://cert.api.firstdata.com/)', the value will be '[http://prod.emea.api.fiservapps.com](http://prod.emea.api.fiservapps.com/)' for EMEA and '[http://prod.apac.api.fiservapps.com](http://prod.apac.api.fiservapps.com/)' for APAC in Production. Similarly the value for UAT will be '[http://cat.emea.api.fiservapps.com](http://cat.emea.api.fiservapps.com/)' and '[http://cat.apac.api.fiservapps.com](http://cat.apac.api.fiservapps.com/)' respectively.
 
-**Base Path**: The value of base path is region specific. For EMEA the value will remain 'fv_emea' in complete URL (https://prod.emea.api.fiservapps.com/api/fs/fv_emea/...) whereas it'll be 'fv_apac' for accessing APAC specific APIs.
+**Base Path**: The value of base path is region specific. For EMEA the value will remain 'fv_emea' in complete URL ('https://prod.emea.api.fiservapps.com/api/fs/fv_emea/'...) whereas it'll be 'fv_apac' for accessing APAC specific APIs.
 
 **Scope**: The scope header parameter will have region specific values. For EMEA it's '*emea_firstvision*' whereas '*apac_firstvision*' for calling APAC specific APIs.

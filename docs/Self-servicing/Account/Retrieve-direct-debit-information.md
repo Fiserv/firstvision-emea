@@ -1,21 +1,18 @@
-Retrieve Direct Debit information
-=================================
+# Retrieve Direct Debit information
 
-#### Description:
+## Description
 
 Retrieve information relating to the Direct Debit information of an account, including bank account details and status.
 
+### API to use: [Account Management > Direct Debit Inquiry](https://docs.firstdata.com/org/global/docs/api#direct-debit-inquiry-v1)
 
-
-#### API to use: [Account Management > Direct Debit Inquiry](https://docs.firstdata.com/org/global/docs/api#direct-debit-inquiry-v1)
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name  | Description                   |
 |-------------|-------------------------------|
 | **acctNbr** | Account number or card number |
 
-### Relevant response variables:
+#### Relevant response variables
 
 | Field name          | Description                                 |
 |---------------------|---------------------------------------------|
@@ -29,4 +26,3 @@ Retrieve information relating to the Direct Debit information of an account, inc
 | **ddBic**           | Bank identifier code (BIC)                  |
 | **projAchPmt**      | Projected Direct Debit amount               |
 | **ddCancel**        | DD cancellation status for current month    |
-

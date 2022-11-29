@@ -1,33 +1,3 @@
-################################################################################
-# Copyrights © 2021-2022 Fiserv, Inc. or its affiliates. 
-# Fiserv is a trademark of Fiserv, Inc., 
-# registered or used in the United States and foreign countries, 
-# and may or may not be registered in your country.  
-# All trademarks, service marks, 
-# and trade names referenced in this 
-# material are the property of their 
-# respective owners. This work, including its contents 
-# and programming, is confidential and its use 
-# is strictly limited. This work is furnished only 
-# for use by duly authorized licensees of Fiserv, Inc. 
-# or its affiliates, and their designated agents 
-# or employees responsible for installation or 
-# operation of the products. Any other use, 
-# duplication, or dissemination without the 
-# prior written consent of Fiserv, Inc. 
-# or its affiliates is strictly prohibited. 
-# Except as specified by the agreement under 
-# which the materials are furnished, Fiserv, Inc. 
-# and its affiliates do not accept any liabilities 
-# with respect to the information contained herein 
-# and are not responsible for any direct, indirect, 
-# special, consequential or exemplary damages 
-# resulting from the use of this information. 
-# No warranties, either express or implied, 
-# are granted or extended by this work or 
-# the delivery of this work
-################################################################################
-
 openapi: 3.0.1
 info:
   title: FirstVision RESTful Web Services
@@ -53,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.29.29
+  version: 1.33.3
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -21327,8 +21297,12 @@ paths:
             LOGO RECORD NOT FOUND<BR/>VPL7SEP35S : EPP OFFER ALREADY BOOKED<BR/>VPL7SEP36S
             : NO EPP OFFER EXIST<BR/>VPL7SEP37E : INVALID EPP TENOR<BR/>VPL7SEP38S
             : EPP REQUESTED FOR AN INVALID AUTH TYPE<BR/>VPL7SEP39S : AUTH COULD NOT
-            BE FOUND<BR/>VPL7SEP42E : INCOMING TENOR LESS THAN EPP MIN TENOR<BR/>VPL7SEP43E
-            : INCOMING TENOR GREATER THAN EPP MAX TENOR_<BR/>'
+            BE FOUND<BR/>VPL7SEP40S : SYSTEM IS IN AFTER HOURS<BR/>VPL7SEP41S : FILE
+            TABLE NOT FOUND<BR/>VPL7SEP42E : INCOMING TENOR LESS THAN EPP MIN TENOR<BR/>VPL7SEP43E
+            : INCOMING TENOR GREATER THAN EPP MAX TENOR_<BR/>VPL7SEP44S : TXN CURRENCY
+            IS NOT MATCHING WITH PLAN CURRENCY<BR/>VPL7SEP45S : TXN NOT FOUND OR BEYOND
+            ACCOUNT PREVIOUS CYCLE DATE<BR/>VPL7SEP46S : TRANSACTION PAYMENT DUE DATE
+            IS IN PAST<BR/>VPL7SEP47S : CALL TO EPP TXN PLAN ADD SERVICE FAILED<BR/>'
           content:
             application/json:
               schema:
@@ -40620,6 +40594,20 @@ components:
           description: ' Max length = 1, Customer Offer Response. Valid values are:<UL><LI><EM>
             A -</EM> EPP offer accepted </LI><LI><EM> C -</EM> EPP offer cancelled
             </LI></UL>'
+        extendedSearch:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Flag which determined if extended search
+            is required to be performed to locate the transaction in posted transactions
+            (i.e. AMOS/AMSS/AMSL) if not found in FMLA/B/AMOA. Valid values are :
+            <UL><LI><EM>''Y'' - </EM> Extended search is required to be performed.
+            </LI><LI><EM>''N'' / Spaces - </EM> Extended search is not required.</LI></UL>'
+        channelId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, Channel ID'
     BookOfferResponse:
       type: object
       properties:
@@ -48329,6 +48317,14 @@ components:
           description: ' Max length = 1, Valid values :<UL><LI><EM>0 ?</EM>CTLS-NOT-REST</LI><LI><EM>1
             ?</EM>CTLS-REST-ACCT</LI><LI><EM>2 ?</EM>CTLS-REST-ACT-DOM</LI><LI><EM>3
             ?</EM>CTLS-REST-ACT-INT</LI><LI><EM>4 ?</EM>CTLS-REST-REL</LI></UL>'
+        rmctlsauthInd:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 ?</EM>  ATM-NOT-REST</LI><LI><EM>1
+            ?</EM>  ATM-REST-ACCT</LI><LI><EM>2 ?</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
+            ?</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 ?</EM>  ATM-REST-DEF-VALID</LI></UL>'
         accountOrganization:
           maxLength: 3
           minLength: 0
@@ -53390,6 +53386,9 @@ components:
           description: ' Max length = 1, Mail preferences: Mail preference selected
             by the customer. Valid values are <UL><LI><EM> 0 - </EM>Home Address</LI><LI><EM>
             1 - </EM>Office Address</LI><LI><EM> 2 - </EM>Permanent Residence Address.</LI></UL>'
+        pinMailPref:
+          type: string
+          description: ' Max length = 1, Card/PIN mailing preference'
     CustomerFeedbackRequest:
       required:
       - cardNbr

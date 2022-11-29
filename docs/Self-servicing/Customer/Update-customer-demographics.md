@@ -1,14 +1,12 @@
-Update customer demographics
-============================
+# Update customer demographics
 
-#### Description:
+## Description
 
 Update customer demographics, such as name, address, phone and email.
 
+### API to use:[Customer Records > Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
 
-#### API to use:[Customer Records > Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
-
-###Relevant request variables:
+#### Relevant request variables
 
 | Field Name        | Description                                                                                            |
 |-------------------|--------------------------------------------------------------------------------------------------------|
@@ -31,6 +29,6 @@ Update customer demographics, such as name, address, phone and email.
 | **taxIdTyp**      | Tax ID type is a code that indicates the type od identification number held in taxIdNbr                |
 | **taxIdNbr**      | Tax ID number                                                                                          |
 
+#### Relevant response variables
 
-### Relevant response variables:
 A successful update will return a response code 200.

@@ -1,7 +1,6 @@
-Update Direct Debit details
-===========================
+# Update Direct Debit details
 
-#### Description:
+## Description
 
 Update information relating to the Direct Debit information of an account, including bank account details.
 
@@ -9,11 +8,9 @@ It is possible to use either the account number or the card number in the reques
 
 In the request, enter the account number being updated and any of the optional fields.
 
+### API to use:[Account Management > Direct Debit Update](https://docs.firstdata.com/org/global/docs/api#direct-debit-update-v2)
 
-#### API to use:[Account Management > Direct Debit Update](https://docs.firstdata.com/org/global/docs/api#direct-debit-update-v2)
-
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name          | Description                                 |
 |---------------------|---------------------------------------------|
@@ -29,6 +26,6 @@ In the request, enter the account number being updated and any of the optional f
 | **projAchPmt**      | Projected Direct Debit amount               |
 | **ddCancel**        | DD cancellation status for current month    |
 
-### Relevant response variables:
-As above - a successful response will return Direct Debit information.
+#### Relevant response variables
 
+As above - a successful response will return Direct Debit information.

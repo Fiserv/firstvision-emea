@@ -1,14 +1,12 @@
-Update contact preferences
-==========================
+# Update contact preferences
 
-#### Description:
+## Description
 
 Update contact preferences on the Customer record.
 
-#### API to use:[Customer Records> Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
+### API to use:[Customer Records> Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
 
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field Name          | Description                                                                                            |
 |---------------------|--------------------------------------------------------------------------------------------------------|
@@ -23,5 +21,6 @@ Update contact preferences on the Customer record.
 | **emailFlag**       | Email contact indicator                                                                                |
 | **mobilePhoneFlag** | mobile phone contact indicator                                                                         |
 
-### Relevant response variables:
+#### Relevant response variables
+
 A successful update will return a response code 200.

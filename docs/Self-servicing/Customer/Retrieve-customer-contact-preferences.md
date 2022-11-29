@@ -1,21 +1,18 @@
-Retrieve customer contact preferences
-=====================================
+# Retrieve customer contact preferences
 
-#### Description:
+## Description
 
 Retrieve a customer's contact preference settings.
 
+### API to use: [Customer Records> Customer Demographic Inquiry](https://docs.firstdata.com/org/global/docs/api#customer-demographic-inquiry-v1)
 
-#### API to use: [Customer Records> Customer Demographic Inquiry](https://docs.firstdata.com/org/global/docs/api#customer-demographic-inquiry-v1)
-
-### Relevant request variables:
+### Relevant request variables
 
 | Field Name          | Description                   |
 |---------------------|-------------------------------|
 | **custAcctCardNbr** | Account number or card number |
 
-
-### Relevant response variables:
+#### Relevant response variables
 
 | Field Name          | Description                    |
 |---------------------|--------------------------------|
@@ -26,4 +23,3 @@ Retrieve a customer's contact preference settings.
 | **smsFlag**         | SMS contact indicator          |
 | **emailFlag**       | Email contact indicator        |
 | **mobilePhoneFlag** | mobile phone contact indicator |
-

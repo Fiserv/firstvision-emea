@@ -1,15 +1,12 @@
-Report lost/stolen or fraudulent activity on a card
-===================================================
+# Report lost/stolen or fraudulent activity on a card
 
-#### Description:
+## Description
 
 Report a lost / stolen / fradulent activity on a  card and generate a new card and PIN.
 
+### API to use: [Card Maintenance > Lost Stolen Update](https://docs.firstdata.com/org/global/docs/api#lost-stolen-update-v2)
 
-
-#### API to use: [Card Maintenance > Lost Stolen Update](https://docs.firstdata.com/org/global/docs/api#lost-stolen-update-v2)
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field Name         | Description                                                                                                                                                          |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -23,7 +20,6 @@ Report a lost / stolen / fradulent activity on a  card and generate a new card 
 | **pinCompromised** | Flag to indicate if PIN was compromised                                                                                                                              |
 | **processType**    | Same date plastic processing indicator                                                                                                                               |
 
+#### Relevant response variables
 
-### Relevant response variables:
 A successful update will return a response code 200.
-

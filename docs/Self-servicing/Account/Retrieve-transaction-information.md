@@ -1,18 +1,16 @@
-Retrieve transaction information
-================================
+# Retrieve transaction information
 
-
-#### Description:
+## Description
 
 Request 1: Retrieve all the transactions that have cleared on the account since the last statement cycle.
 
 Request 2: Retrieve transactions between two input dates.
 
-#### API to use: [Transactions > Transaction Inquiry](https://docs.firstdata.com/org/global/docs/api#transaction-inquiry-v3)
+### API to use: [Transactions > Transaction Inquiry](https://docs.firstdata.com/org/global/docs/api#transaction-inquiry-v3)
 
-### Relevant request variables:
+#### Relevant request variables
 
-###### Request 1:
+##### Request 1
 
 | Field name     | Description                                                                                                                          |
 |----------------|--------------------------------------------------------------------------------------------------------------------------------------|
@@ -20,7 +18,7 @@ Request 2: Retrieve transactions between two input dates.
 | **txnDetail**  | Transaction Detail flag: Parameter to define period of returned transactions. This field must be set to "C" (Current/Cycle to date). |
 | **txnDateSel** | Transaction date selector. (See API message for values.)                                                                             |
 
-###### Request 2:
+##### Request 2
 
 | Field name      | Description                                              |
 |-----------------|----------------------------------------------------------|
@@ -29,7 +27,7 @@ Request 2: Retrieve transactions between two input dates.
 | **txnDateThru** | Transaction 'to' date (incl.).                           |
 | **txnDateSel**  | Transaction date selector. (See API message for values.) |
 
-##### Relevant response variables:
+#### Relevant response variables
 
 | Field name               | Description                             |
 |--------------------------|-----------------------------------------|

@@ -1,14 +1,12 @@
-Update customer user fields
-===========================
+# Update customer user fields
 
-#### Description:
+## Description
 
 Update user fields on the Customer record.
 
+### API to use:[Customer Records> Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
 
-#### API to use:[Customer Records> Customer Data Update](https://docs.firstdata.com/org/global/docs/api#customer-data-update-v2)
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field Name        | Description                                                                                            |
 |-------------------|--------------------------------------------------------------------------------------------------------|
@@ -32,5 +30,6 @@ Update user fields on the Customer record.
 | **user14**        | user field 14                                                                                          |
 | **user15**        | user field 15                                                                                          |
 
-### Relevant response variables:
+#### Relevant response variables
+
 A successful update will return a response code 200.

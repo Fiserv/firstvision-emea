@@ -42,9 +42,9 @@ steps:
       link:
   buildSteps:
     - title: Build
-    description: >
-      Get your application up and running with our proprietary integration tools and developer keys.
-    link:
+      description: >
+        Get your application up and running with our proprietary integration tools and developer keys.
+      link:
   validateSteps:
     - title: API Explorer
       description: >
@@ -52,9 +52,9 @@ steps:
       link:
   deploySteps:
     - title: Deploy
-    description: >
-      Deploy your applications in our testing environment for quality assurance testing.  Once ready promote your application to our production environment.
-    link:
+      description: >
+        Deploy your applications in our testing environment for quality assurance testing.  Once ready promote your application to our production environment.
+      link:
 featuredFeatures:
   - title: Customer
     description:  The customer use cases relate to the information kept at the customer level. This is mainly demographic information.

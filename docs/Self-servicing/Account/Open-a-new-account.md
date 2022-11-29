@@ -1,18 +1,14 @@
-Open a new account (including customer and card)
-================================================
+# Open a new account (including customer and card)
 
-
-#### Description:
+## Description
 
 Open a new account. This message will generate the account, as well as the associated primary customer and card records.
 
 NOTE: This sample request is the base of the message, however each client may require additional fields based on their individual settings. Work with your project team to identify these. The API message (link below) provides all the fields available for entry.
 
+### API to use: [Account Maintenance > Customer Account Card Add](https://docs.firstdata.com/org/global/docs/api#customer-account-card-add-v1)
 
-
-#### API to use: [Account Maintenance > Customer Account Card Add](https://docs.firstdata.com/org/global/docs/api#customer-account-card-add-v1)
-
-### Relevant request variables:
+#### Relevant request variables
 
 | Field name               | Description                                                                                       |
 |--------------------------|---------------------------------------------------------------------------------------------------|
@@ -49,11 +45,10 @@ NOTE: This sample request is the base of the message, however each client may re
 | **embossedName1**        | Name embossed on the plastic                                                                      |
 | **sdpProcessType**       | Same Day Plastics indicator. Set this field to '0' to indicate normal processing.                 |
 
-### Relevant response variables:
+#### Relevant response variables
 
 | Field name         | Description                     |
 |--------------------|---------------------------------|
 | **customerNumber** | Generated customer number       |
 | **accountNumber**  | Generated account number        |
 | **cardNumber**     | Generated card number           |
-

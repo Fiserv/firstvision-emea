@@ -1,6 +1,8 @@
-# FirstVision API
+FirstVision API
+===============
 
-#### Welcome to FirstVision™ RESTful Web Services
+Welcome to FirstVision™ RESTful Web Services
+--------------------------------------------
 
 **First Data** provides a single, consolidated processing platform for all of your payment cards, loans, prepaid, and commercial card products.
 
@@ -19,16 +21,16 @@ Platform architecture built around technology simplification and leveraging open
 **Enables Rapid Speed of Change / Speed to Market**
 FirstVision™ oriented architecture with open APIs enables service consumption rather than change management.
 
+API portal link
+---------------
 
-# API portal link
+[FirstVision API QA](./?path=/assets/swagger/qa/).
 
-[FirstVision API QA](./?path=/docs/swagger/qa/).
+[FirstVision API UAT](./?path=/assets/swagger/uat/).
 
-[FirstVision API UAT](./?path=/docs/swagger/uat/).
+[FirstVision API PROD](./?path=/assets/swagger/prod/).
 
-[FirstVision API PROD](./?path=/docs/swagger/prod/).
+API Release Notes Page Link
+-----------------------------
 
-
-# API Release Notes Page Link
-
-[FirstVision API Release Notes](./?path=/docs/Release-Notes/Release-notes.md).
+[FirstVision API Release Notes](./?path=/docs/release-notes/Release-notes.md).
