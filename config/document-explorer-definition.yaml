@@ -29,10 +29,106 @@
 ################################################################################
 
 - sections:
-  - title: Getting Started
-    link: docs/getting-started.md
+    - title: FirstVision-EMEA
+      link: docs/Introduction.md
+      open: true
 - sections:
-  - title: Release notes
+    - title: Release Notes
+      link: docs/release-Notes/Release-notes.md
+      open: true
+      sections:
+        - title: Getting Started
+          link:
+          sections:
+            - title: Overview of FirstVision terminology
+              link: docs/getting-started/OverviewOfFirstVisionTerminology.md
+- sections:
+    - title: API swagger Portal
+      link: assets/swagger/swagger-portal.md
+      open: true
+      sections:
+        - title: FirstVision API QA
+          link: assets/swagger/qa/
+        - title: FirstVision API UAT
+          link: assets/swagger/uat/
+        - title: FirstVision API PROD
+          link: assets/swagger/prod/
+- sections:
+    - title: API Guide
+      link: docs/API-guide.md
+      open: true
+      sections:
+        - title: Getting Started
+          link:
+          sections:
+          - title: Overview of FirstVision terminology
+            link: docs/getting-started/OverviewOfFirstVisionTerminology.md
+- sections:
+  - title: Self Servicing
+    link: /docs/Self-servicing/self-servicing.md
+    open: true
     sections:
-    - title: March 2022
-      link: docs/release-notes/2022/march.md
+    - title: Customer
+      link: docs/Self-servicing/Customer/customer.md
+      open: true
+      sections:
+        - title: Retrieve customer number
+          link: docs/Self-servicing/Customer/Retrieve-customer-number.md
+        - title: Update customer demographics
+          link: docs/Self-servicing/Customer/Update-customer-demographics.md
+        - title: Update customer user fields
+          link: docs/Self-servicing/Customer/Update-customer-user-fields.md
+        - title: Retrieve customer contact preferences
+          link: docs/Self-servicing/Customer/Retrieve-customer-contact-preferences.md
+        - title: Update contact preferences
+          link: docs/Self-servicing/Customer/Update-contact-preferences.md
+    - title: Account
+      link: docs/Self-servicing/Account/account.md
+      open: true
+      sections:
+        - title: Open a new account
+          link: docs/Self-servicing/Account/Open-a-new-account.md
+        - title: Retrieve account number using customer number
+          link: docs/Self-servicing/Account/Retrieve-account-number-using-customer-number.md
+        - title: Retrieve account balance information
+          link: docs/Self-servicing/Account/Retrieve-account-balance-information.md
+        - title: Retrieve account limits
+          link: docs/Self-servicing/Account/Retrieve-account-limits.md
+        - title: Retrieve payment information
+          link: docs/Self-servicing/Account/Retrieve-payment-information.md
+        - title: Retrieve plan information(interest and balance at plan level)
+          link: docs/Self-servicing/Account/Retrieve-plan-information.md
+        - title: Retrieve transaction information
+          link: docs/Self-servicing/Account/Retrieve-transaction-information.md
+        - title: Retrieve direct debit information
+          link: docs/Self-servicing/Account/Retrieve-direct-debit-information.md
+        - title: Update credit limit of account
+          link: docs/Self-servicing/Account/Update-credit-limit-of-account.md
+        - title: Update direct debit details
+          link: docs/Self-servicing/Account/Update-direct-debit-details.md
+    - title: Card
+      link: docs/Self-servicing/Card/Card.md
+      open: true
+      sections:
+        - title: Retrieve card information
+          link: docs/Self-servicing/card/Retrieve-card-information.md
+        - title: Update name on card
+          link: docs/Self-servicing/card/Update-name-on-card.md
+        - title: Request a replacement card
+          link: docs/Self-servicing/card/Request-a-replacement-card.md
+        - title: Request a PIN reminder(through batch process)
+          link: docs/Self-servicing/card/Request-pin-reminder.md
+        - title: Block a card
+          link: docs/Self-servicing/card/Block-a-card.md
+        - title: Report a lost/stolen or fraudulent card
+          link: docs/Self-servicing/card/Report-a-fraudulent-card.md
+- sections:
+    - title: Support
+      link:
+      sections:
+        - title: Registration & Token
+          link: docs/Support/Registration-and-Token.md
+        - title: Error Codes
+          link: docs/Support/Error-codes.md
+        - title: Deleted/Deprecated APIs
+          link: docs/Support/Deleted-deprecated-apis.md
