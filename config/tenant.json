@@ -25,7 +25,7 @@
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Releases/Release-notes.md",
       "apiSpecFileNames": [
-        "openapi"
+        "api-uat-22.10"
       ]
     }
   ],
