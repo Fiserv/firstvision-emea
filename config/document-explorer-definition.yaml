@@ -34,14 +34,11 @@
       open: true
 - sections:
     - title: Release Notes
-      link: docs/release-Notes/Release-notes.md
+      link: docs/release-notes/Release-notes.md
       open: true
       sections:
-        - title: Getting Started
-          link:
-          sections:
-            - title: Overview of FirstVision terminology
-              link: docs/getting-started/OverviewOfFirstVisionTerminology.md
+        - title: Release 2022
+          link: docs/release-notes/Releases/2022/2022.md
 - sections:
     - title: API swagger Portal
       link: assets/swagger/swagger-portal.md
