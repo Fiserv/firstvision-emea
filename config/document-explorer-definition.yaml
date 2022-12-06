@@ -115,8 +115,8 @@
           link: docs/Self-servicing/card/Request-a-replacement-card.md
         - title: Request a PIN reminder(through batch process)
           link: docs/Self-servicing/card/Request-pin-reminder.md
-        - title: Block a card
-          link: docs/Self-servicing/card/Block-a-card.md
+#         - title: Block a card
+#           link: docs/Self-servicing/card/Block-a-card.md
         - title: Report a lost/stolen or fraudulent card
           link: docs/Self-servicing/card/Report-a-fraudulent-card.md
 - sections:
