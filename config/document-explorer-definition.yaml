@@ -31,28 +31,23 @@
 - sections:
     - title: FirstVision-EMEA
       link: docs/Introduction.md
+      access: public
+      groups: []
       open: true
 - sections:
     - title: Release Notes
       link: docs/release-notes/Release-notes.md
+      access: public
+      groups: []
       open: true
       sections:
         - title: Release 2022
           link: docs/release-notes/Releases/2022/2022.md
 - sections:
-    - title: API swagger Portal
-      link: assets/swagger/swagger-portal.md
-      open: true
-      sections:
-        - title: FirstVision API QA
-          link: assets/swagger/qa/
-        - title: FirstVision API UAT
-          link: assets/swagger/uat/
-        - title: FirstVision API PROD
-          link: assets/swagger/prod/
-- sections:
     - title: API Guide
       link: docs/API-guide.md
+      access: public
+      groups: []
       open: true
       sections:
         - title: Getting Started
@@ -63,6 +58,8 @@
 - sections:
   - title: Self Servicing
     link: /docs/Self-servicing/self-servicing.md
+    access: public
+    groups: []
     open: true
     sections:
     - title: Customer
@@ -122,6 +119,8 @@
 - sections:
     - title: Support
       link:
+      access: public
+      groups: []
       sections:
         - title: Registration & Token
           link: docs/Support/Registration-and-Token.md

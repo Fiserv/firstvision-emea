@@ -52,4 +52,4 @@ Relevant response variables
 
 | This section lists all the fields within the response that are relevant to the use case. The API response itself will, by default, return all fields, so if you come across any others that you think will be useful, you are of course permitted to use them too. Please consult your Fiserv Business Analyst before doing so. |
 
-| NOTE: Only fields with values of non-spaces are returned. |
+>**Note:** Only fields with values of non-spaces are returned.
