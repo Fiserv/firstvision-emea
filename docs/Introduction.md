@@ -21,16 +21,7 @@ Platform architecture built around technology simplification and leveraging open
 **Enables Rapid Speed of Change / Speed to Market**
 FirstVision™ oriented architecture with open APIs enables service consumption rather than change management.
 
-API portal link
----------------
-
-[FirstVision API QA](./?path=/assets/swagger/qa/).
-
-[FirstVision API UAT](./?path=/assets/swagger/uat/).
-
-[FirstVision API PROD](./?path=/assets/swagger/prod/).
-
 API Release Notes Page Link
------------------------------
+----------------------------
 
 [FirstVision API Release Notes](./?path=/docs/release-notes/Release-notes.md).
