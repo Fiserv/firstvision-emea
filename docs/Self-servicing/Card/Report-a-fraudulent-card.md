@@ -2,9 +2,9 @@
 
 ## Description
 
-Report a lost / stolen / fradulent activity on a  card and generate a new card and PIN.
+Report a lost / stolen / fradulent activity on a card and generate a new card and PIN.
 
-### API to use: [Card Maintenance > Lost Stolen Update](https://docs.firstdata.com/org/global/docs/api#lost-stolen-update-v2)
+### API to use: [Card Maintenance > Lost Stolen Update](../api?type=post&path=/fv_emea/v2/lostStolenUpdate)
 
 #### Relevant request variables
 
