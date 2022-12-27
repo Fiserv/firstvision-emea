@@ -4,7 +4,7 @@
 
 Apply a block code to an existing card in order to prevent spend on the card.
 
-### API to use:[Card Maintenance > Card Block Code Update](https://docs.firstdata.com/org/global/docs/api#card-block-code-update-v1)
+### API to use:[Card Maintenance > Card Block Code Update](../api?type=post&path=/fv_emea/v1/cardBlockCodeUpdate)
 
 #### Relevant request variables
 

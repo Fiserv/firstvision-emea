@@ -4,7 +4,7 @@
 
 Retrieve information relating to the Direct Debit information of an account, including bank account details and status.
 
-### API to use: [Account Management > Direct Debit Inquiry](https://docs.firstdata.com/org/global/docs/api#direct-debit-inquiry-v1)
+### API to use: [Account Management > Direct Debit Inquiry](../api?type=post&path=/fv_emea/v1/directDebitInquiry)
 
 #### Relevant request variables
 

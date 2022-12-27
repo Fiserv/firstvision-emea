@@ -4,7 +4,7 @@
 
 Retrieve a customer's contact preference settings.
 
-### API to use: [Customer Records> Customer Demographic Inquiry](https://docs.firstdata.com/org/global/docs/api#customer-demographic-inquiry-v1)
+### API to use: [Customer Records> Customer Demographic Inquiry](../api?type=post&path=/fv_emea/v1/customerDemographicInquiry)
 
 ### Relevant request variables
 

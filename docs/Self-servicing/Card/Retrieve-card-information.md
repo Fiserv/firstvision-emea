@@ -8,7 +8,7 @@ The service will return a masked card number with the last 4 digits visible.
 
 NOTE: If information of more than 20 cards is required please contact your API technical team.
 
-### API to use: [Account Management > Cards List by Account](https://docs.firstdata.com/org/global/docs/api#cards-list-by-account-v1)
+### API to use: [Account Management > Cards List by Account](../api?type=post&path=/fv_emea/v1/cardsListByAccount)
 
 #### Relevant request variables
 

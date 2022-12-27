@@ -87,17 +87,17 @@ featuredFeatures:
         title: Account Detail Inquiry
         description: This service is used to return detailed information for an input Account or Card number.
         type: "post"
-        path: "/v3/accountDetailInquiry"
+        path: "/fv_emea/v3/accountDetailInquiry"
       - relatedAPI:
         title: Customer Data update
         description: This service can be used to update the demographics details stored in the system for a customer. E.g. names, addresses, preferences flags, personal details, user defined fields, etc.
         type: "post"
-        path: "/v2/customerDataUpdate"
+        path: "/fv_emea/v2/customerDataUpdate"
       - relatedAPI:
         title: Customer Demographic Inquiry
         description: This service will allow a calling program to request Demographic Data for a customer. The data is stored on the Name and Address Record AMNA. A Customer, Account or Card number can be used in the input area to retrieve the data. All of the fields included in this service can be seen in the Request and Response sections of this document.
         type: "post"
-        path: "/v1/customerDemographicInquiry"
+        path: "/fv_emea/v1/customerDemographicInquiry"
   - title: Account
     description:  In the account section, you will find use cases relating the a customer's account. This will hold all the financial information, such as balances, spend limits, and transactions.
     tags: ["EMEA", "FirstVision", "Account"]
@@ -148,32 +148,32 @@ featuredFeatures:
         title: Account Detail Inquiry
         description: This service is used to return detailed information for an input Account or Card number.
         type: "post"
-        path: "/v3/accountDetailInquiry"
+        path: "/fv_emea/v3/accountDetailInquiry"
       - relatedAPI:
         title: Customer Account Card Add
         description: Customer account card setup driver service used to add Customer Name and Address Record, Account Base Segment Record etc. or to update Customer Name and Address Record Account Base Segment Record.
         type: "post"
-        path: "/v1/customerAccountCardAdd"
+        path: "/fv_emea/v1/customerAccountCardAdd"
       - relatedAPI:
         title: Customer Accounts List
         description: This service is used to retrieve details of all accounts linked with a customer number. Client should send the customer number in the request and in response system sends all related account number with their respective status and block code values.
         type: "post"
-        path: "/v1/customerAccountsList"
+        path: "/fv_emea/v1/customerAccountsList"
       - relatedAPI:
         title: Account Plan Inquiry
         description: This service is used to return the selected flexible payment plans for an account. This service is used to display for cardholders to set up a flexible payment plan for their account. Lists whose number of items depend on a variable returned will be truncated appropriately.
         type: "post"
-        path: "/v2/accountPlanInquiry"
+        path: "/fv_emea/v2/accountPlanInquiry"
       - relatedAPI:
         title: Transaction Inquiry
         description: The Transaction Inquiry service supports both Effective date and posting date filtration based on the input txnDateSel (E - Effective Date or P - Posting Date) whereas the v1 version is supporting only filtration based on posting date. The service provides transaction detail information for current cycle transactions or statement transactions within a date range. You can specify a date range or the number of transactions. Up to 50 transactions are returned for each service request. The limit to the number of months depends on how many statements the client has stored.
         type: "post"
-        path: "/v4/transactionInquiry"
+        path: "/fv_emea/v4/transactionInquiry"
       - relatedAPI:
         title: Direct Debit Inquiry
         description: This service is used to retrieve using the account or card number, the Direct Debit or Credit details on an account. The information that is returned includes bank account, routing data and various other associated fields
         type: "post"
-        path: "/v1/directDebitInquiry"
+        path: "/fv_emea/v1/directDebitInquiry"
       - relatedAPI:
         title: Direct Debit Update
         description: This service is used to allow an Account to be set up or amended to generate automatic payments to draw down the balance of the Card by generating output to a local clearing system (e.g. in UK, BACS).
@@ -183,7 +183,7 @@ featuredFeatures:
         title: Credit Limit Update
         description: This service is used to update the credit limit of the cardholder's account.
         type: "post"
-        path: "/v1/creditLimitUpdate"
+        path: "/fv_emea/v1/creditLimitUpdate"
   - title: Card
     description:  In the card section, you will find use cases relating the a customer's card.
     tags: ["EMEA", "FirstVision", "Card"]
@@ -218,29 +218,29 @@ featuredFeatures:
         title: Cards List By Account
         description: The account to card Inquiry Service will allow a user to perform the lookup or navigation from account number to all associated card numbers.
         type: "post"
-        path: "/v2/cardsListByAccount"
+        path: "/fv_emea/v2/cardsListByAccount"
       - relatedAPI:
         title: Card Update
         description: The Card Update Service is used to update data at the Card level for a FirstVision account.
         type: "post"
-        path: "/v1/cardUpdate"
+        path: "/fv_emea/v1/cardUpdate"
       - relatedAPI:
         title: Card Replacement
         description: This service is used if an existing card of the customer needs to be replaced with a new card because of some issue with the existing card (mainly damaged case).
         type: "post"
-        path: "/v1/cardReplacement"
+        path: "/fv_emea/v1/cardReplacement"
       - relatedAPI:
         title: Pin Reminder
         description: PIN mailer service will allow the user to request for a PIN mailer for a maximum of 20 cards. This service performs as a driver which calls the card action service with card action as 5 NEW PIN REQUEST for the existing card) along with the card number as input. The card action update service does the actual Updation of the embosser record by changing the card action which will then be processed in batch.
         type: "post"
-        path: "/v1/pinReminder"
+        path: "/fv_emea/v1/pinReminder"
       - relatedAPI:
         title: Card Block Code Update
         description: The Block Code Update service enables the user to update the block codes and the reason codes for the block codes for cards and accounts.
         type: "post"
-        path: "/v1/cardBlockCodeUpdate"
+        path: "/fv_emea/v1/cardBlockCodeUpdate"
       - relatedAPI:
         title: Lost Stolen update
         description: To update a Lost or Stolen card block code and request for a card replacement and pin.
         type: "post"
-        path: "/v1/lostStolenUpdate"
+        path: "/fv_emea/v1/lostStolenUpdate"
