@@ -25,9 +25,9 @@
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "PROD/SwaggerPROD",
-        "SIT/SwaggerSIT3",
-        "UAT/SwaggerUAT"
+        "SIT/sit",
+        "UAT/uat",
+        "PROD/prod"
       ]
     }
   ],
