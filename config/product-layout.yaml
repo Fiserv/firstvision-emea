@@ -178,7 +178,7 @@ featuredFeatures:
         title: Direct Debit Update
         description: This service is used to allow an Account to be set up or amended to generate automatic payments to draw down the balance of the Card by generating output to a local clearing system (e.g. in UK, BACS).
         type: "post"
-        path: "/v1/directDebitUpdate"
+        path: "/fv_emea/v2/directDebitUpdate"
       - relatedAPI:
         title: Credit Limit Update
         description: This service is used to update the credit limit of the cardholder's account.
@@ -243,4 +243,4 @@ featuredFeatures:
         title: Lost Stolen update
         description: To update a Lost or Stolen card block code and request for a card replacement and pin.
         type: "post"
-        path: "/fv_emea/v1/lostStolenUpdate"
+        path: "/fv_emea/v2/lostStolenUpdate"
