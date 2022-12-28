@@ -14,9 +14,9 @@ In order to manage information from FirstVision accounts, it's crucial to unders
 Step 2 - Finding the right use case
 -----------------------------------
 
-Once you are familiar with the structure, and you know whether the Customer, the Account, or the Card is where you need to find information, go to the relevant section of the user guide. For example, if you're looking to update the credit limit on an account, you will go to the "Account" section, and find the use cases that best describes the function you are aiming to perform.
+Once you are familiar with the structure, and you know whether the Customer, the Account, or the Card is where you need to find information, go to the relevant section of the user guide. For example, if you're looking to update the credit limit on an account, you will go to the "Credit Limit" section, and find the use cases that best describes the function you are aiming to perform.
 
-<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/menu.jpeg">
+<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/menu.jpg">
 
 Step 3 - Building the API request
 ---------------------------------
@@ -30,13 +30,13 @@ API Message to Use
 
 This is the API message within the portal that you need to look for. It gives you the section name following by the API message itself. Always use the latest version if there are more than one as older version may be deprecated.
 
-<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/api-message-to-use.png">
+<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/api-message-to-use.jpg">
 
 Click on the arrow in order to view the full message.
 
 In order to view the request fields, click "show model" under the Parameters section.
 
-<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/show-model.PNG">
+<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/show-model.jpg">
 
 The following sections of the use case will guide you to the relevant fields:
 
