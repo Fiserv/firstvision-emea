@@ -192,27 +192,27 @@ featuredFeatures:
       - relatedDoc:
         title: Retrieve card information
         description: Retrieve details of all cards (up to a maximum of 20) linked to an account such as card number, embossed name, expiry date on the card etc.
-        link: ./docs/Self-servicing/card/Retrieve-card-information.md
+        link: ./docs/Self-servicing/Card/Retrieve-card-information.md
       - relatedDoc:
         title: Update name on card
         description: Update the embossed name on a card.
-        link: ./docs/Self-servicing/card/Update-name-on-card.md
+        link: ./docs/Self-servicing/Card/Update-name-on-card.md
       - relatedDoc:
         title: Request a replacement card
         description: Replace a damaged card. This can also be used for requesting a new plastic follow a name change.
-        link: ./docs/Self-servicing/card/Request-a-replacement-card.md
+        link: ./docs/Self-servicing/Card/Request-a-replacement-card.md
       - relatedDoc:
         title: Request a PIN reminder(through batch process)
         description: Send a PIN reminder through the batch process for an existing PIN using methods specified on the account, e.g. SMS, mail, etc.
-        link: ./docs/Self-servicing/card/Request-pin-reminder.md
+        link: ./docs/Self-servicing/Card/Request-pin-reminder.md
       - relatedDoc:
         title: Block a card
         description: Apply a block code to an existing card in order to prevent spend on the card.
-        link: ./docs/Self-servicing/card/Block-a-card.md
+        link: ./docs/Self-servicing/Card/Block-a-card.md
       - relatedDoc:
         title: Report a lost/stolen or fraudulent card
         description: Report a lost / stolen / fradulent activity on a  card and generate a new card and PIN.
-        link: ./docs/Self-servicing/card/Report-a-fraudulent-card.md
+        link: ./docs/Self-servicing/Card/Report-a-fraudulent-card.md
     relatedAPIs:
       - relatedAPI:
         title: Cards List By Account
