@@ -26,8 +26,8 @@
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
         "PROD/SwaggerPROD",
-        "UAT/SwaggerUAT",
-        "SIT/SwaggerSIT3"
+        "SIT/SwaggerSIT3",
+        "UAT/SwaggerUAT"
       ]
     }
   ],
