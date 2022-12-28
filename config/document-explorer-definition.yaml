@@ -107,17 +107,17 @@
       open: true
       sections:
         - title: Retrieve card information
-          link: docs/Self-servicing/card/Retrieve-card-information.md
+          link: docs/Self-servicing/Card/Retrieve-card-information.md
         - title: Update name on card
-          link: docs/Self-servicing/card/Update-name-on-card.md
+          link: docs/Self-servicing/Card/Update-name-on-card.md
         - title: Request a replacement card
-          link: docs/Self-servicing/card/Request-a-replacement-card.md
+          link: docs/Self-servicing/Card/Request-a-replacement-card.md
         - title: Request a PIN reminder(through batch process)
-          link: docs/Self-servicing/card/Request-pin-reminder.md
+          link: docs/Self-servicing/Card/Request-pin-reminder.md
         - title: Block a card
-          link: docs/Self-servicing/card/Block-a-card.md
+          link: docs/Self-servicing/Card/Block-a-card.md
         - title: Report a lost/stolen or fraudulent card
-          link: docs/Self-servicing/card/Report-a-fraudulent-card.md
+          link: docs/Self-servicing/Card/Report-a-fraudulent-card.md
 - sections:
     - title: Support
       link:
