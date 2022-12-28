@@ -34,7 +34,7 @@ This is the API message within the portal that you need to look for. It gives yo
 
 Click on the arrow in order to view the full message.
 
-In order to view the request fields, click "show model" under the Parameters section.
+In order to view the request / response fields, click "Request / Response Schema".
 
 <img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/show-model.jpg">
 
