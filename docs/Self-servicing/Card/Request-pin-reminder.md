@@ -6,7 +6,7 @@ Send a PIN reminder through the batch process for an existing PIN using methods 
 
 NOTE: This process cannot be used to generate a new PIN.
 
-### API to use:[Card Management > PIN Reminder](../api?type=post&path=/fv_emea/v1/pinReminder)
+### API to use: [Card Management > PIN Reminder](../api/?type=post&path=/fv_emea/v1/pinReminder)
 
 #### Relevant request variables
 

@@ -4,7 +4,7 @@
 
 Update contact preferences on the Customer record.
 
-### API to use:[Customer Records> Customer Data Update](../api?type=post&path=/fv_emea/v2/customerDataUpdate)
+### API to use: [Customer Records> Customer Data Update](../api/?type=post&path=/fv_emea/v2/customerDataUpdate)
 
 #### Relevant request variables
 

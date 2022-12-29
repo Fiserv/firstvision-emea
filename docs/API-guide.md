@@ -32,7 +32,8 @@ This is the API message within the portal that you need to look for. It gives yo
 
 <img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/api-message-to-use.jpg">
 
-Click on the arrow in order to view the full message.
+View Schema
+------------------
 
 In order to view the request / response fields, click "Request / Response Schema".
 

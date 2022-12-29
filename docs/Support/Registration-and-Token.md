@@ -11,7 +11,7 @@ The FirstVision Product API allows users to discover various financial products 
 Registration
 -------------
 
-Every API expects an Access Token to be passed as header parameter (Authorisation). The Access Token will be valid for 60 minutes. Please [contact us](https://docs.firstdata.com/org/global/contactus) to get Client Key and Secret created for you, which can be used for generating Access Token.
+Every API expects an Access Token to be passed as header parameter (Authorisation). The Access Token will be valid for 60 minutes. Please contact us *@DL-FirstVisionApiTeam@fiserv.com* to get Client Key and Secret created for you, which can be used for generating Access Token.
 
 API Calls in Sandbox (Demo) environment
 ---------------------------------------

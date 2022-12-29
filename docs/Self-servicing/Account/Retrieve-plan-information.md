@@ -4,7 +4,7 @@
 
 Retrieve interest rate information for purchases, cash as well as promotional rates applicable to the account. In addition, this use case also returns balance information.
 
-### API to use: [Account Management > Account Plan Inquiry](../api?type=post&path=/fv_emea/v1/accountPlanInquiry)
+### API to use: [Account Management > Account Plan Inquiry](../api/?type=post&path=/fv_emea/v1/accountPlanInquiry)
 
 #### Relevant request variables
 
