@@ -4,7 +4,7 @@
 
 Retrieve all account numbers belonging to a customer.
 
-### API to use: [Customer Records > Customer Accounts List](../api?type=post&path=/fv_emea/v1/customerAccountsList)
+### API to use: [Customer Records > Customer Accounts List](../api/?type=post&path=/fv_emea/v1/customerAccountsList)
 
 #### Relevant request variables
 

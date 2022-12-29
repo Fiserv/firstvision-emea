@@ -8,7 +8,7 @@ It is possible to use either the account number or the card number in the reques
 
 In the request, enter the account number being updated and any of the optional fields.
 
-### API to use:[Account Management > Direct Debit Update](../api?type=post&path=/fv_emea/v2/directDebitUpdate)
+### API to use: [Account Management > Direct Debit Update](../api/?type=post&path=/fv_emea/v2/directDebitUpdate)
 
 #### Relevant request variables
 

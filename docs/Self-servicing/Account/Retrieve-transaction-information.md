@@ -6,7 +6,7 @@ Request 1: Retrieve all the transactions that have cleared on the account since 
 
 Request 2: Retrieve transactions between two input dates.
 
-### API to use: [Transactions > Transaction Inquiry](../api?type=post&path=/fv_emea/v4/transactionInquiry)
+### API to use: [Transactions > Transaction Inquiry](../api/?type=post&path=/fv_emea/v4/transactionInquiry)
 
 #### Relevant request variables
 
