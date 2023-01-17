@@ -60,7 +60,7 @@ JWT Claims
 
 `"sub" : "Insert Client Key Here",`
 
-`"aud" : "[https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token"](https://firstdatanp-int.apigee.net/security/v1/token),`
+`"aud" : "https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token",`
 
 `"iss" : "Insert Client Key Here",`
 
