@@ -22,18 +22,10 @@
   "apiVersions": [
     {
       "version": "23.06",
-      "versionType": "minor",
-      "releaseNotesPath": "/release-notes/Release-notes.md",
-      "apiSpecFileNames": [
-        "23.06_Release.yaml"
-      ]
-    },
-    {
-      "version": "23.02",
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.02_Release.yaml"
+        "23.06_Release.yaml"
       ]
     }
   ],
