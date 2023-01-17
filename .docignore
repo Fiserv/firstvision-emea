@@ -2,6 +2,7 @@
 
 # Docs tutorials directory
 docs/documentation/
+recipes/
 
 # This should all file and subdirectory under versioning dir
 docs/documentation/**

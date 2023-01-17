@@ -1,70 +1,246 @@
 ################################################################################
-# Copyrights © 2021-2022 Fiserv, Inc. or its affiliates. 
-# Fiserv is a trademark of Fiserv, Inc., 
-# registered or used in the United States and foreign countries, 
-# and may or may not be registered in your country.  
-# All trademarks, service marks, 
-# and trade names referenced in this 
-# material are the property of their 
-# respective owners. This work, including its contents 
-# and programming, is confidential and its use 
-# is strictly limited. This work is furnished only 
-# for use by duly authorized licensees of Fiserv, Inc. 
-# or its affiliates, and their designated agents 
-# or employees responsible for installation or 
-# operation of the products. Any other use, 
-# duplication, or dissemination without the 
-# prior written consent of Fiserv, Inc. 
-# or its affiliates is strictly prohibited. 
-# Except as specified by the agreement under 
-# which the materials are furnished, Fiserv, Inc. 
-# and its affiliates do not accept any liabilities 
-# with respect to the information contained herein 
-# and are not responsible for any direct, indirect, 
-# special, consequential or exemplary damages 
-# resulting from the use of this information. 
-# No warranties, either express or implied, 
-# are granted or extended by this work or 
+# Copyrights © 2021-2022 Fiserv, Inc. or its affiliates.
+# Fiserv is a trademark of Fiserv, Inc.,
+# registered or used in the United States and foreign countries,
+# and may or may not be registered in your country.
+# All trademarks, service marks,
+# and trade names referenced in this
+# material are the property of their
+# respective owners. This work, including its contents
+# and programming, is confidential and its use
+# is strictly limited. This work is furnished only
+# for use by duly authorized licensees of Fiserv, Inc.
+# or its affiliates, and their designated agents
+# or employees responsible for installation or
+# operation of the products. Any other use,
+# duplication, or dissemination without the
+# prior written consent of Fiserv, Inc.
+# or its affiliates is strictly prohibited.
+# Except as specified by the agreement under
+# which the materials are furnished, Fiserv, Inc.
+# and its affiliates do not accept any liabilities
+# with respect to the information contained herein
+# and are not responsible for any direct, indirect,
+# special, consequential or exemplary damages
+# resulting from the use of this information.
+# No warranties, either express or implied,
+# are granted or extended by this work or
 # the delivery of this work
 ################################################################################
 header:
-  productName: REPLACEME
-  productionDescription: REPLACEME
-  whoIsItFor: REPLACEME
-  image: 
+  productName: FirstVision
+  productionDescription: FirstVision is our outsourced processing solution that meets your challenges head-on and transforms your technology capability. Built on core VisionPLUS® software, FirstVision™ provides an end-to-end solution that delivers global processing economies of scale plus fully integrated adjacent services that span the issuing lifecycle.
+  whoIsItFor: FirstVision-EMEA is a financial software application mainly used by banks/cards processors to issue credit, debit, prepaid, loans, and commercial cards.
+  image:
     link: "/assets/images/Fiserv_Logo.jpg"
-    altText: REPLACEME™
+    altText: FirstVision™
+steps:
+  learnSteps:
+    - title: Learn
+      description: >
+        Follow our documentation and easy to use examples to build your own mobile or web integrated online applications.
+      link:
+  buildSteps:
+    - title: Build
+      description: >
+        Get your application up and running with our proprietary integration tools and developer keys.
+      link:
+  validateSteps:
+    - title: API Explorer
+      description: >
+        Interact with our live api interface for real time responses to the developed application.
+      link:
+  deploySteps:
+    - title: Deploy
+      description: >
+        Deploy your applications in our testing environment for quality assurance testing.  Once ready promote your application to our production environment.
+      link:
 featuredFeatures:
-  - title: REPLACE ME
-    description:  REPLACE ME
-    tags: ["REPLACEME", "REPLACEME", "REPLACEME"]
-    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Customer
+    description:  The customer use cases relate to the information kept at the customer level. This is mainly demographic information.
+    link: ./docs/Self-servicing/Customer/customer.md
+    tags: ["EMEA", "FirstVision", "Customer"]
+    bullets: ["Account Detail Inquiry", "Customer Data Update", "Customer Demographic Inquiry"]
     relatedDocs:
-      - relatedDoc: 
-        title: REPLACEME
-        description: REPLACEME
-        link: ./docs/REPLACE-ME1.md
-      - relatedDoc: 
-        title: REPLACEME
-        description: REPLACEME
-        link: ./docs/REPLACE-ME2.md
-      - relatedDoc: 
-        title: REPLACEME
-        description: REPLACEME
-        link: ./docs/REPLACE-ME3.md
+      - relatedDoc:
+        title: Retrieve customer number
+        description: Use the account number or the card number to retrieve the customer number and alternate customer number, if applicable.
+        link: ./docs/Self-servicing/Customer/Retrieve-customer-number.md
+      - relatedDoc:
+        title: Update customer demographics
+        description: Update customer demographics, such as name, address, phone and email.
+        link: ./docs/Self-servicing/Customer/Update-customer-demographics.md
+      - relatedDoc:
+        title: Update customer user fields
+        description: Update user fields on the Customer record.
+        link: ./docs/Self-servicing/Customer/Update-customer-user-fields.md
+      - relatedDoc:
+        title: Retrieve customer contact preferences
+        description: Retrieve a customer's contact preference settings.
+        link: ./docs/Self-servicing/Customer/Retrieve-customer-contact-preferences.md
+      - relatedDoc:
+        title: Update contact preferences
+        description: Update contact preferences on the Customer record.
+        link: ./docs/Self-servicing/Customer/Update-contact-preferences.md
     relatedAPIs:
-      - relatedAPI: 
-        title: REPLACEME
-        description: REPLACEME
-        type: "patch"        
-        path: "/v1/REPLACEME1"
-      - relatedAPI: 
-        title: REPLACEME
-        description: REPLACEME
-        type: "post"        
-        path: "/v1/REPLACEME2"
-      - relatedAPI: 
-        title: REPLACEME
-        description: REPLACEME
-        type: "get"        
-        path: "/v1/REPLACEME3"
+      - relatedAPI:
+        title: Account Detail Inquiry
+        description: This service is used to return detailed information for an input Account or Card number.
+        type: "post"
+        path: "/fv_emea/v3/accountDetailInquiry"
+      - relatedAPI:
+        title: Customer Data update
+        description: This service can be used to update the demographics details stored in the system for a customer. E.g. names, addresses, preferences flags, personal details, user defined fields, etc.
+        type: "post"
+        path: "/fv_emea/v2/customerDataUpdate"
+      - relatedAPI:
+        title: Customer Demographic Inquiry
+        description: This service will allow a calling program to request Demographic Data for a customer. The data is stored on the Name and Address Record AMNA. A Customer, Account or Card number can be used in the input area to retrieve the data. All of the fields included in this service can be seen in the Request and Response sections of this document.
+        type: "post"
+        path: "/fv_emea/v1/customerDemographicInquiry"
+  - title: Account
+    description:  In the account section, you will find use cases relating the a customer's account. This will hold all the financial information, such as balances, spend limits, and transactions.
+    tags: ["EMEA", "FirstVision", "Account"]
+    bullets: ["Customer Account Card Add", "Customer Accounts List", "Account Detail Inquiry", "Account plan Inquiry", "Transaction Inquiry", "Direct Debit inquiry", "Credit Limit update", "Direct Debit update" ]
+    relatedDocs:
+      - relatedDoc:
+        title: Open a new account
+        description: Open a new account. This message will generate the account, as well as the associated primary customer and card records.
+        link: ./docs/Self-servicing/Account/Open-a-new-account.md
+      - relatedDoc:
+        title: Retrieve account number using customer number
+        description: Retrieve all account numbers belonging to a customer.
+        link: ./docs/Self-servicing/Account/Retrieve-account-number-using-customer-number.md
+      - relatedDoc:
+        title: Retrieve account balance information
+        description: Retrieve balance information for any account belonging to an existing customer.
+        link: ./docs/Self-servicing/Account/Retrieve-account-balance-information.md
+      - relatedDoc:
+        title: Retrieve account limits
+        description: Retrieve financial limits for an account, including credit limits and spend limits.
+        link: ./docs/Self-servicing/Account/Retrieve-account-limits.md
+      - relatedDoc:
+        title: Retrieve payment information
+        description: Retrieve information relevant to the payments of the account, including dates when payments are due as well as amounts.
+        link: ./docs/Self-servicing/Account/Retrieve-payment-information.md
+      - relatedDoc:
+        title: Retrieve plan information(interest and balance at plan level)
+        description: Retrieve interest rate information for purchases, cash as well as promotional rates applicable to the account. In addition, this use case also returns balance information.
+        link: ./docs/Self-servicing/Account/Retrieve-plan-information.md
+      - relatedDoc:
+        title: Retrieve transaction information
+        description: Request 1- Retrieve all the transactions that have cleared on the account since the last statement cycle. Request 2- Retrieve transactions between two input dates.
+        link: ./docs/Self-servicing/Account/Retrieve-transaction-information.md
+      - relatedDoc:
+        title: Retrieve direct debit information
+        description: Retrieve information relating to the Direct Debit information of an account, including bank account details and status.
+        link: ./docs/Self-servicing/Account/Retrieve-direct-debit-information.md
+      - relatedDoc:
+        title: Update credit limit of account
+        description: Here is how to update the total credit limit of the account. This applies to the overall limit on the account and not individual spend limits.
+        link: ./docs/Self-servicing/Account/Update-credit-limit-of-account.md
+      - relatedDoc:
+        title: Update direct debit details
+        description: Update information relating to the Direct Debit information of an account, including bank account details.
+        link: ./docs/Self-servicing/Account/Update-direct-debit-details.md
+    relatedAPIs:
+      - relatedAPI:
+        title: Account Detail Inquiry
+        description: This service is used to return detailed information for an input Account or Card number.
+        type: "post"
+        path: "/fv_emea/v3/accountDetailInquiry"
+      - relatedAPI:
+        title: Customer Account Card Add
+        description: Customer account card setup driver service used to add Customer Name and Address Record, Account Base Segment Record etc. or to update Customer Name and Address Record Account Base Segment Record.
+        type: "post"
+        path: "/fv_emea/v1/customerAccountCardAdd"
+      - relatedAPI:
+        title: Customer Accounts List
+        description: This service is used to retrieve details of all accounts linked with a customer number. Client should send the customer number in the request and in response system sends all related account number with their respective status and block code values.
+        type: "post"
+        path: "/fv_emea/v1/customerAccountsList"
+      - relatedAPI:
+        title: Account Plan Inquiry
+        description: This service is used to return the selected flexible payment plans for an account. This service is used to display for cardholders to set up a flexible payment plan for their account. Lists whose number of items depend on a variable returned will be truncated appropriately.
+        type: "post"
+        path: "/fv_emea/v2/accountPlanInquiry"
+      - relatedAPI:
+        title: Transaction Inquiry
+        description: The Transaction Inquiry service supports both Effective date and posting date filtration based on the input txnDateSel (E - Effective Date or P - Posting Date) whereas the v1 version is supporting only filtration based on posting date. The service provides transaction detail information for current cycle transactions or statement transactions within a date range. You can specify a date range or the number of transactions. Up to 50 transactions are returned for each service request. The limit to the number of months depends on how many statements the client has stored.
+        type: "post"
+        path: "/fv_emea/v4/transactionInquiry"
+      - relatedAPI:
+        title: Direct Debit Inquiry
+        description: This service is used to retrieve using the account or card number, the Direct Debit or Credit details on an account. The information that is returned includes bank account, routing data and various other associated fields
+        type: "post"
+        path: "/fv_emea/v1/directDebitInquiry"
+      - relatedAPI:
+        title: Direct Debit Update
+        description: This service is used to allow an Account to be set up or amended to generate automatic payments to draw down the balance of the Card by generating output to a local clearing system (e.g. in UK, BACS).
+        type: "post"
+        path: "/fv_emea/v2/directDebitUpdate"
+      - relatedAPI:
+        title: Credit Limit Update
+        description: This service is used to update the credit limit of the cardholder's account.
+        type: "post"
+        path: "/fv_emea/v1/creditLimitUpdate"
+  - title: Card
+    description:  In the card section, you will find use cases relating the a customer's card.
+    tags: ["EMEA", "FirstVision", "Card"]
+    bullets: ["Cards List By Account", "Card Update", "Card Replacement", "Pin Reminder", "Card Block Code Update", "Lost Stolen update" ]
+    relatedDocs:
+      - relatedDoc:
+        title: Retrieve card information
+        description: Retrieve details of all cards (up to a maximum of 20) linked to an account such as card number, embossed name, expiry date on the card etc.
+        link: ./docs/Self-servicing/Card/Retrieve-card-information.md
+      - relatedDoc:
+        title: Update name on card
+        description: Update the embossed name on a card.
+        link: ./docs/Self-servicing/Card/Update-name-on-card.md
+      - relatedDoc:
+        title: Request a replacement card
+        description: Replace a damaged card. This can also be used for requesting a new plastic follow a name change.
+        link: ./docs/Self-servicing/Card/Request-a-replacement-card.md
+      - relatedDoc:
+        title: Request a PIN reminder(through batch process)
+        description: Send a PIN reminder through the batch process for an existing PIN using methods specified on the account, e.g. SMS, mail, etc.
+        link: ./docs/Self-servicing/Card/Request-pin-reminder.md
+      - relatedDoc:
+        title: Block a card
+        description: Apply a block code to an existing card in order to prevent spend on the card.
+        link: ./docs/Self-servicing/Card/Block-a-card.md
+      - relatedDoc:
+        title: Report a lost/stolen or fraudulent card
+        description: Report a lost / stolen / fradulent activity on a  card and generate a new card and PIN.
+        link: ./docs/Self-servicing/Card/Report-a-fraudulent-card.md
+    relatedAPIs:
+      - relatedAPI:
+        title: Cards List By Account
+        description: The account to card Inquiry Service will allow a user to perform the lookup or navigation from account number to all associated card numbers.
+        type: "post"
+        path: "/fv_emea/v2/cardsListByAccount"
+      - relatedAPI:
+        title: Card Update
+        description: The Card Update Service is used to update data at the Card level for a FirstVision account.
+        type: "post"
+        path: "/fv_emea/v1/cardUpdate"
+      - relatedAPI:
+        title: Card Replacement
+        description: This service is used if an existing card of the customer needs to be replaced with a new card because of some issue with the existing card (mainly damaged case).
+        type: "post"
+        path: "/fv_emea/v1/cardReplacement"
+      - relatedAPI:
+        title: Pin Reminder
+        description: PIN mailer service will allow the user to request for a PIN mailer for a maximum of 20 cards. This service performs as a driver which calls the card action service with card action as 5 NEW PIN REQUEST for the existing card) along with the card number as input. The card action update service does the actual Updation of the embosser record by changing the card action which will then be processed in batch.
+        type: "post"
+        path: "/fv_emea/v1/pinReminder"
+      - relatedAPI:
+        title: Card Block Code Update
+        description: The Block Code Update service enables the user to update the block codes and the reason codes for the block codes for cards and accounts.
+        type: "post"
+        path: "/fv_emea/v1/cardBlockCodeUpdate"
+      - relatedAPI:
+        title: Lost Stolen update
+        description: To update a Lost or Stolen card block code and request for a card replacement and pin.
+        type: "post"
+        path: "/fv_emea/v2/lostStolenUpdate"
