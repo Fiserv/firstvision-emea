@@ -25,7 +25,7 @@
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "PROD/prod"
+        "UAT/uat"
       ]
     }
   ],
