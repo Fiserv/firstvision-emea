@@ -21,7 +21,7 @@
   ],
   "apiVersions": [
     {
-      "version": "1.0.0",
+      "version": "1.29.29",
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
