@@ -21,12 +21,12 @@
   ],
   "apiVersions": [
     {
-      "version": "23.06",
+      "version": "1.0.0",
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.06_Release"
-      ]g
+        "SIT/sit"
+      ]
     }
   ],
   "product": {
