@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.34.50
+  version: 1.34.55
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -157,7 +157,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Activity Updates
       x-codegen-request-body-name: body
   /fv_emea/v1/memoAdd:
@@ -340,7 +339,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Activity Updates
       x-codegen-request-body-name: body
   /fv_emea/v2/memoInquiry:
@@ -479,7 +477,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Activity Updates
       x-codegen-request-body-name: body
   /fv_emea/v1/transcriptUpdate:
@@ -630,7 +627,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Activity Updates
       x-codegen-request-body-name: body
   /fv_emea/v1/accountBlockCodeUpdate:
@@ -779,7 +775,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/accountClose:
@@ -936,7 +931,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/accountCustomFieldsUpdate:
@@ -1144,7 +1138,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/accountDisabilityIndicatorUpdate:
@@ -1281,7 +1274,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/accountPaydownQuoteService:
@@ -1428,7 +1420,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v2/accountUserFieldsUpdate:
@@ -1589,7 +1580,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/billingCycleUpdate:
@@ -1726,7 +1716,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/collectionsMaintenance:
@@ -1875,7 +1864,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/customerAccountCardAdd:
@@ -2871,7 +2859,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/delinquencyAdjustmentUpdate:
@@ -3020,7 +3007,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/directCreditUpdate:
@@ -3200,7 +3186,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v2/directDebitUpdate:
@@ -3444,7 +3429,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/marketingPreferencesUpdate:
@@ -3584,7 +3568,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/nonMonetaryActionUpdate:
@@ -3739,7 +3722,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/optInCreditLimitUpdates:
@@ -3872,7 +3854,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/planTransfer:
@@ -4051,7 +4032,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/pricingControlUpdate:
@@ -4228,7 +4208,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/relationshipAdd:
@@ -4469,7 +4448,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/relationshipNumberUpdate:
@@ -4591,7 +4569,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/returnedMailUpdate:
@@ -4722,7 +4699,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/statementHoldUpdate:
@@ -4856,7 +4832,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/statementOptionsUpdate:
@@ -5003,7 +4978,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/travelItineraryUpdate:
@@ -5151,7 +5125,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/userListInquiry:
@@ -5276,7 +5249,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/userSecureSignon:
@@ -5423,7 +5395,6 @@ paths:
       x-region:
       - EMEA
       x-regions: EMEA
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/waiveFeesandInterestUpdate:
@@ -5595,7 +5566,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v3/accountDetailInquiry:
@@ -5747,7 +5717,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/accountOverview:
@@ -5895,7 +5864,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/accountPlanInquiry:
@@ -6030,7 +5998,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/accountRateDisclosureInquiry:
@@ -6166,7 +6133,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/accountScoresInquiry:
@@ -6307,7 +6273,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/accountTransfer:
@@ -6479,7 +6444,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/accountsListByRelationship:
@@ -6620,7 +6584,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/annualStatementInquiry:
@@ -6758,7 +6721,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/behaviouralHistoryInquiry:
@@ -6890,7 +6852,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v3/cardholderDemographicList:
@@ -7034,7 +6995,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/cardsListByAccount:
@@ -7182,7 +7142,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/closingEndBalanceInquiry:
@@ -7324,7 +7283,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v3/delinquencyAdjustmentsInquiry:
@@ -7458,7 +7416,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/directDebitInquiry:
@@ -7595,7 +7552,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/falconNotify:
@@ -7730,7 +7686,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/fraudBlockCodeInquiry:
@@ -7859,7 +7814,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/interestRateExpiryInquiry:
@@ -8007,7 +7961,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/paymentHoliday:
@@ -8160,7 +8113,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/planLevelMonthlyInterestInquiry:
@@ -8309,7 +8261,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/productBlockCodeList:
@@ -8455,7 +8406,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v3/relationshipInquiry:
@@ -8608,7 +8558,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/relationshiptoAccountInquiry:
@@ -8744,7 +8693,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/returnedMailInquiry:
@@ -8872,7 +8820,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v2/statementPlanList:
@@ -9004,7 +8951,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/triadDecisionInquiry:
@@ -9144,7 +9090,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/uniqueLocateInquiry:
@@ -9293,7 +9238,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Account Management
       x-codegen-request-body-name: body
   /fv_emea/v1/authorisationReversalandRequest:
@@ -9510,7 +9454,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Authorisations
       x-codegen-request-body-name: body
   /fv_emea/v2/authorisationReversalandRequest:
@@ -9736,7 +9679,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Authorisations
       x-codegen-request-body-name: body
   /fv_emea/v2/authorisationsInquiry:
@@ -9877,7 +9819,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Authorisations
       x-codegen-request-body-name: body
   /fv_emea/v2/outstandingAuthorisationInquiry:
@@ -10022,7 +9963,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Authorisations
       x-codegen-request-body-name: body
   /fv_emea/v1/ddUpdate:
@@ -10183,7 +10123,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: BNPL
       x-codegen-request-body-name: body
   /fv_emea/v1/cardActionUpdate:
@@ -10363,7 +10302,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardActivation:
@@ -10504,7 +10442,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardAdd:
@@ -10689,7 +10626,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardAntiReferralUpdate:
@@ -10835,7 +10771,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardBlockCodeUpdate:
@@ -10974,7 +10909,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardControlUpdate:
@@ -11189,7 +11123,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardReplacement:
@@ -11366,7 +11299,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardTransferUpdate:
@@ -11486,7 +11418,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/cardUpdate:
@@ -11662,7 +11593,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/countryControlUpdate:
@@ -11795,7 +11725,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/fraudMonitorFlagUpdate:
@@ -11931,7 +11860,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/instantCreditFlagUpdate:
@@ -12067,7 +11995,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/instantIssuanceRestart:
@@ -12228,7 +12155,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/instantIssuanceStatusUpdate:
@@ -12373,7 +12299,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/instantIssuance:
@@ -12554,7 +12479,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v2/lostStolenUpdate:
@@ -12686,7 +12610,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/pinBlockChange:
@@ -12834,7 +12757,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/pinBlockUpdate:
@@ -12982,7 +12904,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/thirdPartyCardRefIdAdd:
@@ -13166,7 +13087,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/thirdPartyCardRefIdUpdate:
@@ -13350,7 +13270,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/updateDisabilityIndicator:
@@ -13484,7 +13403,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Maintenance
       x-codegen-request-body-name: body
   /fv_emea/v1/acsCardInquiry:
@@ -13618,7 +13536,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cardControlInquiry:
@@ -13752,7 +13669,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cardIdToPanDecrypt:
@@ -13868,7 +13784,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cardInquiry:
@@ -14010,7 +13925,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cardLostAndStolenService:
@@ -14146,7 +14060,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cardTransferInquiry:
@@ -14312,7 +14225,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v2/cardsListByCard:
@@ -14460,7 +14372,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/countryControlInquiry:
@@ -14592,7 +14503,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/cvv2Inquiry:
@@ -14755,7 +14665,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/dateRangeInquiry:
@@ -14885,7 +14794,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/encryptedCvv2Inquiry:
@@ -15034,7 +14942,6 @@ paths:
       x-proxy-name: Encrypted CVV2 Inquiry v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/encryptedEpinInquiry:
@@ -15171,7 +15078,6 @@ paths:
       x-proxy-name: Encrypted Epin Inquiry v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/encryptedPinInquiry:
@@ -15324,7 +15230,6 @@ paths:
       x-proxy-name: Encrypted Pin Inquiry v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/fraudCardTransfer:
@@ -15522,7 +15427,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/offerCodeInquiry:
@@ -15654,7 +15558,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/pinBlockInquiry:
@@ -15811,7 +15714,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/pinReminder:
@@ -15972,7 +15874,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/pinValidation:
@@ -16117,7 +16018,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/validateCvv2:
@@ -16254,7 +16154,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/validateEpin:
@@ -16386,7 +16285,6 @@ paths:
       x-proxy-name: Validate Epin v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/collectionsAccountInquiry:
@@ -16523,7 +16421,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Collections
       x-codegen-request-body-name: body
   /fv_emea/v1/collectionsPromiseToPayAdd:
@@ -16682,7 +16579,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Collections
       x-codegen-request-body-name: body
   /fv_emea/v2/creditLimitDriverInquiry:
@@ -16836,7 +16732,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Credit limit
       x-codegen-request-body-name: body
   /fv_emea/v1/creditLimitOfferAcceptUpdate:
@@ -16980,7 +16875,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Credit limit
       x-codegen-request-body-name: body
   /fv_emea/v1/creditLimitUpdate:
@@ -17131,7 +17025,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Credit limit
       x-codegen-request-body-name: body
   /fv_emea/v1/temporaryCreditLimitUpdate:
@@ -17280,7 +17173,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Credit limit
       x-codegen-request-body-name: body
   /fv_emea/v2/addressHistoryInquiry:
@@ -17417,7 +17309,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/addressListInquiry:
@@ -17551,7 +17442,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/associatedPartiesInquiry:
@@ -17693,7 +17583,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerAccountsAndCardsList:
@@ -17832,7 +17721,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerAccountsList:
@@ -17965,7 +17853,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerAdd:
@@ -18133,7 +18020,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerAttemptsInquiry:
@@ -18285,7 +18171,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v2/customerDataUpdate:
@@ -18512,7 +18397,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerDemographicInquiry:
@@ -18653,7 +18537,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v2/customerNumberUpdate:
@@ -18814,7 +18697,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/customerPhoneUpdate:
@@ -18963,7 +18845,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v2/extendedLookupInquiry:
@@ -19153,7 +19034,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Customer Records
       x-codegen-request-body-name: body
   /fv_emea/v1/balanceUpdate:
@@ -19303,7 +19183,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Debit
       x-codegen-request-body-name: body
   /fv_emea/v1/debitCardAvailableBalanceUpdate:
@@ -19474,7 +19353,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Debit
       x-codegen-request-body-name: body
   /ecca_emea/fiserver/cbes/v2/getCardList:
@@ -19621,7 +19499,6 @@ paths:
       x-proxy-name: getCardList
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Enhanced Card Controls and Alerts
       x-codegen-request-body-name: body
   /ecca_emea/fiserver/cbes/v2/registerValidUser:
@@ -19745,7 +19622,6 @@ paths:
       x-proxy-name: registerValidUser
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Enhanced Card Controls and Alerts
       x-codegen-request-body-name: body
   /ecca_emea/fiserver/cbes/v3/sendNotification:
@@ -19871,7 +19747,6 @@ paths:
       x-proxy-name: sendNotification
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Enhanced Card Controls and Alerts
       x-codegen-request-body-name: body
   /ecca_emea/fiserver/cbes/v2/setCardPolicy:
@@ -20024,7 +19899,6 @@ paths:
       x-proxy-name: setCardPolicy
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Enhanced Card Controls and Alerts
       x-codegen-request-body-name: body
   /fv_emea/v1/insuranceAdd:
@@ -20187,7 +20061,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Insurance
       x-codegen-request-body-name: body
   /fv_emea/v3/insuranceInquiry:
@@ -20332,7 +20205,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Insurance
       x-codegen-request-body-name: body
   /fv_emea/v1/insuranceStatusUpdate:
@@ -20487,7 +20359,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Insurance
       x-codegen-request-body-name: body
   /fv_emea/v1/downloadLetterDoc:
@@ -20572,7 +20443,6 @@ paths:
       x-proxy-name: Download Letter Doc v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v2/enterpriseLetterRequest:
@@ -20820,7 +20690,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v1/letterDocumentUrl:
@@ -20905,7 +20774,6 @@ paths:
       x-proxy-name: Letter Document URL v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v1/letterList:
@@ -20988,7 +20856,6 @@ paths:
       x-proxy-name: Letters Pdf List v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v1/letterPdfDocsList:
@@ -21073,7 +20940,6 @@ paths:
       x-proxy-name: Letter Document URL v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v2/letterRequest:
@@ -21324,7 +21190,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v2/lettersHistory:
@@ -21465,7 +21330,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v2/accountPlanList:
@@ -21604,7 +21468,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/bookOffer:
@@ -21751,7 +21614,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/eppCancel:
@@ -21890,7 +21752,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/eppLoanScheduleInquiry:
@@ -22025,7 +21886,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/eppTransactionPlanAdd:
@@ -22163,7 +22023,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/eppValidation:
@@ -22336,7 +22195,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/fppAdd:
@@ -22492,7 +22350,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/fppQuoteGeneration:
@@ -22500,18 +22357,20 @@ paths:
       tags:
       - Loans
       summary: FppQuoteGeneration
-      description: Flexible Payment Plans FPP offers cardholders more control over
-        the budgeting and repayment of their credit card account.  Cardholders are
-        able to select transaction or balance amounts that are moved to a Flexible
-        Payment Plan and select a payment amount to repay that portion of their balance
-        over a period of time. A real time message returns a quote for fixed payments
-        on a plan. The message invokes a service processing which calculates an estimated
-        monthly fixed payment, which will pay down a fixed amount, including all accrued
-        interest over a fixed period taking into account compounded daily interest
-        and a period of time between initial plan debit and first account cycle.<BR/><BR/><p>Fields
-        that are not provided in the Request object will be initialised to their default
-        values. All numeric fields are initialised to zero and alphanumeric fields
-        initialised to spaces</p>
+      description: This service is deprecated and will be supported until July 2023.
+        New version has a provision to accept both offer ID, Plan number as input
+        and generates 3 different quotes. <BR/><BR/>Flexible Payment Plans FPP offers
+        cardholders more control over the budgeting and repayment of their credit
+        card account.  Cardholders are able to select transaction or balance amounts
+        that are moved to a Flexible Payment Plan and select a payment amount to repay
+        that portion of their balance over a period of time. A real time message returns
+        a quote for fixed payments on a plan. The message invokes a service processing
+        which calculates an estimated monthly fixed payment, which will pay down a
+        fixed amount, including all accrued interest over a fixed period taking into
+        account compounded daily interest and a period of time between initial plan
+        debit and first account cycle.<BR/><BR/><p>Fields that are not provided in
+        the Request object will be initialised to their default values. All numeric
+        fields are initialised to zero and alphanumeric fields initialised to spaces</p>
       operationId: fppQuoteGeneration_v1_fv_emea
       parameters:
       - name: Authorization
@@ -22633,13 +22492,162 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FsErrorDetails'
-      deprecated: false
+      deprecated: true
       x-proxy-name: FPP Quote Generation v1
       x-region:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
+      x-display: Loans
+      x-codegen-request-body-name: body
+  /fv_emea/v2/fppQuoteGeneration:
+    post:
+      tags:
+      - Loans
+      summary: FppQuoteGeneration
+      description: Flexible Payment Plans (FPP) will be a new product offering to
+        cardholders that will allow them more control over the budgeting and repayment
+        of their credit card account. Cardholders will be able to select transaction
+        or balance amounts that will be 'moved' to a Flexible Payment Plan and select
+        a payment amount to repay that portion of their balance over a period of time.<BR/><BR/><p>Fields
+        that are not provided in the Request object will be initialised to their default
+        values. All numeric fields are initialised to zero and alphanumeric fields
+        initialised to spaces</p>
+      operationId: fppQuoteGeneration_v2_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FppQuoteGenerationRequest2'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FppQuoteGenerationResponse2'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPE5SQT01S : SERVICE GETMAIN ERROR<BR/>VPE5SQT02S : SERVICE COULD
+            NOT OBTAIN STORAGE AREA<BR/>VPE5SQT04S : FILE TABLE USED BY THIS SERVICE
+            IS MISSING<BR/>VPE5SQT05S : SYSTEM UPDATE IN PROGRESS<BR/>VPE5SQT06S :
+            OUTPUT FIELD SIZE ERROR<BR/>VPE5SQT07S : INVALID ACCOUNT NUMBER<BR/>VPE5SQT08S
+            : INVALID ORG NUMBER<BR/>VPE5SQT09S : INVALID ELIGIBLE AMOUNT<BR/>VPE5SQT10S
+            : INVALID FLEXIBLE PAYMENT AMOUNT<BR/>VPE5SQT11S : FLEXIBLE PAYMENT AMOUNT
+            = 0<BR/>VPE5SQT12S : INVALID TERM FIELD<BR/>VPE5SQT13S : AMCR FILE NOT
+            OPEN<BR/>VPE5SQT14S : AMCR SYSTEM RECORD NOT FOUND<BR/>VPE5SQT15S : AMCR
+            FILE NOT OPEN<BR/>VPE5SQT16S : AMCR ORGANIZTION RECORD NOT FND OR ADD
+            PENDING<BR/>VPE5SQT17S : AMCR FILE NOT OPEN<BR/>VPE5SQT18S : AMCR LOGO
+            RECORD NOT FND OR ADD PENDING<BR/>VPE5SQT19S : AMBS FPP PLAN INVALID<BR/>VPE5SQT20S
+            : AMBS RECORD NOT FOUND OR ADD PENDING<BR/>VPE5SQT21S : AMCP RECORD NOT
+            FOUND OR ADD PENDING<BR/>VPE5SQT22S : AMCP READ RANDOM ERROR<BR/>VPE5SQT23S
+            : PLAN EXPIRED<BR/>VPE5SQT24S : PLAN DATES ARE INVALID<BR/>VPE5SQT25S
+            : FPP NOT ACTIVE ON PLAN<BR/>VPE5SQT26S : AMCR  AFTER HOURS FILE ERROR<BR/>VPE5SQT27S
+            : AMCRA FILE READ ERROR<BR/>VPE5SQT28S : AMBS FILE NOT OPEN<BR/>VPE5SQT29S
+            : INPUT FPP PLAN IS INVALID<BR/>VPE5SQT30S : AMCP FILE NOT OPEN<BR/>VPE5SQT31S
+            : INVALID REMAINING TERM<BR/>VPE5SQT32S : INTEREST CHARGED IS MORE THAN
+            FLEXI AMOUNT<BR/>VPE5SQTZ4S : ORG COULDNT DETERMINED<BR/>VPE5SQT33S :
+            OFFER ID SHOULD NOT BE SPACES<BR/>VPE5SQT34S : ZMQT FILE NOT OPEN<BR/>VPE5SQT35S
+            : ZMQT RECORD IS NOT FOUND OR ADD PENDING<BR/>VPE5SQTZ5S : FILE SET COULDNT
+            DETERMINED<BR/>VPE5SQTZ6S : FILE TABLE NOT FOUND<BR/>VPE5SQTZ9S : NO PROCESSING
+            ERROR<BR/>VPE5SQT36S : FPP OFFER MUST BE VALID<BR/>VPE5SQT37S : ZMQT READ
+            RANDOM ERROR<BR/>VPE5SQT38S : OFFER IS NOT IN ACTIVE STATUS<BR/>VPE5SQT39S
+            : OFFER IS EITHER NOT ACTIVATED OR ALREADY EXPIRED<BR/>VPE5SQT40S : OFFER
+            DATE IS INVALID<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: FPP Quote Generation v2
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentPlanAdd:
@@ -22802,7 +22810,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentPlanInquiry:
@@ -22939,7 +22946,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentPlanUpdate:
@@ -23098,7 +23104,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v2/loanPlanAdd:
@@ -24092,7 +24097,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/loanPlanInquiry:
@@ -24229,7 +24233,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/planSettlementQuoteUpdate:
@@ -24403,7 +24406,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/settlementQuoteInquiry:
@@ -24545,7 +24547,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v1/settlementQuoteUpdate:
@@ -24696,7 +24697,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loans
       x-codegen-request-body-name: body
   /fv_emea/v2/loyaltyAccountInquiry:
@@ -24835,7 +24835,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyBlockCodeUpdate:
@@ -24971,7 +24970,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v2/loyaltyCrossReferenceInquiry:
@@ -25109,7 +25107,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyDemographicAdd:
@@ -25313,7 +25310,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyDemographicInquiry:
@@ -25444,7 +25440,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyDemographicStatusUpdate:
@@ -25584,7 +25579,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyPointsAdd:
@@ -25732,7 +25726,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyPointsAdjustments:
@@ -25888,7 +25881,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyPointsDisbursementDataUpdate:
@@ -26054,7 +26046,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyPointsInquiry:
@@ -26186,7 +26177,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyRedemptionInquiry:
@@ -26330,7 +26320,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyRedemption:
@@ -26840,7 +26829,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v2/loyaltySchemeList:
@@ -26983,7 +26971,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltyStatementSettingsUpdate:
@@ -27129,7 +27116,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/loyaltySummary:
@@ -27261,7 +27247,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/offerAdd:
@@ -27417,7 +27402,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/offerEnrolmentInquiry:
@@ -27556,7 +27540,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/offerEnrolmentMaintenance:
@@ -27721,7 +27704,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/offerEnrolmentUpdate:
@@ -27870,7 +27852,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
   /fv_emea/v1/fasterPayment:
@@ -28038,7 +28019,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/moveFunds:
@@ -28166,7 +28146,6 @@ paths:
       x-proxy-name: Move Funds v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/paymentDueEstimation:
@@ -28300,7 +28279,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v2/paymentHistoryInquiry:
@@ -28443,7 +28421,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/paymentRefund:
@@ -28528,7 +28505,6 @@ paths:
       x-proxy-name: Payment Refund v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/paymentSettings:
@@ -28612,7 +28588,6 @@ paths:
       x-proxy-name: Payment Settings v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/pendingPaymentDelete:
@@ -28695,7 +28670,6 @@ paths:
       x-proxy-name: Cancel Pending Payment v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/pendingPaymentList:
@@ -28778,7 +28752,6 @@ paths:
       x-proxy-name: Pending Payment List v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/processPayment:
@@ -28907,7 +28880,6 @@ paths:
       x-proxy-name: Process Payment v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/processedPaymentsList:
@@ -28990,7 +28962,6 @@ paths:
       x-proxy-name: Processed Payments List v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v2/realTimePaymentWithMemo:
@@ -29149,7 +29120,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/realTimePayment:
@@ -29296,7 +29266,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/reoccuringPaymentDelete:
@@ -29379,7 +29348,6 @@ paths:
       x-proxy-name: Reoccuring Payment Delete v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/reoccuringPaymentList:
@@ -29462,7 +29430,6 @@ paths:
       x-proxy-name: Reoccuring Payments List v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/storedPayingCardDelete:
@@ -29545,7 +29512,6 @@ paths:
       x-proxy-name: Stored Paying Card Delete v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/storedPayingCardUpdate:
@@ -29627,7 +29593,6 @@ paths:
       x-proxy-name: Stored Paying Card Update v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/crossWalletTransfer:
@@ -29784,7 +29749,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Prepaid
       x-codegen-request-body-name: body
   /fv_emea/v1/walletRedemption:
@@ -29948,7 +29912,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Prepaid
       x-codegen-request-body-name: body
   /fv_emea/security/v1/token/jwt/generate:
@@ -30018,7 +29981,6 @@ paths:
       x-proxy-name: Generate CC Token with JWT v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Security - Admin Token
   /fv_emea/security/v1/token/invalidate:
     post:
@@ -30077,7 +30039,6 @@ paths:
       x-proxy-name: Invalidate Token v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Security - Admin Token
   /fv_emea/v2/statementDateInquiry:
     post:
@@ -30212,7 +30173,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v1/statementPdfDocs:
@@ -30297,7 +30257,6 @@ paths:
       x-proxy-name: Statement Pdf Docs v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v1/statementPdfList:
@@ -30381,7 +30340,6 @@ paths:
       x-proxy-name: Statement Pdf List v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v1/statementPdfUrl:
@@ -30466,7 +30424,6 @@ paths:
       x-proxy-name: Statement Pdf Url v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v1/statementPdf:
@@ -30551,7 +30508,6 @@ paths:
       x-proxy-name: Statement Pdf v1
       x-region:
       - EMEA
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v2/statementReprintUpdate:
@@ -30729,7 +30685,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v2/statementSummaryInquiry:
@@ -30875,7 +30830,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Statement
       x-codegen-request-body-name: body
   /fv_emea/v1/availableBalanceAdjustment:
@@ -30999,7 +30953,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/fraudTransactionTransferUpdate:
@@ -31182,7 +31135,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentPlanConversionUpdate:
@@ -31347,7 +31299,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentSimulate:
@@ -31501,7 +31452,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/instalmentTransactionConversionUpdate:
@@ -31677,7 +31627,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/monetaryAction:
@@ -31865,7 +31814,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/processedTransactionBatchBalancingUpdate:
@@ -32005,7 +31953,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/processedTransactionBatchHeaderInquiry:
@@ -32143,7 +32090,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/processedTransactionRejectInquiry:
@@ -32282,7 +32228,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/processedTransactionRejectUpdate:
@@ -32433,7 +32378,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v3/transactionInquiry:
@@ -32611,7 +32555,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v4/transactionInquiry:
@@ -32786,7 +32729,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Transactions
       x-codegen-request-body-name: body
   /fv_emea/v1/walletTokenInquiry:
@@ -32926,7 +32868,6 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
-      x-child-product-name: UAT
       x-display: Wallet
       x-codegen-request-body-name: body
   /fv_emea/v1/globalCardActivation:
@@ -33066,7 +33007,6 @@ paths:
       - GLOBAL
       - APAC
       x-regions: EMEA,APAC,GLOBAL
-      x-child-product-name: UAT
       x-display: ZTest
       x-codegen-request-body-name: body
 components:
@@ -51159,8 +51099,11 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Default repayment reference .Valid values
-            0 - 1'
+          description: ' Max length = 1, Default repayment reference. New account
+            level field which indicates the default repayment reference which will
+            be used as a default repayment instrument for a new BNPL plan. Valid values
+            are: <UL><LI><EM> 0 = </EM> Default repayment reference not provided(default)</LI><LI><EM>
+            1 - 5 = </EM>Valid repayment reference which should be setup on account.</LI></UL>'
         bookingAlert:
           maxLength: 1
           minLength: 0
@@ -51216,9 +51159,14 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 2, Installment Repayment Type .Valid values
-            are:<UL><LI><EM>00 -</EM>No payment instrument repayment type provided
-            (default).</LI><LI><EM>01-99 -</EM>Valid repayment type provided.</LI></UL>'
+          description: ' Max length = 2, Installment Repayment Type. Field will differentiate
+            the various funding options like DD (IBAN and other details), current
+            account(sort code and account number), debit card (card number and expiry
+            date), NPP (Australia faster payment) etc. Valid values are:<UL><LI><EM>00
+            -</EM>No payment instrument repayment type provided (default).</LI><LI><EM>01-99
+            -</EM>Valid repayment type provided.</LI></UL> Currently below payment
+            instrument types are reserved: <UL><LI><EM> 01 - </EM> Direct Debit. </LI><LI><EM>
+            02 - </EM> Debit Card.</LI><LI><EM> 03 - </EM> Credit Card.</LI></UL>'
         paymentAchFlag:
           maxLength: 1
           minLength: 0
@@ -51278,10 +51226,12 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Mandate status of the DD. DD will be generated
-            only if this status is active and all other mandatory DD parameters are
-            set.Valid values are:<UL><LI><EM>A -</EM> Mandate is Active.</LI><LI><EM>Space
-            -</EM> Mandate is not set.</LI></UL>'
+          description: ' Max length = 1, Field will indicate the mandate status of
+            the DD. DD will be generated only if this status is active and all other
+            mandatory DD parameters are set. Valid values are:<UL><LI><EM>A -</EM>
+            Mandate is Active.</LI><LI><EM>I -</EM> Mandate is inactive.</LI><LI><EM>
+            C - </EM> Mandate is Cancelled. </LI><LI><EM> E - </EM> Mandate is expired
+            </LI><LI><EM> Space - </EM> Mandate is not set.</LI></UL>'
         bnplCardNbr:
           maxLength: 16
           minLength: 0
@@ -57916,6 +57866,71 @@ components:
           type: string
           description: ' Max length = 17, The FPP EMI Amount. This field is required
             when <EM>origTerm</EM> is not provided.'
+    FppQuoteGenerationRequest2:
+      required:
+      - acct
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        acct:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Account number or Card number.'
+        fppOffer:
+          maxLength: 12
+          minLength: 0
+          type: string
+          description: ' Max length = 12, The field contains FPP Offer Id for instalment
+            offer.'
+        initAmt:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, Original sales amount.'
+        originalTerm1:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, The Original Term-1 for the FPP Plan, Number
+            of terms for which instalment amount to be calculated.'
+        emiAmount1:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, The FPP EMI Amount-1, Fixed amount customer
+            want to pay for which terms to be calculated. Any one of Term-1 or EMI-Amount-1
+            should have valid values.'
+        originalTerm2:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, The Original Term for the FPP Plan-2.'
+        emiAmount2:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, The FPP EMI Amount-2, Should be Numeric
+            or low-values. If Term-2 is greater than zeroes, EMI-AMOUNT-2 should be
+            zeroes or vice-versa. Both Term-2 and EMI0AMOUNT-2 can be zeroes.'
+        originalTerm3:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, The Original Term for the FPP Plan-3.'
+        emiAmount3:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, The FPP EMI Amount-3, Should be Numeric
+            or low-values. If Term-3 is greater than zeroes, EMI-AMOUNT-3 should be
+            zeroes or vice-versa. Both Term-3 and EMI0AMOUNT-3 can be zeroes.'
+        planNbr:
+          maxLength: 5
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 5, FPP Plan number for instalment.'
     FppQuoteGenerationResponse:
       type: object
       properties:
@@ -57947,6 +57962,72 @@ components:
           type: string
           description: 'Format: YYYYMMDD. This will be the start date of the plan.
             This will be calculated as account accrue through date + 1.'
+    FppQuoteGenerationResponse2:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        fixedPaymentAmount1:
+          type: string
+          description: ' Max length = 17, This is the fixed instalment amount that
+            customer will have to pay.Instalment amount of Iteration 1.'
+        totalCost1:
+          type: string
+          description: ' Max length = 17, Total cost of credit that customer would
+            have paid by the end of the TERM. Total Cost of Iteration 1.'
+        estimatedInterest1:
+          type: string
+          description: ' Max length = 17, Total estimated Interest amount that customer
+            would have paid by the end of the TERM. Estimated Interest of Iteration
+            1.'
+        numberOfPayments1:
+          type: string
+          description: ' Max length = 3, Total number of payment that customer will
+            have to make to pay-out the FPP balance. Number of Terms of Iteration
+            1.'
+        fixedPaymentAmount2:
+          type: string
+          description: ' Max length = 17, This is the fixed instalment amount that
+            customer will have to pay. Instalment amount of Iteration 2.'
+        totalCost2:
+          type: string
+          description: ' Max length = 17, Total cost of credit that customer would
+            have paid by the end of the TERM. Total Cost of Iteration 2.'
+        estimatedInterest2:
+          type: string
+          description: ' Max length = 17, Total estimated Interest amount that customer
+            would have paid by the end of the TERM. Estimated Interest of Iteration
+            2.'
+        numberOfPayments2:
+          type: string
+          description: ' Max length = 3, Total number of payment that customer will
+            have to make to payout the FPP balance. Number of Terms of Iteration 2.'
+        fixedPaymentAmount3:
+          type: string
+          description: ' Max length = 17, This is the fixed instalment amount that
+            customer will have to pay. Instalment amount of Iteration 3.'
+        totalCost3:
+          type: string
+          description: ' Max length = 17, Total cost of credit that customer would
+            have paid by the end of the TERM. Total Cost of Iteration 3.'
+        estimatedInterest3:
+          type: string
+          description: ' Max length = 17, Total estimated Interest amount that customer
+            would have paid by the end of the TERM. Estimated Interest of Iteration
+            3.'
+        numberOfPayments3:
+          type: string
+          description: ' Max length = 3, Total number of payment that customer will
+            have to make to payout the FPP balance. Number of Terms of Iteration 3.'
+        currAer:
+          type: string
+          description: ' Max length = 7, AER rate on FPP plan'
+        currRate:
+          type: string
+          description: ' Max length = 7, Annual Simple Rate of FPP plan'
+        planNbr:
+          type: string
+          description: ' Max length = 5, FPP Plan number'
     FraudBlockCodeInquiryRequest:
       required:
       - lbLogo
@@ -66848,7 +66929,7 @@ components:
             rate setup for the offer. The instalment schedule will be calculated by
             using the daily interest rate calculated using this rate. Valid values
             are: <UL><LI><EM>0 :</EM> No rate provided (default).</LI><LI><EM>1 -
-            100 :</EM> Valid interest rate for BNPL template.</LI></UL>'
+            99.9999:</EM> Valid interest rate for BNPL template.</LI></UL>'
         restInd:
           type: string
           description: ' Max length = 1, Field indicates whether BNPL plan instalment
