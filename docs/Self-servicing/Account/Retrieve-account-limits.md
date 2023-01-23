@@ -4,7 +4,9 @@
 
 Retrieve financial limits for an account, including credit limits and spend limits.
 
-### API to use: [Account Management > Account Detail Inquiry](../api/?type=post&path=/fv_emea/v3/accountDetailInquiry)
+### API to use: 
+
+*[Account Management > Account Detail Inquiry](../api/?type=post&path=/fv_emea/v3/accountDetailInquiry)*
 
 #### Relevant request variables
 
