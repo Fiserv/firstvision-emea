@@ -4,7 +4,9 @@
 
 Retrieve a customer's contact preference settings.
 
-### API to use: [Customer Records> Customer Demographic Inquiry](../api/?type=post&path=/fv_emea/v1/customerDemographicInquiry)
+### API to use: 
+
+*[Customer Records> Customer Demographic Inquiry](../api/?type=post&path=/fv_emea/v1/customerDemographicInquiry)*
 
 ### Relevant request variables
 

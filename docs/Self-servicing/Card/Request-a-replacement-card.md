@@ -4,7 +4,9 @@
 
 Replace a damaged card. This can also be used for requesting a new plastic follow a name change.
 
-### API to use: [Card Maintenance > Card Replacement](../api/?type=post&path=/fv_emea/v1/cardReplacement)
+### API to use: 
+
+*[Card Maintenance > Card Replacement](../api/?type=post&path=/fv_emea/v1/cardReplacement)*
 
 #### Relevant request variables
 
