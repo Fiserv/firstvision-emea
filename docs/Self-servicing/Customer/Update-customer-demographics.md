@@ -4,7 +4,9 @@
 
 Update customer demographics, such as name, address, phone and email.
 
-### API to use: [Customer Records > Customer Data Update](../api/?type=post&path=/fv_emea/v2/customerDataUpdate)
+### API to use: 
+
+*[Customer Records > Customer Data Update](../api/?type=post&path=/fv_emea/v2/customerDataUpdate)*
 
 #### Relevant request variables
 
