@@ -4,7 +4,9 @@
 
 Use the account number or the card number to retrieve the customer number and alternate customer number, if applicable.
 
-### API to use: [Account Management > Account Detail Inquiry](../api/?type=post&path=/fv_emea/v3/accountDetailInquiry)
+### API to use: 
+
+*[Account Management > Account Detail Inquiry](../api/?type=post&path=/fv_emea/v3/accountDetailInquiry)*
 
 #### Relevant request variables
 
