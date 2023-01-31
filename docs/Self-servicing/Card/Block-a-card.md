@@ -4,7 +4,9 @@
 
 Apply a block code to an existing card in order to prevent spend on the card.
 
-### API to use: [Card Maintenance > Card Block Code Update](../api/?type=post&path=/fv_emea/v1/cardBlockCodeUpdate)
+### API to use: 
+
+*[Card Maintenance > Card Block Code Update](../api/?type=post&path=/fv_emea/v1/cardBlockCodeUpdate)*
 
 #### Relevant request variables
 
