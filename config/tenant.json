@@ -21,19 +21,19 @@
   ],
   "apiVersions": [
     {
-      "version": "23.06",
+      "version": "23.02",
       "versionType": "minor",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.06_Release"
+        "23.02_Release"
       ]
     },
     {
-      "version": "23.02",
+      "version": "23.06",
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.02_Release"
+        "23.06_Release"
       ]
     }
   ],
