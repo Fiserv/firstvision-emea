@@ -25,7 +25,7 @@
       "versionType": "minor",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.02_Release"
+        "23.02/23.02_Release"
       ]
     },
     {
@@ -33,7 +33,7 @@
       "versionType": "major",
       "releaseNotesPath": "/release-notes/Release-notes.md",
       "apiSpecFileNames": [
-        "23.06_Release"
+        "23.06/23.06_Release"
       ]
     }
   ],
