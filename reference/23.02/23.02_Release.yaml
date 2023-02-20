@@ -58417,25 +58417,6 @@ components:
     Header:
       type: object
       properties:
-        user:
-          type: string
-          description: Setting this value will assign OCS user id for internal ODS
-            Calls for auditing.
-        agent:
-          type: string
-          description: Agent, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-ACCT-LVL-3",
-            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-AGENT-NR",
-            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
-          example: "4000"
-        cycle:
-          type: string
-          description: Setting this value will assign cycle destination for backend
-            system, copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.CYCLE",
-            length:"1", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CENTER",
-            length:"1", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
-          example: '"T"'
         clientNumber:
           type: string
           description: Client Number, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-CLIENT-ID",
@@ -58444,58 +58425,6 @@ components:
             length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CLIENT",
             length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
           example: "1000"
-        system:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.System, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-1", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-SYSTEM-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "2000"
-        prin:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.Principal, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-2", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-PRIN-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "3000"
-        debug:
-          type: boolean
-          description: Setting this value to false will disable additional error details
-            from backend calls.
-          default: false
-        org:
-          type: string
-          description: Setting this value will assign to the organization identifier.
-        processor:
-          type: boolean
-          description: Setting this value to true will return processor information
-            on the response. Defaults to false
-          default: false
-        contentType:
-          type: string
-        retry:
-          type: integer
-          description: The retry count for the same request sent to First Data. This
-            is used for internal resubmission tracking.
-          format: int64
-        timeout:
-          type: integer
-          description: How long the request should be tried before timing out.
-          format: int64
-        siteId:
-          type: string
-          description: 'This field will be used by the service to determine the First
-            Track, First Dispute, Fraud Detection Work Center destination. Site Id
-            will be provided by these applications to the calling applications '
-          example: '"4201"'
     Hist3ForAccountDetailInquiry3:
       type: object
       properties:
