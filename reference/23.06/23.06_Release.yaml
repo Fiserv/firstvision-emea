@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.38.38
+  version: 1.48.40
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -2845,7 +2845,9 @@ paths:
             MUST BE NUMERIC<BR/>VPL5SNA09E : JULIAN DATE MUST BE IN YYYYDDD FORMAT<BR/>VPL5SNA71E
             : EMPLOYER ADDR REQD WHEN CARDorPIN MAIL PREF IS 1<BR/>VPL5SNA70E : CURRENT
             ADDR REQD WHEN CARDorPIN MAIL PREF IS 0<BR/>VPL5SNA72E : PERMANENT ADDR
-            REQD WHEN CARDorPIN MAIL PREF IS 2<BR/>'
+            REQD WHEN CARDorPIN MAIL PREF IS 2<BR/>VPL5SNA74S : EMAIL ADDR MUST BE
+            UNIQUE<BR/>VPE5SAPA1E : TOTAL CASH AMT VALUE MUST BE ENTERED<BR/>VPL5SAACZE
+            : TOTAL CASH AMT SHOULD BE NON ZERO<BR/>'
           content:
             application/json:
               schema:
