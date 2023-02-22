@@ -21,20 +21,28 @@
   ],
   "apiVersions": [
     {
-      "version": "23.06",
+      "version": "23.02",
       "versionType": "minor",
-      "releaseNotesPath": "/release-notes/Release-notes.md",
-      "apiSpecFileNames": [
-        "23.06_Release"
-      ]
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.02_Release"]
     },
     {
-      "version": "23.02",
+      "version": "23.03",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.03_Release"]
+    },
+    {
+      "version": "23.04",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.04_Release"]
+    },
+    {
+      "version": "23.06",
       "versionType": "major",
-      "releaseNotesPath": "/release-notes/Release-notes.md",
-      "apiSpecFileNames": [
-        "23.02_Release"
-      ]
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.06_Release"]
     }
   ],
   "product": {
