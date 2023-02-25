@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.36.8
+  version: 1.36.10
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -62763,14 +62763,13 @@ components:
             occurred</LI><LI><EM> D - </EM>Card deactivated</LI></UL>'
     LostStolenUpdateLbgRequest:
       required:
-      - branchNumber
       - cardBlk
       - cardNbr
       - countryOfLoss
       - lossDate
       - lossLocation
       - lossType
-      - newCardIndicator
+      - newCard
       - pinCompromised
       - processType
       type: object
@@ -62820,7 +62819,7 @@ components:
             - </EM>Rural</LI><LI><EM>6 - </EM>Bar</LI><LI><EM>7 - </EM>Hotel or Motel</LI><LI><EM>8
             - </EM>Unknown</LI><LI><EM>A - </EM>Airport</LI><LI><EM>B - </EM>Port</LI></UL>
             Default is space.'
-        newCardIndicator:
+        newCard:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
