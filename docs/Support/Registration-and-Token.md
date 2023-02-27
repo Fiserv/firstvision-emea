@@ -74,16 +74,16 @@ JWT Claims
 
 Below is a description and explanation of the values in this JWT. More information can be found at <https://tools.ietf.org/html/rfc7519>.
 
-| Claim        | Description                                                                 | Values                                                                                                                                |
-|--------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| typ (Header) | Media type of the JWT                                                       | Recommended that this be sent 'JWT'. Not enforced.                                                                                    |
-| alg (Header) | Algorithm used to create the JWS (JSONWeb signature)                        | Must be "HS256"                                                                                                                       |
-| sub          | Required. Identifies the subject of the JWT                                 | Must be "Client Key" of registered client                                                                                             |
-| aud          | Required. Audience for whom token is intended                               | Must be token URL of the Authentication server                                                                                        |
-| iss          | Required. Identifies the issuer of the JWT                                  | Must be "Client Key" of registered client                                                                                             |
-| exp          | Required. Expiry time (in UNIX epoch time) after which the token is invalid |                                                                                                                                       |
-| iat          | What time the token is issued at. Unix epoch time.                          |                                                                                                                                       |
-| jti          | Required. JWT ID. A unique value intended to prevent replay attacks.        | More information on replay attacks and how they are prevented by JWT IDs is provided [here](https://escmconfluence.1dc.com/x/PwgoEw). |
+| Claim        | Description                                                                 | Values                                             |
+|--------------|-----------------------------------------------------------------------------|----------------------------------------------------|
+| typ (Header) | Media type of the JWT                                                       | Recommended that this be sent 'JWT'. Not enforced. |
+| alg (Header) | Algorithm used to create the JWS (JSONWeb signature)                        | Must be "HS256"                                    |
+| sub          | Required. Identifies the subject of the JWT                                 | Must be "Client Key" of registered client          |
+| aud          | Required. Audience for whom token is intended                               | Must be token URL of the Authentication server     |
+| iss          | Required. Identifies the issuer of the JWT                                  | Must be "Client Key" of registered client          |
+| exp          | Required. Expiry time (in UNIX epoch time) after which the token is invalid |                                                    |
+| iat          | What time the token is issued at. Unix epoch time.                          |                                                    |
+| jti          | Required. JWT ID. A unique value intended to prevent replay attacks.        |                                                    |
 
 The signature is created using the HMAC SHA-256 algorithm. The HMAC is calculated using the client_secret of the registered client. When combined, the client_assertion JWT will look something like this (line breaks introduced for readability):
 
