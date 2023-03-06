@@ -124,6 +124,8 @@
       access: public
       groups: []
       sections:
+        - title: Client Onoarding
+          link: docs/Support/Client-Onboarding.md
         - title: Registration & Token
           link: docs/Support/Registration-and-Token.md
         - title: Error Codes
