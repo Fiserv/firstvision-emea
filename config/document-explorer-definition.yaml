@@ -130,5 +130,5 @@
           link: docs/Support/Error-codes.md
         - title: User manuals
           link: docs/Support/user-manual.md
-#       - title: Deleted/Deprecated APIs
-#         link: docs/Support/Deleted-deprecated-apis.md
+        - title: Deleted/Deprecated APIs
+          link: docs/Support/Deleted-deprecated-apis.md
