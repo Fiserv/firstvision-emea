@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.36.3
+  version: 1.36.12
 servers:
 - url: https://uat-fsapi.firstdataclients.in/api/fs
 paths:
@@ -11586,7 +11586,9 @@ paths:
             : CONTACTLESS SINGLE TXN LIMIT MUST BE NUMERIC<BR/>VPL5SEUD2E : CONTACTLESS
             SINGLE TXN INTERNATIONAL LIMIT MUST BE NUMERIC<BR/>VPL5SEU9WE : BYPS INTL
             FLBK TXN MUST BE NUMERIC<BR/>VPL5SEU9XE : BYPS INTL FLBK TXN VALID VALUES
-            ARE 0 1<BR/>'
+            ARE 0 1<BR/>VPL5SEUD9E : CARD ACTIVATION RENEWAL CONSENT IS NOT PENDING
+            ON CARD<BR/>VPL5SEUDAE : NOT A VALID INPUT FOR CARD ACTIVATION RENEWAL
+            CONSENT<BR/>'
           content:
             application/json:
               schema:
@@ -12479,6 +12481,148 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Instant Issuance v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
+  /fv_apac/v1/lostStolenUpdateForLowPriorityBlockCode:
+    post:
+      tags:
+      - Card Maintenance
+      summary: LostStolenUpdateForLowPriorityBlockCode
+      description: To update a Lost or Stolen card block code and request for a card
+        replacement and pin.<BR/><BR/><p>Fields that are not provided in the Request
+        object will be initialised to their default values. All numeric fields are
+        initialised to zero and alphanumeric fields initialised to spaces</p>
+      operationId: lostStolenUpdateForLowPriorityBlockCode_v1_fv_apac
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LostStolenUpdateForLowPriorityBlockCodeRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LostStolenUpdateForLowPriorityBlockCodeResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPE5SLS01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPE5SLS02S
+            : SERVICE INPUT TO LOSTorSTOLEN SVC IS AN INCORRECT LENGTH<BR/>VPE5SLS03S
+            : FILE TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPE5SLS04S : FILE TABLE
+            USED BY THIS SERVICE IS NOT FOUND<BR/>VPE5SLS11S : APPLICATION IN NO-PROCESSING
+            STATUS RE-TRY IN A FEW MINUTES<BR/>VPE5SLS01E : ORGANIZATION NUMBER MUST
+            BE NUMERIC AND VALID VALUES ARE 000-998<BR/>VPL5SLS13S : APPLICATION IN
+            NO-PROCESSING STATUS RE-TRY IN A FEW MINUTES<BR/>VPE5SLS05E : CARD NUMBER
+            SHOULD BE PROVIDED AND BE NUMERIC<BR/>VPE5SLS15E : AMED RECORD NOT FOUND<BR/>VPE5SLS16E
+            : AMBS RECORD NOT FOUND<BR/>VPE5SLS17E : CARD LOGO NOT FOUND<BR/>VPE5SLS19E
+            : REPLACEMENT ACTION IS NOT ALLOWED ON COMPROMISED CARDS<BR/>VPE5SLS18E
+            : NEW CARD FIELD SHOULD BE 1 AS AUTO GEN IS NOT ACTIVE<BR/>VPE5SLS19S
+            : INSTANT ISSUANCE IS INACTIVE AT LOGO LEVEL<BR/>VPE5SLS21S : PIN SHOULD
+            BE 0 FOR INSTORE INSTANT ISSUANCE REQUEST<BR/>VPE5SLS22S : STORE ID CAN
+            NOT BE SPACES FOR INSTORE INSTANT ISSUANCE REQUEST<BR/>VPE5SLS24S : INVALID
+            BRANCH NUMBER<BR/>VPE5SLS06S : ORGANIZATION NOT FOUND<BR/>VPE5SLS07S :
+            REQUESTED ORG NUMBER IS NOT FOUND<BR/>VPE5SLS12S : ORGANIZATION FILE UNAVAILABLE<BR/>VPE5SLS08S
+            : NOT ABLE TO OBTAIN STORAGE FOR THE ALPHA SEARCH IorP CPY<BR/>VPE5SLS09S
+            : NOT ABLE TO OBTAIN STORAGE FOR THE ALPHA SEARCH OorP CPY<BR/>VPE5SLS14E
+            : CARD REPLACEMENT REISSUE RENEWAL IS NOT ACTIVE<BR/>VPL5SLS2PE : VALID
+            VALUES ARE 0 OR 1<BR/>VPE5SLSD1E : DATE SHOULD BE VALID FOR NEXT-EXPIRY
+            DATE UPDATE<BR/>VPL5SLS21S : FILE-TABLE USED BY THIS SERVICE IS MISSING<BR/>VPL5SLS39I
+            : MEMO SERVICE FAILED<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Lost Stolen Update For Low Priority Block Code v1
       x-region:
       - EMEA
       - APAC
@@ -41522,34 +41666,17 @@ components:
         newCardInd:
           type: string
           description: ' Max length = 1, Indicates if new card was generated'
-        maxInternationalRetailTransaction:
+        cardActivationRenewal:
           type: string
-          description: ' Max length = 9, Maximum Number of Transactions International(Retail
-            Transactions)'
-        atmCashLimitInternational:
-          type: string
-          description: ' Max length = 17, ATM Cash Limit International'
-        singleTransactionLimitInternational:
-          type: string
-          description: ' Max length = 17, Single Transaction Limit International'
-        singleTransactionAtmLimitInternational:
-          type: string
-          description: ' Max length = 17, Single Transaction ATM Limit International'
-        additionalFrequency:
-          type: string
-          description: ' Max length = 1, Additional Frequency'
-        wtdAtmCashAmt:
-          type: string
-          description: ' Max length = 17, Weekly ATM Cash amount'
-        wtdOtcCashAmt:
-          type: string
-          description: ' Max length = 17, Weekly OTC Cash amount'
-        tempCashLimitAmt:
-          type: string
-          description: ' Max length = 17, Temporary cash limit'
-        tempCashLimitExpiry:
-          type: string
-          description: 'Format: YYYYMMDD. Temporary cash expiry date'
+          description: ' Max length = 1, Card Activation Renewal Consent valid values
+            are as below:<UL><LI><EM>0 - </EM>Card activation/renewal consent is not
+            setup on embosser (default).</LI><LI><EM>1 - </EM>Customer provided positive
+            consent for card activation.</LI><LI><EM>2 - </EM>Customer provided negative
+            consent for card activation.</LI><LI><EM>3 - </EM>Embosser qualifies for
+            card activation or renewal and alert is sent to customer. Now system is
+            waiting for customer consent for card activation or card renewal.</LI><LI><EM>4
+            - </EM>Customer provided positive consent for card renewal. </LI><LI><EM>5
+            - </EM>Customer provided negative consent for card renewal</LI></UL>'
     CardLostAndStolenServiceRequest:
       required:
       - blockCode
@@ -43662,6 +43789,65 @@ components:
             fall back decline action. Valid values are :<UL><LI><EM> 0 - </EM>No Bypass
             of International fall back transactions (Default)</LI><LI><EM> 1 - </EM>Bypass
             International fall back transactions</LI></UL>'
+        digitalId:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Digital ID'
+        typeOfLoss:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Identifies the reason for the lost or stolen
+            card. Valid values are: <UL><LI><EM>0 - </EM>Lost</LI><LI><EM>1 - </EM>Stolen</LI><LI><EM>2
+            - </EM>Not received</LI><LI><EM>3 - </EM>Fraudulent application</LI><LI><EM>4
+            - </EM>Counterfeit</LI><LI><EM>5 - </EM>Account takeover</LI><LI><EM>6
+            - </EM>Mail order / Internet</LI><LI><EM>7 - </EM>First party fraud</LI><LI><EM>8
+            - </EM>Other</LI></UL> Default is space.'
+        lossDate:
+          type: string
+          description: 'Format: YYYYMMDD. Date the card was lost, stolen or the first
+            date of fraudulent activity. The date must be less than or equal to today''s
+            date. The date field will default to the current system date if no date
+            is entered.'
+        cntryOfLoss:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, Country code for the area where the card
+            was lost.'
+        locOfLoss:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field further defines where the card
+            was lost. Valid values are: <UL><LI><EM>1 - </EM>Home</LI><LI><EM>2 -
+            </EM>Auto</LI><LI><EM>3 - </EM>Office</LI><LI><EM>4 - </EM>Store</LI><LI><EM>5
+            - </EM>Rural</LI><LI><EM>6 - </EM>Bar</LI><LI><EM>7 - </EM>Hotel or Motel</LI><LI><EM>8
+            - </EM>Unknown</LI><LI><EM>A - </EM>Airport</LI><LI><EM>B - </EM>Port</LI></UL>
+            Default is space.'
+        policeRefNbr:
+          maxLength: 33
+          minLength: 0
+          type: string
+          description: ' Max length = 33, This field is optional and may be used to
+            record either the Loss Property Number or Police Crime Reference Number
+            if either is assigned by law enforcement.'
+        cardActivationRenewal:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Card Activation Renewal Consent valid values
+            are as below:<UL><LI><EM>0 - </EM>Card activation/renewal consent is not
+            setup on embosser (default).</LI><LI><EM>1 - </EM>Customer provided positive
+            consent for card activation.</LI><LI><EM>2 - </EM>Customer provided negative
+            consent for card activation.</LI><LI><EM>3 - </EM>Embosser qualifies for
+            card activation or renewal and alert is sent to customer. Now system is
+            waiting for customer consent for card activation or card renewal.</LI><LI><EM>4
+            - </EM>Customer provided positive consent for card renewal. </LI><LI><EM>5
+            - </EM>Customer provided negative consent for card renewal</LI></UL>'
     CardUpdateResponse:
       type: object
       properties:
@@ -43926,6 +44112,9 @@ components:
           type: string
           description: ' Max length = 17, This field indicates the single transaction
             (or) spending limit for International contactless card.'
+        pinSuppression:
+          type: string
+          description: ' Max length = 1, PIN Mailer Suppression'
     CardholderDemographicListRequest3:
       required:
       - acct
@@ -59311,6 +59500,157 @@ components:
             are:  <UL><LI><EM> Y - </EM>Card activation needs to occur</LI><LI><EM>
             N - </EM>No card activation is required or card activation has already
             occurred</LI><LI><EM> D - </EM>Card deactivated</LI></UL>'
+    LostStolenUpdateForLowPriorityBlockCodeRequest:
+      required:
+      - cardBlk
+      - cardNbr
+      - countryOfLoss
+      - lossDate
+      - lossLocation
+      - lossType
+      - newCard
+      - pinCompromised
+      - processType
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        cardNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, The Card Number for this request.'
+        cardBlk:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, The new Block Code for the Embosser record.'
+        lossType:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Identifies the reason for the lost or stolen
+            card. Valid values are: <UL><LI><EM>0 - </EM>Lost</LI><LI><EM>1 - </EM>Stolen</LI><LI><EM>2
+            - </EM>Not received</LI><LI><EM>3 - </EM>Fraudulent application</LI><LI><EM>4
+            - </EM>Counterfeit</LI><LI><EM>5 - </EM>Account takeover</LI><LI><EM>6
+            - </EM>Mail order / Internet</LI><LI><EM>7 - </EM>First party fraud</LI><LI><EM>8
+            - </EM>Other</LI></UL> Default is space.'
+        lossDate:
+          type: string
+          description: 'Format: YYYYMMDD. Date the card was lost, stolen or the first
+            date of fraudulent activity. The date must be less than or equal to today''s
+            date. The date field will default to the current system date if no date
+            is entered.'
+        countryOfLoss:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, Country code for the area where the card
+            was lost.'
+        lossLocation:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field further defines where the card
+            was lost. Valid values are: <UL><LI><EM>1 - </EM>Home</LI><LI><EM>2 -
+            </EM>Auto</LI><LI><EM>3 - </EM>Office</LI><LI><EM>4 - </EM>Store</LI><LI><EM>5
+            - </EM>Rural</LI><LI><EM>6 - </EM>Bar</LI><LI><EM>7 - </EM>Hotel or Motel</LI><LI><EM>8
+            - </EM>Unknown</LI><LI><EM>A - </EM>Airport</LI><LI><EM>B - </EM>Port</LI></UL>
+            Default is space.'
+        newCard:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Field will indicate if a new card will be
+            issued to the customer.  Valid values are: <UL><LI><EM>0 - </EM>Yes (Default)</LI><LI><EM>1
+            - </EM>No</LI></UL>'
+        pinCompromised:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Flag indicating if the customer''s PIN was
+            compromised.  Valid values are: <UL><LI><EM>0 - </EM>No</LI><LI><EM>1
+            - </EM>Yes</LI></UL> An entry of 1 in this field will automatically generate
+            a new PIN for the card being reported lost or stolen.'
+        policeRefNbr:
+          maxLength: 33
+          minLength: 0
+          type: string
+          description: ' Max length = 33, This field is optional and may be used to
+            record either the Loss Property Number or Police Crime Reference Number
+            if either is assigned by law enforcement.'
+        processType:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Field indicates if Same Day Plastics processing
+            will in used for the new plastic request.  The value displayed in this
+            field is defaulted from the Logo record but may be changed by entering
+            a value. Valid values are: <UL><LI><EM>0 - </EM>No (Default)</LI><LI><EM>1
+            - </EM>Yes</LI></UL>'
+        branchNumber:
+          maxLength: 9
+          minLength: 0
+          type: string
+          description: ' Max length = 9, Branch number that will indicate which branch
+            requested for the card boarding and instant issuance.  This number will
+            be passed back to the branch through Instant Issuance delivery service.'
+        cardCollRef:
+          maxLength: 22
+          minLength: 0
+          type: string
+          description: ' Max length = 22, Card collection Reference'
+        replFeeFlag:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Field will indicated if replacemnt fee is
+            to be charged or not. Valid Values are: <UL><LI><EM>0 - </EM>No fee will
+            be charged (default)</LI><LI><EM>1 - </EM>Fee will be charged</LI></UL>'
+        aplusTrigerInd:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, APLUS Trigger Indicator to identify the request
+            source. Valid Values are: <UL><LI><EM>1 - </EM>Request source from APLUS</LI><LI><EM>0
+            - </EM>No</LI></UL>'
+        dateNextExpr:
+          type: string
+          description: 'Format: YYYYMMDD. Date on which Card next expires. Date next
+            expiry can be provided with valid value during card replacement due to
+            lost or stolen. Depending on provided date of Card next expiry the replacement
+            cards expiry date is set. The date must greater than current system date
+            and greater than current card expiry date.'
+        pinSuppression:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, PIN Mailer Suppression'
+    LostStolenUpdateForLowPriorityBlockCodeResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        currNod:
+          type: string
+          description: ' Max length = 1, Currency Nod indicated the nod for the currency.'
+        currCod:
+          type: string
+          description: ' Max length = 3, Currency Code'
+        dualInd:
+          type: string
+          description: ' Max length = 1, Foreign Org Indicator'
+        cardNbrNew:
+          type: string
+          description: ' Max length = 19, Replacement Card number generated for the
+            blocked card.'
     LostStolenUpdateRequest2:
       required:
       - cardBlk
