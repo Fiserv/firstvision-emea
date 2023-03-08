@@ -2559,7 +2559,7 @@ paths:
             : ANNUAL STMT FLAG MUST BE NUMERIC<BR/>VPL5SAADBE : ANNUAL STMT FLAG MUST
             BE 0 OR 1<BR/>VPL5SAADCE : ANNUAL STMT FLAG MUST BE 0 WHEN LOGO ANNUAL
             STATEMENT IS 0 OR 1<BR/>VPL5SAADDE : VALID VALUES FOR ACCT_CTL_OVRRD ARE
-            000 – 998<BR/>VPL5SAADEE : MARKETING OPT OUT MUST BE 012 OR 3<BR/>VPL5SAA71S
+            000 � 998<BR/>VPL5SAADEE : MARKETING OPT OUT MUST BE 012 OR 3<BR/>VPL5SAA71S
             : PMT DUE ALERT MUST BE ACTIVE AT LOGO<BR/>VPL5SAA72S : VALID VALUES ARE
             012 OR 3 FOR PMT DUE ALERT<BR/>VPL5SAA73S : SPEND LIMIT ALERT MUST BE
             ACTIVE AT LOGO<BR/>VPL5SAA74S : VALID VALUES ARE 012 OR 3 FOR SPND LIMIT
@@ -5732,7 +5732,7 @@ paths:
         for the account number to which the card number is linked. The service is
         capable of populating primary card details along with customer details for
         the customer assigned at the account level. <p>If an account is in a relationship,
-        the account number must be used in the input request and the account’s information
+        the account number must be used in the input request and the account�s information
         will be displayed in the response.<p><p>Additionally, the service is capable
         of returning details of any insurance products enrolled on the account. As
         per the current design of the FirstVision system, an account can have maximum
@@ -6457,7 +6457,7 @@ paths:
         of the Relationship; any Account or card number as input. There is the ability
         to request the service to start from a certain account number (svcStartAcctNbr
         which is returned on the response to assist client with the next available
-        account number) and whether to browse ‘N’ext or ‘P’revious (scvFunctionCode).
+        account number) and whether to browse �N�ext or �P�revious (scvFunctionCode).
         Lists whose number of items depend on a variable returned will be truncated
         appropriately.
       operationId: accountsListByRelationship_v2_fv_emea
@@ -7826,7 +7826,7 @@ paths:
         Standard Cash, Balance Transfer, Promotional Retail, Promotional Cash, go-To
         Balance Transfer (the rate following the expiration of the existing balance
         transfer plan). To determine the rates, the service uses the default plan
-        numbers on the Account record – retail, cash and promotional.<p><p>If the
+        numbers on the Account record � retail, cash and promotional.<p><p>If the
         rate type of the referenced interest table is not Fixed or Variable then AER
         or Monthly ER is passed as zeroes in the output message.<BR/><BR/><p>Fields
         that are not provided in the Request object will be initialised to their default
@@ -15714,7 +15714,7 @@ paths:
       - Card Management
       summary: PinBlockInquiry
       description: This PIN Delivery via XML Request service performs the PIN Block
-        retrieval of cardholder’s PINs through Issuer real time application systems
+        retrieval of cardholder�s PINs through Issuer real time application systems
         such as Ex Web, Mobile, IVR, branch online system, etc. This service helps
         the user to request and retrieve their PIN through online securely. The output
         of this message contains the encrypted PIN block, which will be decrypted
@@ -19340,10 +19340,10 @@ paths:
       summary: DebitCardAvailableBalanceUpdate
       description: This service will update the account level field IBS Credit Limit
         i.e. Issuer Banking System Credit Limit. This field is represented on screen
-        ARMB09 as IBS UPDATED ACCOUNT OTB. This field holds a Debit Card’s Open To
+        ARMB09 as IBS UPDATED ACCOUNT OTB. This field holds a Debit Card�s Open To
         Buy value and allows FirstVision to take decisions on an incoming authorization
         on a Debit Card during FV Stand-In processing when the IBS link from FV to
-        a Bank’s core-banking system is down. This service allows a bank to keep the
+        a Bank�s core-banking system is down. This service allows a bank to keep the
         value of available debit amount to spend in core banking system to be in sync
         with above FV field.<p><p>When the service functionality is successfully completed,
         a Pass return code response will be returned.  When, the service is not able
@@ -22938,7 +22938,7 @@ paths:
             OR RESOLVED BNPL OFFER IS NOT TRANSACTION VARIANT TYPE<BR/>VPE5SAI32S
             : INPUT OR RESOLVED BNPL OFFER HAS EXPIRED ALREADY<BR/>VPE5SAI06E : INVALID
             REQUEST TYPE<BR/>VPE5SAI07E : BNPL COMPANION FEATURE NOT ACTIVE FOR THE
-            PRODUCT<BR/>VPE5SAI08E : INACTIVE DD – SHOULD BE ACTIVE FOR POST PURCHASE
+            PRODUCT<BR/>VPE5SAI08E : INACTIVE DD � SHOULD BE ACTIVE FOR POST PURCHASE
             CONVERSION TYPE<BR/>VPE5SAI09E : TEMPLATE ID REQUIRED FOR POST PURCHASE
             CONVERSION TYPE<BR/>VPE5SAI10E : PLAN NBR REQUIRED FOR POST PURCHASE CONVERSION
             TYPE<BR/>VPE5SAI11E : PLAN SEQ REQUIRED FOR  POST PURCHASE CONVERSION
@@ -24703,9 +24703,9 @@ paths:
       - Loans
       summary: SettlementQuoteUpdate
       description: This service is used to update settlement quotation fields at the
-        account level. The fields such as 'settlement quotation type'<p><p>P – Settlement
+        account level. The fields such as 'settlement quotation type'<p><p>P � Settlement
         quotation with penalties for interest, insurance and termination fees<p>W
-        – Settlement quote waiving the interest, insurance and termination fees<p><p>Other
+        � Settlement quote waiving the interest, insurance and termination fees<p><p>Other
         fields like Loan pay off date can also be updated via this service.
       operationId: settlementQuoteUpdate_v1_fv_emea
       parameters:
@@ -33005,7 +33005,7 @@ paths:
             : INVALID LOCALorFOREIGN IND SPECIFIED-VALID VALUES ARE SPACE 0 OR 1<BR/>VPL5STK03E
             : ORGANIZATION IS NOT NUMERIC OR MUST BE VALUE BETWEEN 001 AND 998<BR/>VPL5STK04E
             : COPY ORG IS NOT NUMERIC OR MUST BE VALUE BETWEEN 001 AND 998<BR/>VPL5STW01W
-            : INVALID COUNTRY CODE – ISO2 CC CHAR NOT FOUND<BR/>'
+            : INVALID COUNTRY CODE � ISO2 CC CHAR NOT FOUND<BR/>'
           content:
             application/json:
               schema:
@@ -33615,12 +33615,12 @@ components:
           description: ' Max length = 1, This field will indicate that paydown processing
             is excluded on the account. When the paydown processing takes place (PD36)
             and if this flag is set then accounts will be excluded from paydown processing.
-            Valid values are: <UL><LI><EM>N –  </EM>Normal Paydown Process to be followed;
-            don’t exclude this account (default)</LI><LI><EM>Y – </EM>Opt out of Paydown
-            process; exclude this account</LI><LI><EM>C – </EM>This value will let
+            Valid values are: <UL><LI><EM>N �  </EM>Normal Paydown Process to be followed;
+            don�t exclude this account (default)</LI><LI><EM>Y � </EM>Opt out of Paydown
+            process; exclude this account</LI><LI><EM>C � </EM>This value will let
             clients offer the opt-outs from Paydown arisen due to Pandemic situations
-            like COVID-19</LI><LI><EM>O – </EM>This value will indicate that customer
-            has opted-out of paydown arrangement</LI><LI><EM>P – </EM>This value will
+            like COVID-19</LI><LI><EM>O � </EM>This value will indicate that customer
+            has opted-out of paydown arrangement</LI><LI><EM>P � </EM>This value will
             indicate that customer has opted-in for paydown arrangement</LI></UL>'
         pdPdwnStage:
           maxLength: 1
@@ -33628,15 +33628,15 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, This flag will have below values: <UL><LI><EM>0
-            – </EM>No paydown processing yet (default), 0 will also be set if account
-            is cured on PD36 cycle</LI><LI><EM>1 – </EM>Stage1 processing (PD34)</LI><LI><EM>2
-            – </EM>Stage2 processing (PD35)</LI><LI><EM>3 – </EM>Stage3 processing
-            (PD36) and paydown initiate </LI><LI><EM>4 – </EM>paydown processing complete</LI><LI><EM>5
-            – </EM>paydown processing initiated (account is out of exception) in this
-            cycle</LI><LI><EM>8 – </EM>Account is out of exclusions but was not marked
-            in Paydown due to balance below threshold amount</LI><LI><EM>9 – </EM>exception
+            � </EM>No paydown processing yet (default), 0 will also be set if account
+            is cured on PD36 cycle</LI><LI><EM>1 � </EM>Stage1 processing (PD34)</LI><LI><EM>2
+            � </EM>Stage2 processing (PD35)</LI><LI><EM>3 � </EM>Stage3 processing
+            (PD36) and paydown initiate </LI><LI><EM>4 � </EM>paydown processing complete</LI><LI><EM>5
+            � </EM>paydown processing initiated (account is out of exception) in this
+            cycle</LI><LI><EM>8 � </EM>Account is out of exclusions but was not marked
+            in Paydown due to balance below threshold amount</LI><LI><EM>9 � </EM>exception
             scenario</LI></UL>Only incremental updates from 0 to 3 are allowed. <BR>
-            However Stage can be reset to 0 from any other stage (0 – 9)'
+            However Stage can be reset to 0 from any other stage (0 � 9)'
         overlimitProximityAlert:
           maxLength: 1
           minLength: 0
@@ -33665,8 +33665,8 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Spend Cap Indicator: indicates the type of
-            spend cap alert that is active for the account.Values are: 0 – Spend cap
-            alert not active 1 – Soft cap alert is active 2 – Hard cap alert is active'
+            spend cap alert that is active for the account.Values are: 0 � Spend cap
+            alert not active 1 � Soft cap alert is active 2 � Hard cap alert is active'
         waiveMoraInterest:
           maxLength: 1
           minLength: 0
@@ -35955,10 +35955,10 @@ components:
           type: string
           description: ' Max length = 1, This Flag will identify if account has opted
             out of PD36 Paydown processing. Valid Values are: <UL><LI><EM>N-</EM>Normal
-            Paydown Process to be followed; don’t exclude this account (default)</LI><LI><EM>Y–</EM>
-            Opt out of Paydown process; exclude this account</LI><LI><EM>C–</EM>Customer
+            Paydown Process to be followed; don�t exclude this account (default)</LI><LI><EM>Y�</EM>
+            Opt out of Paydown process; exclude this account</LI><LI><EM>C�</EM>Customer
             initiated Opt-Out of Paydown Process. Account will be excluded from Paydown
-            Process without Block Code being applied.</LI><LI><EM>O–</EM>Customer
+            Process without Block Code being applied.</LI><LI><EM>O�</EM>Customer
             initiated Opt-Out of Paydown Process. Account will be excluded from Paydown
             process but Block Code will be applied on Account.</LI></UL>'
         pdwnOptOutDate:
@@ -36632,8 +36632,8 @@ components:
         spendCapInd:
           type: string
           description: ' Max length = 1, Spend Cap Indicator: indicates the type of
-            spend cap alert that is active for the account.Values are: 0 – Spend cap
-            alert not active 1 – Soft cap alert is active 2 – Hard cap alert is active'
+            spend cap alert that is active for the account.Values are: 0 � Spend cap
+            alert not active 1 � Soft cap alert is active 2 � Hard cap alert is active'
         pdJourneyInd:
           type: string
           description: ' Max length = 2, Paydown Journey Indicator. This field will
@@ -36718,9 +36718,9 @@ components:
           description: ' Max length = 1, Minimum payment calculation Indicator. This
             field indicates how percentage(actMinPercent) and amount(actMinAmount)
             fields are used in Minimum payment calculations. Valid values are <UL><LI><EM>0
-            – </EM>Not used (default)</LI><LI><EM> 1 – </EM>Fixed amount</LI><LI><EM>2
-            – </EM>Percentage of balance</LI><LI><EM>3 – </EM>Lower of fixed amount
-            or percentage of balance</LI><LI><EM>4 – </EM>greater of fixed amount
+            � </EM>Not used (default)</LI><LI><EM> 1 � </EM>Fixed amount</LI><LI><EM>2
+            � </EM>Percentage of balance</LI><LI><EM>3 � </EM>Lower of fixed amount
+            or percentage of balance</LI><LI><EM>4 � </EM>greater of fixed amount
             or percentage of balance</LI><LI><EM>9 - </EM>Percentage of Credit Limit</LI></UL>'
         ltdPmtHolidayCycleCounter:
           type: string
@@ -37139,7 +37139,7 @@ components:
         foreignUse:
           type: string
           description: ' Max length = 1, Foreign Use. This is used to indicate the
-            local or foreign.The values are: <UL><LI><EM>L – </EM>Local</LI><LI><EM>F
+            local or foreign.The values are: <UL><LI><EM>L � </EM>Local</LI><LI><EM>F
             - </EM>Foreign</LI></UL>'
         currNod:
           type: string
@@ -38408,8 +38408,8 @@ components:
         netPmtDue:
           type: string
           description: ' Max length = 17, Net payment due amount for the relationship.
-            Calculated field and is the difference between the relationship’s total
-            payment due less the relationship’s cycle-to-date payments.'
+            Calculated field and is the difference between the relationship�s total
+            payment due less the relationship�s cycle-to-date payments.'
         corpCustNbr:
           type: string
           description: ' Max length = 19, Identification number of the Customer Name/Address
@@ -38850,8 +38850,8 @@ components:
         acctType:
           type: string
           description: ' Max length = 1, Flag indicates whether an account is a Primary
-            account. Values are,<UL><LI><EM>P –<EM>Primary account</LI><LI><EM>SPACES
-            –<EM>Secondary account</LI><UL>'
+            account. Values are,<UL><LI><EM>P �<EM>Primary account</LI><LI><EM>SPACES
+            �<EM>Secondary account</LI><UL>'
         intStatus:
           type: string
           description: ' Max length = 1, Status of the account'
@@ -41984,7 +41984,7 @@ components:
         logo:
           type: string
           description: ' Max length = 3, Identification number of the logo associated
-            with the card. The values are 001–998.'
+            with the card. The values are 001�998.'
         cardNbr:
           type: string
           description: ' Max length = 19, The card number that identifies the card
@@ -42022,9 +42022,9 @@ components:
             This system generated value applies only to Card records in the local
             organization; this value does not appear on an Card record in a foreign
             organization. </LI><LI><EM>A- </EM>Plastic request because an additional
-            cardholder has been added to an existing account</LI><LI><EM>R–</EM>Random
+            cardholder has been added to an existing account</LI><LI><EM>R�</EM>Random
             PIN mailer request, where the cardholder has requested a new PIN because
-            the old one has become compromised</LI><LI><EM>L –</EM>New plastic request
+            the old one has become compromised</LI><LI><EM>L �</EM>New plastic request
             because the old card has been lost or stolen</LI><LI><EM>B - </EM>Replacement
             card(s) with PIN Mailer</LI></UL>'
         postNbr:
@@ -42071,55 +42071,55 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether POS transactions
             have been restricted on the card or not.Valid values are<UL><LI></EM>0
-            – </EM>Card has no POS restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all POS transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            POS transactions restricted</LI><LI><EM>3 – </EM>Card has international
+            � </EM>Card has no POS restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all POS transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            POS transactions restricted</LI><LI><EM>3 � </EM>Card has international
             POS transactions restricted</LI></UL>'
         atmRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether ATM transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no ATM restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all ATM transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            ATM transactions restricted</LI><LI>3 – </EM>Card has international ATM
+            � </EM>Card has no ATM restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all ATM transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            ATM transactions restricted</LI><LI>3 � </EM>Card has international ATM
             transactions restricted</LI></UL>'
         ecommRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether e-commerce transactions
             have been restricted on the card or not. Valid values are<UL><LI><EM>0
-            – </EM>Card has no e-commerce restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all e-commerce transactions restricted</LI><LI><EM>2 – </EM>Card has
-            domestic e-commerce transactions restricted </LI><LI><EM>3 – </EM>Card
+            � </EM>Card has no e-commerce restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all e-commerce transactions restricted</LI><LI><EM>2 � </EM>Card has
+            domestic e-commerce transactions restricted </LI><LI><EM>3 � </EM>Card
             has international e-commerce transactions restricted</LI></UL>'
         motoRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether MOTO transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no MOTO restrictions(Default)</LI><LI><EM>1 –</EM>Card
-            has all MOTO transactions restricted</LI><LI><EM>2 – </EM>Card has domestic
-            MOTO transactions restricted</LI><LI><EM>3 –</EM>Card has international
+            � </EM>Card has no MOTO restrictions(Default)</LI><LI><EM>1 �</EM>Card
+            has all MOTO transactions restricted</LI><LI><EM>2 � </EM>Card has domestic
+            MOTO transactions restricted</LI><LI><EM>3 �</EM>Card has international
             MOTO transactions restricted</LI></UL>'
         ctlsRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether CONTACTLESS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no CONTACTLESS restrictions (Default)</LI><LI><EM>1 –
-            <EM>Card has all CONTACTLESS transactions restricted</LI><LI><EM>2 –</EM>Card
-            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 –</EM>Card
+            � </EM>Card has no CONTACTLESS restrictions (Default)</LI><LI><EM>1 �
+            <EM>Card has all CONTACTLESS transactions restricted</LI><LI><EM>2 �</EM>Card
+            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 �</EM>Card
             has international CONTACTLESS transactions restricted</LI></UL>'
         ovrsRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             overseas POS and ATM authorizations are restricted on the cards or not.Valid
-            values are <UL><LI><EM>0 – </EM>Card has no overseas POS and ATM authorization
-            restrictions (Default)</LI><LI><EM>1 –</EM>Card has overseas POS and ATM
+            values are <UL><LI><EM>0 � </EM>Card has no overseas POS and ATM authorization
+            restrictions (Default)</LI><LI><EM>1 �</EM>Card has overseas POS and ATM
             authorizations restricted</LI>'
         restrictAllFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             authorizations are restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no all authorization restrictions (Default)</LI><LI><EM>1
-            – </EM>Card has all authorizations restricted</LI></UL>'
+            � </EM>Card has no all authorization restrictions (Default)</LI><LI><EM>1
+            � </EM>Card has all authorizations restricted</LI></UL>'
         rtlAmtLimitDom:
           type: string
           description: ' Max length = 17, Maximum amount in monetary units and subunits
@@ -42557,9 +42557,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether POS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no POS restrictions (Default).</LI><LI><EM>1 – </EM>Card
-            has all POS transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            POS transactions restricted.</LI><LI><EM>3 –</EM> Card has international
+            �</EM> Card has no POS restrictions (Default).</LI><LI><EM>1 � </EM>Card
+            has all POS transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            POS transactions restricted.</LI><LI><EM>3 �</EM> Card has international
             POS transactions restricted</LI></UL>'
         atmRestrictFlag:
           maxLength: 1
@@ -42568,9 +42568,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether ATM transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no ATM restrictions (Default).</LI><LI><EM>1 – </EM>Card
-            has all ATM transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            ATM transactions restricted.</LI><LI><EM>3 –</EM> Card has international
+            �</EM> Card has no ATM restrictions (Default).</LI><LI><EM>1 � </EM>Card
+            has all ATM transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            ATM transactions restricted.</LI><LI><EM>3 �</EM> Card has international
             ATM transactions restricted</LI></UL>'
         ecommRestrictFlag:
           maxLength: 1
@@ -42578,10 +42578,10 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Flag to indicate whether e-commerce transactions
-            are restricted on the card or not.<UL><LI><EM>0 –</EM> Card has no e-commerce
-            restrictions (Default).</LI><LI><EM>1 –</EM> Card has all e-commerce transactions
-            restricted.</LI><LI><EM>2 –</EM> Card has domestic e-commerce transactions
-            restricted.</LI><LI><EM>3 –</EM>Card has international e-commerce transactions
+            are restricted on the card or not.<UL><LI><EM>0 �</EM> Card has no e-commerce
+            restrictions (Default).</LI><LI><EM>1 �</EM> Card has all e-commerce transactions
+            restricted.</LI><LI><EM>2 �</EM> Card has domestic e-commerce transactions
+            restricted.</LI><LI><EM>3 �</EM>Card has international e-commerce transactions
             restricted.</LI></UL>'
         motoRestrictFlag:
           maxLength: 1
@@ -42590,9 +42590,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether MOTO transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no MOTO restrictions (Default)</LI><LI><EM>1 –</EM>Card
-            has all MOTO transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            MOTO transactions restricted</LI><LI><EM>3 –</EM>Card has international
+            �</EM> Card has no MOTO restrictions (Default)</LI><LI><EM>1 �</EM>Card
+            has all MOTO transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            MOTO transactions restricted</LI><LI><EM>3 �</EM>Card has international
             MOTO transactions restricted</LI></UL>'
         ovrsRestrictFlag:
           maxLength: 1
@@ -42601,8 +42601,8 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             overseas POS and ATM authorizations are restricted on the cards or not.Valid
-            values are<UL><LI><EM>0 –</EM>Card has no overseas POS and ATM authorization
-            restrictions (Default).</LI><LI><EM>1 –</EM>Card has overseas POS and
+            values are<UL><LI><EM>0 �</EM>Card has no overseas POS and ATM authorization
+            restrictions (Default).</LI><LI><EM>1 �</EM>Card has overseas POS and
             ATM authorizations restricted</LI></UL>'
         ctlsRestrictFlag:
           maxLength: 1
@@ -42611,9 +42611,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether CONTACTLESS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM>Card has no CONTACTLESS restrictions (Default).</LI><LI><EM>1 –
-            </EM>Card has all CONTACTLESS transactions restricted</LI><LI>2 –</EM>Card
-            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 –</EM>Card
+            �</EM>Card has no CONTACTLESS restrictions (Default).</LI><LI><EM>1 �
+            </EM>Card has all CONTACTLESS transactions restricted</LI><LI>2 �</EM>Card
+            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 �</EM>Card
             has international CONTACTLESS transactions restricted</LI></UL>'
         restrictAllFlag:
           maxLength: 1
@@ -42622,8 +42622,8 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             authorizations are restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no all authorization restrictions (Default)</LI><LI><EM>1
-            –</EM> Card has all authorizations restricted</LI></UL>'
+            �</EM> Card has no all authorization restrictions (Default)</LI><LI><EM>1
+            �</EM> Card has all authorizations restricted</LI></UL>'
         restrictStartDate:
           type: string
           description: 'Format: YYYYMMDD. Usage Restrict Start Date . The date from
@@ -44211,7 +44211,7 @@ components:
         postCdRstrict:
           type: string
           description: ' Max length = 1, Code that indicates whether smart card contactless
-            issuance is restricted for the card based on the customer’s postal code.
+            issuance is restricted for the card based on the customer�s postal code.
             Valid values are: <UL><LI>0 = No post code restriction check has been
             performed. This value can be set manually or systematically. (Default)
             </LI><LI>1 = Post code restriction. Not eligible for smart card contactless
@@ -44235,7 +44235,7 @@ components:
           description: ' Max length = 1, Indicator for Card usage in Promo Upgrade.
             Valid values are: <UL><LI><EM>SPACES -</EM>Card is not used in Promo upgrade
             process (Default value)</LI><LI><EM>O -</EM>Card is used in Promo upgrade
-            process and it’s an old card on which new promo card is issued to customer</LI><LI><EM>N
+            process and it�s an old card on which new promo card is issued to customer</LI><LI><EM>N
             -</EM>Card is used in Promo upgrade process and its new Promo card issued
             to customer</LI></UL>'
         contactlessRestrictLogo:
@@ -44264,10 +44264,10 @@ components:
             (or) spending limit for International contactless card.'
         vendorId:
           type: string
-          description: ' Max length = 2, Code that indicates the ‘Card vendor’ file
+          description: ' Max length = 2, Code that indicates the �Card vendor� file
             number into which the Card data record will be extracted. The values are:
-            <UL><LI><EM> 0 =</EM> ‘Card vendor’ based split not supported.  </LI><LI><EM>1-5
-            =</EM> ‘Card vendor’ file number into which the Card data record will
+            <UL><LI><EM> 0 =</EM> �Card vendor� based split not supported.  </LI><LI><EM>1-5
+            =</EM> �Card vendor� file number into which the Card data record will
             be extracted. </LI></UL>'
         currentTransactionEnrichmentOption:
           type: string
@@ -48518,7 +48518,7 @@ components:
           type: string
           description: ' Max length = 2, Billing cycle for the relationship.The billing
             cycle defaults to each subordinate account within the relationship (CYCLE
-            on ARMB01). The validvalues are 01–31.When the billing cycle is changed
+            on ARMB01). The validvalues are 01�31.When the billing cycle is changed
             for the relationship, it defaults to each subordinate account. CMS automatically
             adjusts the next statement date of the account accordingly'
         rmbillinglvl:
@@ -48526,63 +48526,63 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values<UL><LI><EM>0 –</EM> BILL-RELATIONSHIP</LI><LI><EM>1
-            –</EL>BILL-ACCOUNTS</LI><LI><EM>2 –</EL> BILL-COMBINED</LI></UL>'
+          description: ' Max length = 1, Valid values<UL><LI><EM>0 �</EM> BILL-RELATIONSHIP</LI><LI><EM>1
+            �</EL>BILL-ACCOUNTS</LI><LI><EM>2 �</EL> BILL-COMBINED</LI></UL>'
         rmBillModFlag:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values<UL><LI><EM>0 –</EM>BILL-SUB-ALLOWED</LI><LI>1
-            –</EM> BILL-SUB-NOT-ALLOWED</LI></UL>'
+          description: ' Max length = 1, Valid values<UL><LI><EM>0 �</EM>BILL-SUB-ALLOWED</LI><LI>1
+            �</EM> BILL-SUB-NOT-ALLOWED</LI></UL>'
         rmPosAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values : <UL><LI><EM>0 – </EM>POS-NOT-REST</LI><LI><EM>1
-            –</EM>POS-REST-ACCT</LI><LI><EM>2 –</EM>POS-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>POS-REST-ACT-INT</LI><LI><EM>4 – </EM>POS-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values : <UL><LI><EM>0 � </EM>POS-NOT-REST</LI><LI><EM>1
+            �</EM>POS-REST-ACCT</LI><LI><EM>2 �</EM>POS-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>POS-REST-ACT-INT</LI><LI><EM>4 � </EM>POS-REST-REL</LI></UL>'
         rmEcomAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM>ECOM-NOT-REST</LI><LI><EM>1
-            –</EM> ECOM-REST-ACCT</LI><LI><EM>2 –</EM> ECOM-REST-ACT-DOM</LI><LI><EM>3
-            –</EM> ECOM-REST-ACT-INT</LI><LI><EM>4 –</EM> ECOM-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM>ECOM-NOT-REST</LI><LI><EM>1
+            �</EM> ECOM-REST-ACCT</LI><LI><EM>2 �</EM> ECOM-REST-ACT-DOM</LI><LI><EM>3
+            �</EM> ECOM-REST-ACT-INT</LI><LI><EM>4 �</EM> ECOM-REST-REL</LI></UL>'
         rmMotoSIAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM> MOTO-SI-NOT-REST</LI><LI><EM>
-            1 –</EM>MOTO-SI-REST-ACCT</LI><LI><EM> 2 –</EM> MOTO-SI-REST-ACT-DOM</LI><LI><EM>
-            3 –</EM> MOTO-SI-REST-ACT-INT</LI><LI><EM> 4 –</EM> MOTO-SI-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 �</EM> MOTO-SI-NOT-REST</LI><LI><EM>
+            1 �</EM>MOTO-SI-REST-ACCT</LI><LI><EM> 2 �</EM> MOTO-SI-REST-ACT-DOM</LI><LI><EM>
+            3 �</EM> MOTO-SI-REST-ACT-INT</LI><LI><EM> 4 �</EM> MOTO-SI-REST-REL</LI></UL>'
         rmAuthTextMsgSw:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM> AUTH-TEXT-MSG-OFF</LI><LI><EM>1
-            –</EM> AUTH-TEXT-MSG-SMS</LI><LI><EM>2 –</EM> AUTH-TEXT-MSG-EMAIL</LI><LI><EM>3
-            –</EM> AUTH-TEXT-MSG-BOTH</LI><LI><EM>9 –</EM> AUTH-TEXT-MSG-REST-ALL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM> AUTH-TEXT-MSG-OFF</LI><LI><EM>1
+            �</EM> AUTH-TEXT-MSG-SMS</LI><LI><EM>2 �</EM> AUTH-TEXT-MSG-EMAIL</LI><LI><EM>3
+            �</EM> AUTH-TEXT-MSG-BOTH</LI><LI><EM>9 �</EM> AUTH-TEXT-MSG-REST-ALL</LI></UL>'
         rmAtmAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM>CTLS-NOT-REST</LI><LI><EM>1
-            –</EM>CTLS-REST-ACCT</LI><LI><EM>2 –</EM>CTLS-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>CTLS-REST-ACT-INT</LI><LI><EM>4 –</EM>CTLS-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM>CTLS-NOT-REST</LI><LI><EM>1
+            �</EM>CTLS-REST-ACCT</LI><LI><EM>2 �</EM>CTLS-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>CTLS-REST-ACT-INT</LI><LI><EM>4 �</EM>CTLS-REST-REL</LI></UL>'
         rmctlsauthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM>  ATM-NOT-REST</LI><LI><EM>1
-            –</EM>  ATM-REST-ACCT</LI><LI><EM>2 –</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 –</EM>  ATM-REST-DEF-VALID</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 �</EM>  ATM-NOT-REST</LI><LI><EM>1
+            �</EM>  ATM-REST-ACCT</LI><LI><EM>2 �</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 �</EM>  ATM-REST-DEF-VALID</LI></UL>'
         accountOrganization:
           maxLength: 3
           minLength: 0
@@ -55395,7 +55395,7 @@ components:
         currFirstUsageFlag:
           type: string
           description: ' Max length = 1, This filed determine whether the card is
-            activated or not.Valid Values:<UL><LI><EM>‘Y‘ -<EM> Card activation required</LI><LI>‘N‘
+            activated or not.Valid Values:<UL><LI><EM>�Y� -<EM> Card activation required</LI><LI>�N�
             -<EM>Card activation not required</LI></UL>'
         priorFirstUsageFlag:
           type: string
@@ -57783,9 +57783,9 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Valid values are: <UL><LI><EM>C – </EM>Plan
-            Cancel</LI><LI><EM>R – </EM>Plan Cancel Reversal</LI><LI><EM>A – </EM>Plan
-            Add</LI><LI><EM>O – </EM>Plan Add Online</LI></UL> Front-end interface
+          description: ' Max length = 1, Valid values are: <UL><LI><EM>C � </EM>Plan
+            Cancel</LI><LI><EM>R � </EM>Plan Cancel Reversal</LI><LI><EM>A � </EM>Plan
+            Add</LI><LI><EM>O � </EM>Plan Add Online</LI></UL> Front-end interface
             system calling service will populate this field from the previous output
             message when more data that meet the search criteria is available.'
         acct:
@@ -58442,6 +58442,25 @@ components:
     Header:
       type: object
       properties:
+        user:
+          type: string
+          description: Setting this value will assign OCS user id for internal ODS
+            Calls for auditing.
+        agent:
+          type: string
+          description: Agent, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-ACCT-LVL-3",
+            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-AGENT-NR",
+            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.AGENT",
+            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.AGENT",
+            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
+          example: "4000"
+        cycle:
+          type: string
+          description: Setting this value will assign cycle destination for backend
+            system, copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.CYCLE",
+            length:"1", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CENTER",
+            length:"1", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
+          example: '"T"'
         clientNumber:
           type: string
           description: Client Number, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-CLIENT-ID",
@@ -58450,6 +58469,58 @@ components:
             length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CLIENT",
             length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
           example: "1000"
+        system:
+          type: string
+          description: A client often has more than one Billing System/Prin.  A client
+            uses Billing System/Prins to segregate their expenses on their General
+            Ledger for accounting purposes.System, copyBookList = [{copybook:"CCNDPUBS",
+            fields:[{name:"'PMXDS'-RI-ACCT-LVL-1", length:"4", eventTypes:[""]}]},
+            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-SYSTEM-NR", length:"4", eventTypes:["TOKEN"]}]},
+            {copybook:"MCATDSHB", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]},
+            {copybook:"MCPIPDAT", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]}],
+            eventTypeList:["ALL"]
+          example: "2000"
+        prin:
+          type: string
+          description: A client often has more than one Billing System/Prin.  A client
+            uses Billing System/Prins to segregate their expenses on their General
+            Ledger for accounting purposes.Principal, copyBookList = [{copybook:"CCNDPUBS",
+            fields:[{name:"'PMXDS'-RI-ACCT-LVL-2", length:"4", eventTypes:[""]}]},
+            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-PRIN-NR", length:"4", eventTypes:["TOKEN"]}]},
+            {copybook:"MCATDSHB", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]},
+            {copybook:"MCPIPDAT", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]}],
+            eventTypeList:["ALL"]
+          example: "3000"
+        debug:
+          type: boolean
+          description: Setting this value to false will disable additional error details
+            from backend calls.
+          default: false
+        org:
+          type: string
+          description: Setting this value will assign to the organization identifier.
+        processor:
+          type: boolean
+          description: Setting this value to true will return processor information
+            on the response. Defaults to false
+          default: false
+        contentType:
+          type: string
+        retry:
+          type: integer
+          description: The retry count for the same request sent to First Data. This
+            is used for internal resubmission tracking.
+          format: int64
+        timeout:
+          type: integer
+          description: How long the request should be tried before timing out.
+          format: int64
+        siteId:
+          type: string
+          description: 'This field will be used by the service to determine the First
+            Track, First Dispute, Fraud Detection Work Center destination. Site Id
+            will be provided by these applications to the calling applications '
+          example: '"4201"'
     Hist3ForAccountDetailInquiry3:
       type: object
       properties:
@@ -59025,7 +59096,7 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Function Code. Valid Values : I – Conversion  R
+          description: ' Max length = 1, Function Code. Valid Values : I � Conversion  R
             - Reversal'
         acctNbr:
           maxLength: 19
@@ -59618,7 +59689,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Instalment Computation Mode. Must be either
-            ‘O’ or ‘S’ representing the Instalment option computation mode or the
+            �O� or �S� representing the Instalment option computation mode or the
             instalment schedule computation mode.'
     InstalmentSimulateResponse:
       type: object
@@ -59708,7 +59779,7 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Function Code. Valid Values : I – Conversion  R
+          description: ' Max length = 1, Function Code. Valid Values : I � Conversion  R
             - Reversal'
         acctNbr:
           maxLength: 19
@@ -69349,10 +69420,10 @@ components:
           type: string
           description: ' Max length = 1, PD Paydown Flag: This field will indicate
             the Paydown status of the plan segment. Valid values are: <UL><LI><EM>0
-            – </EM>No Paydown on this plan yet (default)</LI><LI><EM>1 – </EM>Plan
-            is on Paydown</LI><LI><EM>2 – </EM>Paydown is deferred due to promotions</LI><LI><EM>3
-            – </EM>Paydown is deferred due to account exclusions (collections reason).</LI><LI><EM>4
-            – </EM>Paydown skipped due to balance below threshold</LI></UL>'
+            � </EM>No Paydown on this plan yet (default)</LI><LI><EM>1 � </EM>Plan
+            is on Paydown</LI><LI><EM>2 � </EM>Paydown is deferred due to promotions</LI><LI><EM>3
+            � </EM>Paydown is deferred due to account exclusions (collections reason).</LI><LI><EM>4
+            � </EM>Paydown skipped due to balance below threshold</LI></UL>'
         pdPdwnInstlAmt:
           type: string
           description: ' Max length = 9, It will be monthly paydown installment amount
@@ -69839,8 +69910,8 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Transfer Type. Valid Values are: T – Transfer
-            P – Partial Transfer R- Reversal Q – Partial Reversal'
+          description: ' Max length = 1, Transfer Type. Valid Values are: T � Transfer
+            P � Partial Transfer R- Reversal Q � Partial Reversal'
         planNbr:
           maxLength: 5
           minLength: 0
@@ -69940,8 +70011,8 @@ components:
           description: ' Max length = 19, Account Number'
         function:
           type: string
-          description: ' Max length = 1, Transfer Type. Valid Values are: T – Transfer
-            P – Partial Transfer R- Reversal Q – Partial Reversal'
+          description: ' Max length = 1, Transfer Type. Valid Values are: T � Transfer
+            P � Partial Transfer R- Reversal Q � Partial Reversal'
         toPlanNbr:
           type: string
           description: ' Max length = 5, Plan Number'
@@ -70832,163 +70903,163 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code A Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code A Switch. Supply �1� to
             exclude block code A in the response'
         bcSwB:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code B Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code B Switch. Supply �1� to
             exclude block code B in the response'
         bcSwC:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code C Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code C Switch. Supply �1� to
             exclude block code C in the response'
         bcSwD:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code D Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code D Switch. Supply �1� to
             exclude block code D in the response'
         bcSwE:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code E Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code E Switch. Supply �1� to
             exclude block code E in the response'
         bcSwF:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code F Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code F Switch. Supply �1� to
             exclude block code F in the response'
         bcSwG:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code G Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code G Switch. Supply �1� to
             exclude block code G in the response'
         bcSwH:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code H Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code H Switch. Supply �1� to
             exclude block code H in the response'
         bcSwI:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code I Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code I Switch. Supply �1� to
             exclude block code I in the response'
         bcSwJ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code J Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code J Switch. Supply �1� to
             exclude block code J in the response'
         bcSwK:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code K Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code K Switch. Supply �1� to
             exclude block code K in the response'
         bcSwL:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code L Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code L Switch. Supply �1� to
             exclude block code L in the response'
         bcSwM:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code M Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code M Switch. Supply �1� to
             exclude block code M in the response'
         bcSwN:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code N Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code N Switch. Supply �1� to
             exclude block code N in the response'
         bcSwO:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code O Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code O Switch. Supply �1� to
             exclude block code O in the response'
         bcSwP:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code P Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code P Switch. Supply �1� to
             exclude block code P in the response'
         bcSwQ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Q Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Q Switch. Supply �1� to
             exclude block code Q in the response'
         bcSwR:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code R Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code R Switch. Supply �1� to
             exclude block code R in the response'
         bcSwS:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code S Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code S Switch. Supply �1� to
             exclude block code S in the response'
         bcSwT:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code T Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code T Switch. Supply �1� to
             exclude block code T in the response'
         bcSwU:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code U Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code U Switch. Supply �1� to
             exclude block code U in the response'
         bcSwV:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code V Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code V Switch. Supply �1� to
             exclude block code V in the response'
         bcSwW:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code W Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code W Switch. Supply �1� to
             exclude block code W in the response'
         bcSwX:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code X Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code X Switch. Supply �1� to
             exclude block code X in the response'
         bcSwY:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Y Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Y Switch. Supply �1� to
             exclude block code Y in the response'
         bcSwZ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Z Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Z Switch. Supply �1� to
             exclude block code Z in the response'
         bcSwSpace:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Space Switch. Supply ‘1’
+          description: ' Max length = 1, Exclude Block Code Space Switch. Supply �1�
             to exclude block code Space in the response'
     ProductBlockCodeListResponse:
       type: object
@@ -71820,7 +71891,7 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Bill mod flag. Valid values are: <UL><LI><EM>0
-            – </EM> BILL SUB ALLOWED</LI><EM>1 – </EM>BILL SUB NOT ALLOWED</LI></UL>'
+            � </EM> BILL SUB ALLOWED</LI><EM>1 � </EM>BILL SUB NOT ALLOWED</LI></UL>'
         rmPosAuthInd:
           maxLength: 1
           minLength: 0
@@ -73101,26 +73172,26 @@ components:
           type: string
           description: ' Max length = 1, This field indicates whether the service
             should return Primary account details or all account details. Values are,
-            <UL><LI><EM>P –<EM> Primary account</LI><LI><EM>A –<EM> All account</LI></UL>'
+            <UL><LI><EM>P �<EM> Primary account</LI><LI><EM>A �<EM> All account</LI></UL>'
         accFilter:
           maxLength: 1
           minLength: 0
           type: string
           description: ' Max length = 1, This field indicates the type of account
-            details that needs to be retrieved. Values are,<UL><LI><EM>A –<EM>Retrieve
-            only active account details<LI><LI><EM>D –<EM>Retrieve only dormant account
-            details</LI><LI><EM>B –<EM> Retrieve both Active and Dormant account details</LI><LI><EM>SPACE
-            or Low-value –<EM> Retrieve all account details</LI></UL>'
+            details that needs to be retrieved. Values are,<UL><LI><EM>A �<EM>Retrieve
+            only active account details<LI><LI><EM>D �<EM>Retrieve only dormant account
+            details</LI><LI><EM>B �<EM> Retrieve both Active and Dormant account details</LI><LI><EM>SPACE
+            or Low-value �<EM> Retrieve all account details</LI></UL>'
         svcFuncCode:
           maxLength: 1
           minLength: 0
           type: string
           description: ' Max length = 1, This field indicates the range of account
-            to be retrieved. Values are,<UL><LI><EM>P –<EM>Retrieve Previous 10 account
+            to be retrieved. Values are,<UL><LI><EM>P �<EM>Retrieve Previous 10 account
             records corresponding to the ACC_FILTER and account number provided in
-            input message</LI><LI><EM>N –<EM>Retrieve Next 10 account records  corresponding
+            input message</LI><LI><EM>N �<EM>Retrieve Next 10 account records  corresponding
             to the ACC_FILTER and account number provided in input message</LI><LI><EM>I
-            –<EM>Retrieve  first 10 account records corresponding to the ACC_FILTER
+            �<EM>Retrieve  first 10 account records corresponding to the ACC_FILTER
             provided in the input message</LI></UL>'
         svcStartAcctOrg:
           maxLength: 3
@@ -73143,8 +73214,8 @@ components:
           type: string
           description: ' Max length = 1, Field that indicates whether PAN reference
             ID details of Card is required in the output message. Values are,<UL><LI><EM>SPACES
-            or Low-values –<EM>PAN reference ID details are not required</LI><LI><EM>1
-            –<EM> PAN reference ID details are required</LI></UL>'
+            or Low-values �<EM>PAN reference ID details are not required</LI><LI><EM>1
+            �<EM> PAN reference ID details are required</LI></UL>'
     RelationshiptoAccountInquiryResponse:
       type: object
       properties:
@@ -73158,8 +73229,8 @@ components:
           description: ' Max length = 3, Currency code defined at Org'
         dualIndicator:
           type: string
-          description: ' Max length = 1, Indicate Dual ORG or not. Values are,0 –
-            Local   1 – Foreign'
+          description: ' Max length = 1, Indicate Dual ORG or not. Values are,0 �
+            Local   1 � Foreign'
         atNumber:
           type: string
           description: ' Max length = 2, Number of account details retrieved'
@@ -73167,7 +73238,7 @@ components:
           type: string
           description: ' Max length = 1, Flag indicates whether there are more account
             records (other than the record that is retrieved through current request)
-            under relationship that can be retrieved . Values are,<LI><EM>‘N’ –<EM>
+            under relationship that can be retrieved . Values are,<LI><EM>�N� �<EM>
             The relationship has no more account record that can be retrieved from
             the system</LI></UL>'
         acctTbl:
@@ -74538,7 +74609,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Statement selected Type. Valid values are:
-            S - Statement selected by date   M – Statement selected by relative month'
+            S - Statement selected by date   M � Statement selected by relative month'
         dualInd:
           maxLength: 1
           minLength: 0
@@ -74554,8 +74625,8 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 2, Relative statement number can be used if
-            the actual statement date is not known, i.e. 00 – Current statement  01
-            – Previous months statement  02 – Second previous months statement, etc.
+            the actual statement date is not known, i.e. 00 � Current statement  01
+            � Previous months statement  02 � Second previous months statement, etc.
             Only valid if  svcTyp  = M (Statement by relative Month)'
         txnSuppFlg:
           maxLength: 1
@@ -74563,9 +74634,9 @@ components:
           type: string
           description: ' Max length = 1, This field work in combination with the value
             in the vision plus file. The value sent in the request need to match with
-            the value in the file to achieve the expected. Valid Values are : Y –
+            the value in the file to achieve the expected. Valid Values are : Y �
             Totals returned do not include transactions that are marked as needing
-            to be suppressed, e.g. Total Number of Debits and Credits.  N – (Default
+            to be suppressed, e.g. Total Number of Debits and Credits.  N � (Default
             if not supplied) Totals include all transactions.'
         procBillAcct:
           maxLength: 1
@@ -74607,7 +74678,7 @@ components:
           type: string
           description: ' Max length = 2, Cycle code that indicates the day of the
             month that CMS Performs cycle processing for the account. The values are
-            01–31.'
+            01�31.'
         shortName:
           type: string
           description: ' Max length = 20, Short name of the account holder.'
@@ -74632,10 +74703,10 @@ components:
           description: ' Max length = 1, The cycle due code indicates the level of
             contractual delinquency for the account at the time of the statement.
             The values are: 0 = No amount due; not past due  1 = Current amount due;
-            not past due  2 = Amount past due 1–29 days (or ''X'' days)  3 = Amount
-            past due 30–59 days  4 = Amount past due 60–89 days  5 = Amount past due
-            90–119 days  6 = Amount past due 120–149 days  7 = Amount past due 150–179
-            days  8 = Amount past due 180–209 days  9 = Amount past due 210 or more
+            not past due  2 = Amount past due 1�29 days (or ''X'' days)  3 = Amount
+            past due 30�59 days  4 = Amount past due 60�89 days  5 = Amount past due
+            90�119 days  6 = Amount past due 120�149 days  7 = Amount past due 150�179
+            days  8 = Amount past due 180�209 days  9 = Amount past due 210 or more
             days.'
         pmtDueDt:
           type: string
@@ -74945,8 +75016,8 @@ components:
             = </EM>Customer is flagged as PD36 and in Paydown - When Statement level
             PD36 Flag = 1 and PDWN Stage = 4 (Paydown complete)</LI><LI><EM>03 = </EM>Customer
             is flagged as PD36 and not in Paydown/or in exception - When Statement
-            level PD36 Flag = 1 and PDWN Stage not = 4 (i.e. either 0 – no Paydown
-            yet or 9 – Paydown exception etc.)</LI><LI><EM>99 = </EM>For Statements
+            level PD36 Flag = 1 and PDWN Stage not = 4 (i.e. either 0 � no Paydown
+            yet or 9 � Paydown exception etc.)</LI><LI><EM>99 = </EM>For Statements
             which do not have the PD36 and Paydown Stage value set and would signify
             that the PD Journey for that statement could not be determined. These
             statements would be older statements which have been generated before
@@ -77074,7 +77145,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Status code of this item. This field displays
-            on ARMT and ARQT only if working with a batch of today�s entry transactions
+            on ARMT and ARQT only if working with a batch of today?s entry transactions
             (FILE is T1). The values are: Blank = Active; status never changed  A
             = Active; status changed D = Delete'
         txnPurchOrder:
