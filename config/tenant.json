@@ -21,7 +21,7 @@
   ],
   "apiVersions": [
     {
-      "version": "TE",
+      "version": "23.01",
       "versionType": "minor",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["TE"]
