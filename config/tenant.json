@@ -21,10 +21,28 @@
   ],
   "apiVersions": [
     {
-      "version": "23.03",
+      "version": "23.06",
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["PROD/prod"]
+      "apiSpecFileNames": ["23.06"]
+    },
+    {
+      "version": "23.04",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.04"]
+    },
+    {
+      "version": "23Mini4",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23Mini4"]
+    },
+    {
+      "version": "23.03",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23.03"]
     }
   ],
   "product": {
