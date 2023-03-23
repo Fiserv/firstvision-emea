@@ -27,16 +27,16 @@
       "apiSpecFileNames": ["TE"]
     },
     {
-      "version": "23.02",
-      "versionType": "minor",
-      "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["23.02_Release"]
-    },
-    {
       "version": "23.03",
       "versionType": "minor",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["23.03_Release"]
+    },
+    {
+      "version": "23Mini4",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23Mini4"]
     },
     {
       "version": "23.04",
