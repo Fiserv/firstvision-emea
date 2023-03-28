@@ -7,7 +7,7 @@ To download the latest swagger file please go to [API explorer](../api/?type=pos
 
 To download region specific prod swagger files.
 
-- [APAC API Swagger File](https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/swagger/PROD/prod_apac.yml)
+- [APAC API Swagger File](https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/swagger/APAC/prod_apac.yml)
 - [EMEA API Swagger File](https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/swagger/PROD/prod_emea.yaml)
 
 Download sandbox sample data.
