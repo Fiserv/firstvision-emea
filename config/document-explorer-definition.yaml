@@ -46,6 +46,17 @@
         - title: Release 2023
           link: docs/release-notes/Releases/2023/2023.md
 - sections:
+    - title: Future Release Notes
+      link: docs/release-notes/Future-Release-Notes/Future-Release-Notes.md
+      access: public
+      groups: []
+      open: true
+      sections:
+        - title: Release 23.04-Major
+          link: docs/release-notes/Future-Release-Notes/23.04.md
+        - title: Release 23.06-Major
+          link: docs/release-notes/Future-Release-Notes/23.06.md
+- sections:
     - title: API Guide
       link: docs/API-guide.md
       access: public
