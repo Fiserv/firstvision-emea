@@ -33,6 +33,12 @@
       "apiSpecFileNames": ["23.03_Release"]
     },
     {
+      "version": "23Mini3",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["23Mini3"]
+    },
+    {
       "version": "23Mini4",
       "versionType": "minor",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
