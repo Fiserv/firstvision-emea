@@ -6,7 +6,7 @@ Retrieve interest rate information for purchases, cash as well as promotional ra
 
 ### API to use: 
 
-*[Account Management > Account Plan Inquiry](../api/?type=post&path=/fv_emea/v1/accountPlanInquiry)*
+*[Account Management > Account Plan Inquiry](../api/?type=post&path=/fv_emea/v2/accountPlanInquiry)*
 
 #### Relevant request variables
 
