@@ -29,15 +29,18 @@
 ################################################################################
 
 header:
-  productDescription: FirstVision is our outsourced processing solution that meets your challenges head-on and transforms your technology capability. Built on core VisionPLUS® software, FirstVision™ provides an end-to-end solution that delivers global processing economies of scale plus fully integrated adjacent services that span the issuing lifecycle.
+  productionDescription: FirstVision is our outsourced processing solution that meets your challenges head-on and transforms your technology capability. Built on core VisionPLUS® software, FirstVision™ provides an end-to-end solution that delivers global processing economies of scale plus fully integrated adjacent services that span the issuing lifecycle.
 getStarted: /docs/API-guide.md
 benefits:
   - title: Accelerating Your Time to Market
     description: Extensive parameterisation and service-based architecture with API enabled and a fully integrated suite of solutions for managing credit, debit, loans and payments ensures quicker application development and integration, rapid roll-out of new products and services.
+    icon: assets/images/chronometer.png
   - title: Helping You Ride the Latest Wave of Innovation
     description: Platform architecture built around technology simplification and leveraging open APIs, reducing the cost of change and meeting your need for ongoing innovation to differentiate your product set – now and forward into the future.
+    icon: assets/images/growth.png
   - title: Enables Rapid Speed to Market
     description: FirstVision™ oriented architecture with open APIs enables service consumption rather than change management.
+    icon: assets/images/quick.png
 guides:
   - title: Fiserv API connectivity
     description: Fiserv API connectivity guide on necessary steps required to set up an existing or new client to access the API. The process is common for accessing APIs in EMEA and APAC region
