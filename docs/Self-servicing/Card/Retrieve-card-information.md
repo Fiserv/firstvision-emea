@@ -10,7 +10,7 @@ NOTE: If information of more than 20 cards is required please contact your API t
 
 ### API to use: 
 
-*[Account Management > Cards List by Account](../api/?type=post&path=/fv_emea/v1/cardsListByAccount)*
+*[Account Management > Cards List by Account](../api/?type=post&path=/fv_emea/v2/cardsListByAccount)*
 
 #### Relevant request variables
 
