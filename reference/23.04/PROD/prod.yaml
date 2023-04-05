@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.43.10
+  version: 1.41.10
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -2559,7 +2559,7 @@ paths:
             : ANNUAL STMT FLAG MUST BE NUMERIC<BR/>VPL5SAADBE : ANNUAL STMT FLAG MUST
             BE 0 OR 1<BR/>VPL5SAADCE : ANNUAL STMT FLAG MUST BE 0 WHEN LOGO ANNUAL
             STATEMENT IS 0 OR 1<BR/>VPL5SAADDE : VALID VALUES FOR ACCT_CTL_OVRRD ARE
-            000 – 998<BR/>VPL5SAADEE : MARKETING OPT OUT MUST BE 012 OR 3<BR/>VPL5SAA71S
+            000 � 998<BR/>VPL5SAADEE : MARKETING OPT OUT MUST BE 012 OR 3<BR/>VPL5SAA71S
             : PMT DUE ALERT MUST BE ACTIVE AT LOGO<BR/>VPL5SAA72S : VALID VALUES ARE
             012 OR 3 FOR PMT DUE ALERT<BR/>VPL5SAA73S : SPEND LIMIT ALERT MUST BE
             ACTIVE AT LOGO<BR/>VPL5SAA74S : VALID VALUES ARE 012 OR 3 FOR SPND LIMIT
@@ -4841,9 +4841,7 @@ paths:
       summary: StatementOptionsUpdate
       description: The Electronic Correspondence update service will provide an option
         to select the type of statement and type of notification the customer will
-        receive.<BR/><BR/><p>Fields that are not provided in the Request object will
-        be initialised to their default values. All numeric fields are initialised
-        to zero and alphanumeric fields initialised to spaces</p>
+        receive.
       operationId: statementOptionsUpdate_v1_fv_emea
       parameters:
       - name: Authorization
@@ -5732,7 +5730,7 @@ paths:
         for the account number to which the card number is linked. The service is
         capable of populating primary card details along with customer details for
         the customer assigned at the account level. <p>If an account is in a relationship,
-        the account number must be used in the input request and the account’s information
+        the account number must be used in the input request and the account�s information
         will be displayed in the response.<p><p>Additionally, the service is capable
         of returning details of any insurance products enrolled on the account. As
         per the current design of the FirstVision system, an account can have maximum
@@ -6457,7 +6455,7 @@ paths:
         of the Relationship; any Account or card number as input. There is the ability
         to request the service to start from a certain account number (svcStartAcctNbr
         which is returned on the response to assist client with the next available
-        account number) and whether to browse ‘N’ext or ‘P’revious (scvFunctionCode).
+        account number) and whether to browse �N�ext or �P�revious (scvFunctionCode).
         Lists whose number of items depend on a variable returned will be truncated
         appropriately.
       operationId: accountsListByRelationship_v2_fv_emea
@@ -6717,6 +6715,141 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Annual Statement Inquiry v2
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Account Management
+      x-codegen-request-body-name: body
+  /fv_emea/v1/balanceTransferInquiry:
+    post:
+      tags:
+      - Account Management
+      summary: BalanceTransferInquiry
+      description: This service is used to inquire the information about Card and
+        Account Balance<BR/><BR/><p>Fields that are not provided in the Request object
+        will be initialised to their default values. All numeric fields are initialised
+        to zero and alphanumeric fields initialised to spaces</p>
+      operationId: balanceTransferInquiry_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BalanceTransferInquiryRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceTransferInquiryResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5S0002S : CMS FILE TABLE RECORD NOT FOUND                                  CMS
+            FILE TABLE RECORD NOT FOUND<BR/>VPL5S0003S : APPLICATION IN NO-PROCESSING
+            STATUS RE-TRY IN A FEW MINUTES     CMS IS NO-PROCESSING STATE<BR/>VPL5S0004E
+            : INPUT CARD NUMBER IS NOT NUMERIC                                 INPUT
+            CARD NUMBER IS NOT NUMERIC<BR/>VPL5S0005E : INPUT CARDorACCT NUMBER IS
+            NOT NUMERIC                            INPUT ACCOUNT NUMBER IS NOT NUMERIC<BR/>VPL5S9005S
+            : FILE-TABLE RECORD NOT FOUND<BR/>VPL5S0006S : REQUESTED ORG NUMBER IS
+            NOT FOUND                                USER IS NOT ALLOWED TO ACCESS
+            THE ORG<BR/>VPL5S0007E : CARDorACCT NUMBER IS NOT NUMERIC                                  INPUT
+            CARDorACCT NUMBER IS NOT NUMERIC<BR/>VPL5S0008E : ORGANIZATION NOT DETERMINED<BR/>VPL5S0009E
+            : USER IS NOT ALLOWED TO ACCESS THE ORG<BR/>VPL5S0010S : APPLICATION IN
+            NO-PROCESSING STATUS RE-TRY IN A FEW MINUTES<BR/>VPL5S0011S : CMS ORG
+            RECORD NOT FOUND ON FILE<BR/>VPL5S0012S : ACCOUNT NOT FOUND ON FILE<BR/>VPL5S0029S
+            : ORG NUMBER MUST BE NUMERIC AND VALID VALUES ARE 001-998          ORG
+            IS NOT NUMERIC<BR/>VPL5S0056E : INVALID LOCALorFOREIGN INDICATOR SPECIFIED<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Balance Transfer Inquiry v1
       x-region:
       - EMEA
       - APAC
@@ -7826,7 +7959,7 @@ paths:
         Standard Cash, Balance Transfer, Promotional Retail, Promotional Cash, go-To
         Balance Transfer (the rate following the expiration of the existing balance
         transfer plan). To determine the rates, the service uses the default plan
-        numbers on the Account record – retail, cash and promotional.<p><p>If the
+        numbers on the Account record � retail, cash and promotional.<p><p>If the
         rate type of the referenced interest table is not Fixed or Variable then AER
         or Monthly ER is passed as zeroes in the output message.<BR/><BR/><p>Fields
         that are not provided in the Request object will be initialised to their default
@@ -9668,7 +9801,11 @@ paths:
             BE GREATER THAN SPACES<BR/>VPL7SRS51E : INVALID EXPIRE DATE<BR/>VPL7SRS52E
             : INVALID EFFECTIVE DATE<BR/>VPL7SRS53E : INVALID EXPIRE DATE<BR/>VPL7SRS54E
             : INVALID EFFECTIVE DATE<BR/>VPL7SRS54S : ACCT NUMBER MUST BE NUMERIC<BR/>VPL7SRS55S
-            : TRANSACTION TYPE INDICATOR IS NOT ''M'' ''E'' OR SPACE_<BR/>'
+            : TRANSACTION TYPE INDICATOR IS NOT ''M'' ''E'' OR SPACE_<BR/>VPL7SRS68S
+            : AUTH DECLINED - INVALID ACCOUNT STATUS<BR/>VPL7SRS69S : AUTH DECLINED
+            - ACCOUNT IS BLOCKED<BR/>VPL7SRS70S : AUTH DECLINED - ACCOUNT IS DELINQUENT<BR/>VPL7SRS71S
+            : AUTH DECLINED - PLAN NOT FOUND<BR/>VPL7SRS72S : AUTH DECLINED - INSUFFICIENT
+            OPEN-TO-BUY<BR/>'
           content:
             application/json:
               schema:
@@ -15710,7 +15847,7 @@ paths:
       - Card Management
       summary: PinBlockInquiry
       description: This PIN Delivery via XML Request service performs the PIN Block
-        retrieval of cardholder’s PINs through Issuer real time application systems
+        retrieval of cardholder�s PINs through Issuer real time application systems
         such as Ex Web, Mobile, IVR, branch online system, etc. This service helps
         the user to request and retrieve their PIN through online securely. The output
         of this message contains the encrypted PIN block, which will be decrypted
@@ -19336,10 +19473,10 @@ paths:
       summary: DebitCardAvailableBalanceUpdate
       description: This service will update the account level field IBS Credit Limit
         i.e. Issuer Banking System Credit Limit. This field is represented on screen
-        ARMB09 as IBS UPDATED ACCOUNT OTB. This field holds a Debit Card’s Open To
+        ARMB09 as IBS UPDATED ACCOUNT OTB. This field holds a Debit Card�s Open To
         Buy value and allows FirstVision to take decisions on an incoming authorization
         on a Debit Card during FV Stand-In processing when the IBS link from FV to
-        a Bank’s core-banking system is down. This service allows a bank to keep the
+        a Bank�s core-banking system is down. This service allows a bank to keep the
         value of available debit amount to spend in core banking system to be in sync
         with above FV field.<p><p>When the service functionality is successfully completed,
         a Pass return code response will be returned.  When, the service is not able
@@ -20505,6 +20642,90 @@ paths:
       x-regions: EMEA,APAC
       x-display: Insurance
       x-codegen-request-body-name: body
+  /fv_emea/v1/downloadLetterDoc:
+    post:
+      tags:
+      - Letters
+      summary: This service is used to request Letter Document URLs for an account
+        given a letter date and letter id
+      description: Financial institution(issuer) part of First Vision system can request
+        this service by providing cardholder account number, letter date and id. As
+        a pre-requisite FICS system configuration should exist for the client with
+        necessary level of setup. Based on the type of request, number of internal
+        checks and actions will be performed on the cardholders account and the response
+        will be sent back.
+      operationId: downloadLetterDoc_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LetterDocumentRequest'
+        required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/BinaryFsResponse'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials'
+          content: {}
+        403:
+          description: 'Forbidden: Insufficient access for requested operation'
+          content: {}
+        452:
+          description: Unknown Exception Occurred
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        453:
+          description: Validation Error
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        469:
+          description: Letter Backend Exception occurred
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Download Letter Doc v1
+      x-region:
+      - EMEA
+      x-display: Letters
+      x-codegen-request-body-name: body
   /fv_emea/v2/enterpriseLetterRequest:
     post:
       tags:
@@ -20750,6 +20971,256 @@ paths:
       - EMEA
       - APAC
       x-regions: EMEA,APAC
+      x-display: Letters
+      x-codegen-request-body-name: body
+  /fv_emea/v1/letterDocumentUrl:
+    post:
+      tags:
+      - Letters
+      summary: This service is used to request download URLs for a particular letter
+        of an account.
+      description: Financial institution(issuer) part of First Vision system can request
+        this service by providing cardholder account number, letter date and letter
+        id. As a pre-requisite FICS system configuration should exist for the client
+        with necessary level of setup. Based on the type of request, number of internal
+        checks and actions will be performed on the cardholders account and the response
+        will be sent back.
+      operationId: letterDocumentUrl_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LetterDocumentUrlRequest'
+        required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LetterDocumentUrlResponse'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials'
+          content: {}
+        403:
+          description: 'Forbidden: Insufficient access for requested operation'
+          content: {}
+        452:
+          description: Unknown Exception Occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        453:
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        469:
+          description: Letters Backend Exception occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Letter Document URL v1
+      x-region:
+      - EMEA
+      x-display: Letters
+      x-codegen-request-body-name: body
+  /fv_emea/v1/letterList:
+    post:
+      tags:
+      - Letters
+      summary: This service is used to request Letter List for an account
+      description: Financial institution(issuer) part of First Vision system can request
+        this service by providing cardholder account number. As a pre-requisite FICS
+        system configuration should exist for the client with necessary level of setup.
+        Based on the type of request, number of internal checks and actions will be
+        performed on the cardholders account and the response will be sent back.
+      operationId: letterList_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LetterListRequest'
+        required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LetterListResponse'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials'
+          content: {}
+        403:
+          description: 'Forbidden: Insufficient access for requested operation'
+          content: {}
+        452:
+          description: Unknown Exception Occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        453:
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        469:
+          description: Letters Backend Exception Occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Letters Pdf List v1
+      x-region:
+      - EMEA
+      x-display: Letters
+      x-codegen-request-body-name: body
+  /fv_emea/v1/letterPdfDocsList:
+    post:
+      tags:
+      - Letters
+      summary: This service is used to request download URLs for a particular letter
+        of an account.
+      description: Financial institution(issuer) part of First Vision system can request
+        this service by providing cardholder account number, letter date and letter
+        id. As a pre-requisite FICS system configuration should exist for the client
+        with necessary level of setup. Based on the type of request, number of internal
+        checks and actions will be performed on the cardholders account and the response
+        will be sent back.
+      operationId: letterPdfDocsList_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LetterPdfDocumentListRequest'
+        required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LetterPdfDocumentListResponse'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials'
+          content: {}
+        403:
+          description: 'Forbidden: Insufficient access for requested operation'
+          content: {}
+        452:
+          description: Unknown Exception Occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        453:
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        469:
+          description: Letters Backend Exception occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Letter Document URL v1
+      x-region:
+      - EMEA
       x-display: Letters
       x-codegen-request-body-name: body
   /fv_emea/v2/letterRequest:
@@ -22600,7 +23071,7 @@ paths:
             OR RESOLVED BNPL OFFER IS NOT TRANSACTION VARIANT TYPE<BR/>VPE5SAI32S
             : INPUT OR RESOLVED BNPL OFFER HAS EXPIRED ALREADY<BR/>VPE5SAI06E : INVALID
             REQUEST TYPE<BR/>VPE5SAI07E : BNPL COMPANION FEATURE NOT ACTIVE FOR THE
-            PRODUCT<BR/>VPE5SAI08E : INACTIVE DD – SHOULD BE ACTIVE FOR POST PURCHASE
+            PRODUCT<BR/>VPE5SAI08E : INACTIVE DD � SHOULD BE ACTIVE FOR POST PURCHASE
             CONVERSION TYPE<BR/>VPE5SAI09E : TEMPLATE ID REQUIRED FOR POST PURCHASE
             CONVERSION TYPE<BR/>VPE5SAI10E : PLAN NBR REQUIRED FOR POST PURCHASE CONVERSION
             TYPE<BR/>VPE5SAI11E : PLAN SEQ REQUIRED FOR  POST PURCHASE CONVERSION
@@ -24365,9 +24836,9 @@ paths:
       - Loans
       summary: SettlementQuoteUpdate
       description: This service is used to update settlement quotation fields at the
-        account level. The fields such as 'settlement quotation type'<p><p>P – Settlement
+        account level. The fields such as 'settlement quotation type'<p><p>P � Settlement
         quotation with penalties for interest, insurance and termination fees<p>W
-        – Settlement quote waiving the interest, insurance and termination fees<p><p>Other
+        � Settlement quote waiving the interest, insurance and termination fees<p><p>Other
         fields like Loan pay off date can also be updated via this service.
       operationId: settlementQuoteUpdate_v1_fv_emea
       parameters:
@@ -27059,6 +27530,147 @@ paths:
       x-regions: EMEA,APAC
       x-display: Loyalty & Rewards - Core
       x-codegen-request-body-name: body
+  /fv_emea/v1/offerAccountEnrolmentInquiry:
+    post:
+      tags:
+      - Loyalty & Rewards - Core
+      summary: OfferAccountEnrolmentInquiry
+      description: This service is used to inquire about the eligibility of offer
+        for an account.<BR/><BR/><p>Fields that are not provided in the Request object
+        will be initialised to their default values. All numeric fields are initialised
+        to zero and alphanumeric fields initialised to spaces</p><BR/><BR/><p>This
+        Service gives back blank fields to keep fields in a list consistent</p>
+      operationId: offerAccountEnrolmentInquiry_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferAccountEnrolmentInquiryRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferAccountEnrolmentInquiryResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPLBSDE01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPLBSDE02S
+            : SERVICE INPUT HAS AN INCORRECT LENGTH<BR/>VPLBSDE04S : FILE TABLE USED
+            BY THIS SERVICE IS NOT FOUND<BR/>VPLBSDE05S : APPLICATION IN NO-PROCESSING
+            STATUS RE-TRY IN A FEW MINU<BR/>VPLBSDE06E : ORG MUST BE NUMERIC AND VALID
+            VALUES ARE 001- 998<BR/>VPLBSDE07E : ACCOUNT NUMBER MUST BE GREATER THAN
+            SPACES<BR/>VPLBSDE08E : ENROLLMENT ACTION INVALID VALID VALUES ARE 01234<BR/>VPLBSDE09E
+            : OFFER STATUS INVALID VALID VALUES ARE 0123489<BR/>VPLBSDE10E : ENROLL
+            STATUS INVALID VALID VALUES ARE 0 AND 1<BR/>VPLBSDE11E : OFFER TYPE INVALID
+            VALID VALUES ARE 00-08<BR/>VPLBSDE12E : SVC FUNCTION CODE INVALID VALID
+            VALUES ARE SPACEPN<BR/>VPLBSDE13E : SVC ORG INVALID VALID VALUES ARE 1-998<BR/>VPLBSDE14E
+            : SVC ACCOUNT NUMBER MUST BE GRETER THAN SPACES<BR/>VPLBSDE15E : SVC OFFER
+            ID MUST BR GRETER THAN SPACES<BR/>VPLBSDE16S : ORG NOT FOUND<BR/>VPLBSDE17S
+            : FILE-TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPLBSDE18S : APPLICATION
+            IN NO-PROCESSING STATUS RE-TRY IN A FEW MINU<BR/>VPLBSDE19S : MASTER FILE
+            IS NOT OPEN<BR/>VPLBSDE20S : ORG NOT FOUND<BR/>VPLBSDE21S : MASTER FILE
+            IS NOT OPEN<BR/>VPLBSDE22S : RECORD NOT FOUND ON FILE<BR/>VPLBSDE23S :
+            READING OF MASTER FILE FAILED<BR/>VPLBSDE24S : STARTBR OF MASTER FILE
+            FAILED<BR/>VPLBSDE26E : INVALID ACCOUNT NUMBER<BR/>VPLBSDE27S : EXPIRY
+            DATE MUST BE A VALID DATE<BR/>VPLBSDE28S : EXPIRY DATE MUST BE NUMERIC<BR/>VPLBSDE29S
+            : OFFER CAMPAIGN DESC FILE NOT OPEN<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Offer Account Enrolment Inquiry v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Loyalty & Rewards - Core
+      x-codegen-request-body-name: body
   /fv_emea/v1/offerAdd:
     post:
       tags:
@@ -28398,6 +29010,137 @@ paths:
       x-proxy-name: Payment Settings v1
       x-region:
       - EMEA
+      x-display: Payments
+      x-codegen-request-body-name: body
+  /fv_emea/v1/pddBankValidationService:
+    post:
+      tags:
+      - Payments
+      summary: PddBankValidationService
+      description: This service is used to Validate the Card Details received via
+        payments.<BR/><BR/><p>Fields that are not provided in the Request object will
+        be initialised to their default values. All numeric fields are initialised
+        to zero and alphanumeric fields initialised to spaces</p>
+      operationId: pddBankValidationService_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PddBankValidationServiceRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PddBankValidationServiceResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SBW03S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
+            MINUTES<BR/>VPL5SBW06S : REQUESTED ORGANIZATION NUMBER IS NOT FOUND<BR/>VPL5SBW09S
+            : ORGANIZATION NUMBER NOT FOUND<BR/>VPL5SBW13S : ERROR ACCESSING ORGANIZATION
+            FILE<BR/>VPL5SBW15S : FILE-TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPL5SBW17E
+            : COUNTRY CODE MUST EXIST IN THE SECURITY SUBSYSTEM<BR/>VPL5SBW50S : ROUTING
+            NUMBER NOT VALID<BR/>VPL5SBW29S : ORGANIZATION NUMBER MUST BE NUMERIC
+            AND VALID VALUES ARE 001-998<BR/>VPL5SBW54W : ACCOUNT DOES NOT SUPPORT
+            DIRECT DEBIT TRANSACTIONS<BR/>VPL5SBW55W : ACCOUNT DOES NOT SUPPORT DIRECT
+            CREDIT TRANSACTIONS<BR/>VPL5SBW56W : SORT CODE DOES NOT SUPPORT DIRECT
+            DEBIT TRANSACTIONS<BR/>VPL5SBW57W : SORT CODE DOES NOT SUPPORT DIRECT
+            CREDIT TRANSACTIONS<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: PDD Bank Validation Service v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
       x-display: Payments
       x-codegen-request-body-name: body
   /fv_emea/v1/pendingPaymentDelete:
@@ -32667,7 +33410,7 @@ paths:
             : INVALID LOCALorFOREIGN IND SPECIFIED-VALID VALUES ARE SPACE 0 OR 1<BR/>VPL5STK03E
             : ORGANIZATION IS NOT NUMERIC OR MUST BE VALUE BETWEEN 001 AND 998<BR/>VPL5STK04E
             : COPY ORG IS NOT NUMERIC OR MUST BE VALUE BETWEEN 001 AND 998<BR/>VPL5STW01W
-            : INVALID COUNTRY CODE – ISO2 CC CHAR NOT FOUND<BR/>'
+            : INVALID COUNTRY CODE � ISO2 CC CHAR NOT FOUND<BR/>'
           content:
             application/json:
               schema:
@@ -33277,12 +34020,12 @@ components:
           description: ' Max length = 1, This field will indicate that paydown processing
             is excluded on the account. When the paydown processing takes place (PD36)
             and if this flag is set then accounts will be excluded from paydown processing.
-            Valid values are: <UL><LI><EM>N –  </EM>Normal Paydown Process to be followed;
-            don’t exclude this account (default)</LI><LI><EM>Y – </EM>Opt out of Paydown
-            process; exclude this account</LI><LI><EM>C – </EM>This value will let
+            Valid values are: <UL><LI><EM>N �  </EM>Normal Paydown Process to be followed;
+            don�t exclude this account (default)</LI><LI><EM>Y � </EM>Opt out of Paydown
+            process; exclude this account</LI><LI><EM>C � </EM>This value will let
             clients offer the opt-outs from Paydown arisen due to Pandemic situations
-            like COVID-19</LI><LI><EM>O – </EM>This value will indicate that customer
-            has opted-out of paydown arrangement</LI><LI><EM>P – </EM>This value will
+            like COVID-19</LI><LI><EM>O � </EM>This value will indicate that customer
+            has opted-out of paydown arrangement</LI><LI><EM>P � </EM>This value will
             indicate that customer has opted-in for paydown arrangement</LI></UL>'
         pdPdwnStage:
           maxLength: 1
@@ -33290,15 +34033,15 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, This flag will have below values: <UL><LI><EM>0
-            – </EM>No paydown processing yet (default), 0 will also be set if account
-            is cured on PD36 cycle</LI><LI><EM>1 – </EM>Stage1 processing (PD34)</LI><LI><EM>2
-            – </EM>Stage2 processing (PD35)</LI><LI><EM>3 – </EM>Stage3 processing
-            (PD36) and paydown initiate </LI><LI><EM>4 – </EM>paydown processing complete</LI><LI><EM>5
-            – </EM>paydown processing initiated (account is out of exception) in this
-            cycle</LI><LI><EM>8 – </EM>Account is out of exclusions but was not marked
-            in Paydown due to balance below threshold amount</LI><LI><EM>9 – </EM>exception
+            � </EM>No paydown processing yet (default), 0 will also be set if account
+            is cured on PD36 cycle</LI><LI><EM>1 � </EM>Stage1 processing (PD34)</LI><LI><EM>2
+            � </EM>Stage2 processing (PD35)</LI><LI><EM>3 � </EM>Stage3 processing
+            (PD36) and paydown initiate </LI><LI><EM>4 � </EM>paydown processing complete</LI><LI><EM>5
+            � </EM>paydown processing initiated (account is out of exception) in this
+            cycle</LI><LI><EM>8 � </EM>Account is out of exclusions but was not marked
+            in Paydown due to balance below threshold amount</LI><LI><EM>9 � </EM>exception
             scenario</LI></UL>Only incremental updates from 0 to 3 are allowed. <BR>
-            However Stage can be reset to 0 from any other stage (0 – 9)'
+            However Stage can be reset to 0 from any other stage (0 � 9)'
         overlimitProximityAlert:
           maxLength: 1
           minLength: 0
@@ -33327,8 +34070,8 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Spend Cap Indicator: indicates the type of
-            spend cap alert that is active for the account.Values are: 0 – Spend cap
-            alert not active 1 – Soft cap alert is active 2 – Hard cap alert is active'
+            spend cap alert that is active for the account.Values are: 0 � Spend cap
+            alert not active 1 � Soft cap alert is active 2 � Hard cap alert is active'
         waiveMoraInterest:
           maxLength: 1
           minLength: 0
@@ -33829,6 +34572,15 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 5, Scheme Details'
+        panEncryption:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field will be used to indicate if PAN
+            encryption is to be performed for PAN field in the output response. Valid
+            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
+            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
+            the output response.</LI></UL>'
     AccountDetailInquiryResponse3:
       type: object
       properties:
@@ -35509,6 +36261,22 @@ components:
             Feature is active on Account. Valid values are  00  thru 99.  0 or 99
             -  ATM Package Feature is  not active on Account. 01 thru 98- ATM Package
             Feature is  active on Account.'
+        dmpOptOutFlag:
+          type: string
+          description: ' Max length = 1, Flag that indicates the dynamic minimum payment
+            (DMP) processing opted-out by the customer resulting in a zero DMP percentage
+            through TRIAD. If the customer has opted-out of DMP processing between
+            the statement date and DD collection date, this field allows dynamic calculation
+            of direct debits (DD)'
+        acctPmtMinAmt:
+          type: string
+          description: ' Max length = 17, Account Payment Minimum Amount.'
+        acctPrinAmtPct:
+          type: string
+          description: ' Max length = 9, Account Prinical Amount PCT'
+        dmpPmtInd:
+          type: string
+          description: ' Max length = 2, Dynamic minimum payment indicator'
         pd36Arrgmt:
           type: string
           description: ' Max length = 1, PD36 Arrangement.'
@@ -35617,10 +36385,10 @@ components:
           type: string
           description: ' Max length = 1, This Flag will identify if account has opted
             out of PD36 Paydown processing. Valid Values are: <UL><LI><EM>N-</EM>Normal
-            Paydown Process to be followed; don’t exclude this account (default)</LI><LI><EM>Y–</EM>
-            Opt out of Paydown process; exclude this account</LI><LI><EM>C–</EM>Customer
+            Paydown Process to be followed; don�t exclude this account (default)</LI><LI><EM>Y�</EM>
+            Opt out of Paydown process; exclude this account</LI><LI><EM>C�</EM>Customer
             initiated Opt-Out of Paydown Process. Account will be excluded from Paydown
-            Process without Block Code being applied.</LI><LI><EM>O–</EM>Customer
+            Process without Block Code being applied.</LI><LI><EM>O�</EM>Customer
             initiated Opt-Out of Paydown Process. Account will be excluded from Paydown
             process but Block Code will be applied on Account.</LI></UL>'
         pdwnOptOutDate:
@@ -36294,8 +37062,8 @@ components:
         spendCapInd:
           type: string
           description: ' Max length = 1, Spend Cap Indicator: indicates the type of
-            spend cap alert that is active for the account.Values are: 0 – Spend cap
-            alert not active 1 – Soft cap alert is active 2 – Hard cap alert is active'
+            spend cap alert that is active for the account.Values are: 0 � Spend cap
+            alert not active 1 � Soft cap alert is active 2 � Hard cap alert is active'
         pdJourneyInd:
           type: string
           description: ' Max length = 2, Paydown Journey Indicator. This field will
@@ -36380,9 +37148,9 @@ components:
           description: ' Max length = 1, Minimum payment calculation Indicator. This
             field indicates how percentage(actMinPercent) and amount(actMinAmount)
             fields are used in Minimum payment calculations. Valid values are <UL><LI><EM>0
-            – </EM>Not used (default)</LI><LI><EM> 1 – </EM>Fixed amount</LI><LI><EM>2
-            – </EM>Percentage of balance</LI><LI><EM>3 – </EM>Lower of fixed amount
-            or percentage of balance</LI><LI><EM>4 – </EM>greater of fixed amount
+            � </EM>Not used (default)</LI><LI><EM> 1 � </EM>Fixed amount</LI><LI><EM>2
+            � </EM>Percentage of balance</LI><LI><EM>3 � </EM>Lower of fixed amount
+            or percentage of balance</LI><LI><EM>4 � </EM>greater of fixed amount
             or percentage of balance</LI><LI><EM>9 - </EM>Percentage of Credit Limit</LI></UL>'
         ltdPmtHolidayCycleCounter:
           type: string
@@ -36801,7 +37569,7 @@ components:
         foreignUse:
           type: string
           description: ' Max length = 1, Foreign Use. This is used to indicate the
-            local or foreign.The values are: <UL><LI><EM>L – </EM>Local</LI><LI><EM>F
+            local or foreign.The values are: <UL><LI><EM>L � </EM>Local</LI><LI><EM>F
             - </EM>Foreign</LI></UL>'
         currNod:
           type: string
@@ -38070,8 +38838,8 @@ components:
         netPmtDue:
           type: string
           description: ' Max length = 17, Net payment due amount for the relationship.
-            Calculated field and is the difference between the relationship’s total
-            payment due less the relationship’s cycle-to-date payments.'
+            Calculated field and is the difference between the relationship�s total
+            payment due less the relationship�s cycle-to-date payments.'
         corpCustNbr:
           type: string
           description: ' Max length = 19, Identification number of the Customer Name/Address
@@ -38512,8 +39280,8 @@ components:
         acctType:
           type: string
           description: ' Max length = 1, Flag indicates whether an account is a Primary
-            account. Values are,<UL><LI><EM>P –<EM>Primary account</LI><LI><EM>SPACES
-            –<EM>Secondary account</LI><UL>'
+            account. Values are,<UL><LI><EM>P �<EM>Primary account</LI><LI><EM>SPACES
+            �<EM>Secondary account</LI><UL>'
         intStatus:
           type: string
           description: ' Max length = 1, Status of the account'
@@ -39343,6 +40111,12 @@ components:
         txnRefNbr:
           type: string
           description: ' Max length = 12, Transaction Reference Number'
+        digitalCardIndicator:
+          type: string
+          description: ' Max length = 1, This field will be used to identify whether
+            the authorization was a digital wallet transaction or not. Valid values
+            are: <UL><LI><EM>0 - </EM>Not digital wallet transaction.</LI><LI><EM>
+            1 - </EM>Digital wallet transaction.</LI></UL>'
     AuthorisationReversalandRequestRequest:
       required:
       - actionCode
@@ -39644,8 +40418,10 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Service Flag: field to indicate the Authorization
-            service. Valid Values are: <UL><LI>A = Authorization Request </LI><LI>R
-            = Authorization Reversal </LI><LI>C = Authorization Refund </LI></UL>'
+            service. Valid Values are: <UL><LI><EM>A - </EM> Authorization Request
+            </LI><LI><EM>R - </EM> Authorization Reversal </LI><LI><EM>C - </EM> Authorization
+            Refund </LI><LI><EM>D - </EM>Purchase via Account</LI><LI><EM>E - </EM>Reversal
+            for Purchase via Account</LI></UL>'
         actionCode:
           maxLength: 4
           minLength: 0
@@ -40237,6 +41013,127 @@ components:
       properties:
         common:
           $ref: '#/components/schemas/Header'
+    BalanceTransferInquiryRequest:
+      required:
+      - account
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        account:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, '
+        dualIndicator:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, '
+    BalanceTransferInquiryResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        currencyNod:
+          type: string
+          description: ' Max length = 1, '
+        account:
+          type: string
+          description: ' Max length = 19, The card number that identifies the Card
+            record.'
+        logo:
+          type: string
+          description: ' Max length = 3, Valid  Logo'
+        addStatus:
+          type: string
+          description: ' Max length = 2, Add Complete status of the account'
+        shortName:
+          type: string
+          description: ' Max length = 20, Account short Name'
+        intStatus:
+          type: string
+          description: ' Max length = 1, Account internal status'
+        changeOffStatus:
+          type: string
+          description: ' Max length = 1, Account Charge off status'
+        conditionOfAccount:
+          type: string
+          description: ' Max length = 1, Account condition whether Past due or delinquent'
+        blockCode1:
+          type: string
+          description: ' Max length = 1, Account Block code 1'
+        blockCode2:
+          type: string
+          description: ' Max length = 1, Account Block code'
+        billAccountIndicator:
+          type: string
+          description: ' Max length = 1, Account Billing Indicator'
+        currentBal:
+          type: string
+          description: ' Max length = 17, Account Current Balance'
+        creditLimit:
+          type: string
+          description: ' Max length = 17, Account Credit Limit'
+        pmtCycleToDate:
+          type: string
+          description: ' Max length = 17, Cycle to Date Payment Amount'
+        recencyFlag:
+          type: string
+          description: ' Max length = 1, This value indicates the number of billing
+            cycles since the last qualified payment'
+        pmtCycleDue:
+          type: string
+          description: ' Max length = 1, Account Payment cycle due flag'
+        totalAmountDue:
+          type: string
+          description: ' Max length = 17, Total Payment Due'
+        availableCredit:
+          type: string
+          description: ' Max length = 17, Account available Credit'
+        dateOpened:
+          type: string
+          description: 'Format: YYYYMMDD. Account Open date'
+        datePmtDue:
+          type: string
+          description: 'Format: YYYYMMDD. Payment Due Date'
+        makerDob:
+          type: string
+          description: ' Max length = 8, Maker date of birth'
+        tradeEffectiveDate:
+          type: string
+          description: 'Format: YYYYMMDD. Transfer Effective Date'
+        dtCardExpr:
+          type: string
+          description: 'Format: YYYYMMDD. Expiry Date  of whatever Card number entered
+            as Input'
+        daysDelinquencyInquiry:
+          type: string
+          description: ' Max length = 3, Account Payment delinquency  Days'
+        moneyXFRRestrict:
+          type: string
+          description: ' Max length = 1, Code that indicates Saver Eligibility Amount
+            will be calculated or not. The Values are Y and N.'
+        moneyXFRRestrictAmt:
+          type: string
+          description: ' Max length = 9, Based on the Saver Eligibility Parameter
+            the amount field will be calculated based on the above mentioned logic.'
+        cardBlock:
+          type: string
+          description: ' Max length = 1, Block code of whatever Card number entered
+            as Input'
+        cardName:
+          type: string
+          description: ' Max length = 26, Card Name  of whatever Card number entered
+            as Input'
+        naData:
+          type: array
+          description: comaker indicator<p>  This is a list of size 2 elements.
+          items:
+            $ref: '#/components/schemas/NaDataForBalanceTransferInquiry1'
+        dtLTAddrChange:
+          type: string
+          description: 'Format: YYYYMMDD. address change date'
     BalanceUpdateRequest:
       required:
       - account
@@ -41644,7 +42541,7 @@ components:
         logo:
           type: string
           description: ' Max length = 3, Identification number of the logo associated
-            with the card. The values are 001–998.'
+            with the card. The values are 001�998.'
         cardNbr:
           type: string
           description: ' Max length = 19, The card number that identifies the card
@@ -41682,9 +42579,9 @@ components:
             This system generated value applies only to Card records in the local
             organization; this value does not appear on an Card record in a foreign
             organization. </LI><LI><EM>A- </EM>Plastic request because an additional
-            cardholder has been added to an existing account</LI><LI><EM>R–</EM>Random
+            cardholder has been added to an existing account</LI><LI><EM>R�</EM>Random
             PIN mailer request, where the cardholder has requested a new PIN because
-            the old one has become compromised</LI><LI><EM>L –</EM>New plastic request
+            the old one has become compromised</LI><LI><EM>L �</EM>New plastic request
             because the old card has been lost or stolen</LI><LI><EM>B - </EM>Replacement
             card(s) with PIN Mailer</LI></UL>'
         postNbr:
@@ -41731,55 +42628,55 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether POS transactions
             have been restricted on the card or not.Valid values are<UL><LI></EM>0
-            – </EM>Card has no POS restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all POS transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            POS transactions restricted</LI><LI><EM>3 – </EM>Card has international
+            � </EM>Card has no POS restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all POS transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            POS transactions restricted</LI><LI><EM>3 � </EM>Card has international
             POS transactions restricted</LI></UL>'
         atmRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether ATM transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no ATM restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all ATM transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            ATM transactions restricted</LI><LI>3 – </EM>Card has international ATM
+            � </EM>Card has no ATM restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all ATM transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            ATM transactions restricted</LI><LI>3 � </EM>Card has international ATM
             transactions restricted</LI></UL>'
         ecommRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether e-commerce transactions
             have been restricted on the card or not. Valid values are<UL><LI><EM>0
-            – </EM>Card has no e-commerce restrictions (Default)</LI><LI><EM>1 – </EM>Card
-            has all e-commerce transactions restricted</LI><LI><EM>2 – </EM>Card has
-            domestic e-commerce transactions restricted </LI><LI><EM>3 – </EM>Card
+            � </EM>Card has no e-commerce restrictions (Default)</LI><LI><EM>1 � </EM>Card
+            has all e-commerce transactions restricted</LI><LI><EM>2 � </EM>Card has
+            domestic e-commerce transactions restricted </LI><LI><EM>3 � </EM>Card
             has international e-commerce transactions restricted</LI></UL>'
         motoRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether MOTO transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no MOTO restrictions(Default)</LI><LI><EM>1 –</EM>Card
-            has all MOTO transactions restricted</LI><LI><EM>2 – </EM>Card has domestic
-            MOTO transactions restricted</LI><LI><EM>3 –</EM>Card has international
+            � </EM>Card has no MOTO restrictions(Default)</LI><LI><EM>1 �</EM>Card
+            has all MOTO transactions restricted</LI><LI><EM>2 � </EM>Card has domestic
+            MOTO transactions restricted</LI><LI><EM>3 �</EM>Card has international
             MOTO transactions restricted</LI></UL>'
         ctlsRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether CONTACTLESS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no CONTACTLESS restrictions (Default)</LI><LI><EM>1 –
-            <EM>Card has all CONTACTLESS transactions restricted</LI><LI><EM>2 –</EM>Card
-            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 –</EM>Card
+            � </EM>Card has no CONTACTLESS restrictions (Default)</LI><LI><EM>1 �
+            <EM>Card has all CONTACTLESS transactions restricted</LI><LI><EM>2 �</EM>Card
+            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 �</EM>Card
             has international CONTACTLESS transactions restricted</LI></UL>'
         ovrsRestrictFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             overseas POS and ATM authorizations are restricted on the cards or not.Valid
-            values are <UL><LI><EM>0 – </EM>Card has no overseas POS and ATM authorization
-            restrictions (Default)</LI><LI><EM>1 –</EM>Card has overseas POS and ATM
+            values are <UL><LI><EM>0 � </EM>Card has no overseas POS and ATM authorization
+            restrictions (Default)</LI><LI><EM>1 �</EM>Card has overseas POS and ATM
             authorizations restricted</LI>'
         restrictAllFlag:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             authorizations are restricted on the card or not.Valid values are<UL><LI><EM>0
-            – </EM>Card has no all authorization restrictions (Default)</LI><LI><EM>1
-            – </EM>Card has all authorizations restricted</LI></UL>'
+            � </EM>Card has no all authorization restrictions (Default)</LI><LI><EM>1
+            � </EM>Card has all authorizations restricted</LI></UL>'
         rtlAmtLimitDom:
           type: string
           description: ' Max length = 17, Maximum amount in monetary units and subunits
@@ -42217,9 +43114,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether POS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no POS restrictions (Default).</LI><LI><EM>1 – </EM>Card
-            has all POS transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            POS transactions restricted.</LI><LI><EM>3 –</EM> Card has international
+            �</EM> Card has no POS restrictions (Default).</LI><LI><EM>1 � </EM>Card
+            has all POS transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            POS transactions restricted.</LI><LI><EM>3 �</EM> Card has international
             POS transactions restricted</LI></UL>'
         atmRestrictFlag:
           maxLength: 1
@@ -42228,9 +43125,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether ATM transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no ATM restrictions (Default).</LI><LI><EM>1 – </EM>Card
-            has all ATM transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            ATM transactions restricted.</LI><LI><EM>3 –</EM> Card has international
+            �</EM> Card has no ATM restrictions (Default).</LI><LI><EM>1 � </EM>Card
+            has all ATM transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            ATM transactions restricted.</LI><LI><EM>3 �</EM> Card has international
             ATM transactions restricted</LI></UL>'
         ecommRestrictFlag:
           maxLength: 1
@@ -42238,10 +43135,10 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Flag to indicate whether e-commerce transactions
-            are restricted on the card or not.<UL><LI><EM>0 –</EM> Card has no e-commerce
-            restrictions (Default).</LI><LI><EM>1 –</EM> Card has all e-commerce transactions
-            restricted.</LI><LI><EM>2 –</EM> Card has domestic e-commerce transactions
-            restricted.</LI><LI><EM>3 –</EM>Card has international e-commerce transactions
+            are restricted on the card or not.<UL><LI><EM>0 �</EM> Card has no e-commerce
+            restrictions (Default).</LI><LI><EM>1 �</EM> Card has all e-commerce transactions
+            restricted.</LI><LI><EM>2 �</EM> Card has domestic e-commerce transactions
+            restricted.</LI><LI><EM>3 �</EM>Card has international e-commerce transactions
             restricted.</LI></UL>'
         motoRestrictFlag:
           maxLength: 1
@@ -42250,9 +43147,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether MOTO transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no MOTO restrictions (Default)</LI><LI><EM>1 –</EM>Card
-            has all MOTO transactions restricted</LI><LI><EM>2 –</EM>Card has domestic
-            MOTO transactions restricted</LI><LI><EM>3 –</EM>Card has international
+            �</EM> Card has no MOTO restrictions (Default)</LI><LI><EM>1 �</EM>Card
+            has all MOTO transactions restricted</LI><LI><EM>2 �</EM>Card has domestic
+            MOTO transactions restricted</LI><LI><EM>3 �</EM>Card has international
             MOTO transactions restricted</LI></UL>'
         ovrsRestrictFlag:
           maxLength: 1
@@ -42261,8 +43158,8 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             overseas POS and ATM authorizations are restricted on the cards or not.Valid
-            values are<UL><LI><EM>0 –</EM>Card has no overseas POS and ATM authorization
-            restrictions (Default).</LI><LI><EM>1 –</EM>Card has overseas POS and
+            values are<UL><LI><EM>0 �</EM>Card has no overseas POS and ATM authorization
+            restrictions (Default).</LI><LI><EM>1 �</EM>Card has overseas POS and
             ATM authorizations restricted</LI></UL>'
         ctlsRestrictFlag:
           maxLength: 1
@@ -42271,9 +43168,9 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether CONTACTLESS transactions
             have been restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM>Card has no CONTACTLESS restrictions (Default).</LI><LI><EM>1 –
-            </EM>Card has all CONTACTLESS transactions restricted</LI><LI>2 –</EM>Card
-            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 –</EM>Card
+            �</EM>Card has no CONTACTLESS restrictions (Default).</LI><LI><EM>1 �
+            </EM>Card has all CONTACTLESS transactions restricted</LI><LI>2 �</EM>Card
+            has domestic CONTACTLESS transactions restricted</LI><LI><EM>3 �</EM>Card
             has international CONTACTLESS transactions restricted</LI></UL>'
         restrictAllFlag:
           maxLength: 1
@@ -42282,8 +43179,8 @@ components:
           type: string
           description: ' Max length = 1, Flag to indicate whether all types of monetary
             authorizations are restricted on the card or not.Valid values are<UL><LI><EM>0
-            –</EM> Card has no all authorization restrictions (Default)</LI><LI><EM>1
-            –</EM> Card has all authorizations restricted</LI></UL>'
+            �</EM> Card has no all authorization restrictions (Default)</LI><LI><EM>1
+            �</EM> Card has all authorizations restricted</LI></UL>'
         restrictStartDate:
           type: string
           description: 'Format: YYYYMMDD. Usage Restrict Start Date . The date from
@@ -42787,6 +43684,15 @@ components:
             indicates whether to display the PIN block change audit trail or not.
             The values are: <UL><LI><EM>0 - </EM>No Display</LI><LI><EM>1 - </EM>Display
             the PIN block change audit trail</LI></UL>'
+        panEncryption:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field will be used to indicate if PAN
+            encryption is to be performed for PAN field in the output response. Valid
+            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
+            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
+            the output response.</LI></UL>'
     CardInquiryResponse:
       type: object
       properties:
@@ -43871,7 +44777,7 @@ components:
         postCdRstrict:
           type: string
           description: ' Max length = 1, Code that indicates whether smart card contactless
-            issuance is restricted for the card based on the customer’s postal code.
+            issuance is restricted for the card based on the customer�s postal code.
             Valid values are: <UL><LI>0 = No post code restriction check has been
             performed. This value can be set manually or systematically. (Default)
             </LI><LI>1 = Post code restriction. Not eligible for smart card contactless
@@ -43895,7 +44801,7 @@ components:
           description: ' Max length = 1, Indicator for Card usage in Promo Upgrade.
             Valid values are: <UL><LI><EM>SPACES -</EM>Card is not used in Promo upgrade
             process (Default value)</LI><LI><EM>O -</EM>Card is used in Promo upgrade
-            process and it’s an old card on which new promo card is issued to customer</LI><LI><EM>N
+            process and it�s an old card on which new promo card is issued to customer</LI><LI><EM>N
             -</EM>Card is used in Promo upgrade process and its new Promo card issued
             to customer</LI></UL>'
         contactlessRestrictLogo:
@@ -43924,10 +44830,10 @@ components:
             (or) spending limit for International contactless card.'
         vendorId:
           type: string
-          description: ' Max length = 2, Code that indicates the ‘Card vendor’ file
+          description: ' Max length = 2, Code that indicates the �Card vendor� file
             number into which the Card data record will be extracted. The values are:
-            <UL><LI><EM> 0 =</EM> ‘Card vendor’ based split not supported.  </LI><LI><EM>1-5
-            =</EM> ‘Card vendor’ file number into which the Card data record will
+            <UL><LI><EM> 0 =</EM> �Card vendor� based split not supported.  </LI><LI><EM>1-5
+            =</EM> �Card vendor� file number into which the Card data record will
             be extracted. </LI></UL>'
         currentTransactionEnrichmentOption:
           type: string
@@ -43986,6 +44892,34 @@ components:
             waiting for customer consent for card activation or card renewal.</LI><LI><EM>4
             - </EM>Customer provided positive consent for card renewal. </LI><LI><EM>5
             - </EM>Customer provided negative consent for card renewal</LI></UL>'
+        maxInternationalRetailTransaction:
+          type: string
+          description: ' Max length = 9, Maximum Number of Transactions International(Retail
+            Transactions)'
+        atmCashLimitInternational:
+          type: string
+          description: ' Max length = 17, ATM Cash Limit International'
+        singleTransactionLimitInternational:
+          type: string
+          description: ' Max length = 17, Single Transaction Limit International'
+        singleTransactionAtmLimitInternational:
+          type: string
+          description: ' Max length = 17, Single Transaction ATM Limit International'
+        additionalFrequency:
+          type: string
+          description: ' Max length = 1, Additional Frequency'
+        wtdAtmCashAmt:
+          type: string
+          description: ' Max length = 17, Weekly ATM Cash amount'
+        wtdOtcCashAmt:
+          type: string
+          description: ' Max length = 17, Weekly OTC Cash amount'
+        tempCashLimitAmt:
+          type: string
+          description: ' Max length = 17, Temporary cash limit'
+        tempCashLimitExpiry:
+          type: string
+          description: 'Format: YYYYMMDD. Temporary cash expiry date'
     CardLostAndStolenServiceRequest:
       required:
       - blockCode
@@ -48178,7 +49112,7 @@ components:
           type: string
           description: ' Max length = 2, Billing cycle for the relationship.The billing
             cycle defaults to each subordinate account within the relationship (CYCLE
-            on ARMB01). The validvalues are 01–31.When the billing cycle is changed
+            on ARMB01). The validvalues are 01�31.When the billing cycle is changed
             for the relationship, it defaults to each subordinate account. CMS automatically
             adjusts the next statement date of the account accordingly'
         rmbillinglvl:
@@ -48186,63 +49120,63 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values<UL><LI><EM>0 –</EM> BILL-RELATIONSHIP</LI><LI><EM>1
-            –</EL>BILL-ACCOUNTS</LI><LI><EM>2 –</EL> BILL-COMBINED</LI></UL>'
+          description: ' Max length = 1, Valid values<UL><LI><EM>0 �</EM> BILL-RELATIONSHIP</LI><LI><EM>1
+            �</EL>BILL-ACCOUNTS</LI><LI><EM>2 �</EL> BILL-COMBINED</LI></UL>'
         rmBillModFlag:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values<UL><LI><EM>0 –</EM>BILL-SUB-ALLOWED</LI><LI>1
-            –</EM> BILL-SUB-NOT-ALLOWED</LI></UL>'
+          description: ' Max length = 1, Valid values<UL><LI><EM>0 �</EM>BILL-SUB-ALLOWED</LI><LI>1
+            �</EM> BILL-SUB-NOT-ALLOWED</LI></UL>'
         rmPosAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values : <UL><LI><EM>0 – </EM>POS-NOT-REST</LI><LI><EM>1
-            –</EM>POS-REST-ACCT</LI><LI><EM>2 –</EM>POS-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>POS-REST-ACT-INT</LI><LI><EM>4 – </EM>POS-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values : <UL><LI><EM>0 � </EM>POS-NOT-REST</LI><LI><EM>1
+            �</EM>POS-REST-ACCT</LI><LI><EM>2 �</EM>POS-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>POS-REST-ACT-INT</LI><LI><EM>4 � </EM>POS-REST-REL</LI></UL>'
         rmEcomAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM>ECOM-NOT-REST</LI><LI><EM>1
-            –</EM> ECOM-REST-ACCT</LI><LI><EM>2 –</EM> ECOM-REST-ACT-DOM</LI><LI><EM>3
-            –</EM> ECOM-REST-ACT-INT</LI><LI><EM>4 –</EM> ECOM-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM>ECOM-NOT-REST</LI><LI><EM>1
+            �</EM> ECOM-REST-ACCT</LI><LI><EM>2 �</EM> ECOM-REST-ACT-DOM</LI><LI><EM>3
+            �</EM> ECOM-REST-ACT-INT</LI><LI><EM>4 �</EM> ECOM-REST-REL</LI></UL>'
         rmMotoSIAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM> MOTO-SI-NOT-REST</LI><LI><EM>
-            1 –</EM>MOTO-SI-REST-ACCT</LI><LI><EM> 2 –</EM> MOTO-SI-REST-ACT-DOM</LI><LI><EM>
-            3 –</EM> MOTO-SI-REST-ACT-INT</LI><LI><EM> 4 –</EM> MOTO-SI-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 �</EM> MOTO-SI-NOT-REST</LI><LI><EM>
+            1 �</EM>MOTO-SI-REST-ACCT</LI><LI><EM> 2 �</EM> MOTO-SI-REST-ACT-DOM</LI><LI><EM>
+            3 �</EM> MOTO-SI-REST-ACT-INT</LI><LI><EM> 4 �</EM> MOTO-SI-REST-REL</LI></UL>'
         rmAuthTextMsgSw:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM> AUTH-TEXT-MSG-OFF</LI><LI><EM>1
-            –</EM> AUTH-TEXT-MSG-SMS</LI><LI><EM>2 –</EM> AUTH-TEXT-MSG-EMAIL</LI><LI><EM>3
-            –</EM> AUTH-TEXT-MSG-BOTH</LI><LI><EM>9 –</EM> AUTH-TEXT-MSG-REST-ALL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM> AUTH-TEXT-MSG-OFF</LI><LI><EM>1
+            �</EM> AUTH-TEXT-MSG-SMS</LI><LI><EM>2 �</EM> AUTH-TEXT-MSG-EMAIL</LI><LI><EM>3
+            �</EM> AUTH-TEXT-MSG-BOTH</LI><LI><EM>9 �</EM> AUTH-TEXT-MSG-REST-ALL</LI></UL>'
         rmAtmAuthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM>0 –</EM>CTLS-NOT-REST</LI><LI><EM>1
-            –</EM>CTLS-REST-ACCT</LI><LI><EM>2 –</EM>CTLS-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>CTLS-REST-ACT-INT</LI><LI><EM>4 –</EM>CTLS-REST-REL</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM>0 �</EM>CTLS-NOT-REST</LI><LI><EM>1
+            �</EM>CTLS-REST-ACCT</LI><LI><EM>2 �</EM>CTLS-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>CTLS-REST-ACT-INT</LI><LI><EM>4 �</EM>CTLS-REST-REL</LI></UL>'
         rmctlsauthInd:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM>  ATM-NOT-REST</LI><LI><EM>1
-            –</EM>  ATM-REST-ACCT</LI><LI><EM>2 –</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
-            –</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 –</EM>  ATM-REST-DEF-VALID</LI></UL>'
+          description: ' Max length = 1, Valid values :<UL><LI><EM> 0 �</EM>  ATM-NOT-REST</LI><LI><EM>1
+            �</EM>  ATM-REST-ACCT</LI><LI><EM>2 �</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
+            �</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 �</EM>  ATM-REST-DEF-VALID</LI></UL>'
         accountOrganization:
           maxLength: 3
           minLength: 0
@@ -50718,6 +51652,23 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 16, SLF SEL PIN BLOCK'
+        maxInternationalRetailTransaction:
+          pattern: ^(-)?[0-9]{1,9}$
+          type: string
+          description: ' Max length = 9, Maximum Number of Transactions International(Retail
+            Transactions)'
+        atmCashLimitInternational:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, ATM Cash Limit International'
+        singleTransactionLimitInternational:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, Single Transaction Limit Internationa'
+        singleTransactionAtmLimitInternational:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, Single Transaction ATM Limit International'
         edTotalCashAmt:
           pattern: ^(-)?[0-9]{1,17}$
           type: string
@@ -55055,7 +56006,7 @@ components:
         currFirstUsageFlag:
           type: string
           description: ' Max length = 1, This filed determine whether the card is
-            activated or not.Valid Values:<UL><LI><EM>‘Y‘ -<EM> Card activation required</LI><LI>‘N‘
+            activated or not.Valid Values:<UL><LI><EM>�Y� -<EM> Card activation required</LI><LI>�N�
             -<EM>Card activation not required</LI></UL>'
         priorFirstUsageFlag:
           type: string
@@ -56130,8 +57081,6 @@ components:
     EppValidationRequest:
       required:
       - account
-      - cardNbr
-      - cardSeq
       - eppPlanNbr
       - planNbr
       - txnAmt
@@ -57443,9 +58392,9 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Valid values are: <UL><LI><EM>C – </EM>Plan
-            Cancel</LI><LI><EM>R – </EM>Plan Cancel Reversal</LI><LI><EM>A – </EM>Plan
-            Add</LI><LI><EM>O – </EM>Plan Add Online</LI></UL> Front-end interface
+          description: ' Max length = 1, Valid values are: <UL><LI><EM>C � </EM>Plan
+            Cancel</LI><LI><EM>R � </EM>Plan Cancel Reversal</LI><LI><EM>A � </EM>Plan
+            Add</LI><LI><EM>O � </EM>Plan Add Online</LI></UL> Front-end interface
             system calling service will populate this field from the previous output
             message when more data that meet the search criteria is available.'
         acct:
@@ -57994,14 +58943,26 @@ components:
           format: int32
         errorCode:
           type: string
-          description: This field contains Error Code assigned to the error Scenario.
-            Example FS000001, FS000002
+          description: This field contains Error Code assigned to the error Scenario,
+            copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.RFDC", length:"2",
+            eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
+          example: FS000001
         resultCode:
           type: string
           description: This field contains result Code assigned for this result
         message:
           type: string
           description: This field contains description of the Error occurred
+        cause:
+          type: string
+          description: This field contains the error cause, copyBookList = [{copybook:"MCATDSHB",
+            fields:[{name:"&T.EXRSN", length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
+        odsMessages:
+          type: array
+          description: This field contains list of backend Errors that has occurred
+          items:
+            type: object
+            properties: {}
       xml:
         name: details
     FsPgmBalX3ForAccountDetailInquiry3:
@@ -58092,31 +59053,83 @@ components:
       properties:
         user:
           type: string
-          description: Setting this value will assign to user
+          description: Setting this value will assign OCS user id for internal ODS
+            Calls for auditing.
+        agent:
+          type: string
+          description: Agent, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-ACCT-LVL-3",
+            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-AGENT-NR",
+            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.AGENT",
+            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.AGENT",
+            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
+          example: "4000"
         cycle:
           type: string
-          description: Setting this value will assign to cycle
-        clientName:
-          type: string
-          description: Setting this value will assign to clientName
+          description: Setting this value will assign cycle destination for backend
+            system, copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.CYCLE",
+            length:"1", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CENTER",
+            length:"1", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
+          example: '"T"'
         clientNumber:
           type: string
-          description: Setting this value will assign to clientNumber
+          description: Client Number, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-CLIENT-ID",
+            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-CLIENT-NR",
+            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.CLIENT",
+            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CLIENT",
+            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
+          example: "1000"
+        system:
+          type: string
+          description: A client often has more than one Billing System/Prin.  A client
+            uses Billing System/Prins to segregate their expenses on their General
+            Ledger for accounting purposes.System, copyBookList = [{copybook:"CCNDPUBS",
+            fields:[{name:"'PMXDS'-RI-ACCT-LVL-1", length:"4", eventTypes:[""]}]},
+            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-SYSTEM-NR", length:"4", eventTypes:["TOKEN"]}]},
+            {copybook:"MCATDSHB", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]},
+            {copybook:"MCPIPDAT", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]}],
+            eventTypeList:["ALL"]
+          example: "2000"
+        prin:
+          type: string
+          description: A client often has more than one Billing System/Prin.  A client
+            uses Billing System/Prins to segregate their expenses on their General
+            Ledger for accounting purposes.Principal, copyBookList = [{copybook:"CCNDPUBS",
+            fields:[{name:"'PMXDS'-RI-ACCT-LVL-2", length:"4", eventTypes:[""]}]},
+            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-PRIN-NR", length:"4", eventTypes:["TOKEN"]}]},
+            {copybook:"MCATDSHB", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]},
+            {copybook:"MCPIPDAT", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]}],
+            eventTypeList:["ALL"]
+          example: "3000"
         debug:
           type: boolean
-          description: Setting this value to true will return additional error details,
-            if they exist.
+          description: Setting this value to false will disable additional error details
+            from backend calls.
           default: false
         org:
           type: string
-          description: Setting this value will assign to the org.
+          description: Setting this value will assign to the organization identifier.
         processor:
           type: boolean
-          description: Setting this value to true will return processor information.
-            Default=false
+          description: Setting this value to true will return processor information
+            on the response. Defaults to false
           default: false
         contentType:
           type: string
+        retry:
+          type: integer
+          description: The retry count for the same request sent to First Data. This
+            is used for internal resubmission tracking.
+          format: int64
+        timeout:
+          type: integer
+          description: How long the request should be tried before timing out.
+          format: int64
+        siteId:
+          type: string
+          description: 'This field will be used by the service to determine the First
+            Track, First Dispute, Fraud Detection Work Center destination. Site Id
+            will be provided by these applications to the calling applications '
+          example: '"4201"'
     Hist3ForAccountDetailInquiry3:
       type: object
       properties:
@@ -58692,7 +59705,7 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Function Code. Valid Values : I – Conversion  R
+          description: ' Max length = 1, Function Code. Valid Values : I � Conversion  R
             - Reversal'
         acctNbr:
           maxLength: 19
@@ -59285,7 +60298,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Instalment Computation Mode. Must be either
-            ‘O’ or ‘S’ representing the Instalment option computation mode or the
+            �O� or �S� representing the Instalment option computation mode or the
             instalment schedule computation mode.'
     InstalmentSimulateResponse:
       type: object
@@ -59375,7 +60388,7 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Function Code. Valid Values : I – Conversion  R
+          description: ' Max length = 1, Function Code. Valid Values : I � Conversion  R
             - Reversal'
         acctNbr:
           maxLength: 19
@@ -60290,6 +61303,134 @@ components:
           description: ' Max length = 1, Block Code Authorization Action: Single digit
             code which defines the Fraud Auth Action, which is part of block code
             matrix.'
+    LetterData:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: Account Number for which letter data is being returned
+        letterDate:
+          type: string
+          description: Date on which this letter was generated, format ddMMyyyy.
+        letterId:
+          type: string
+          description: Identifier for the letter
+        letterDescription:
+          type: string
+          description: Short Description about the letter
+    LetterDocumentRequest:
+      required:
+      - pdfFileName
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        pdfFileName:
+          pattern: ^[a-zA-Z0-9\._-]+$
+          type: string
+          description: This pdf file name should be the values received as response
+            of v1/letterPdfDocsList
+    LetterDocumentUrlRequest:
+      required:
+      - accountNumber
+      - letterDate
+      - letterId
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        accountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: FirstVision Account number of the card holder.
+        letterDate:
+          maxLength: 8
+          minLength: 8
+          type: string
+          description: This is the Date for which the PDF letter is requested in ddMMyyyy
+            format .
+        letterId:
+          type: string
+          description: letterId of the letter being requested
+    LetterDocumentUrlResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        urlCount:
+          type: integer
+          description: Number of URLs
+          format: int32
+        urlList:
+          type: array
+          description: There may be between 1 and 10, the precise number being indicated
+            by urlCount
+          items:
+            type: string
+    LetterListRequest:
+      required:
+      - accountNumber
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        accountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: FirstVision Account number of the card holder.
+    LetterListResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        numberOfLetters:
+          type: integer
+          description: Number of Letters
+          format: int32
+        letterList:
+          type: array
+          items:
+            $ref: '#/components/schemas/LetterData'
+    LetterPdfDocumentListRequest:
+      required:
+      - accountNumber
+      - letterDate
+      - letterId
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        accountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: FirstVision Account number of the card holder.
+        letterDate:
+          maxLength: 8
+          minLength: 8
+          type: string
+          description: This is the Date for which the PDF letter is requested in ddMMyyyy
+            format .
+        letterId:
+          type: string
+          description: letterId of the letter being requested
+    LetterPdfDocumentListResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        docCount:
+          type: integer
+          description: Number of letter documents
+          format: int32
+        docList:
+          type: array
+          description: There may be between 1 and 10, the precise number being indicated
+            by docCount
+          items:
+            type: string
     LetterRequestRequest2:
       type: object
       properties:
@@ -60997,7 +62138,8 @@ components:
           pattern: ^(-)?[0-9]{1,17}$
           type: string
           description: ' Max length = 17, Amount of the fixed payment defined for
-            this Credit Plan Segment record.'
+            this Credit Plan Segment record. This field should have some value in
+            case a Loan Plan''s EPP STATUS = 4 (EPP Plan balance in effect).'
         pmtFlag:
           maxLength: 1
           minLength: 0
@@ -62673,6 +63815,24 @@ components:
           type: string
           description: ' Max length = 3, Currency Code at Org Level: ISO currency
             code that identifies the unit of currency for this account.'
+        nbrMthDataOccur:
+          type: string
+          description: ' Max length = 2, Number of occurances for monthly cashback
+            group.'
+        monthlyCashbackGroup:
+          type: array
+          description: Monthly cashback group.<p>  This is a list of size 12 elements.
+          items:
+            $ref: '#/components/schemas/MonthlyCashbackGroup2ForLoyaltyAccountInquiry2'
+        acctOpenAnniDate:
+          type: string
+          description: 'Format: YYYYMMDD. Account open anniversary date.'
+        atdDisbCashback:
+          type: string
+          description: ' Max length = 17, Account open anniversary to date cashback.'
+        atdSpendAmt:
+          type: string
+          description: ' Max length = 17, Account open anniversary to date spend amount.'
     LoyaltyBlockCodeUpdateRequest:
       required:
       - account
@@ -65548,6 +66708,15 @@ components:
         openToBuy:
           type: string
           description: ' Max length = 17, OPEN TO BUY'
+    MonthlyCashbackGroup2ForLoyaltyAccountInquiry2:
+      type: object
+      properties:
+        disbAmt:
+          type: string
+          description: ' Max length = 17, Monthly cashback amount.'
+        disbMthDt:
+          type: string
+          description: 'Format: YYYYMMDD. Month and year in which cashback was disbursed.'
     MoveFundsRequest:
       required:
       - dblAmount
@@ -66005,6 +67174,30 @@ components:
           type: string
           description: ' Max length = 3, City portion of the mailing address for cards
             and PIN mailers.'
+    NaDataForBalanceTransferInquiry1:
+      type: object
+      properties:
+        homePhone:
+          type: string
+          description: ' Max length = 20, Cardholder home phone number'
+        empPhone:
+          type: string
+          description: ' Max length = 20, Cardholder employer phone number'
+        mobilePhone:
+          type: string
+          description: ' Max length = 20, Cardholder mobile number'
+        postalCode:
+          type: string
+          description: ' Max length = 10, Cardholder postel code'
+        addrLine1:
+          type: string
+          description: ' Max length = 40, Cardholder address line1'
+        addrLine2:
+          type: string
+          description: ' Max length = 40, Cardholder address line2'
+        naHouseNbr:
+          type: string
+          description: ' Max length = 20, Cardholder  house number'
     NaDataForRelationshiptoAccountInquiry1:
       type: object
       properties:
@@ -66393,6 +67586,267 @@ components:
             response. For both reactive (NodeJS, RxNetty) or blocking (Spring, Jersey)
             systems this should be the time when Server composed the response.'
       description: ' The Send_Notification V3 contract requires a Header in the response.'
+    OfferAccountEnrolmentInquiryRequest:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        acctNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Account Number'
+        beginOffer:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Begin Offer'
+        enrollmentAction:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Enrollment Action'
+        offerStatus:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Offer Status'
+        enrollStatus:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Enrollment Status'
+        type:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: ' Max length = 2, Type'
+        expiryDate:
+          type: string
+          description: 'Format: YYYYMMDD. Expiry Date'
+        svcFuncCode:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Function Code'
+        svcStartOrg:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Starting ORG'
+        svcStartAcctNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Starting Account Number'
+        svcStartOfferId:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Starting Offer ID'
+        svcStartPriority:
+          maxLength: 5
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 5, Starting Priority'
+        prioritySeq:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Priority Sequence'
+        userGenericFields:
+          type: array
+          description: User Generic Field Group<p>  This is a list of size 5 elements.
+          items:
+            $ref: '#/components/schemas/UserGenericFieldsForOfferAccountEnrolmentInquiry1'
+        resvCode1:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User Code 1'
+        resvCode2:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User Code 2'
+        resvCode3:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User Code 3'
+        resvCode4:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User Code 4'
+        resvCode5:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User Code 5'
+        resvDate1:
+          maxLength: 7
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 7, User Date 1'
+        resvDate2:
+          maxLength: 7
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 7, User Date 2'
+        resvDate3:
+          maxLength: 7
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 7, User Date 3'
+        resvDate4:
+          maxLength: 7
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 7, User Date 4'
+        resvDate5:
+          maxLength: 7
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 7, User Date 5'
+        resvAmt1:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 1'
+        resvAmt2:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 2'
+        resvAmt3:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 3'
+        resvAmt4:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 4'
+        resvAmt5:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 5'
+    OfferAccountEnrolmentInquiryResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        acctNbr:
+          type: string
+          description: ' Max length = 19, Account Number'
+        beginOffer:
+          type: string
+          description: ' Max length = 10, Begin Offer'
+        enrollmentAction:
+          type: string
+          description: ' Max length = 1, Enrollment Action'
+        offerStatus:
+          type: string
+          description: ' Max length = 1, Offer Status'
+        enrollStatus:
+          type: string
+          description: ' Max length = 1, Enrollment Status'
+        svcMore:
+          type: string
+          description: ' Max length = 1, Service More'
+        svcRecsNum:
+          type: string
+          description: ' Max length = 2, Service Record Number'
+        currencyNod:
+          type: string
+          description: ' Max length = 1, Currency Node'
+        currencyCode:
+          type: string
+          description: ' Max length = 3, Currency Code'
+        offersTable:
+          type: array
+          description: Offer Table<p>  This is a list of size 15 elements.
+          items:
+            $ref: '#/components/schemas/OffersTableForOfferAccountEnrolmentInquiry1'
+        userGenericFields:
+          type: array
+          description: User Generic Fields<p>  This is a list of size 5 elements.
+          items:
+            $ref: '#/components/schemas/UserGenericFieldsForOfferAccountEnrolmentInquiry1'
+        svcFwdOfferId:
+          type: string
+          description: ' Max length = 10, Forward Offer ID'
+        svcBackOfferId:
+          type: string
+          description: ' Max length = 10, Backward Offer ID'
+        svcFwdPriority:
+          type: string
+          description: ' Max length = 5, Forward Priority'
+        svcBackPriority:
+          type: string
+          description: ' Max length = 5, Backward Priority'
+        svcStartOrg:
+          type: string
+          description: ' Max length = 3, Starting ORG'
+        svcStartAcctNbr:
+          type: string
+          description: ' Max length = 19, Staring Account Number'
+        svcStartOfferId:
+          type: string
+          description: ' Max length = 10, Staring Offer ID'
+        svcStartPriority:
+          type: string
+          description: ' Max length = 5, Staring Priority'
+        resvCode1:
+          type: string
+          description: ' Max length = 20, User Code 1'
+        resvCode2:
+          type: string
+          description: ' Max length = 20, User Code 2'
+        resvCode3:
+          type: string
+          description: ' Max length = 20, User Code 3'
+        resvCode4:
+          type: string
+          description: ' Max length = 20, User Code 4'
+        resvCode5:
+          type: string
+          description: ' Max length = 20, User Code 5'
+        resvDate1:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 1'
+        resvDate2:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 2'
+        resvDate3:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 3'
+        resvDate4:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 4'
+        resvDate5:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 5'
+        resvAmt1:
+          type: string
+          description: ' Max length = 17, User Amount 1'
+        resvAmt2:
+          type: string
+          description: ' Max length = 17, User Amount 2'
+        resvAmt3:
+          type: string
+          description: ' Max length = 17, User Amount 3'
+        resvAmt4:
+          type: string
+          description: ' Max length = 17, User Amount 4'
+        resvAmt5:
+          type: string
+          description: ' Max length = 17, User Amount 5'
     OfferAddRequest:
       required:
       - acctCardNbr
@@ -66907,6 +68361,113 @@ components:
           type: string
           description: ' Max length = 1, Status of the Offer Enrollment record. The
             values are: 0 = Add pending 1 = Add complete'
+    OffersTableForOfferAccountEnrolmentInquiry1:
+      type: object
+      properties:
+        tblOfferId:
+          type: string
+          description: ' Max length = 10, Offer ID'
+        tblCampaignCode:
+          type: string
+          description: ' Max length = 10, Campaign Code'
+        tblOfferStatus:
+          type: string
+          description: ' Max length = 1, Offer Status'
+        tblOfferStatMntDt:
+          type: string
+          description: ' Max length = 7, Offer Statement Monthly Date'
+        tblRejRsn:
+          type: string
+          description: ' Max length = 2, Reject Reason'
+        tblCommnChl:
+          type: string
+          description: ' Max length = 2, Communication Channel'
+        tblRespChl:
+          type: string
+          description: ' Max length = 2, Response Channel'
+        tblEnrollStatus:
+          type: string
+          description: ' Max length = 1, Enrollment Status'
+        tblEnrollmentAction:
+          type: string
+          description: ' Max length = 1, Enrollment Action'
+        tblEnrollMaintDate:
+          type: string
+          description: 'Format: YYYYMMDD. Enrollment Maintenance Date'
+        tblPriority:
+          type: string
+          description: ' Max length = 5, Priority'
+        tblType:
+          type: string
+          description: ' Max length = 2, Type'
+        tblDescription:
+          type: string
+          description: ' Max length = 40, Description'
+        tblQmoeStatus:
+          type: string
+          description: ' Max length = 1, Status'
+        tblOfferDefPriority:
+          type: string
+          description: ' Max length = 5, Offer Defined Priority'
+        tblSellerSortCde:
+          type: string
+          description: ' Max length = 10, Seller Sort Code'
+        tblSellerId:
+          type: string
+          description: ' Max length = 10, Seller ID'
+        tblStartDate:
+          type: string
+          description: 'Format: YYYYMMDD. Start Date'
+        tblUserField1:
+          type: string
+          description: ' Max length = 10, User Field 1'
+        tblUserField2:
+          type: string
+          description: ' Max length = 10, User Field 2'
+        tblUserField3:
+          type: string
+          description: ' Max length = 10, User Field 3'
+        tblUserField4:
+          type: string
+          description: ' Max length = 10, User Field 4'
+        expiryDate:
+          type: string
+          description: 'Format: YYYYMMDD. Expiry Date'
+        campaignDesc:
+          type: string
+          description: ' Max length = 40, Campaign Description'
+        offerCategory:
+          type: string
+          description: ' Max length = 2, Offer Category'
+        tblEffEndDate:
+          type: string
+          description: 'Format: YYYYMMDD. Effective End Date'
+        tblAutoFulfillDate:
+          type: string
+          description: 'Format: YYYYMMDD. Auto FulFillment Date'
+        tblFppPlan:
+          type: string
+          description: ' Max length = 5, FPP Plan'
+        tblFppRate:
+          type: string
+          description: ' Max length = 7, FPP Rate'
+        tblFppTerm:
+          type: string
+          description: ' Max length = 3, FPP Term'
+        tblCsrInsNbrOccurs:
+          type: string
+          description: ' Max length = 2, Number of occurances for CSR Instruction
+            Table'
+        tblCsrInstructions:
+          type: array
+          description: CSR Instruction Table<p>  This is a list of size 4 elements.This
+            is a repeating field. Number of occurrences returned depends on the field
+            tblCsrInsNbrOccurs
+          items:
+            $ref: '#/components/schemas/TblCsrInstructionsForOfferAccountEnrolmentInquiry1'
+        tblEffDate:
+          type: string
+          description: 'Format: YYYYMMDD. Effective Date'
     OptInCreditLimitUpdatesRequest:
       type: object
       properties:
@@ -68356,6 +69917,47 @@ components:
           type: string
           description: ' Max length = 17, Total amount due on the Credit Plan Segment
             record.'
+    PddBankValidationServiceRequest:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        countryCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, Valid Country Code'
+        requestType:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, This value is hardcoded as �3� ( i.e FPS
+            Validation ) in the message'
+        dcAccountNumber:
+          maxLength: 17
+          minLength: 0
+          type: string
+          description: ' Max length = 17, Valid  DC Account Number'
+        dcRoutingNumber:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Valid  Sort Code N.B. As this is a 10 character
+            Alphanumeric field in V+, any leading zeros implied in the numeric screen
+            input fields should be provided e.g. the sort code entered on screen as  3
+            4 5 should be passed into this field as �030405�.'
+    PddBankValidationServiceResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        fpsResponse:
+          type: string
+          description: ' Max length = 1, Result of the FPS validation check. Valid
+            values are: <UL><LI><EM> ''P''</EM> - Bank does participate in FPS. </LI><LI><EM>
+            ''F''</EM> - Bank does not participate in FPS.</LI><LI><EM> ''X'' </EM>
+            - not verified </LI></UL>'
     PinBlockChangeRequest:
       required:
       - cardNbr
@@ -68888,10 +70490,10 @@ components:
           type: string
           description: ' Max length = 1, PD Paydown Flag: This field will indicate
             the Paydown status of the plan segment. Valid values are: <UL><LI><EM>0
-            – </EM>No Paydown on this plan yet (default)</LI><LI><EM>1 – </EM>Plan
-            is on Paydown</LI><LI><EM>2 – </EM>Paydown is deferred due to promotions</LI><LI><EM>3
-            – </EM>Paydown is deferred due to account exclusions (collections reason).</LI><LI><EM>4
-            – </EM>Paydown skipped due to balance below threshold</LI></UL>'
+            � </EM>No Paydown on this plan yet (default)</LI><LI><EM>1 � </EM>Plan
+            is on Paydown</LI><LI><EM>2 � </EM>Paydown is deferred due to promotions</LI><LI><EM>3
+            � </EM>Paydown is deferred due to account exclusions (collections reason).</LI><LI><EM>4
+            � </EM>Paydown skipped due to balance below threshold</LI></UL>'
         pdPdwnInstlAmt:
           type: string
           description: ' Max length = 9, It will be monthly paydown installment amount
@@ -69378,8 +70980,8 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Transfer Type. Valid Values are: T – Transfer
-            P – Partial Transfer R- Reversal Q – Partial Reversal'
+          description: ' Max length = 1, Transfer Type. Valid Values are: T � Transfer
+            P � Partial Transfer R- Reversal Q � Partial Reversal'
         planNbr:
           maxLength: 5
           minLength: 0
@@ -69479,8 +71081,8 @@ components:
           description: ' Max length = 19, Account Number'
         function:
           type: string
-          description: ' Max length = 1, Transfer Type. Valid Values are: T – Transfer
-            P – Partial Transfer R- Reversal Q – Partial Reversal'
+          description: ' Max length = 1, Transfer Type. Valid Values are: T � Transfer
+            P � Partial Transfer R- Reversal Q � Partial Reversal'
         toPlanNbr:
           type: string
           description: ' Max length = 5, Plan Number'
@@ -70371,163 +71973,163 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code A Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code A Switch. Supply �1� to
             exclude block code A in the response'
         bcSwB:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code B Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code B Switch. Supply �1� to
             exclude block code B in the response'
         bcSwC:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code C Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code C Switch. Supply �1� to
             exclude block code C in the response'
         bcSwD:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code D Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code D Switch. Supply �1� to
             exclude block code D in the response'
         bcSwE:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code E Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code E Switch. Supply �1� to
             exclude block code E in the response'
         bcSwF:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code F Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code F Switch. Supply �1� to
             exclude block code F in the response'
         bcSwG:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code G Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code G Switch. Supply �1� to
             exclude block code G in the response'
         bcSwH:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code H Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code H Switch. Supply �1� to
             exclude block code H in the response'
         bcSwI:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code I Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code I Switch. Supply �1� to
             exclude block code I in the response'
         bcSwJ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code J Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code J Switch. Supply �1� to
             exclude block code J in the response'
         bcSwK:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code K Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code K Switch. Supply �1� to
             exclude block code K in the response'
         bcSwL:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code L Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code L Switch. Supply �1� to
             exclude block code L in the response'
         bcSwM:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code M Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code M Switch. Supply �1� to
             exclude block code M in the response'
         bcSwN:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code N Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code N Switch. Supply �1� to
             exclude block code N in the response'
         bcSwO:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code O Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code O Switch. Supply �1� to
             exclude block code O in the response'
         bcSwP:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code P Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code P Switch. Supply �1� to
             exclude block code P in the response'
         bcSwQ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Q Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Q Switch. Supply �1� to
             exclude block code Q in the response'
         bcSwR:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code R Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code R Switch. Supply �1� to
             exclude block code R in the response'
         bcSwS:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code S Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code S Switch. Supply �1� to
             exclude block code S in the response'
         bcSwT:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code T Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code T Switch. Supply �1� to
             exclude block code T in the response'
         bcSwU:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code U Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code U Switch. Supply �1� to
             exclude block code U in the response'
         bcSwV:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code V Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code V Switch. Supply �1� to
             exclude block code V in the response'
         bcSwW:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code W Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code W Switch. Supply �1� to
             exclude block code W in the response'
         bcSwX:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code X Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code X Switch. Supply �1� to
             exclude block code X in the response'
         bcSwY:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Y Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Y Switch. Supply �1� to
             exclude block code Y in the response'
         bcSwZ:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Z Switch. Supply ‘1’ to
+          description: ' Max length = 1, Exclude Block Code Z Switch. Supply �1� to
             exclude block code Z in the response'
         bcSwSpace:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Exclude Block Code Space Switch. Supply ‘1’
+          description: ' Max length = 1, Exclude Block Code Space Switch. Supply �1�
             to exclude block code Space in the response'
     ProductBlockCodeListResponse:
       type: object
@@ -71359,7 +72961,7 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 1, Bill mod flag. Valid values are: <UL><LI><EM>0
-            – </EM> BILL SUB ALLOWED</LI><EM>1 – </EM>BILL SUB NOT ALLOWED</LI></UL>'
+            � </EM> BILL SUB ALLOWED</LI><EM>1 � </EM>BILL SUB NOT ALLOWED</LI></UL>'
         rmPosAuthInd:
           maxLength: 1
           minLength: 0
@@ -72640,26 +74242,26 @@ components:
           type: string
           description: ' Max length = 1, This field indicates whether the service
             should return Primary account details or all account details. Values are,
-            <UL><LI><EM>P –<EM> Primary account</LI><LI><EM>A –<EM> All account</LI></UL>'
+            <UL><LI><EM>P �<EM> Primary account</LI><LI><EM>A �<EM> All account</LI></UL>'
         accFilter:
           maxLength: 1
           minLength: 0
           type: string
           description: ' Max length = 1, This field indicates the type of account
-            details that needs to be retrieved. Values are,<UL><LI><EM>A –<EM>Retrieve
-            only active account details<LI><LI><EM>D –<EM>Retrieve only dormant account
-            details</LI><LI><EM>B –<EM> Retrieve both Active and Dormant account details</LI><LI><EM>SPACE
-            or Low-value –<EM> Retrieve all account details</LI></UL>'
+            details that needs to be retrieved. Values are,<UL><LI><EM>A �<EM>Retrieve
+            only active account details<LI><LI><EM>D �<EM>Retrieve only dormant account
+            details</LI><LI><EM>B �<EM> Retrieve both Active and Dormant account details</LI><LI><EM>SPACE
+            or Low-value �<EM> Retrieve all account details</LI></UL>'
         svcFuncCode:
           maxLength: 1
           minLength: 0
           type: string
           description: ' Max length = 1, This field indicates the range of account
-            to be retrieved. Values are,<UL><LI><EM>P –<EM>Retrieve Previous 10 account
+            to be retrieved. Values are,<UL><LI><EM>P �<EM>Retrieve Previous 10 account
             records corresponding to the ACC_FILTER and account number provided in
-            input message</LI><LI><EM>N –<EM>Retrieve Next 10 account records  corresponding
+            input message</LI><LI><EM>N �<EM>Retrieve Next 10 account records  corresponding
             to the ACC_FILTER and account number provided in input message</LI><LI><EM>I
-            –<EM>Retrieve  first 10 account records corresponding to the ACC_FILTER
+            �<EM>Retrieve  first 10 account records corresponding to the ACC_FILTER
             provided in the input message</LI></UL>'
         svcStartAcctOrg:
           maxLength: 3
@@ -72682,8 +74284,8 @@ components:
           type: string
           description: ' Max length = 1, Field that indicates whether PAN reference
             ID details of Card is required in the output message. Values are,<UL><LI><EM>SPACES
-            or Low-values –<EM>PAN reference ID details are not required</LI><LI><EM>1
-            –<EM> PAN reference ID details are required</LI></UL>'
+            or Low-values �<EM>PAN reference ID details are not required</LI><LI><EM>1
+            �<EM> PAN reference ID details are required</LI></UL>'
     RelationshiptoAccountInquiryResponse:
       type: object
       properties:
@@ -72697,8 +74299,8 @@ components:
           description: ' Max length = 3, Currency code defined at Org'
         dualIndicator:
           type: string
-          description: ' Max length = 1, Indicate Dual ORG or not. Values are,0 –
-            Local   1 – Foreign'
+          description: ' Max length = 1, Indicate Dual ORG or not. Values are,0 �
+            Local   1 � Foreign'
         atNumber:
           type: string
           description: ' Max length = 2, Number of account details retrieved'
@@ -72706,7 +74308,7 @@ components:
           type: string
           description: ' Max length = 1, Flag indicates whether there are more account
             records (other than the record that is retrieved through current request)
-            under relationship that can be retrieved . Values are,<LI><EM>‘N’ –<EM>
+            under relationship that can be retrieved . Values are,<LI><EM>�N� �<EM>
             The relationship has no more account record that can be retrieved from
             the system</LI></UL>'
         acctTbl:
@@ -73834,17 +75436,17 @@ components:
           maxLength: 20
           minLength: 0
           type: string
-          description: ' Max length = 20, Mobile Phone Indicator:  Code that specifies
-            whether the Maker grants permission to  call this number.  Values are:
-            0 = No, do not contact the customer at this number 1 = Yes, you can contact
-            the customer at this number (Default) 2 = Preferred contact method'
+          description: ' Max length = 20, Mobile Phone Number is required when the
+            MOBILE PHONE INDICATOR  =  1 or  2  and SMS IND  = 1'
         mobileFlag:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Mobile Phone Number is required when the
-            MOBILE PHONE INDICATOR  =  1 or  2  and SMS IND  = 1'
+          description: ' Max length = 1, Mobile Phone Indicator:  Code that specifies
+            whether the Maker grants permission to  call this number.  Values are:
+            0 = No, do not contact the customer at this number 1 = Yes, you can contact
+            the customer at this number (Default) 2 = Preferred contact method'
         emailAddr:
           maxLength: 60
           minLength: 0
@@ -74077,7 +75679,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Statement selected Type. Valid values are:
-            S - Statement selected by date   M – Statement selected by relative month'
+            S - Statement selected by date   M � Statement selected by relative month'
         dualInd:
           maxLength: 1
           minLength: 0
@@ -74093,8 +75695,8 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 2, Relative statement number can be used if
-            the actual statement date is not known, i.e. 00 – Current statement  01
-            – Previous months statement  02 – Second previous months statement, etc.
+            the actual statement date is not known, i.e. 00 � Current statement  01
+            � Previous months statement  02 � Second previous months statement, etc.
             Only valid if  svcTyp  = M (Statement by relative Month)'
         txnSuppFlg:
           maxLength: 1
@@ -74102,9 +75704,9 @@ components:
           type: string
           description: ' Max length = 1, This field work in combination with the value
             in the vision plus file. The value sent in the request need to match with
-            the value in the file to achieve the expected. Valid Values are : Y –
+            the value in the file to achieve the expected. Valid Values are : Y �
             Totals returned do not include transactions that are marked as needing
-            to be suppressed, e.g. Total Number of Debits and Credits.  N – (Default
+            to be suppressed, e.g. Total Number of Debits and Credits.  N � (Default
             if not supplied) Totals include all transactions.'
         procBillAcct:
           maxLength: 1
@@ -74146,7 +75748,7 @@ components:
           type: string
           description: ' Max length = 2, Cycle code that indicates the day of the
             month that CMS Performs cycle processing for the account. The values are
-            01–31.'
+            01�31.'
         shortName:
           type: string
           description: ' Max length = 20, Short name of the account holder.'
@@ -74171,10 +75773,10 @@ components:
           description: ' Max length = 1, The cycle due code indicates the level of
             contractual delinquency for the account at the time of the statement.
             The values are: 0 = No amount due; not past due  1 = Current amount due;
-            not past due  2 = Amount past due 1–29 days (or ''X'' days)  3 = Amount
-            past due 30–59 days  4 = Amount past due 60–89 days  5 = Amount past due
-            90–119 days  6 = Amount past due 120–149 days  7 = Amount past due 150–179
-            days  8 = Amount past due 180–209 days  9 = Amount past due 210 or more
+            not past due  2 = Amount past due 1�29 days (or ''X'' days)  3 = Amount
+            past due 30�59 days  4 = Amount past due 60�89 days  5 = Amount past due
+            90�119 days  6 = Amount past due 120�149 days  7 = Amount past due 150�179
+            days  8 = Amount past due 180�209 days  9 = Amount past due 210 or more
             days.'
         pmtDueDt:
           type: string
@@ -74484,8 +76086,8 @@ components:
             = </EM>Customer is flagged as PD36 and in Paydown - When Statement level
             PD36 Flag = 1 and PDWN Stage = 4 (Paydown complete)</LI><LI><EM>03 = </EM>Customer
             is flagged as PD36 and not in Paydown/or in exception - When Statement
-            level PD36 Flag = 1 and PDWN Stage not = 4 (i.e. either 0 – no Paydown
-            yet or 9 – Paydown exception etc.)</LI><LI><EM>99 = </EM>For Statements
+            level PD36 Flag = 1 and PDWN Stage not = 4 (i.e. either 0 � no Paydown
+            yet or 9 � Paydown exception etc.)</LI><LI><EM>99 = </EM>For Statements
             which do not have the PD36 and Paydown Stage value set and would signify
             that the PD Journey for that statement could not be determined. These
             statements would be older statements which have been generated before
@@ -74735,6 +76337,12 @@ components:
         swDate:
           type: string
           description: 'Format: YYYYMMDD. Switch Date'
+    TblCsrInstructionsForOfferAccountEnrolmentInquiry1:
+      type: object
+      properties:
+        csrInstruction:
+          type: string
+          description: ' Max length = 60, CSR Instruction'
     TemporaryCreditLimitUpdateRequest:
       required:
       - account
@@ -75650,6 +77258,13 @@ components:
           type: string
           description: ' Max length = 5, IPlan Sequence Number Valid Values from 0
             - 99999.'
+        promoPlanExpDt:
+          type: string
+          description: 'Format: YYYYMMDD. This field contains the date when a Promo
+            Plan will expire, Promo Plans are identified by the promoPlanInd tag on
+            the Account Plan List API response containing a value of 2 (BNPL) or 3
+            (Special). NOTE: This field is only populated when a new sales transaction
+            is posted to a Promo Plan.'
     TransactionErrorCodesForProcessedTransactionRejectUpdate1:
       type: object
       properties:
@@ -76613,7 +78228,7 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Status code of this item. This field displays
-            on ARMT and ARQT only if working with a batch of today�s entry transactions
+            on ARMT and ARQT only if working with a batch of today?s entry transactions
             (FILE is T1). The values are: Blank = Active; status never changed  A
             = Active; status changed D = Delete'
         txnPurchOrder:
@@ -77180,6 +78795,18 @@ components:
         userField:
           type: string
           description: ' Max length = 10, User field 4.'
+    UserGenericFieldsForOfferAccountEnrolmentInquiry1:
+      type: object
+      properties:
+        userGenericDate:
+          type: string
+          description: 'Format: YYYYMMDD. User Generic Date'
+        userGenericAmount:
+          type: string
+          description: ' Max length = 17, User Generic Amount'
+        userGenericCode:
+          type: string
+          description: ' Max length = 20, User Generic Code'
     UserListInquiryRequest:
       required:
       - client
