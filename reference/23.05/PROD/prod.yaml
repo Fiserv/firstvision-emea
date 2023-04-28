@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.41.10
+  version: 1.43.5
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -34548,11 +34548,24 @@ components:
           description: ' Max length = 1, BNPL Snooze Alert. Valid Values are:<UL><LI><EM>0
             -</EM>Inactive</LI><LI><EM>1 -</EM>SMS</LI><LI><EM>2 -</EM>Email</LI><LI><EM>3
             -</EM>Both SMS and Email</LI><LI><EM>9 -</EM>Logo</LI></UL>'
+        digitalCardInd:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Digital card indicator. Valid values are:
+            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
+            Card Only.</LI><LI><EM>2-</EM>Both Physical Plastic & Digital cards.</LI></UL>'
     AccountCustomFieldsUpdateResponse:
       type: object
       properties:
         common:
           $ref: '#/components/schemas/Header'
+        digitalCardInd:
+          type: string
+          description: ' Max length = 1, Digital card indicator. Valid values are:
+            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
+            Card Only.</LI><LI><EM>2-</EM>Both Physical Plastic & Digital cards.</LI></UL>'
     AccountDetailInquiryRequest3:
       required:
       - account
@@ -34572,15 +34585,6 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 5, Scheme Details'
-        panEncryption:
-          maxLength: 1
-          minLength: 0
-          type: string
-          description: ' Max length = 1, This field will be used to indicate if PAN
-            encryption is to be performed for PAN field in the output response. Valid
-            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
-            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
-            the output response.</LI></UL>'
     AccountDetailInquiryResponse3:
       type: object
       properties:
@@ -37059,6 +37063,9 @@ components:
             \ - Do not send alert 1 -\tSend alert only through SMS 2 -\tSend alert\
             \ only through Email 3 - Send alert via both SMS and Email 9 - Send alert\
             \ as per communication channel define at logo level"
+        pmtToWthnLimit:
+          type: string
+          description: ' Max length = 17, Payment within limit'
         spendCapInd:
           type: string
           description: ' Max length = 1, Spend Cap Indicator: indicates the type of
@@ -40111,12 +40118,6 @@ components:
         txnRefNbr:
           type: string
           description: ' Max length = 12, Transaction Reference Number'
-        digitalCardIndicator:
-          type: string
-          description: ' Max length = 1, This field will be used to identify whether
-            the authorization was a digital wallet transaction or not. Valid values
-            are: <UL><LI><EM>0 - </EM>Not digital wallet transaction.</LI><LI><EM>
-            1 - </EM>Digital wallet transaction.</LI></UL>'
     AuthorisationReversalandRequestRequest:
       required:
       - actionCode
@@ -43684,15 +43685,6 @@ components:
             indicates whether to display the PIN block change audit trail or not.
             The values are: <UL><LI><EM>0 - </EM>No Display</LI><LI><EM>1 - </EM>Display
             the PIN block change audit trail</LI></UL>'
-        panEncryption:
-          maxLength: 1
-          minLength: 0
-          type: string
-          description: ' Max length = 1, This field will be used to indicate if PAN
-            encryption is to be performed for PAN field in the output response. Valid
-            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
-            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
-            the output response.</LI></UL>'
     CardInquiryResponse:
       type: object
       properties:
@@ -47091,6 +47083,15 @@ components:
             waiting for customer consent for card activation or card renewal.</LI><LI><EM>4
             - </EM>Customer provided positive consent for card renewal. </LI><LI><EM>5
             - </EM>Customer provided negative consent for card renewal</LI></UL>'
+        digitalCardInd:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Digital card indicator. Valid values are:
+            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
+            Card Only.</LI><LI><EM>2-</EM>Temp digital card.</LI><LI><EM>3-</EM>Both
+            Physical Plastic & Digital cards.</LI></UL>'
     CardUpdateResponse:
       type: object
       properties:
@@ -47358,6 +47359,12 @@ components:
         pinSuppression:
           type: string
           description: ' Max length = 1, PIN Mailer Suppression'
+        digitalCardInd:
+          type: string
+          description: ' Max length = 1, Digital card indicator. Valid values are:
+            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
+            Card Only.</LI><LI><EM>2-</EM>Temp digital card.</LI><LI><EM>3-</EM>Both
+            Physical Plastic & Digital cards.</LI></UL>'
     CardholderDemographicListRequest3:
       required:
       - acct
@@ -55370,6 +55377,9 @@ components:
           type: string
           description: ' Max length = 1, Payment remittance method. Values are: 1
             = Standing order 2 = Direct debit'
+        prevPayRemitMethod:
+          type: string
+          description: ' Max length = 1, Previous pay remit method.'
         ddDailyFreq:
           type: string
           description: ' Max length = 1, Direct debit daily frequency. Values are:
@@ -55515,6 +55525,13 @@ components:
           type: string
           description: ' Max length = 34, International Banking Account Number (IBAN)
             associated with the direct credit account.'
+        ddDaysFunction:
+          type: string
+          description: ' Max length = 1, DD days function. Valid values are: <UL><LI><EM>0
+            - </EM> No DD days</LI><LI><EM>1 - </EM> Allow DD days</LI></UL>'
+        ddDaysNumber:
+          type: string
+          description: ' Max length = 2, DD days number.'
         onDemDcBic:
           type: string
           description: ' Max length = 11, On Demand Direct Credit BIC: Bank identifier
@@ -55749,6 +55766,17 @@ components:
             is set ON at the ORG level Valid values for the field are : SPACES  =  DD
             Mandate is not set  A =  DD Mandate is active  I=  DD Mandate is inactive
             C =  DD Mandate is cancelled  E=  DD Mandate is expired'
+        dmpOptOutFlag:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Flag that indicates the dynamic minimum payment
+            (DMP) processing opted-out by the customer resulting in a zero DMP percentage
+            through TRIAD. If the customer has opted-out of DMP processing between
+            the statement date and DD collection date, this field allows dynamic calculation
+            of direct debits (DD). Valid values are <UL><LI><EM> 0 - </EM> NONE</LI><LI><EM>
+            1 - </EM> CURR-CYCLE</LI><LI><EM> 2 - </EM>CUSTOMER</LI><LI><EM> 3 - </EM>CLIENT</LI></UL>'
         applicationUser2:
           maxLength: 20
           minLength: 0
@@ -55977,6 +56005,10 @@ components:
             is set ON at the ORG level SPACES  =  DD Mandate is not set A =  DD Mandate
             is active  I=  DD Mandate is inactive C =  DD Mandate is cancelled  E=  DD
             Mandate is expired'
+        dmpOptOutFlag:
+          type: string
+          description: ' Max length = 1, Flag that indicates the dynamic minimum payment
+            (DMP) processing opted-out by the customer.'
         applicationUser2:
           type: string
           description: ' Max length = 20, Application user 2 field'
@@ -69918,6 +69950,9 @@ components:
           description: ' Max length = 17, Total amount due on the Credit Plan Segment
             record.'
     PddBankValidationServiceRequest:
+      required:
+      - countryCode
+      - sortCode
       type: object
       properties:
         common:
@@ -69932,18 +69967,18 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, This value is hardcoded as �3� ( i.e FPS
+          description: ' Max length = 1, This value is hardcoded as ''3'' ( i.e FPS
             Validation ) in the message'
         dcAccountNumber:
           maxLength: 17
           minLength: 0
           type: string
           description: ' Max length = 17, Valid  DC Account Number'
-        dcRoutingNumber:
+        sortCode:
           maxLength: 10
           minLength: 0
           type: string
-          description: ' Max length = 10, Valid  Sort Code N.B. As this is a 10 character
+          description: ' Max length = 10, Valid Sort Code N.B. As this is a 10 character
             Alphanumeric field in V+, any leading zeros implied in the numeric screen
             input fields should be provided e.g. the sort code entered on screen as  3
             4 5 should be passed into this field as �030405�.'
@@ -76058,6 +76093,9 @@ components:
         bsBilledCashAvail:
           type: string
           description: ' Max length = 13, Instalment billing cash balance available'
+        dmpPercentIndicator:
+          type: string
+          description: ' Max length = 1, DMP percent indicator'
         fsBegBal:
           type: string
           description: ' Max length = 9, Frequent shopper program  beginning balance

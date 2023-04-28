@@ -21,7 +21,7 @@
   ],
   "apiVersions": [
     {
-      "version": "23.04",
+      "version": "23.05",
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["PROD/prod"]
