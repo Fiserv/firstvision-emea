@@ -25,18 +25,6 @@
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["23.06"]
-    },
-    {
-      "version": "23.04",
-      "versionType": "minor",
-      "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["23.04"]
-    },
-    {
-      "version": "23Mini4",
-      "versionType": "minor",
-      "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["23Mini4"]
     }
   ],
   "product": {
