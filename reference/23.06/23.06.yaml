@@ -23,9 +23,9 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.52
+  version: 1.48.54
 servers:
-- url: https://cert.api.firstdata.com/api/fs
+- url: cert.api.firstdata.com/api/fs
 paths:
   /fv_emea/v1/asmHistoryUpdate:
     post:
@@ -13746,6 +13746,120 @@ paths:
       - APAC
       x-regions: EMEA,APAC
       x-display: Card Maintenance
+      x-codegen-request-body-name: body
+  /fv_emea/v1/accountCardListInquiry:
+    post:
+      tags:
+      - Card Management
+      summary: AccountCardListInquiry
+      description: This service is used to inquire all the eligible cards associated
+        with the given mobile number.<BR/><BR/><p>Fields that are not provided in
+        the Request object will be initialised to their default values. All numeric
+        fields are initialised to zero and alphanumeric fields initialised to spaces</p>
+      operationId: accountCardListInquiry_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCardListInquiryRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountCardListInquiryResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+      deprecated: false
+      x-proxy-name: Account Card List Inquiry v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Management
       x-codegen-request-body-name: body
   /fv_emea/v1/acsCardInquiry:
     post:
@@ -33948,6 +34062,53 @@ components:
           description: ' Max length = 1, Account Restructure Flag: Flag that indicates
             whether the account should be restructured.  Values are: Y = Restructure
             Requested N = No Account Restructure Requested'
+    AccountCardListInquiryRequest:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        transactionDateTime:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Transaction Date and Time in DDMMHHMMSS
+            format'
+        referenceNumber:
+          maxLength: 12
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 12, Generated by TPSP (Unique Number)'
+        cardMaskSwitch:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Card Mask Switch to mask or not card number
+            in response. Valid Values are � ''Y'', ''N'', SPACE and LOW-VALUES.If
+            Card Mask Switch value ''N'' then don�t mask the card number else mask
+            the card number in the response.'
+    AccountCardListInquiryResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        cardSummaryOccur:
+          type: string
+          description: ' Max length = 2, Number of occurrences.'
+        cardSummTbl:
+          type: array
+          description: <p>  This is a list of size 20 elements.This is a repeating
+            field. Number of occurrences returned depends on the field cardSummaryOccur
+          items:
+            $ref: '#/components/schemas/CardSummTblForAccountCardListInquiry1'
+        transactionDateTime:
+          type: string
+          description: ' Max length = 10, Transaction Date and Time as received in
+            request input field.'
+        referenceNumber:
+          type: string
+          description: ' Max length = 12, Generated by TPSP (Unique Number) as received
+            in request input field.'
     AccountCloseRequest:
       required:
       - acctNbr
@@ -40878,7 +41039,8 @@ components:
             service. Valid Values are: <UL><LI><EM>A - </EM> Authorization Request
             </LI><LI><EM>R - </EM> Authorization Reversal </LI><LI><EM>C - </EM> Authorization
             Refund </LI><LI><EM>D - </EM>Purchase via Account</LI><LI><EM>E - </EM>Reversal
-            for Purchase via Account</LI></UL>'
+            for Purchase via Account</LI><LI><EM>I - </EM> Transaction Inquiry </LI><LI><EM>P
+            - </EM> Cashback</LI><LI><EM>V - </EM> Card validation</LI></UL>'
         actionCode:
           maxLength: 4
           minLength: 0
@@ -40921,7 +41083,9 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, Message type. Valid Values are: <UL><LI>S
-            = Single </LI><LI>D = Dual </LI><LI>SPACE = Defaults to S </LI></UL>'
+            = Single </LI><LI>D = Dual </LI><LI>SPACE = Defaults to S </LI><LI><EM>F
+            - </EM> FAS does auto settlement</LI></UL>  For all UPI Requests, ''F''
+            is expected.'
         secCodeAe:
           maxLength: 4
           minLength: 0
@@ -40935,13 +41099,77 @@ components:
           type: string
           description: ' Max length = 12, Authorization reference number. This field
             is used when the serviceFlag is set to ''R'' i.e. if Reversal is being
-            triggered for a transaction.'
+            triggered for a transaction. This field is required for all UPI Requests
+            and for reversal, it should contain the original authorizations� s auth
+            ref number'
         replacementAmt:
           maxLength: 14
           minLength: 0
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 14, Replacement Amount.'
+        dupAuth:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field to decide whether duplicate check needs
+            to be performed. Valid values:  Space, ''N'' - Duplicate check will not
+            be performed. ''Y'' - Duplicate check will be performed if valid auth
+            reference number is present. For UPI Transaction requests, It is always
+            expected as ''Y''.'
+        payeeActNbr:
+          maxLength: 30
+          minLength: 0
+          type: string
+          description: ' Max length = 30, Number and other details (Account Number
+            + 6-digit BIN + zeros)'
+        maskCardNbr:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, UPI card validation: 16 digits (last 6 bytes
+            of card number will not be masked and remaining will be �X�s) UPI Transaction(
+            AUTH / REVERSAL/ CASHBACK and REFUND) Requests: 16 digits (last 4 bytes
+            of card number will not be masked and remaining will be �X�s)'
+        tranDateTime:
+          maxLength: 10
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 10, Transaction date time, in format - MMDDHHMMSS.'
+        mobNbr:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Mobile number.'
+        merchantName:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: " Max length = 40, Merchant Name if available then should be\
+            \ populated as below. <UL><LI><EM>Pos: 01-25 =</EM>\tMerchant Name</LI><LI><EM>Pos:\
+            \ 26-37=</EM>City name (if available, otherwise spaces)</LI><LI><EM>Pos:\
+            \ 38-40=</EM>Country code (static value of 'IND')</LI></UL>"
+        merchantId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, Merchant ID'
+        upiRefId:
+          maxLength: 35
+          minLength: 0
+          type: string
+          description: ' Max length = 35, UPI REFERENCE ID'
+        deviceId:
+          maxLength: 90
+          minLength: 0
+          type: string
+          description: ' Max length = 90, Device used for transaction Only below mandatory
+            data to be sent as below. <UL><LI><EM> Pos 1-15:</EM> Geocode � 15 bytes
+            (for ex - ''12.9667,77.5667'')</LI><LI><EM> Pos 16-30: </EM> I P � 15
+            bytes (for ex - ''123.123.123.123'')</LI><LI><EM> Pos 31-70: </EM> Location
+            � 40 bytes </LI><LI><EM> Pos 71-20: </EM> Mobile � 20 bytes (might be
+            required to identify any fraud transaction)</LI></UL>'
     AuthorisationReversalandRequestResponse:
       type: object
       properties:
@@ -45620,6 +45848,23 @@ components:
         nbrRetCards:
           type: string
           description: ' Max length = 2, Number of cards returned'
+    CardSummTblForAccountCardListInquiry1:
+      type: object
+      properties:
+        accountNbr:
+          type: string
+          description: ' Max length = 19, Account  Number.'
+        cardNbr:
+          type: string
+          description: ' Max length = 19, Card Number.'
+        cardScheme:
+          type: string
+          description: ' Max length = 1, Card Scheme � Rupay � �R�'
+        uniqueID:
+          type: string
+          description: ' Max length = 19, Unique ID.'
+        cardName:
+          type: string
     CardTable3ForRelationshipInquiry3:
       type: object
       properties:
@@ -64136,6 +64381,26 @@ components:
           type: string
           description: 'Format: MMYY. Expiry Date: Expiry date of the new card to
             be generated as replacement. Date format is MMYY.'
+        processInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Process indicator, Valid values are: <UL><LI><EM>
+            Spaces - </EM> Lost/Stolen (BAU functionality)</LI><LI><EM> D - </EM>
+            Damage/Name change replacement</LI><LI><EM> R - </EM> Reissue</LI></UL>'
+        newCardNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Valid card number.'
+        newCardActivationFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, New card activation flag, Valid values are:
+            <UL><LI><EM>Spaces - </EM> logo level card activation flag will be used
+            (BAU Functionality)</LI><LI><EM> ''N'' - </EM> Card activation is not
+            required</LI><LI><EM> ''Y'' - </EM> Card activation is required</LI></UL>'
     LostStolenUpdateResponse2:
       type: object
       properties:
