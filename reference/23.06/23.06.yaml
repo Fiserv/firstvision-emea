@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.54
+  version: 1.48.58
 servers:
 - url: cert.api.firstdata.com/api/fs
 paths:
@@ -38830,6 +38830,16 @@ components:
           description: ' Max length = 1, Digital Card Indicator. Valid values are:
             <UL><LI><EM>0-</EM>Physical Plastic Card</LI><LI><EM>1-</EM>Digital Card</LI><LI><EM>2-</EM>Temp
             Digital Card</LI><LI><EM>3-</EM>ST Digital Card</LI></UL>'
+        lmsSegId:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, LMS Segment Identifier'
+        chanIdent:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Channel Identifier'
     AccountTransferResponse:
       type: object
       properties:
@@ -54267,9 +54277,11 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, Number Type: value to indicate if number
-            provided is the customer number or account/card number. Values are:  0
-            or space indicates Account or card Number 1 - Customer Number'
+          description: ' Max length = 1, Number Type. Value indicates if customer
+            number should be from Account number/Card number or the value provided
+            is customer number itself. Valid values are: <UL><LI><EM> 0 - </EM> Customer
+            number from Account number </LI><LI><EM> 1 -</EM> Customer number.</LI><LI><EM>
+            2 - </EM>Customer number from Card number </LI></UL>'
         foreignUseFlag:
           maxLength: 1
           minLength: 0
@@ -56625,6 +56637,11 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 20, Application user 2 field'
+        chanIdent:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Channel Identifier'
     DirectDebitUpdateResponse2:
       type: object
       properties:
