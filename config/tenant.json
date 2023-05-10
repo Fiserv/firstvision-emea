@@ -25,6 +25,12 @@
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["23.06"]
+    },
+    {
+      "version": "Mini7",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/release-notes/Release-notes.md",
+      "apiSpecFileNames": ["Mini7"]
     }
   ],
   "product": {
