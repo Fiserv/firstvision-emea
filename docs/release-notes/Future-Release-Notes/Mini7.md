@@ -18,11 +18,11 @@ This service is used to enable the LCM updates sent from Thales to AMOL to be ap
 
 #### Updated API
 
-| S.No | API Name                            | Change                      | Fields                  |
-|------|-------------------------------------|-----------------------------|-------------------------|
-| 1    | v3/accountDetailInquiry             | New request field is added  | -panEncryption          |
-| 2    | v1/cardInquiry                      | New request field is added  | -panEncryption          |                                                                                                       |
-| 3    | v1/outstandingAuthorisationInquiry  | New response field is added | -digitalCardIndicator   |
+| S.No | API Name                           | Change                      | Fields                  |
+|------|------------------------------------|-----------------------------|-------------------------|
+| 1    | v3/accountDetailInquiry            | New request field is added  | -panEncryption          |
+| 2    | v1/cardInquiry                     | New request field is added  | -panEncryption          |                                                                                                       |
+| 3    | v2/outstandingAuthorisationInquiry | New response field is added | -digitalCardIndicator   |
 
 #### Deprecated API
 
