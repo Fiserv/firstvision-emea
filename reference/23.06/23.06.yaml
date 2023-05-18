@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.65
+  version: 1.48.67
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -37592,7 +37592,7 @@ components:
         pd35MthPdDate:
           type: string
           description: 'Format: YYYYMMDD. Pay down date of 35th month.'
-        pdd36MthDate:
+        pd36MthPdDate:
           type: string
           description: 'Format: YYYYMMDD. The Date when Account flagged for 36 Month
             Persistent Debt.'
@@ -66184,17 +66184,17 @@ components:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, First Name of the Customer'
+          description: ' Max length = 40, First Name of the Customer. In case nameType1Ind is set to 1, then do not pass any value in this field.'
         middleName:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, Middle Name of the Customer'
+          description: ' Max length = 40, Middle Name of the Customer. In case nameType1Ind is set to 1, then do not pass any value in this field.'
         lastName:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, Last Name of the Customer'
+          description: ' Max length = 40, Last Name of the Customer, In case nameType1Ind is set to 1, then do not pass any value in this field.'
         suffix:
           maxLength: 20
           minLength: 0
