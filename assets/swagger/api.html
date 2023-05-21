@@ -19,13 +19,13 @@
 
         // Check if a specific Swagger file is specified in the URL
         if (swaggerFile) {
-            var swaggerUrl = 'https://shubh99k.github.io/firstvisionEMEA/' + swaggerFile;
+            var swaggerUrl = 'https://fiserv.github.io/firstvision-emea/assets/swagger/' + swaggerFile;
             loadRedoc(swaggerUrl);
         } else {
             // Array of Swagger file URLs
             var swaggerFiles = [
-                'https://shubh99k.github.io/firstvisionEMEA/prod.yaml',
-                'https://shubh99k.github.io/firstvisionEMEA/prod2.yaml'
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/sit.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/uat.yaml'
             ];
 
             // Loop through the Swagger file URLs and load Redoc for each file
