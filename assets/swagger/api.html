@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Documentation</title>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+</head>
+<body>
+    <div id="redoc-container"></div>
+
+    <script>
+        // Function to load Redoc with a Swagger file
+        function loadRedoc(specUrl) {
+            Redoc.init(specUrl, {}, document.getElementById('redoc-container'));
+        }
+
+        // Parse the URL to get the file name
+        var urlParams = new URLSearchParams(window.location.search);
+        var swaggerFile = urlParams.get('file');
+
+        // Check if a specific Swagger file is specified in the URL
+        if (swaggerFile) {
+            var swaggerUrl = 'https://shubh99k.github.io/firstvisionEMEA/' + swaggerFile;
+            loadRedoc(swaggerUrl);
+        } else {
+            // Array of Swagger file URLs
+            var swaggerFiles = [
+                'https://shubh99k.github.io/firstvisionEMEA/prod.yaml',
+                'https://shubh99k.github.io/firstvisionEMEA/prod2.yaml'
+            ];
+
+            // Loop through the Swagger file URLs and load Redoc for each file
+            for (var i = 0; i < swaggerFiles.length; i++) {
+                loadRedoc(swaggerFiles[i]);
+            }
+        }
+    </script>
+</body>
+</html>
