@@ -17,7 +17,10 @@
                  font-size: 18px;
                  text-decoration:none;
                  color: #000;
-      }
+             }
+              .dev-studio-link.hidden {
+                  display: none;
+               }
     </style>
 </head>
 <body>
@@ -72,6 +75,17 @@
         logoImg,
         document.getElementById("redoc-container")
       );
+    </script>
+     <script>
+     // Hide the button on scroll
+     var devStudioLink = document.querySelector('.dev-studio-link');
+     window.addEventListener('scroll', function() {
+         if (window.scrollY > 50) {
+             devStudioLink.classList.add('hidden');
+         } else {
+             devStudioLink.classList.remove('hidden');
+         }
+     });
     </script>
 </body>
 </html>
