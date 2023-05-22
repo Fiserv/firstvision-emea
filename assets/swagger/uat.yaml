@@ -23,9 +23,9 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.0-SNAPSHOT
+  version: 1.48.68
 servers:
-- url: https://x5tpir1002-int1.1dc.com:9759,x5tpir1003-int1.1dc.com:7157,qa-pl-fsapi-apac.fiservsoa.com,cat-pl-fsapi-apac.fiservsoa.com/api/fs
+- url: https://cert.api.firstdata.com/api/fs
 paths:
   /fv_emea/v1/asmHistoryUpdate:
     post:
