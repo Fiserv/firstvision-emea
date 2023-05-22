@@ -78215,11 +78215,11 @@ components:
             - 99999.'
         promoPlanExpDt:
           type: string
-          description: 'Format: YYYYMMDD. This field contains the date when a Promo
-            Plan will expire, Promo Plans are identified by the promoPlanInd tag on
-            the Account Plan List API response containing a value of 2 (BNPL) or 3
-            (Special). NOTE: This field is only populated when a new sales transaction
-            is posted to a Promo Plan.'
+          description: ' Max length = 8, This field contains the date when a Promo
+            Plan will expire. Format: DD/MM/YYYY, Promo Plans are identified by the
+            promoPlanInd tag on the Account Plan List API response containing a value
+            of 2 (BNPL) or 3 (Special). NOTE: This field is only populated when a
+            new sales transaction is posted to a Promo Plan.'
     TransactionErrorCodesForProcessedTransactionRejectUpdate1:
       type: object
       properties:
