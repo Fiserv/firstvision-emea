@@ -70841,12 +70841,18 @@ components:
             record.'
     PddBankValidationServiceRequest:
       required:
+      - org
       - countryCode
       - sortCode
       type: object
       properties:
         common:
           $ref: '#/components/schemas/Header'
+        org:
+        maxLength: 3
+        minLength: 0
+        type: string
+        description: ' Max length = 3, Organization Number: Three digit Identification number of the organization.  Valid values are 001 - 998. Organization number must be on file. When org is spaces or zeros, default from account lookup using the card number provided'
         countryCode:
           maxLength: 3
           minLength: 0
