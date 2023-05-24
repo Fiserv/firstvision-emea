@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.67
+  version: 1.48.69
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -12954,6 +12954,142 @@ paths:
       x-regions: EMEA,APAC
       x-display: Card Maintenance
       x-codegen-request-body-name: body
+  /fv_emea/v1/notifyCardOperation:
+    post:
+      tags:
+      - Card Maintenance
+      summary: NotifyCardOperation
+      description: This service is used to enable the Thales digital ID (Token Reference
+        ID) to be sent to update account file to support ongoing Life-Cycle Management
+        on the tokens.<BR/><BR/><p>Fields that are not provided in the Request object
+        will be initialised to their default values. All numeric fields are initialised
+        to zero and alphanumeric fields initialised to spaces</p>
+      operationId: notifyCardOperation_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifyCardOperationRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotifyCardOperationResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SKA01E : ORGANIZATION NUMBER MUST BE NUMERIC AND VALID VALUES
+            ARE 001-998<BR/>VPL5SKA01S : SERVICE INPUT TO CorI SERVICE IS AN INCORRECT
+            LENGTHS<BR/>VPL5SKA02E : INPUT CARD NUMBER IS NOT VALID<BR/>VPL5SKA02S
+            : USER HAS NOT SIGNED ON PLEASE SIGNON<BR/>VPL5SKA03E : INVALID VALUE
+            FOR OPERATION<BR/>VPL5SKA03S : FILE-TABLE USED BY THIS SERVICE IS NOT
+            FOUND<BR/>VPL5SKA04E : INVALID VALUE FOR STATUS<BR/>VPL5SKA04S : ORGANIZATION
+            NUMBER NOT DETERMINED<BR/>VPL5SKA05S : FILE-TABLE USED BY THIS SERVICE
+            IS NOT FOUND<BR/>VPL5SKA06S : APPLICATION IN NO-PROCESSING STATUS RE-TRY
+            IN A FEW MINUTES<BR/>VPL5SKA07S : TOKEN MASTER FILE NOT OPEN<BR/>VPL5SKA08S
+            : TOKEN REF NUMBER IS ALREADY PRESENT<BR/>VPL5SKA09S : REQUESTED ORGANIZATION
+            NUMBER IS NOT FOUND<BR/>VPL5SKA10S : APPLICATION IN NO-PROCESSING STATUS
+            RE-TRY IN A FEW MINUTES<BR/>VPL5SKA12S : EMBOSSER RECORD NOT FOUND<BR/>VPL5SKA13S
+            : ACCOUNT FILE NOT OPEN<BR/>VPL5SKA14S : REQUESTED ACCOUNT NUMBER IS NOT
+            FOUND<BR/>VPL5SKA15S : BASE SEGMENT FILE READ ERROR<BR/>VPL5SKA16S : AMED
+            UPDATE FAILED<BR/>VPL5SKA17S : AMBS UPDATE FAILED<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Notify Card Operation v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
   /fv_emea/v1/pinBlockChange:
     post:
       tags:
@@ -13608,6 +13744,141 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Third Party Card Ref Id Update v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
+  /fv_emea/v1/tokenLifeCycleManagement:
+    post:
+      tags:
+      - Card Maintenance
+      summary: TokenLifeCycleManagement
+      description: This service is used to enable the LCM updates sent from Thales
+        to AMOL to be applied on FirstVision. System will reduce the number of tokens
+        at account level by 1 when the digital ID status is deleted or deactivated.<BR/><BR/><p>Fields
+        that are not provided in the Request object will be initialised to their default
+        values. All numeric fields are initialised to zero and alphanumeric fields
+        initialised to spaces</p>
+      operationId: tokenLifeCycleManagement_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenLifeCycleManagementRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenLifeCycleManagementResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SKU01E : ORGANIZATION NUMBER MUST BE NUMERIC AND VALID VALUES
+            ARE 001-998<BR/>VPL5SKU01S : SERVICE INPUT TO CorI SERVICE IS AN INCORRECT
+            LENGTHS<BR/>VPL5SKU02E : INPUT CARD NUMBER IS NOT VALID<BR/>VPL5SKU02S
+            : USER HAS NOT SIGNED ON PLEASE SIGNON<BR/>VPL5SKU03E : INVALID VALUE
+            FOR OPERATION<BR/>VPL5SKU03S : FILE-TABLE USED BY THIS SERVICE IS NOT
+            FOUND<BR/>VPL5SKU04E : INVALID VALUE FOR STATUS<BR/>VPL5SKU04S : ORGANIZATION
+            NUMBER NOT DETERMINED<BR/>VPL5SKU05S : FILE-TABLE USED BY THIS SERVICE
+            IS NOT FOUND<BR/>VPL5SKU06S : TOKEN NOT PRESENT<BR/>VPL5SKU07S : TOKEN
+            MASTER FILE READ FAILED<BR/>VPL5SKU09S : REQUESTED ORGANIZATION NUMBER
+            IS NOT FOUND<BR/>VPL5SKU10S : APPLICATION IN NO-PROCESSING STATUS RE-TRY
+            IN A FEW MINUTES<BR/>VPL5SKU12S : EMBOSSER RECORD NOT FOUND<BR/>VPL5SKU13S
+            : ACCOUNT FILE NOT OPEN<BR/>VPL5SKU14S : ACCOUNT NUMBER IS NOT FOUND<BR/>VPL5SKU15S
+            : BASE SEGMENT FILE READ ERROR<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Token Life Cycle Management v1
       x-region:
       - EMEA
       - APAC
@@ -35099,6 +35370,15 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 5, Scheme Details'
+        panEncryption:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field will be used to indicate if PAN
+            encryption is to be performed for PAN field in the output response. Valid
+            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
+            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
+            the output response.</LI></UL>'
     AccountDetailInquiryResponse3:
       type: object
       properties:
@@ -35295,8 +35575,7 @@ components:
             memo'
         currBal:
           type: string
-          description: ' Max length = 17, Current Balance: Current balance of the
-            Credit Plan Segment record for the current billing cycle.'
+          description: ' Max length = 17, Current Balance on Account.'
         statementFlag:
           type: string
           description: ' Max length = 1, Statement Flag: Code that indicates how CMS
@@ -40741,6 +41020,12 @@ components:
         txnRefNbr:
           type: string
           description: ' Max length = 12, Transaction Reference Number'
+        digitalCardIndicator:
+          type: string
+          description: ' Max length = 1, This field will be used to identify whether
+            the authorization was a digital wallet transaction or not. Valid values
+            are: <UL><LI><EM>0 - </EM>Not digital wallet transaction.</LI><LI><EM>
+            1 - </EM>Digital wallet transaction.</LI></UL>'
         rba:
           type: string
           description: ' Max length = 9, Relative byte address of the log record that
@@ -44423,6 +44708,15 @@ components:
             indicates whether to display the PIN block change audit trail or not.
             The values are: <UL><LI><EM>0 - </EM>No Display</LI><LI><EM>1 - </EM>Display
             the PIN block change audit trail</LI></UL>'
+        panEncryption:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field will be used to indicate if PAN
+            encryption is to be performed for PAN field in the output response. Valid
+            values are: <UL><LI><EM>0 - </EM>Do not encrypt the PAN number in the
+            output response.</LI><LI><EM> 1 - </EM>Encrypt the PAN number field in
+            the output response.</LI></UL>'
     CardInquiryResponse:
       type: object
       properties:
@@ -59978,87 +60272,17 @@ components:
         common:
           $ref: '#/components/schemas/Header'
     Header:
+      required:
+        - clientNumber
       type: object
       properties:
-        user:
-          type: string
-          description: Setting this value will assign OCS user id for internal ODS
-            Calls for auditing.
-        agent:
-          type: string
-          description: Agent, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-ACCT-LVL-3",
-            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-AGENT-NR",
-            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
-          example: "4000"
-        cycle:
-          type: string
-          description: Setting this value will assign cycle destination for backend
-            system, copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.CYCLE",
-            length:"1", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CENTER",
-            length:"1", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
-          example: '"T"'
         clientNumber:
           type: string
-          description: Client Number, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-CLIENT-ID",
-            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-CLIENT-NR",
-            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.CLIENT",
-            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CLIENT",
-            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
-          example: "1000"
-        system:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.System, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-1", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-SYSTEM-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "2000"
-        prin:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.Principal, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-2", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-PRIN-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "3000"
-        debug:
-          type: boolean
-          description: Setting this value to false will disable additional error details
-            from backend calls.
-          default: false
+          description: Client Number.
+          example: "10000"
         org:
           type: string
           description: Setting this value will assign to the organization identifier.
-        processor:
-          type: boolean
-          description: Setting this value to true will return processor information
-            on the response. Defaults to false
-          default: false
-        contentType:
-          type: string
-        retry:
-          type: integer
-          description: The retry count for the same request sent to First Data. This
-            is used for internal resubmission tracking.
-          format: int64
-        timeout:
-          type: integer
-          description: How long the request should be tried before timing out.
-          format: int64
-        siteId:
-          type: string
-          description: 'This field will be used by the service to determine the First
-            Track, First Dispute, Fraud Detection Work Center destination. Site Id
-            will be provided by these applications to the calling applications '
-          example: '"4201"'
     Hist3ForAccountDetailInquiry3:
       type: object
       properties:
@@ -66184,17 +66408,20 @@ components:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, First Name of the Customer. In case nameType1Ind is set to 1, then do not pass any value in this field.'
+          description: ' Max length = 40, First Name of the Customer. In case nameType1Ind
+            is set to 1, then do not pass any value in this field.'
         middleName:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, Middle Name of the Customer. In case nameType1Ind is set to 1, then do not pass any value in this field.'
+          description: ' Max length = 40, Middle Name of the Customer. In case nameType1Ind
+            is set to 1, then do not pass any value in this field.'
         lastName:
           maxLength: 40
           minLength: 0
           type: string
-          description: ' Max length = 40, Last Name of the Customer, In case nameType1Ind is set to 1, then do not pass any value in this field.'
+          description: ' Max length = 40, Last Name of the Customer. In case nameType1Ind
+            is set to 1, then do not pass any value in this field.'
         suffix:
           maxLength: 20
           minLength: 0
@@ -68572,6 +68799,71 @@ components:
             response. For both reactive (NodeJS, RxNetty) or blocking (Spring, Jersey)
             systems this should be the time when Server composed the response.'
       description: ' The Send_Notification V3 contract requires a Header in the response.'
+    NotifyCardOperationRequest:
+      required:
+      - cardNbr
+      - operation
+      - status
+      - tokenRefNbr
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        cardNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Card number.'
+        cardSeq:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, Record number that identifies the card record.
+            The record number is also referred to as the card sequence number.'
+        issuerId:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Issuer ID.'
+        operationId:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, Operation ID.'
+        tokenRefNbr:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, Token reference number.'
+        operation:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Operation. Valid value - ''DIGITIZE'''
+        status:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Status valid values are: <UL><LI>SUCCESSFUL</LI><LI>PENDING</LI><LI>FAILED</LI></UL>'
+    NotifyCardOperationResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        logo:
+          type: string
+          description: ' Max length = 3, Identification number of the logo.'
+        cardNbr:
+          type: string
+          description: ' Max length = 19, card Number.'
+        cardSeq:
+          type: string
+          description: ' Max length = 4, Record number that identifies the card record.
+            The record number is also referred to as the card sequence number.'
+        tokenRefNbr:
+          type: string
+          description: ' Max length = 64, Token reference number.'
     OfferAccountEnrolmentInquiryRequest:
       type: object
       properties:
@@ -70906,11 +71198,21 @@ components:
     PddBankValidationServiceRequest:
       required:
       - countryCode
+      - org
       - sortCode
       type: object
       properties:
         common:
           $ref: '#/components/schemas/Header'
+        org:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Organization Number: Three digit Identification
+            number of the organization.  Valid values are 001 - 998. Organization
+            number must be on file. When org is spaces or zeros, default from account
+            lookup using the card number provided.'
         countryCode:
           maxLength: 3
           minLength: 0
@@ -77588,6 +77890,71 @@ components:
         tokenDeviceType:
           type: string
           description: ' Max length = 2, Token Device Type.'
+    TokenLifeCycleManagementRequest:
+      required:
+      - cardNbr
+      - operation
+      - status
+      - tokenRefNbr
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        cardNbr:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Card number.'
+        cardSeq:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, Record number that identifies the card record.
+            The record number is also referred to as the card sequence number.'
+        tokenRefNbr:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, Token reference number.'
+        issuerId:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Issuer ID.'
+        operationId:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, Operation ID.'
+        operation:
+          maxLength: 7
+          minLength: 0
+          type: string
+          description: ' Max length = 7, Operation. Valid values are: <UL><LI>SUSPEND</LI><LI>DELETE</LI><LI>RESUME</LI><LI>RENEW</LI></UL>'
+        status:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Status valid values are: <UL><LI>SUCCESSFUL</LI><LI>PENDING</LI><LI>FAILED</LI></UL>'
+    TokenLifeCycleManagementResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        logo:
+          type: string
+          description: ' Max length = 3, Identification number of the logo.'
+        cardNbr:
+          type: string
+          description: ' Max length = 19, card Number.'
+        cardSeq:
+          type: string
+          description: ' Max length = 4, Record number that identifies the card record.
+            The record number is also referred to as the card sequence number.'
+        tokenRefNbr:
+          type: string
+          description: ' Max length = 64, Token reference number.'
     TransactionDataX3ForTransactionInquiry3:
       type: object
       properties:
@@ -78273,11 +78640,11 @@ components:
             - 99999.'
         promoPlanExpDt:
           type: string
-          description: 'Format: YYYYMMDD. This field contains the date when a Promo
-            Plan will expire, Promo Plans are identified by the promoPlanInd tag on
-            the Account Plan List API response containing a value of 2 (BNPL) or 3
-            (Special). NOTE: This field is only populated when a new sales transaction
-            is posted to a Promo Plan.'
+          description: ' Max length = 8, This field contains the date when a Promo
+            Plan will expire. Format: DD/MM/YYYY, Promo Plans are identified by the
+            promoPlanInd tag on the Account Plan List API response containing a value
+            of 2 (BNPL) or 3 (Special). NOTE: This field is only populated when a
+            new sales transaction is posted to a Promo Plan.'
     TransactionErrorCodesForProcessedTransactionRejectUpdate1:
       type: object
       properties:
