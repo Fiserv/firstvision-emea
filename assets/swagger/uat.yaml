@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.69
+  version: 1.48.72
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -35346,11 +35346,6 @@ components:
       properties:
         common:
           $ref: '#/components/schemas/Header'
-        digitalCardInd:
-          type: string
-          description: ' Max length = 1, Digital card indicator. Valid values are:
-            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
-            Card Only.</LI><LI><EM>2-</EM>Both Physical Plastic & Digital cards.</LI></UL>'
     AccountDetailInquiryRequest3:
       required:
       - account
@@ -37031,6 +37026,9 @@ components:
         dmpPmtReq:
           type: string
           description: ' Max length = 9, Final DMP payment requested'
+        qualGraceBal:
+          type: string
+          description: ' Max length = 17, Calculated qualifying grace balance'
         authTxtMsg:
           type: string
           description: ' Max length = 1, Authorization Text message switch. This switch
@@ -44559,6 +44557,25 @@ components:
             are restricted on the cards or not. Valid values are: <UL><LI><EM>0 -
             </EM>Card has no GAMBLING authorization restrictions (Default)</LI><LI><EM>1
             - </EM>Card has GAMBLING authorizations restricted</LI></UL>'
+        authAtmDailyAmt:
+          maxLength: 17
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 17, Maximum authorization amount in monetary
+            units and subunits for ATM transactions allowed daily.'
+        tempCashLimAmt:
+          maxLength: 17
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 17, Temporary cash limit'
+        tempCashRunNbr:
+          maxLength: 2
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 2, Temporary cash run number'
     CardControlUpdateResponse:
       type: object
       properties:
@@ -48415,12 +48432,6 @@ components:
         pinSuppression:
           type: string
           description: ' Max length = 1, PIN Mailer Suppression'
-        digitalCardInd:
-          type: string
-          description: ' Max length = 1, Digital card indicator. Valid values are:
-            <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
-            Card Only.</LI><LI><EM>2-</EM>Temp digital card.</LI><LI><EM>3-</EM>Both
-            Physical Plastic & Digital cards.</LI></UL>'
     CardholderDemographicListRequest3:
       required:
       - acct
@@ -55471,6 +55482,11 @@ components:
             to relationship record)</LI><LI><EM>4 –</EM>Customer preferred mailing
             address is branch address (address present in the customer linked to sub-ordinate
             account)</LI></UL>'
+        empCounty:
+          maxLength: 30
+          minLength: 0
+          type: string
+          description: ' Max length = 30, Employer County.'
     CustomerDataUpdateResponse2:
       type: object
       properties:
