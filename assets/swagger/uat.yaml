@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.72
+  version: 1.48.76
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -25090,6 +25090,128 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Loan Plan Inquiry v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Loans
+      x-codegen-request-body-name: body
+  /fv_emea/v1/loanScheduleInquiry:
+    post:
+      tags:
+      - Loans
+      summary: LoanScheduleInquiry
+      description: This service is used to retrieve the information required for initial
+        screen population.<BR/><BR/><p>Fields that are not provided in the Request
+        object will be initialised to their default values. All numeric fields are
+        initialised to zero and alphanumeric fields initialised to spaces</p>
+      operationId: loanScheduleInquiry_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanScheduleInquiryRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanScheduleInquiryResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SLL03S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
+            MINUTES<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Loan Schedule Inquiry v1
       x-region:
       - EMEA
       - APAC
@@ -50267,6 +50389,16 @@ components:
           description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM>  ATM-NOT-REST</LI><LI><EM>1
             –</EM>  ATM-REST-ACCT</LI><LI><EM>2 –</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
             –</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 –</EM>  ATM-REST-DEF-VALID</LI></UL>'
+        commrclFlag:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Flag that indicates whether this is a commercial
+            card relationship The values are: 0 = Not a commercial card relationship
+            (Default) 1 = Visa corporate card relationship 2 = Visa purchasing card
+            relationship 3 = HCS commercial card relationship, which can include Visa
+            corporate cards, Visa purchasing cards, and/or MasterCard purchasing cards'
         accountOrganization:
           maxLength: 3
           minLength: 0
@@ -51842,9 +51974,10 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Authorization message The values are: 0 =
-            Authorization message is not active 1 = Authorization message is active
-            2 = Authorization message is active on fee.'
+          description: ' Max length = 1, Defines the preferred electronic correspondence
+            method for Auth Alerts. Valid Values are <UL><LI><EM>0 - </EM> Off</LI><LI><EM>
+            1 - </EM> Only Email alerts</LI><LI><EM> 2 -</EM> Only SMS alerts</LI><LI><EM>
+            3 -</EM> Both Email and SMS alerts</LI></UL>'
         otbSmsInd:
           maxLength: 1
           minLength: 0
@@ -64147,6 +64280,379 @@ components:
         bookingFee:
           type: string
           description: ' Max length = 17, Booking Fee amount'
+    LoanScheduleDataForLoanScheduleInquiry1:
+      type: object
+      properties:
+        lsPaymentAmt:
+          type: string
+          description: ' Max length = 17, Loan schedule Payment amount.'
+        lsPrincipleAmt:
+          type: string
+          description: ' Max length = 17, Loan schedule Principle amount.'
+        lsInterestAmt:
+          type: string
+          description: ' Max length = 17, Loan schedule interest amount.'
+        lsInstallmentAmt:
+          type: string
+          description: ' Max length = 17, Loan schedule installment amount.'
+        lsUser1Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 1.'
+        lsUser2Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 2.'
+        lsUser3Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 3.'
+        lsUser4Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 4.'
+        lsUser5Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 5.'
+        lsUser6Amt:
+          type: string
+          description: ' Max length = 17, Loan schedule user amount 6.'
+        lstotalInstallment:
+          type: string
+          description: ' Max length = 17, '
+        lsInterestRate:
+          type: string
+          description: ' Max length = 7, Loan schedule interest rate.'
+        lsInstallmentNbr:
+          type: string
+          description: ' Max length = 3, Loan schedule Installment number.'
+    LoanScheduleInquiryRequest:
+      required:
+      - account
+      - planSequence
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        account:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, The card / account number for which this
+            request is made. Must be a valid card number  or account number'
+        planSequence:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Plan sequence'
+        jumpPaymentNbr:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Number of payment jump'
+        foreignUse:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Foreign use flag.<UL><LI><EL>Local = 0 or
+            space</EL></LI><EL>Foreign = </EL>1</LI></LI>'
+    LoanScheduleInquiryResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        currencyNod:
+          type: string
+          description: ' Max length = 1, '
+        pctRateNod:
+          type: string
+          description: ' Max length = 1, '
+        currencyCode:
+          type: string
+          description: ' Max length = 3, '
+        foreignUse:
+          type: string
+          description: ' Max length = 1, '
+        planDesc:
+          type: string
+          description: ' Max length = 40, Plan description'
+        cpDesc:
+          type: string
+          description: ' Max length = 30, '
+        eppUserType:
+          type: string
+          description: ' Max length = 1, <UL>Loan type<LI><EL>Base =</EL> 0</LI><LI><EL>Bill
+            Not Paid = </EL>1</LI><LI><EL>Principle = </EL>2</LI><LI><EL>System rev
+            loan = </EL>3</LI><LI><EL>Interest free = </EL>1 or 2</LI></UL>'
+        celRescReason:
+          type: string
+          description: ' Max length = 1, Indicates if more loans are present under
+            the account'
+        planRecStatus:
+          type: string
+          description: ' Max length = 2, Plan rec status'
+        restructInd:
+          type: string
+          description: ' Max length = 1, <UL>Restructure Indicator<LI><EL>Cel RI off
+            = </EL>0</LI><LI><EL>Cel RI fix payment on = </EL>1</LI><LI><EL>Cel RI
+            term on = </EL>2</LI><LI><EL>Cel RI Payment all = </EL>3</LI><LI><EL>Cel
+            Ri payment remaining = </EL>4</LI></UL>'
+        restrictReschScrInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>Restructure reschedule screen indicator<EL>Yes
+            = </EL>1</LI><EL>No = </EL>0</EL></LI></UL>'
+        restrictPaymentSchInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>Restructure Payment screen indicator<EL>Yes
+            = </EL>1</LI><EL>No = </EL>0</EL></LI></UL>'
+        restrictAmortInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>Restructure amort indicator<EL>Yes
+            = </EL>1</LI><EL>No = </EL>0</EL></LI></UL>'
+        dateLastReschedule:
+          type: string
+          description: 'Format: YYYYMMDD. Date last rescheduled'
+        nbrOfTimesResch:
+          type: string
+          description: ' Max length = 3, No of times rescheduled'
+        reschTerm:
+          type: string
+          description: ' Max length = 3, Reschedule term'
+        reschPrincipal:
+          type: string
+          description: ' Max length = 17, Reschedule principle'
+        reschInterest:
+          type: string
+          description: ' Max length = 17, Rechedule Interest'
+        reschInsurance:
+          type: string
+          description: ' Max length = 17, Rechedule Insurance'
+        reschUser1:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschUser2:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschhUser3:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschUser4:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschUser5:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschUser6:
+          type: string
+          description: ' Max length = 17, Reschedule user fee'
+        reschFixedPaymentAmt:
+          type: string
+          description: ' Max length = 17, Reschedule fixed payment amount'
+        reschFinalPayment:
+          type: string
+          description: ' Max length = 17, Reschedule final payment'
+        reschInerestFlatAmt:
+          type: string
+          description: ' Max length = 17, Reschedule flat interest amount'
+        reschInterestApr:
+          type: string
+          description: ' Max length = 7, Reschedule interest apr'
+        initTerm:
+          type: string
+          description: ' Max length = 3, Initial term'
+        initPrincipalBal:
+          type: string
+          description: ' Max length = 17, Initial Principle Balance'
+        initInterest:
+          type: string
+          description: ' Max length = 17, Initial Interest'
+        initInsurance:
+          type: string
+          description: ' Max length = 17, Initial insurance'
+        initUser1:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initUser2:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initUser3:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initUser4:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initUser5:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initUser6:
+          type: string
+          description: ' Max length = 17, Initial user fee'
+        initFixedPaymentAmt:
+          type: string
+          description: ' Max length = 17, Initial Fixed Payment amount'
+        initFinalPayment:
+          type: string
+          description: ' Max length = 17, Initial fixed payment'
+        initInterestFlatAmt:
+          type: string
+          description: ' Max length = 17, Initaial Interest  flat amount'
+        initInterestApr:
+          type: string
+          description: ' Max length = 7, Initialinterest apr'
+        interestCCIInd:
+          type: string
+          description: ' Max length = 1, <UL>Interest CCI indicator<LI><EL>System
+            interest = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Periodic =
+            </EL>2</LI><LI><EL>Loan schedule = </EL>3</LI><LI><EL>Interest free =
+            </EL>1 ,2 ,3</LI></UL>'
+        insuranceCCIInd:
+          type: string
+          description: ' Max length = 1, <UL>Insurance CCI Indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user1FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user2FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user3FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user4FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user5FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<LI><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        user6FeeCCIInd:
+          type: string
+          description: ' Max length = 1, <UL><LI>User fee CCI indicator<UL><EL>System
+            = </EL>0</LI><LI><EL>Lumpsum = </EL>1</LI><LI><EL>Loan schedule = </EL>3</LI></UL>'
+        initPrinicpalAmortTerm:
+          type: string
+          description: ' Max length = 3, Initial Principal amortization term'
+        initIntAmortTerm:
+          type: string
+          description: ' Max length = 3, Initial interest amortization term'
+        initInsuranceAmortTerm:
+          type: string
+          description: ' Max length = 3, Initial Insurance amortization term'
+        initUser1AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initUser2AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initUser3AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initUser4AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initUser5AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initUser6AmortTerm:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization term'
+        initPrincipalAmortTbl:
+          type: string
+          description: ' Max length = 3, Initial principle amortization table'
+        initInterestAmortTbl:
+          type: string
+          description: ' Max length = 3, Initial interest amortization table'
+        initInsuranceAmortTbl:
+          type: string
+          description: ' Max length = 3, Initial insurance amortization table'
+        initUser1AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        initUser2AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        initUser3AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        initUser4AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        initUser5AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        initUser6AmortTbl:
+          type: string
+          description: ' Max length = 3, Initial user fee amortization table'
+        reschPrincipalAmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule principle amortization term'
+        reschIntAmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule interest amortization term'
+        reschInsuranceAmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule insurance amortization term'
+        reschUser1AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization term'
+        reschUser2AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization term'
+        reschUser3AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization term'
+        reschUser4AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization term'
+        reschUser5AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschloaedule user fee amortization term'
+        reschUser6AmortTerm:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization term'
+        reschPrincipalAmortTbl:
+          type: string
+          description: ' Max length = 3, Reschedule Principle amortization table.'
+        reschInterestAmortTbl:
+          type: string
+          description: ' Max length = 3, Reschedule Interest fee amortization table'
+        reschInsuraceAmortTbl:
+          type: string
+          description: ' Max length = 3, Reschedule Insurance fee amortization table.'
+        reschUser1Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        reschUser2Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        reschUser3Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        reschUser4Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        reschUser5Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        reschUser6Amort:
+          type: string
+          description: ' Max length = 3, Reschedule user fee amortization table.'
+        amortizationMethod:
+          type: array
+          description: Amortization Method.<p>  This is a list of size 12 elements.
+          items:
+            type: string
+        lsOccurrenceNbr:
+          type: string
+          description: ' Max length = 3, Loan schedule occurrence number.'
+        loanScheduleData:
+          type: array
+          description: Loan schedule occurrence number.<p>  This is a list of size
+            120 elements.
+          items:
+            $ref: '#/components/schemas/LoanScheduleDataForLoanScheduleInquiry1'
     LookupTable2ForExtendedLookupInquiry2:
       type: object
       properties:
