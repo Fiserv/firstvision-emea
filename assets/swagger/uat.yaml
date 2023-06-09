@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.76
+  version: 1.48.77
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -50399,6 +50399,17 @@ components:
             (Default) 1 = Visa corporate card relationship 2 = Visa purchasing card
             relationship 3 = HCS commercial card relationship, which can include Visa
             corporate cards, Visa purchasing cards, and/or MasterCard purchasing cards'
+        rmFiscalYearEnd:
+          maxLength: 2
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 2, Month in which the fiscal year ends for the
+            commercial card customer. Valid values  are: 01 - 12 Produce reports at
+            MCC level for this account. Numbers 01 - 12 denote the fiscal month for
+            the account when the fiscal year end report is produced.  Valid values
+            are: 01-January,  02-February, 03-March,  04-April, 05-May, 06-June, 07-July,
+            08-August, 09-September, 10-October, 11-November, 12-December'
         accountOrganization:
           maxLength: 3
           minLength: 0
