@@ -52,8 +52,6 @@
       groups: []
       open: true
       sections:
-        - title: Release 23.06-Major
-          link: docs/release-notes/Future-Release-Notes/23.06.md
         - title: Release 23-Mini-7
           link: docs/release-notes/Future-Release-Notes/Mini7.md
 - sections:
