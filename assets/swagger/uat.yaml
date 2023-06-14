@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.77
+  version: 1.56.7
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -34456,10 +34456,17 @@ components:
             whether the account should be restructured.  Values are: Y = Restructure
             Requested N = No Account Restructure Requested'
     AccountCardListInquiryRequest:
+      required:
+      - mobileNbr
       type: object
       properties:
         common:
           $ref: '#/components/schemas/Header'
+        mobileNbr:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Customer Mobile Number as stored in FirstVision'
         transactionDateTime:
           maxLength: 10
           minLength: 0
@@ -34490,8 +34497,9 @@ components:
           description: ' Max length = 2, Number of occurrences.'
         cardSummTbl:
           type: array
-          description: <p>  This is a list of size 20 elements.This is a repeating
-            field. Number of occurrences returned depends on the field cardSummaryOccur
+          description: 20 Occurrences of Card Summary Table.<p>  This is a list of
+            size 20 elements.This is a repeating field. Number of occurrences returned
+            depends on the field cardSummaryOccur
           items:
             $ref: '#/components/schemas/CardSummTblForAccountCardListInquiry1'
         transactionDateTime:
@@ -41324,16 +41332,18 @@ components:
           maxLength: 19
           minLength: 0
           type: string
-          description: ' Max length = 19, Card Number: Unique Card number embossed
-            on the plastic card, used for this request. 1. Must be numeric and greater
-            than 0 2. Card number must be valid for Org provided.'
+          description: ' Max length = 19, Card Number, Unique Card number embossed
+            on the plastic card, used for this request. 1 - Must be numeric and greater
+            than 0. 2 - Card number must be valid for Org provided. Account number
+            is expected in this field for UPI request on Rupay.'
         storeOrg:
           maxLength: 3
           minLength: 0
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 3, Merchant Organization Number: Three digit
-            Identification number of the organization. Valid values are 001 - 998.'
+            Identification number of the organization. Valid values are 001 - 998.
+            This field is mandatory for UPI request on Rupay.'
         storeNbr:
           maxLength: 9
           minLength: 0
@@ -41341,7 +41351,8 @@ components:
           type: string
           description: ' Max length = 9, Merchant Store Number: Identification number
             of the Merchant Store. This field is mandatory for Authorization Request
-            or Refund request. i.e. when the serviceFlag is set to ''A'' or ''C'''
+            or Refund request. i.e. when the serviceFlag is set to ''A'' or ''C''.
+            This field is mandatory for UPI request on Rupay.'
         amt:
           maxLength: 14
           minLength: 0
@@ -41349,7 +41360,7 @@ components:
           type: string
           description: ' Max length = 14, Amount for Authorization. This field is
             mandatory for Authorization Request or Refund request. i.e. when the serviceFlag
-            is set to ''A'' or ''C'''
+            is set to ''A'' or ''C''. This field is mandatory for UPI request on Rupay.'
         plan:
           maxLength: 5
           minLength: 0
@@ -41357,7 +41368,8 @@ components:
           type: string
           description: ' Max length = 5, Plan Number for Authorization. This field
             is mandatory for Authorization Request or Refund request. i.e. when the
-            serviceFlag is set to ''A'' or ''C'''
+            serviceFlag is set to ''A'' or ''C''. This field is mandatory for UPI
+            request on Rupay.'
         dateExpireMm:
           maxLength: 2
           minLength: 0
@@ -41385,10 +41397,10 @@ components:
           type: string
           description: ' Max length = 1, CVV Presence Indicator: Code the merchant
             uses to indicate that the CVV2 value is on the card. This field is used
-            when the serviceFlag is set to ''A'' i.e. if Authorization is being triggered.
+            when the serviceFlag is set to `A` i.e. if Authorization is being triggered.
             Valid Values are: <UL><LI>0 = Security code bypassed </LI><LI>1 = Security
             Code is present </LI><LI>2 = Security Code is illegible</LI><LI>9 = Security
-            Code not imprinted</LI></UL>'
+            Code not imprinted</LI></UL> Please pass `0` for UPI request on Rupay.'
         billPmtInd:
           maxLength: 1
           minLength: 0
@@ -41396,7 +41408,7 @@ components:
           description: ' Max length = 1, Bill Payment Indicator: Code used by the
             merchant to indicate a bill payment transaction. Valid Values are: <UL><LI>Y
             = Transaction is of Bill Payment </LI><LI>N = Transaction is not of Bill
-            Payment </LI></UL>'
+            Payment </LI></UL> This field is not required when request is UPI on Rupay.'
         recrPmtInd:
           maxLength: 1
           minLength: 0
@@ -41404,19 +41416,21 @@ components:
           description: ' Max length = 1, Recurring Payment Indicator: Code used by
             the merchant to indicate a bill payment transaction. Valid Values are:
             <UL><LI>Y = Transaction is Recurring transaction </LI><LI>N = Transaction
-            is not Recurring transaction </LI></UL>'
+            is not Recurring transaction </LI></UL> This field is not required when
+            request is UPI on Rupay.'
         effDate:
           type: string
           description: 'Format: YYYYMMDD. Effective Date. This field is used when
             the serviceFlag is set to ''R'' i.e. if Reversal is being triggered for
-            a transaction.'
+            a transaction. This field is not required when request is UPI on Rupay.'
         time:
           maxLength: 7
           minLength: 0
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 7, Time. This field is used when the serviceFlag
-            is set to ''R'' i.e. if Reversal is being triggered for a transaction.'
+            is set to ''R'' i.e. if Reversal is being triggered for a transaction.
+            This field is not required when request is UPI on Rupay.'
         accountRba:
           maxLength: 9
           minLength: 0
@@ -41424,7 +41438,8 @@ components:
           type: string
           description: ' Max length = 9, Original Authorization / transaction key
             for the reversal request. This field is required when reversing an authorisation
-            (serviceFlag = ''R'') after the batch cycle.'
+            (serviceFlag = ''R'') after the batch cycle. This field is not required
+            when request is UPI on Rupay.'
         accountLogExt:
           maxLength: 1
           minLength: 0
@@ -41432,7 +41447,8 @@ components:
           type: string
           description: ' Max length = 1, Original transaction extension indicator
             for the reversal request. This field is used when the serviceFlag is set
-            to ''R'' i.e. if Reversal is being triggered for a transaction.'
+            to ''R'' i.e. if Reversal is being triggered for a transaction. This field
+            is not required when request is UPI on Rupay.'
         foreignUse:
           maxLength: 1
           minLength: 0
@@ -41445,7 +41461,8 @@ components:
           maxLength: 300
           minLength: 0
           type: string
-          description: ' Max length = 300, Memo notes / description for the transaction.'
+          description: ' Max length = 300, Memo notes / description for the transaction.
+            This field is not required when request is UPI on Rupay.'
         serviceFlag:
           maxLength: 1
           minLength: 0
@@ -41455,14 +41472,15 @@ components:
             </LI><LI><EM>R - </EM> Authorization Reversal </LI><LI><EM>C - </EM> Authorization
             Refund </LI><LI><EM>D - </EM>Purchase via Account</LI><LI><EM>E - </EM>Reversal
             for Purchase via Account</LI><LI><EM>I - </EM> Transaction Inquiry </LI><LI><EM>P
-            - </EM> Cashback</LI><LI><EM>V - </EM> Card validation</LI></UL>'
+            - </EM>UPI Cashback</LI><LI><EM>V - </EM>UPI Card validation</LI></UL>'
         actionCode:
           maxLength: 4
           minLength: 0
           type: string
           description: ' Max length = 4, Action Code for Authorization Clearing or
             Reversal. This field is mandatory when the msgType field is set to S,
-            and it is not required at all when the msgType is set to D'
+            and it is not required at all when the msgType is set to D. This field
+            is not required when request is UPI on Rupay.'
         merchCatCode:
           maxLength: 4
           minLength: 0
@@ -41472,12 +41490,14 @@ components:
           maxLength: 30
           minLength: 0
           type: string
-          description: ' Max length = 30, Transaction Description.'
+          description: ' Max length = 30, Transaction Description. This field is not
+            required when request is UPI on Rupay.'
         udv:
           maxLength: 23
           minLength: 0
           type: string
-          description: ' Max length = 23, Reference number of the transaction.'
+          description: ' Max length = 23, Reference number of the transaction. This
+            field is not required when request is UPI on Rupay.'
         txnType:
           maxLength: 1
           minLength: 0
@@ -41507,7 +41527,8 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 4, Security Code AE. This field is used when
-            the secPresInd is set to 1.'
+            the secPresInd is set to 1. This field is not required when request is
+            UPI on Rupay.'
         authRefNbr:
           maxLength: 12
           minLength: 0
@@ -41522,7 +41543,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 14, Replacement Amount.'
+          description: ' Max length = 14, Replacement Amount. This field is not required
+            when request is UPI on Rupay.'
         dupAuth:
           maxLength: 1
           minLength: 0
@@ -41537,26 +41559,29 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 30, Number and other details (Account Number
-            + 6-digit BIN + zeros)'
+            + 6-digit BIN + zeros). This field is used only for UPI on Rupay requests.'
         maskCardNbr:
           maxLength: 16
           minLength: 0
           type: string
           description: ' Max length = 16, UPI card validation: 16 digits (last 6 bytes
-            of card number will not be masked and remaining will be ‘X’s) UPI Transaction(
+            of card number will not be masked and remaining will be ''X''s) UPI Transaction(
             AUTH / REVERSAL/ CASHBACK and REFUND) Requests: 16 digits (last 4 bytes
-            of card number will not be masked and remaining will be ‘X’s)'
+            of card number will not be masked and remaining will be ''X''s) This field
+            is used only for UPI on Rupay requests.'
         tranDateTime:
           maxLength: 10
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 10, Transaction date time, in format - MMDDHHMMSS.'
+          description: ' Max length = 10, Transaction date time, in format - MMDDHHMMSS.
+            This field is used only for UPI on Rupay requests.'
         mobNbr:
           maxLength: 20
           minLength: 0
           type: string
-          description: ' Max length = 20, Mobile number.'
+          description: ' Max length = 20, Mobile number. This field is used only for
+            UPI on Rupay requests.'
         merchantName:
           maxLength: 40
           minLength: 0
@@ -41564,17 +41589,20 @@ components:
           description: " Max length = 40, Merchant Name if available then should be\
             \ populated as below. <UL><LI><EM>Pos: 01-25 =</EM>\tMerchant Name</LI><LI><EM>Pos:\
             \ 26-37=</EM>City name (if available, otherwise spaces)</LI><LI><EM>Pos:\
-            \ 38-40=</EM>Country code (static value of 'IND')</LI></UL>"
+            \ 38-40=</EM>Country code (static value of 'IND')</LI></UL> This field\
+            \ is used only for UPI on Rupay requests."
         merchantId:
           maxLength: 15
           minLength: 0
           type: string
-          description: ' Max length = 15, Merchant ID'
+          description: ' Max length = 15, Merchant ID. This field is used only for
+            UPI on Rupay requests.'
         upiRefId:
           maxLength: 35
           minLength: 0
           type: string
-          description: ' Max length = 35, UPI REFERENCE ID'
+          description: ' Max length = 35, UPI REFERENCE ID. This field is used only
+            for UPI on Rupay requests.'
         deviceId:
           maxLength: 90
           minLength: 0
@@ -41584,7 +41612,8 @@ components:
             (for ex - ''12.9667,77.5667'')</LI><LI><EM> Pos 16-30: </EM> I P – 15
             bytes (for ex - ''123.123.123.123'')</LI><LI><EM> Pos 31-70: </EM> Location
             – 40 bytes </LI><LI><EM> Pos 71-20: </EM> Mobile – 20 bytes (might be
-            required to identify any fraud transaction)</LI></UL>'
+            required to identify any fraud transaction)</LI></UL> This field is used
+            only for UPI on Rupay requests.'
     AuthorisationReversalandRequestResponse:
       type: object
       properties:
@@ -46306,14 +46335,15 @@ components:
         cardNbr:
           type: string
           description: ' Max length = 19, Card Number.'
+        cardName:
+          type: string
+          description: ' Max length = 26, Card Name.'
         cardScheme:
           type: string
           description: ' Max length = 1, Card Scheme – Rupay – ‘R’'
         uniqueID:
           type: string
           description: ' Max length = 19, Unique ID.'
-        cardName:
-          type: string
     CardTable3ForRelationshipInquiry3:
       type: object
       properties:
