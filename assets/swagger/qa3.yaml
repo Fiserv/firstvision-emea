@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.48.74
+  version: 1.57.8
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -11927,6 +11927,135 @@ paths:
       x-regions: EMEA,APAC
       x-display: Card Maintenance
       x-codegen-request-body-name: body
+  /fv_emea/v1/externalDetailsService:
+    post:
+      tags:
+      - Card Maintenance
+      summary: ExternalDetailsService
+      description: This service is used to receive data from external sources in real-time
+        with all fields in EXT10.
+      operationId: externalDetailsService_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalDetailsServiceRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalDetailsServiceResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SFX01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPL5SFX02S
+            : SERVICE INPUT TO ADDRESS INQ NAV SERVICE IS AN INCORRECT LENGTH<BR/>VPL5SFX03S
+            : USER HAS NOT SIGNED ON - PLEASE SIGNON<BR/>VPL5SFX04S : FILE-TABLE USED
+            BY THIS SERVICE IS MISSING<BR/>VPL5SFX05S : ACCOUNT NUMBER MUST BE NUMERIC
+            AND GREATER THAN ZEROS<BR/>VPL5SFX06S : REQUESTED CARDorACCOUNT NUMBER
+            IS NOT FOUND<BR/>VPL5SFX07S : REQUESTED ORGANIZATION IS NOT VALID<BR/>VPL5SFX08S
+            : FILE-TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPL5SFX09S : APPLICATION
+            IN NO-PROCESSING STATUS RE-TRY IN A FEW MINUTES<BR/>VPL5SFX10S : SYSTEM
+            RECORD IS NOT FOUND<BR/>VPL5SFX11S : ORGANIZATION NOT FOUND<BR/>VPL5SFX12S
+            : ACCOUNT NUMBER NOT FOUND<BR/>VPL5SFX13S : LOGO RECORD NOT FOUND<BR/>VPL5SFX14S
+            : CUSTOMER NUMBER NOT FOUND<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: External Details Service v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
   /fv_emea/v1/fraudMonitorFlagUpdate:
     post:
       tags:
@@ -12056,6 +12185,135 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Fraud Monitor Flag Update v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
+  /fv_emea/v1/fraudTransactionService:
+    post:
+      tags:
+      - Card Maintenance
+      summary: FraudTransactionService
+      description: This service is used to receive non-card transactions in Falcon
+        data feed from Clients.
+      operationId: fraudTransactionService_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FraudTransactionServiceRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FraudTransactionServiceResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPE5SFR01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPE5SFR02S
+            : SERVICE INPUT TO ADDRESS INQ NAV SERVICE IS AN INCORRECT LENGTH<BR/>VPE5SFR03S
+            : USER HAS NOT SIGNED ON - PLEASE SIGNON<BR/>VPE5SFR04S : FILE-TABLE USED
+            BY THIS SERVICE IS MISSING<BR/>VPE5SFR05S : ACCOUNT NUMBER MUST BE NUMERIC
+            AND GREATER THAN ZEROS<BR/>VPE5SFR06S : REQUESTED CARDorACCOUNT NUMBER
+            IS NOT FOUND<BR/>VPE5SFR07S : REQUESTED ORGANIZATION IS NOT VALID<BR/>VPE5SFR08S
+            : FILE-TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPE5SFR09S : APPLICATION
+            IN NO-PROCESSING STATUS RE-TRY IN A FEW MINUTES<BR/>VPE5SFR10S : SYSTEM
+            RECORD IS NOT FOUND<BR/>VPE5SFR11S : ORGANIZATION NOT FOUND<BR/>VPE5SFR12S
+            : ACCOUNT NUMBER NOT FOUND<BR/>VPE5SFR13S : LOGO RECORD NOT FOUND<BR/>VPE5SFR14S
+            : CUSTOMER NUMBER NOT FOUND<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Fraud Transaction Service v1
       x-region:
       - EMEA
       - APAC
@@ -13378,6 +13636,135 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: PIN Block Update v1
+      x-region:
+      - EMEA
+      - APAC
+      x-regions: EMEA,APAC
+      x-display: Card Maintenance
+      x-codegen-request-body-name: body
+  /fv_emea/v1/retailBankingTransactionService:
+    post:
+      tags:
+      - Card Maintenance
+      summary: RetailBankingTransactionService
+      description: This service is used to receive receive confirmed fraud transactions
+        from external sources.
+      operationId: retailBankingTransactionService_v1_fv_emea
+      parameters:
+      - name: Authorization
+        in: header
+        description: OAuth2.0 access token (Bearer token) that you get from security
+          API
+        required: true
+        schema:
+          type: string
+          default: Bearer <token>
+      - name: Content-Type
+        in: header
+        description: Request content type
+        schema:
+          type: string
+          default: application/json
+      - name: AppCode
+        in: header
+        description: Application code identifying the calling application within a
+          client system
+        schema:
+          type: string
+          default: 'Please reach out to FirstVision API team to get the right values
+            for your application. '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetailBankingTransactionServiceRequest'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailBankingTransactionServiceResponse'
+        400:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
+            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
+            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
+            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        401:
+          description: 'Unauthorized: Authorization failed due to missing or invalid
+            credentials. <BR/>Below are the error codes you can expect when connecting
+            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
+            Please try with valid values<BR/>API-Sec-002 - The client id provided
+            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
+            token is invalid. It may have expired, or maybe incorrect'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        403:
+          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
+            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
+            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
+            - Mismatch in scope. The access token does not have the permission to
+            access this resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        404:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-005 - Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        429:
+          description: Below are the error codes you can expect when connecting over
+            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
+            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
+            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
+            this API. Please try after sometime
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+        452:
+          description: 'System Exception: Internal processes not related to client
+            interaction with application are the cause of the failure'
+          content: {}
+        453:
+          description: 'Validation Exception: The request failed validation, modify
+            the request and resubmit'
+          content: {}
+        455:
+          description: 'ODS Error Exception: ODS returned a message with transaction
+            status ERROR'
+          content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPE5SRB01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPE5SRB02S
+            : SERVICE INPUT TO ADDRESS INQ NAV SERVICE IS AN INCORRECT LENGTH<BR/>VPE5SRB03S
+            : USER HAS NOT SIGNED ON - PLEASE SIGNON<BR/>VPE5SRB04S : FILE-TABLE USED
+            BY THIS SERVICE IS MISSING<BR/>VPE5SRB05S : ACCOUNT NUMBER MUST BE NUMERIC
+            AND GREATER THAN ZEROS<BR/>VPE5SRB06S : REQUESTED CARDorACCOUNT NUMBER
+            IS NOT FOUND<BR/>VPE5SRB07S : REQUESTED ORGANIZATION IS NOT VALID<BR/>VPE5SRB08S
+            : FILE-TABLE USED BY THIS SERVICE IS NOT FOUND<BR/>VPE5SRB09S : APPLICATION
+            IN NO-PROCESSING STATUS RE-TRY IN A FEW MINUTES<BR/>VPE5SRB10S : SYSTEM
+            RECORD IS NOT FOUND<BR/>VPE5SRB11S : ORGANIZATION NOT FOUND<BR/>VPE5SRB12S
+            : ACCOUNT NUMBER NOT FOUND<BR/>VPE5SRB13S : LOGO RECORD NOT FOUND<BR/>VPE5SRB14S
+            : CUSTOMER NUMBER NOT FOUND<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
+      deprecated: false
+      x-proxy-name: Retail Banking Transaction Service v1
       x-region:
       - EMEA
       - APAC
@@ -34456,10 +34843,17 @@ components:
             whether the account should be restructured.  Values are: Y = Restructure
             Requested N = No Account Restructure Requested'
     AccountCardListInquiryRequest:
+      required:
+      - mobileNbr
       type: object
       properties:
         common:
           $ref: '#/components/schemas/Header'
+        mobileNbr:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Customer Mobile Number as stored in FirstVision'
         transactionDateTime:
           maxLength: 10
           minLength: 0
@@ -34490,8 +34884,9 @@ components:
           description: ' Max length = 2, Number of occurrences.'
         cardSummTbl:
           type: array
-          description: <p>  This is a list of size 20 elements.This is a repeating
-            field. Number of occurrences returned depends on the field cardSummaryOccur
+          description: 20 Occurrences of Card Summary Table.<p>  This is a list of
+            size 20 elements.This is a repeating field. Number of occurrences returned
+            depends on the field cardSummaryOccur
           items:
             $ref: '#/components/schemas/CardSummTblForAccountCardListInquiry1'
         transactionDateTime:
@@ -41324,16 +41719,18 @@ components:
           maxLength: 19
           minLength: 0
           type: string
-          description: ' Max length = 19, Card Number: Unique Card number embossed
-            on the plastic card, used for this request. 1. Must be numeric and greater
-            than 0 2. Card number must be valid for Org provided.'
+          description: ' Max length = 19, Card Number, Unique Card number embossed
+            on the plastic card, used for this request. 1 - Must be numeric and greater
+            than 0. 2 - Card number must be valid for Org provided. Account number
+            is expected in this field for UPI request on Rupay.'
         storeOrg:
           maxLength: 3
           minLength: 0
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 3, Merchant Organization Number: Three digit
-            Identification number of the organization. Valid values are 001 - 998.'
+            Identification number of the organization. Valid values are 001 - 998.
+            This field is mandatory for UPI request on Rupay.'
         storeNbr:
           maxLength: 9
           minLength: 0
@@ -41341,7 +41738,8 @@ components:
           type: string
           description: ' Max length = 9, Merchant Store Number: Identification number
             of the Merchant Store. This field is mandatory for Authorization Request
-            or Refund request. i.e. when the serviceFlag is set to ''A'' or ''C'''
+            or Refund request. i.e. when the serviceFlag is set to ''A'' or ''C''.
+            This field is mandatory for UPI request on Rupay.'
         amt:
           maxLength: 14
           minLength: 0
@@ -41349,7 +41747,7 @@ components:
           type: string
           description: ' Max length = 14, Amount for Authorization. This field is
             mandatory for Authorization Request or Refund request. i.e. when the serviceFlag
-            is set to ''A'' or ''C'''
+            is set to ''A'' or ''C''. This field is mandatory for UPI request on Rupay.'
         plan:
           maxLength: 5
           minLength: 0
@@ -41357,7 +41755,8 @@ components:
           type: string
           description: ' Max length = 5, Plan Number for Authorization. This field
             is mandatory for Authorization Request or Refund request. i.e. when the
-            serviceFlag is set to ''A'' or ''C'''
+            serviceFlag is set to ''A'' or ''C''. This field is mandatory for UPI
+            request on Rupay.'
         dateExpireMm:
           maxLength: 2
           minLength: 0
@@ -41385,10 +41784,10 @@ components:
           type: string
           description: ' Max length = 1, CVV Presence Indicator: Code the merchant
             uses to indicate that the CVV2 value is on the card. This field is used
-            when the serviceFlag is set to ''A'' i.e. if Authorization is being triggered.
+            when the serviceFlag is set to `A` i.e. if Authorization is being triggered.
             Valid Values are: <UL><LI>0 = Security code bypassed </LI><LI>1 = Security
             Code is present </LI><LI>2 = Security Code is illegible</LI><LI>9 = Security
-            Code not imprinted</LI></UL>'
+            Code not imprinted</LI></UL> Please pass `0` for UPI request on Rupay.'
         billPmtInd:
           maxLength: 1
           minLength: 0
@@ -41396,7 +41795,7 @@ components:
           description: ' Max length = 1, Bill Payment Indicator: Code used by the
             merchant to indicate a bill payment transaction. Valid Values are: <UL><LI>Y
             = Transaction is of Bill Payment </LI><LI>N = Transaction is not of Bill
-            Payment </LI></UL>'
+            Payment </LI></UL> This field is not required when request is UPI on Rupay.'
         recrPmtInd:
           maxLength: 1
           minLength: 0
@@ -41404,19 +41803,21 @@ components:
           description: ' Max length = 1, Recurring Payment Indicator: Code used by
             the merchant to indicate a bill payment transaction. Valid Values are:
             <UL><LI>Y = Transaction is Recurring transaction </LI><LI>N = Transaction
-            is not Recurring transaction </LI></UL>'
+            is not Recurring transaction </LI></UL> This field is not required when
+            request is UPI on Rupay.'
         effDate:
           type: string
           description: 'Format: YYYYMMDD. Effective Date. This field is used when
             the serviceFlag is set to ''R'' i.e. if Reversal is being triggered for
-            a transaction.'
+            a transaction. This field is not required when request is UPI on Rupay.'
         time:
           maxLength: 7
           minLength: 0
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 7, Time. This field is used when the serviceFlag
-            is set to ''R'' i.e. if Reversal is being triggered for a transaction.'
+            is set to ''R'' i.e. if Reversal is being triggered for a transaction.
+            This field is not required when request is UPI on Rupay.'
         accountRba:
           maxLength: 9
           minLength: 0
@@ -41424,7 +41825,8 @@ components:
           type: string
           description: ' Max length = 9, Original Authorization / transaction key
             for the reversal request. This field is required when reversing an authorisation
-            (serviceFlag = ''R'') after the batch cycle.'
+            (serviceFlag = ''R'') after the batch cycle. This field is not required
+            when request is UPI on Rupay.'
         accountLogExt:
           maxLength: 1
           minLength: 0
@@ -41432,7 +41834,8 @@ components:
           type: string
           description: ' Max length = 1, Original transaction extension indicator
             for the reversal request. This field is used when the serviceFlag is set
-            to ''R'' i.e. if Reversal is being triggered for a transaction.'
+            to ''R'' i.e. if Reversal is being triggered for a transaction. This field
+            is not required when request is UPI on Rupay.'
         foreignUse:
           maxLength: 1
           minLength: 0
@@ -41445,7 +41848,8 @@ components:
           maxLength: 300
           minLength: 0
           type: string
-          description: ' Max length = 300, Memo notes / description for the transaction.'
+          description: ' Max length = 300, Memo notes / description for the transaction.
+            This field is not required when request is UPI on Rupay.'
         serviceFlag:
           maxLength: 1
           minLength: 0
@@ -41455,14 +41859,15 @@ components:
             </LI><LI><EM>R - </EM> Authorization Reversal </LI><LI><EM>C - </EM> Authorization
             Refund </LI><LI><EM>D - </EM>Purchase via Account</LI><LI><EM>E - </EM>Reversal
             for Purchase via Account</LI><LI><EM>I - </EM> Transaction Inquiry </LI><LI><EM>P
-            - </EM> Cashback</LI><LI><EM>V - </EM> Card validation</LI></UL>'
+            - </EM>UPI Cashback</LI><LI><EM>V - </EM>UPI Card validation</LI></UL>'
         actionCode:
           maxLength: 4
           minLength: 0
           type: string
           description: ' Max length = 4, Action Code for Authorization Clearing or
             Reversal. This field is mandatory when the msgType field is set to S,
-            and it is not required at all when the msgType is set to D'
+            and it is not required at all when the msgType is set to D. This field
+            is not required when request is UPI on Rupay.'
         merchCatCode:
           maxLength: 4
           minLength: 0
@@ -41472,12 +41877,14 @@ components:
           maxLength: 30
           minLength: 0
           type: string
-          description: ' Max length = 30, Transaction Description.'
+          description: ' Max length = 30, Transaction Description. This field is not
+            required when request is UPI on Rupay.'
         udv:
           maxLength: 23
           minLength: 0
           type: string
-          description: ' Max length = 23, Reference number of the transaction.'
+          description: ' Max length = 23, Reference number of the transaction. This
+            field is not required when request is UPI on Rupay.'
         txnType:
           maxLength: 1
           minLength: 0
@@ -41507,7 +41914,8 @@ components:
           pattern: ^[0-9]*$
           type: string
           description: ' Max length = 4, Security Code AE. This field is used when
-            the secPresInd is set to 1.'
+            the secPresInd is set to 1. This field is not required when request is
+            UPI on Rupay.'
         authRefNbr:
           maxLength: 12
           minLength: 0
@@ -41522,7 +41930,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 14, Replacement Amount.'
+          description: ' Max length = 14, Replacement Amount. This field is not required
+            when request is UPI on Rupay.'
         dupAuth:
           maxLength: 1
           minLength: 0
@@ -41537,26 +41946,29 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 30, Number and other details (Account Number
-            + 6-digit BIN + zeros)'
+            + 6-digit BIN + zeros). This field is used only for UPI on Rupay requests.'
         maskCardNbr:
           maxLength: 16
           minLength: 0
           type: string
           description: ' Max length = 16, UPI card validation: 16 digits (last 6 bytes
-            of card number will not be masked and remaining will be ‘X’s) UPI Transaction(
+            of card number will not be masked and remaining will be ''X''s) UPI Transaction(
             AUTH / REVERSAL/ CASHBACK and REFUND) Requests: 16 digits (last 4 bytes
-            of card number will not be masked and remaining will be ‘X’s)'
+            of card number will not be masked and remaining will be ''X''s) This field
+            is used only for UPI on Rupay requests.'
         tranDateTime:
           maxLength: 10
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 10, Transaction date time, in format - MMDDHHMMSS.'
+          description: ' Max length = 10, Transaction date time, in format - MMDDHHMMSS.
+            This field is used only for UPI on Rupay requests.'
         mobNbr:
           maxLength: 20
           minLength: 0
           type: string
-          description: ' Max length = 20, Mobile number.'
+          description: ' Max length = 20, Mobile number. This field is used only for
+            UPI on Rupay requests.'
         merchantName:
           maxLength: 40
           minLength: 0
@@ -41564,17 +41976,20 @@ components:
           description: " Max length = 40, Merchant Name if available then should be\
             \ populated as below. <UL><LI><EM>Pos: 01-25 =</EM>\tMerchant Name</LI><LI><EM>Pos:\
             \ 26-37=</EM>City name (if available, otherwise spaces)</LI><LI><EM>Pos:\
-            \ 38-40=</EM>Country code (static value of 'IND')</LI></UL>"
+            \ 38-40=</EM>Country code (static value of 'IND')</LI></UL> This field\
+            \ is used only for UPI on Rupay requests."
         merchantId:
           maxLength: 15
           minLength: 0
           type: string
-          description: ' Max length = 15, Merchant ID'
+          description: ' Max length = 15, Merchant ID. This field is used only for
+            UPI on Rupay requests.'
         upiRefId:
           maxLength: 35
           minLength: 0
           type: string
-          description: ' Max length = 35, UPI REFERENCE ID'
+          description: ' Max length = 35, UPI REFERENCE ID. This field is used only
+            for UPI on Rupay requests.'
         deviceId:
           maxLength: 90
           minLength: 0
@@ -41584,7 +41999,8 @@ components:
             (for ex - ''12.9667,77.5667'')</LI><LI><EM> Pos 16-30: </EM> I P – 15
             bytes (for ex - ''123.123.123.123'')</LI><LI><EM> Pos 31-70: </EM> Location
             – 40 bytes </LI><LI><EM> Pos 71-20: </EM> Mobile – 20 bytes (might be
-            required to identify any fraud transaction)</LI></UL>'
+            required to identify any fraud transaction)</LI></UL> This field is used
+            only for UPI on Rupay requests.'
     AuthorisationReversalandRequestResponse:
       type: object
       properties:
@@ -46306,14 +46722,15 @@ components:
         cardNbr:
           type: string
           description: ' Max length = 19, Card Number.'
+        cardName:
+          type: string
+          description: ' Max length = 26, Card Name.'
         cardScheme:
           type: string
           description: ' Max length = 1, Card Scheme – Rupay – ‘R’'
         uniqueID:
           type: string
           description: ' Max length = 19, Unique ID.'
-        cardName:
-          type: string
     CardTable3ForRelationshipInquiry3:
       type: object
       properties:
@@ -50389,6 +50806,27 @@ components:
           description: ' Max length = 1, Valid values :<UL><LI><EM> 0 –</EM>  ATM-NOT-REST</LI><LI><EM>1
             –</EM>  ATM-REST-ACCT</LI><LI><EM>2 –</EM>  ATM-REST-ACT-DOM</LI><LI><EM>3
             –</EM>  ATM-REST-ACT-INT</LI><LI><EM>4 –</EM>  ATM-REST-DEF-VALID</LI></UL>'
+        commrclFlag:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Flag that indicates whether this is a commercial
+            card relationship The values are: 0 = Not a commercial card relationship
+            (Default) 1 = Visa corporate card relationship 2 = Visa purchasing card
+            relationship 3 = HCS commercial card relationship, which can include Visa
+            corporate cards, Visa purchasing cards, and/or MasterCard purchasing cards'
+        rmFiscalYearEnd:
+          maxLength: 2
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 2, Month in which the fiscal year ends for the
+            commercial card customer. Valid values  are: 01 - 12 Produce reports at
+            MCC level for this account. Numbers 01 - 12 denote the fiscal month for
+            the account when the fiscal year end report is produced.  Valid values
+            are: 01-January,  02-February, 03-March,  04-April, 05-May, 06-June, 07-July,
+            08-August, 09-September, 10-October, 11-November, 12-December'
         accountOrganization:
           maxLength: 3
           minLength: 0
@@ -51964,9 +52402,10 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Authorization message The values are: 0 =
-            Authorization message is not active 1 = Authorization message is active
-            2 = Authorization message is active on fee.'
+          description: ' Max length = 1, Defines the preferred electronic correspondence
+            method for Auth Alerts. Valid Values are <UL><LI><EM>0 - </EM> Off</LI><LI><EM>
+            1 - </EM> Only Email alerts</LI><LI><EM> 2 -</EM> Only SMS alerts</LI><LI><EM>
+            3 -</EM> Both Email and SMS alerts</LI></UL>'
         otbSmsInd:
           maxLength: 1
           minLength: 0
@@ -59045,6 +59484,324 @@ components:
             nbrReturnedItems
           items:
             $ref: '#/components/schemas/LookupTable2ForExtendedLookupInquiry2'
+    ExternalDetailsServiceRequest:
+      required:
+      - customerAccountNumber
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        workflow:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Contains the name of the workflow to be
+            executed by Falcon Fraud Manager.'
+        recordType:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Record Type. EXT10'
+        dataSpecificationVersion:
+          maxLength: 5
+          minLength: 0
+          type: string
+          description: ' Max length = 5, Data specification version.'
+        clientIdFromHeader:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Unique identifier for the client or subclient.
+            The value of this field is determined jointly by the client and FICO.'
+        recordCreationDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date that this record was
+            created. Time zone must be GMT.'
+        recordCreationTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time that this record was
+            created. Time zone must be GMT.'
+        recordCreationMilliseconds:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Format: sss Milliseconds portion of the time
+            that this record was created.'
+        gmtOffset:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Specifies the Greenwich Mean Time (GMT) offset
+            associated with all date-time fields in the record body (positions 161
+            onward). Format is (-)nn.nn, where the digits to the right of the decimal
+            point represent decimal fractions of an hour. For example, a GMT offset
+            of 5 hours and 45 minutes (Nepal) is expressed as 5.75. Note that changes
+            during Daylight Saving Time if Daylight Saving Time is observed in the
+            date-time fields in the record body.'
+        customerIdFromHeader:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Financial institution''s unique customer
+            identifier for the primary customer on the account associated with the
+            payment or deposit, or the PAN (for Credit or Debit) or account (Retail
+            Banking).'
+        customerAccountNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Unique identifier for the account associated
+            with the transaction/record.'
+        externalTransactionId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, Client-generated unique transaction ID that
+            is unique across all data feeds for a specific installation of Falcon
+            Fraud Manager.'
+        serviceId:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, The service identification number. For a
+            notification on a card, this would be the PAN.'
+        transactionDate:
+          type: string
+          description: 'Format: YYYYMMDD. The transaction date - yyyymmdd'
+        transactionTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, The transaction date - hhmmss'
+        validity:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, The number of days the notification is valid.'
+        entityType:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, Indicates the application for the notification
+            (for example, case level of customer, acct, or service).'
+        extSource:
+          maxLength: 48
+          minLength: 0
+          type: string
+          description: ' Max length = 48, The name of the source that generated the
+            notification (for example, Lexis/Nexis, Experian, or Debit Manager).'
+        notificationName:
+          maxLength: 48
+          minLength: 0
+          type: string
+          description: ' Max length = 48, The name of the notification (for example,
+            Risk Score, or Promise to Pay).'
+        notificationStatus:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, The status of the notification, such as
+            the severity.'
+        score1:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, First score associated with the notification.'
+        score2:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, Second score associated with the notification.'
+        score3:
+          maxLength: 4
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 4, Third score associated with the notification.'
+        userData01:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, User-defined information.'
+        userData02:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, User-defined information.'
+        userData03:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, User-defined information.'
+        userData04:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, User-defined information.'
+        userData05:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, User-defined information.'
+        userData06:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData07:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData08:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData09:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData10:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData11:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData12:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData13:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData14:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData15:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData16:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData17:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, User-defined information.'
+        userData18:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData19:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData20:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData21:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData22:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData23:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData24:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData25:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData26:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData27:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, User-defined information.'
+        userData28:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, User-defined information.'
+        userData29:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, User-defined information.'
+        userData30:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, User-defined information.'
+        userData31:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, User-defined information.'
+        userData32:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: ' Max length = 64, User-defined information.'
+        userData33:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: ' Max length = 255, User-defined information.'
+        userData34:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: ' Max length = 255, User-defined information.'
+    ExternalDetailsServiceResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
     FalconNotifyRequest:
       required:
       - cardNbr
@@ -60177,6 +60934,454 @@ components:
           type: string
           description: 'Format: YYYYMMDD. Monitoring Expiry Date. The value as received
             in the input message (CCYYMMDD)'
+    FraudTransactionServiceRequest:
+      required:
+      - customerAcctNumber
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        workflow:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Contains the name of the workflow to be
+            executed by Falcon Fraud Manager.'
+        recordType:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Record type. FRD15'
+        dataSpecificationVersion:
+          maxLength: 5
+          minLength: 0
+          type: string
+          description: ' Max length = 5, Data Specification Version.'
+        clientIdFromHeader:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Unique identifier for the client or subclient.
+            The value of this field is determined jointly by the client and FICO.'
+        recordCreationDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date that this record was
+            created. Time zone must be GMT.'
+        recordCreationTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time that this record was
+            created. Time zone must be GMT.'
+        recordCreationMilliseconds:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Format: sss Milliseconds portion of the time
+            that this record was created.'
+        gmtOffset:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Specifies the Greenwich Mean Time (GMT) offset
+            associated with all date-time fields in the record body (positions 161
+            onward). Format is (-)nn.nn, where the digits to the right of the decimal
+            point represent decimal fractions of an hour. For example, a GMT offset
+            of 5 hours and 45 minutes (Nepal) is expressed as 5.75. Note that gmtOffset
+            changes during Daylight Saving Time if Daylight Saving Time is observed
+            in the date-time fields in the record body.'
+        customerIdFromHeader:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Customer Identifier. Financial institution''s
+            unique identifier for the customer associated with this record.  If not
+            available, the primary customer identifier for the account.'
+        customerAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Unique identifier for the account associated
+            with the transaction/record.'
+        externalTransactionId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, Client-generated unique transaction ID that
+            is unique across all data feeds for a specific installation of Falcon
+            Fraud Manager.'
+        pan:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Primary Account Number (PAN) of the payment
+            instrument. This is the number encoded or embossed on the payment instrument.'
+        paymentInstrumentId:
+          maxLength: 30
+          minLength: 0
+          type: string
+          description: ' Max length = 30, Unique identifier for the payment instrument.'
+        messageType:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, Type of the Fraud Record: CUST = Customer
+            level ACCT = Account level PAN = Primary Account Number (PAN) level INST
+            = Payment-Instrument (Plastic) level TRAN = Transaction level'
+        fraudFlag:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: ' Max length = 2, String indicating the fraud status at the
+            level specified by messageType: 0 = non-status 1 = confirmed fraud 2 =
+            unconfirmed fraud 3 = confirmed non-fraud 4 = unconfirmed non-fraud'
+        caseCreationDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date of case creation.
+            Time zone is specified by gmtOffset.'
+        caseCreationTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time of case creation. Time
+            zone is specified by gmtOffset. This time is typically populated by the
+            Falcon Case Manager.'
+        dateOfFirstIncident:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date of first fraudulent
+            transaction or first suspicious non-fraud transaction of case being investigated.
+            Time zone is specified by gmtOffset.'
+        timeOfFirstIncident:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time of first fraudulent transaction
+            or first suspicious non-fraud transaction of case being investigated.
+            Time zone is specified by gmtOffset.'
+        dateOfLastIncident:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date of last fraudulent
+            transaction or last suspicious non-fraud transaction of case being investigated.
+            Time zone is specified by gmtOffset.'
+        timeOfLastIncident:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time of last fraudulent transaction
+            or last suspicious non-fraud transaction of case being investigated. Time
+            zone is specified by gmtOffset.'
+        blockDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Block date. The level of
+            the block is indicated in the blockLevel field. Time zone is specified
+            by gmtOffset.'
+        blockTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Block time. The level of the
+            block is indicated in the blockLevel field. Time zone is specified by
+            gmtOffset.'
+        caseTag:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: ' Max length = 2, String indicating the fraud status at the
+            case level. This field is used to specify the case level tag when messageType
+            = TRAN. Otherwise, this field will match the fraudFlag field: 0 = non-status
+            1 = confirmed fraud 2 = unconfirmed fraud 3 = confirmed non-fraud 4 =
+            unconfirmed non-fraud'
+        fraudType:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, String indicating the case level fraud subset:
+            1 = Application fraud 2 = Counterfeit (Other than skimming, or if the
+            type of counterfeit cannot be differentiated. 3 = Friendly fraud (Fraud
+            perpetrated by accountholder''s family or friends) 4 = Skimming 5 = Internet
+            order fraud. (Only used if all the fraudulent transactions were Internet
+            order frauds.) 6 = Convenience check fraud. (Only used if all the fraud
+            transactions were convenience check frauds.) 8 = Mail/phone order fraud.
+            (Only use if all fraud transactions were mail/phone order frauds.) 9 =
+            Non-receipt 10 = Other 11 = Lost/Stolen 12 = Takeover 13 = Zero loss fraud
+            (fraud is attempted on a card, but none of the fraud attempts post) 14
+            = First party fraud 15 = ID theft 16 = Check kiting 17 = Kidnapping 18
+            = Phishing 19 = SIM-related 20 = Number Porting (or Porting) 21 = Malware
+            22 = Check Fraud: Customer Responsible 23 = Check Fraud: Customer Victim
+            24 = Check Fraud: Autopay Customer Victim 25 = Deposit Fraud: Internal/Employee
+            26 = Deposit Bad: Credi...'
+        recordSource:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, String indicating source of case: F = FICO
+            Case Manager N = Non-FICO Case Manager S = System of Record O = Other
+            Source'
+        fraudFindMethod:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, String indicating how the fraud was detected:
+            0 = Unknown 1 = Customer reported 2 = Flagged by FICO 3 = Standard information
+            checking (for example, CVV, PIN, Expiration Date) 4 = Flagged by non-FICO
+            system'
+        blockLevel:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies the level of the block defined
+            by the blockDate and blockTime fields: C = Customer level A = Account
+            level P = Primary Account Number (PAN) level I = Payment-Instrument level
+            N = No block applied'
+        liability:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Indicates whether the client is liable for
+            losses created from the fraud: N = client is not liable for fraud losses
+            S = client shares liability with another party L = client is liable for
+            fraud losses Z = zero losses'
+        fiTransactionIdReference:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, FICO-generated transaction ID which uniquely
+            identifies the transaction (for example, a credit authorization) associated
+            with this record.'
+        externalTranIdReference:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, Value of field externalTransactionId of
+            the transaction (for example, a credit authorization) which initiated
+            this record.'
+        recordTypeReference:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Value of field recordType in the transaction
+            that initiated this record.'
+        transactionDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date of transaction. Time
+            zone is specified by gmtOffset.'
+        transactionTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time of transaction. Time
+            zone is specified by gmtOffset.'
+        transactionTimeMilliseconds:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Format: sss Milliseconds of the transaction.  Time
+            zone is specified by gmtOffset.'
+        authPostFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Type of transaction: A = Authorization or
+            other payment-card-initiated transaction (for example, ATM inquiry). Also
+            includes credit-card transactions initiated by balance-transfer or convenience
+            checks.  P = Posting'
+        postDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Authorization: Blank. Posting:
+            Date posting was processed.'
+        decisionCode:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Authorization Decision Code: A = Approve
+            D = Decline I = Approve with positive ID P = Pick up card R = Refer Blank
+            = Unknown/other'
+        depositWithdrawalFlg:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies whether the transaction is a deposit
+            or withdrawal of funds with respect to the account specified in the customerAcctNumber
+            field: For transactions on electronic funds accounts: D = Funds are credited
+            to the account (deposit) Q = Funds are debited from the account (withdrawal)
+            For transactions on card-connected accounts, such as credit cards and
+            prepaid cards: C = Funds are credited to the referenced credit card on
+            the account P = Funds are credited to the referenced prepaid card on the
+            account This field is populated if tagging account to account payments
+            at the transaction level.'
+        debitCustomerId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The customer id for the customer who has
+            the account having funds debited.'
+        debitAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, The unique identifier for the account having
+            funds debited.'
+        debitAcctBranchId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The branch ID associated with the account
+            having funds debited.'
+        creditCustomerId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The customer id for the customer who has
+            the account having funds credited.'
+        creditAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, The unique identifier for the account having
+            funds credited.'
+        creditBranchId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The branch ID associated with the account
+            having funds credited.'
+        reserved01:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, Reserved 01'
+        transactionAmount:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: ' Max length = 19, Format: nnnnnnnnnnnnnnnn.nn The monetary
+            amount associated with the transaction.'
+        transactionCurrencyCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, ISO 4217 three-digit numeric currency code.  This
+            is the currency unit used for all currency-based fields. If using a Falcon
+            or Fraud Predictor model, consult the model report for information on
+            supported currencies.'
+        transactionCurrencyConversionRate:
+          maxLength: 13
+          minLength: 0
+          type: string
+          description: ' Max length = 13, Format: nnnnnn.nnnnnn The multiplicative
+            currency conversion rate that is used to convert the currency specified
+            in transactionCurrencyCode to US dollars. The number of US dollars in
+            the currency specified in transactionCurrencyCode.'
+        transactionCountryCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, This field identifies the country where the
+            transaction has occurred.'
+        transactionPostalCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, This field identifies the postal code of
+            the location where the transaction has occurred.'
+        merchantId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Merchant ID.'
+        mcc:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, Merchant Category Code.'
+        deviceId:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, This field provides the specific identification
+            number of the device where the transaction has been initiated: ATM ID
+            = ATM based transaction Branch ID = Teller based transaction Web ID =
+            online transaction Telephone Number = telephone transaction Terminal ID
+            = POS transaction IMEI = Mobile transaction'
+        onUsFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies if the transaction is on or off
+            us. It is assumed the customerAcctNumber is with the financial institution
+            so the following values apply to the other account: E = The transaction
+            is external (off-us) O = The transaction is intra-brand (on-us) W = The
+            transaction is inter-brand (on-we)'
+        paymentOrderFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Indicates if this is the set-up or the processing
+            of the payment: P = Payment/Transfer O = Payment Order (payment set-up
+            for delayed or recurring payments)'
+        transactionReferenceNumber:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, The Transaction Reference Number for retail
+            banking transactions.  This number uniquely identifies a given transaction.'
+        pinVerifyCode:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, PIN verification: I = Invalid V = Valid X
+            = PIN entered but not verified or verification results unknown Y = PIN
+            not entered, not using a card association network Z = PIN not entered,
+            using a card association network Deprecated value: P = PVKI value zero
+            or blank Blank = not checked'
+        nonmonCode:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: ' Max length = 4, The code defining the nonmonetary event.
+            Refer to the table of nonmonetary codes.'
+        userIndicator01:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userCode1:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode2:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userData01:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information. Editable in Falcon
+            Expert rules.'
+        expandedBin:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: ' Max length = 100, The first 8–12 digits of the card number
+            (pan).'
+    FraudTransactionServiceResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
     FraudTransactionTransferUpdateRequest:
       required:
       - account
@@ -76210,6 +77415,734 @@ components:
             field. Number of occurrences returned depends on the field atNumber
           items:
             $ref: '#/components/schemas/AcctTblForRelationshiptoAccountInquiry1'
+    RetailBankingTransactionServiceRequest:
+      required:
+      - customerAcctNumber
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
+        workflow:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Contains the name of the workflow to be
+            executed by Falcon Fraud Manager.'
+        recordType:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, RBTRAN21'
+        dataSpecificationVersion:
+          maxLength: 5
+          minLength: 0
+          type: string
+          description: ' Max length = 5, Data specification version'
+        clientIdFromHeader:
+          maxLength: 16
+          minLength: 0
+          type: string
+          description: ' Max length = 16, Unique identifier for the client or subclient.  The
+            value of this field is determined jointly by the client and FICO.'
+        recordCreationDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date that this record was
+            created. Time zone must be GMT.'
+        recordCreationTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time that this record was
+            created. Time zone must be GMT.'
+        recordCreationMilliseconds:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Format: sss Milliseconds portion of the time
+            that this record was created.'
+        gmtOffset:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Specifies the Greenwich Mean Time (GMT) offset
+            associated with all date-time fields in the record body (positions 161
+            onward). Format is (-)nn.nn, where the digits to the right of the decimal
+            point represent decimal fractions of an hour. For example, a GMT offset
+            of 5 hours and 45 minutes (Nepal) is expressed as 5.75. Note that gmtOffset
+            changes during Daylight Saving Time if Daylight Saving Time is observed
+            in the date-time fields in the record body.'
+        customerIdFromHeader:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, Primary Customer Identifier.  Financial
+            institution''s unique identifier for the primary customer for the account.'
+        customerAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Customer Account Number. Identifier for
+            the account used in the transaction, which may be one of many held by
+            the customer with the financial institution. This is the account that
+            is associated with any scores for this transaction.'
+        externalTransactionId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, Client-generated unique transaction ID that
+            is unique across all data feeds for a specific installation of Falcon
+            Fraud Manager.'
+        depositWithdrawalFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies whether the transaction is a deposit
+            or withdrawal of funds with respect to the account specified in the customerAcctNumber
+            field: For transactions on electronic funds accounts: D = Funds are credited
+            to the account (deposit) Q = Funds are debited from the account (withdrawal)
+            For transactions on card-connected accounts, such as credit cards and
+            prepaid cards: C = Funds are credited to the referenced credit card on
+            the account P = Funds are credited to the referenced prepaid card on the
+            account The RESERVED_01 field is populated with the referenced account
+            number for field values of C and P.'
+        paymentOrderFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Indicates if this is the set-up or the processing
+            of the payment: P = Payment/Transfer O = Payment Order (payment set-up
+            for delayed or recurring payments)'
+        debitCustomerId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, String identifying the customer associated
+            with the account having funds debited.'
+        debitAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, The account number for the account having
+            funds debited.'
+        debitAcctBankId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The bank ID associated with the account
+            having funds debited.'
+        debitAcctBranchId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The branch ID associated with the account
+            having funds debited.'
+        debitAcctSortCode:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, The sort code associated with the account
+            having funds debited.'
+        debitAcctCountry:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, The country code for the country in which
+            the account being debited is held.'
+        debitSegmentId:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, The segmentation ID for the account having
+            funds debited. The segmentation ID is determined by the client to segment
+            accounts into like groups.'
+        debitSegmentLevel:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies the level of the segment ID in
+            the debitSegmentId field: C = Customer level A = Account level T = Transaction
+            level'
+        debitAmount:
+          pattern: ^(-)?[0-9]{1,18}$
+          type: string
+          description: ' Max length = 18, Format: nnnnnnnnnnnnnnnn.nn The monetary
+            amount debited from the debit account.'
+        debitCurrencyCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, The currency code for the debitAmount field.'
+        debitDate:
+          type: string
+          description: 'Format: YYYYMMDD. Date on which the amount is expected to
+            be debited from the debit account.'
+        debitName:
+          maxLength: 60
+          minLength: 0
+          type: string
+          description: ' Max length = 60, Payer name as it appears on the payment.'
+        debitMessage:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: ' Max length = 100, Message to appear on payer''s statement.'
+        creditCustomerId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, String identifying the customer associated
+            with the account having funds credited.'
+        creditAcctNumber:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, The account number for the account having
+            funds credited.'
+        creditAcctBankId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The bank ID associated with the account
+            having funds credited.'
+        creditAcctBranchId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The branch ID associated with the account
+            having funds credited.'
+        creditAcctSortCode:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, The sort code associated with the account
+            having funds credited.'
+        creditAcctCountry:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, The country code for the country in which
+            the account being credited is held.'
+        creditSegmentId:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, The segmentation ID for the account having
+            funds credited The segmentation ID is determined by the client to segment
+            accounts into like groups.'
+        creditSegmentLevel:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies the level of the segment ID in
+            the creditSegmentId field: C = Customer level A = Account level T = Transaction
+            level'
+        creditAmount:
+          pattern: ^(-)?[0-9]{1,18}$
+          type: string
+          description: ' Max length = 18, Format: nnnnnnnnnnnnnnnn.nn The monetary
+            amount credited to the credit account. Amount should be in the currency
+            of the credit. Fees or charges can cause the credited amount to differ
+            from the debited amount in a constant currency.'
+        creditCurrencyCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, The currency code for the creditAmount field.'
+        creditDate:
+          type: string
+          description: 'Format: YYYYMMDD. Date on which the amount is expected to
+            be credited to the credit account.'
+        creditName:
+          maxLength: 60
+          minLength: 0
+          type: string
+          description: ' Max length = 60, Beneficiary name as it appears on the payment.  For
+            Open Banking/PSD2 transactions, defined as follows: - Bytes 615-658: Merchant
+            name (44 bytes) - Bytes 659-674: Merchant id (16 bytes)'
+        creditMessage:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: ' Max length = 100, Message to the beneficiary as it appears
+            on the payment.  For Open Banking/PSD2 transactions, defined as follows:
+            - Bytes 771-774: Merchant category code (4 bytes)'
+        exchangeRate:
+          maxLength: 13
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 13, Format: nnnnnn.nnnnnn The exchange rate
+            used for this transaction to convert the debited currency into the credited
+            currency.'
+        transactionReferenceNbr:
+          maxLength: 32
+          minLength: 0
+          type: string
+          description: ' Max length = 32, The Transaction Reference Number.  This
+            number uniquely identifies a given transaction.'
+        transactionDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Date of  transaction. Time
+            zone is specified by gmtOffset.'
+        transactionTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Time of transaction.  Time
+            zone is specified by gmtOffset.'
+        transactionTimeMilliseconds:
+          maxLength: 3
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 3, Format: sss Milliseconds of the transaction.  Time
+            zone is specified by gmtOffset.'
+        tranAmount:
+          pattern: ^(-)?[0-9]{1,18}$
+          type: string
+          description: ' Max length = 18, Format: nnnnnnnnnnnnnnnn.nn The debited
+            amount (debitAmount) expressed in a constant currency.'
+        transactionCurrencyCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, The currency code for the transactionAmount
+            field.'
+        transactionCurrencyConversionRate:
+          maxLength: 13
+          minLength: 0
+          type: string
+          description: ' Max length = 13, Format: nnnnnn.nnnnnn The multiplicative
+            currency conversion rate that is used to convert the currency specified
+            in transactionCurrencyCode to US dollars. The number of US dollars in
+            the currency specified in transactionCurrencyCode.'
+        transactionStreet:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Identifies the first line of the street
+            address where the transaction occurred.'
+        transactionPostalCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, Identifies the postal code of the location
+            where the transaction occurred.'
+        transactionCity:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Identifies the city where the transaction
+            occurred.'
+        transactionStateProvince:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, This field identifies the state where the
+            transaction occurred.'
+        transactionCountryCode:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, This field identifies the country where the
+            transaction occurred.'
+        transactionType:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, The type of the transaction: A = Amended
+            Payment Order D = Delayed/forward-dated single payment I = Single Immediate
+            payment L = List/Bulk payment M = Delayed/forward-dated list/bulk payment
+            S = Standing order/recurring single payment T = Standing order/recurring
+            list/bulk payment U = Urgent single immediate transfer/payment'
+        accessChannel:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field identifies the type of the device
+            through which the transaction was placed: A = ATM B = Phone (Interactive
+            Voice Response system) C = Computer/Internet D = Drop box F = Fax G =
+            Payment initiated using tokenization channel M = Mobile banking through
+            web browser N = Mobile application O = Other P = Postal (Mail) R = Automatic
+            transfer S = Point of Sale (POS) Terminal T = Teller window/cashier U
+            = In-branch kiosk/device (non-ATM) V = Phone (remote teller) Z = Direct
+            link to back office'
+        processingChannel:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Processing channel: A = ACH B = Other deferred
+            net settlement system C = Check D = Open Banking/PSD2 E = Electronic Funds
+            Transfer (not specified elsewhere) F = FedWire G = Other real-time gross
+            settlement system I = Internal Transfer O = Other P = Faster Payments
+            Q = BACS R = CHAPS S = SWIFT W = Cash'
+        processingType:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Processing type through the channel: C =
+            Credit (funds push) D = Direct Debit (funds pull)'
+        internationalIndicator:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Indicates if this is an international or
+            domestic payment/transfer:  D = Domestic I = International'
+        device:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, This field provides the specific identification
+            number of the device where the transaction was initiated: ATM ID = ATM
+            based transaction Branch ID = Teller based transaction Web ID = online
+            transaction Telephone Number = telephone transaction Terminal ID = POS
+            transaction IMEI = Mobile transaction'
+        authentication:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, The method that was used to authenticate
+            the payment: M = Separate user authentication (business) N = None O =
+            Other S = Single-factor authentication T = Two-factor authentication with
+            second factor static U = Three-factor authentication V = Two-factor authentication
+            with second factor dynamic Blank = Unknown'
+        serviceRepresentativeId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, The identification of the service representative
+            that worked with the customer for this transaction.  For branch transaction
+            this is the teller''s ID and for phone transactions this is the operator''s
+            ID.'
+        onUsFlag:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Specifies if the transaction is on or off
+            us. It is assumed the customerAcctNumber is with the financial institution
+            so the following values apply to the other account: E = The transaction
+            is external (off-us) O = The transaction is intra-brand (on-us) W = The
+            transaction is inter-brand (on-we)'
+        decision:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Decision for the transaction before reaching
+            Falcon: A = Approve/Accepted D= Decline/Reject R= Refer O = Other Blank
+            = Unknown'
+        reversalIndicator:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Transaction reversal indicator: D = Derogatory
+            reversal N = Nonderogatory reversal (or derogatory status unknown) Q =
+            Not a reversal blank = Unknown'
+        reversedTransactionDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd Transaction date for the
+            reversed transaction.'
+        reversedTransactionTime:
+          maxLength: 6
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 6, Format: hhmmss Transaction time for the reversed
+            transaction.'
+        reversalReason:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Reason for reversal/return: C = Account Closed
+            D = Check Digit Error F = Account Frozen I = Insufficient Funds N = Non-Transaction
+            Account O = Other S = Stopped Payment U = Funds Uncollected X = No Account/Unable
+            to Locate Account'
+        recurringFrequency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, An integer indicating the number of days
+            between recurring payments. For monthly payments use 28 days.  For transactionType
+            = S Unknown or does not apply = blank'
+        recurringExpireDate:
+          type: string
+          description: 'Format: YYYYMMDD. Format: yyyymmdd The date after which no
+            further recurring payments should be performed. For transactionType= S'
+        modelControl1:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field is used to control Falcon model-specific
+            features. See the model report for information on supported functionality.'
+        modelControl2:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field is used to control Falcon model-specific
+            features. See the model report for information on supported functionality.'
+        modelControl3:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field is used to control Falcon model-specific
+            features. See the model report for information on supported functionality.'
+        modelControl4:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, This field is used to control Falcon model-specific
+            features. See the model report for information on supported functionality.'
+        userIndicator01:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userIndicator02:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userIndicator03:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userIndicator04:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userIndicator05:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userCode1:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode2:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode3:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode4:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode5:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userData01:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData02:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData03:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData04:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData05:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData06:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData07:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData08:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData09:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData10:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData11:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData12:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData13:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData14:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, User-defined information. Editable in Falcon
+            Expert rules.'
+        userData15:
+          maxLength: 60
+          minLength: 0
+          type: string
+          description: ' Max length = 60, User-defined information. Editable in Falcon
+            Expert rules.'
+        reserved01:
+          maxLength: 30
+          minLength: 0
+          type: string
+          description: ' Max length = 30, Reserved 01'
+        userIndicator06:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userIndicator07:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User-defined information. Editable in Falcon
+            Expert rules.'
+        userCode06:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userCode07:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: ' Max length = 3, User-defined information.'
+        userData16:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, User-defined information.'
+        userData17:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, User-defined information.'
+        userData18:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData19:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, User-defined information.'
+        userData20:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information.'
+        userData21:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information.'
+        userData22:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: ' Max length = 10, User-defined information.'
+        userData23:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User-defined information.'
+        userData24:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User-defined information.'
+        userData25:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User-defined information.'
+        userData26:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: ' Max length = 20, User-defined information.'
+        userData27:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, User-defined information.'
+        userData28:
+          maxLength: 60
+          minLength: 0
+          type: string
+          description: ' Max length = 60, User-defined information.'
+        sessionId:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: ' Max length = 40, Unique identifier number of the customer''s
+            online session associated with the transaction.'
+    RetailBankingTransactionServiceResponse:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/Header'
     ReturnedMailInquiryRequest:
       type: object
       properties:
