@@ -2,6 +2,9 @@
 
 Click on below links to visit the API documentation
 
-- [SIT-2](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=qa2.yaml)
-- [SIT-3](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=qa3.yaml)
-- [UAT](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=uat.yaml)
+ | APAC                                                                                        | EMEA                                                                                     |
+|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+ | SIT-1                                                                                       | SIT-1                                                                                    |
+ | [SIT-2](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=qa2-in.yaml) | [SIT-2](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=qa2.yaml) |
+ | NA                                                                                          | [SIT-3](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=qa3.yaml) |
+ | UAT                                                                                         | [UAT](https://fiserv.github.io/firstvision-emea/assets/swagger/api.html?file=uat.yaml)   |
