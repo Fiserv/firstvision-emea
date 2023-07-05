@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.57.12
+  version: 1.57.21
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -25750,8 +25750,21 @@ paths:
           content: {}
         465:
           description: 'Backend Response Code and message in odsMessages field: <BR/>
-            <BR/>VPL5SLL03S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
-            MINUTES<BR/>'
+            <BR/>VPL5SLL02S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
+            MINUTES<BR/>VPL5SLL04 : ORG IS NOT NUMERIC OR GREATER THAN ZEROES OR NOT
+            BELOW  999<BR/>VPL5SLL05E : ACCOUNT NUMBER IS NOT NUMERIC OR NOT GREATER
+            THAN ZEROES<BR/>VPL5SLL06E : PLAN SEQUENCE IS NOT NUMERIC OR NOT GREATER
+            THAN ZEROES<BR/>VPL5SLL07E : JUMP PYMT NBR IS NOT NUMERIC OR GREATER THAN
+            120<BR/>VPL5SLL08E : JUMP PAYMENT NBR SHOULD NOT BE GREATER THAN THE MAX
+            TERM<BR/>VPL5SLL08I : JUMP PAYMENT NBR SHOULD NOT BE GREATER THAN THE
+            MAX TERM<BR/>VPL5SLL09E : FOREIGN INDICATOR SHOULD NOT BE EQUAL TO OTHER
+            THAN ''0'' OR ''1''<BR/>VPL5SLL10S : ORGANIZATION RECORD NOT FOUN OR IN
+            ADD PENDING STATUS<BR/>VPL5SLL11S : FOREIGN ORG NOT FOUND OR IN ADD PENDING
+            STATUS<BR/>VPL5SLL12S : ACCOUNT  NOT FOUND OR IN ADD PENDING STATUS<BR/>VPL5SLL13S
+            : ACCOUNT FILE READ DOES NOT VALID STATUS RETURN<BR/>VPL5SLL14S : PLAN
+            SEGMENT RECORD NOT FOUND<BR/>VPL5SLL15S : LOAN SCHEDULE RECORD NOT FOUND<BR/>VPL5SLL16S
+            : LOGO BASE RECORD NOT FOUND OR IN ADD PENDING STATUS<BR/>VPL5SLL17S :
+            JUMP TO PAYMENT NUMBER IS GREATER THAN OR EQUAL TO TERM<BR/>'
           content:
             application/json:
               schema:
@@ -44871,15 +44884,6 @@ components:
             will be sent to FirstPerformance for Transaction Enrichment</LI><LI><EM>2
             - </EM>Authorizations will be sent to FirstPerformance, but no enriched
             data will be returned from the FirstPerformance</LI></UL>'
-        txnEnrichCof:
-          maxLength: 1
-          minLength: 0
-          pattern: ^[0-9]*$
-          type: string
-          description: ' Max length = 1, This field indicates cards eligible to use
-            the FirstPerformance Card on File API. Valid values are <UL><LI><EM>0
-            - </EM>Card is not eligible to call the Card on File API (default)</LI><LI><EM>1
-            - </EM>Card is eligible to call the Card on File API</LI></UL>'
     CardAddResponse:
       type: object
       properties:
@@ -59498,10 +59502,10 @@ components:
           description: ' Max length = 20, Telephone number at the merchant location.'
         location.latitude:
           type: string
-          description: ' Max length = 12, Location latitude'
+          description: ' Max length = 16, Location latitude'
         location.longitude:
           type: string
-          description: ' Max length = 12, Location longitude'
+          description: ' Max length = 16, Location longitude'
         location.address.number:
           type: string
           description: ' Max length = 16, Address Number'
@@ -71361,7 +71365,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, ACCT ORG'
+          description: ' Max length = 3, ACCT ORG, this field only allows numeric
+            values.'
         foreignUse:
           maxLength: 1
           minLength: 0
@@ -71377,7 +71382,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, CURR CODE'
+          description: ' Max length = 3, CURR CODE, this field only allows numeric
+            values.'
         actionCode:
           maxLength: 4
           minLength: 0
@@ -71416,19 +71422,22 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 11, TXN AMOUNT'
+          description: ' Max length = 11, TXN AMOUNT, this field only allows numeric
+            values.'
         planNbr:
           maxLength: 5
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 5, PLAN NBR'
+          description: ' Max length = 5, PLAN NBR, this field only allows numeric
+            values.'
         planSeq:
           maxLength: 2
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 2, PLAN SEQ'
+          description: ' Max length = 2, PLAN SEQ, this field only allows numeric
+            values.'
         deptCode:
           maxLength: 4
           minLength: 0
@@ -71444,13 +71453,14 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 9, STORE NBR'
+          description: ' Max length = 9, STORE NBR, this field only allows numeric
+            values.'
         skuNbr:
           maxLength: 9
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 9, SKU NBR'
+          description: ' Max length = 9, SKU NBR, this field only allows numeric values.'
         salesClerk:
           maxLength: 12
           minLength: 0
@@ -71466,7 +71476,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, LTR ORG'
+          description: ' Max length = 3, LTR ORG, this field only allows numeric values.'
         cardNbr:
           maxLength: 19
           minLength: 0
@@ -71477,7 +71487,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 4, CARD SEQ'
+          description: ' Max length = 4, CARD SEQ, this field only allows numeric
+            values.'
         ticketNbr:
           maxLength: 15
           minLength: 0
@@ -71493,7 +71504,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 14, REFERENCE NBR'
+          description: ' Max length = 14, REFERENCE NBR, this field only allows numeric
+            values.'
         insuranceCode:
           maxLength: 2
           minLength: 0
@@ -71504,7 +71516,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, ASM ORG'
+          description: ' Max length = 3, ASM ORG, this field only allows numeric values.'
         asmRep:
           maxLength: 3
           minLength: 0
@@ -71515,7 +71527,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 4, MCC'
+          description: ' Max length = 4, MCC, this field only allows numeric values.'
         tranDesc:
           maxLength: 40
           minLength: 0
@@ -71532,13 +71544,15 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 13, Currency Exchange Rate'
+          description: ' Max length = 13, Currency Exchange Rate, this field only
+            allows numeric values.'
         currencyExchangeRateNod:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Currency Exchange Rate Number of decimals'
+          description: ' Max length = 1, Currency Exchange Rate Number of decimals,
+            this field only allows numeric values.'
     MonetaryActionResponse:
       type: object
       properties:
