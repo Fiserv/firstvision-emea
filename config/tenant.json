@@ -27,10 +27,10 @@
       "apiSpecFileNames": ["23.09"]
     },
     {
-      "version": "Mini7",
+      "version": "23.08",
       "versionType": "minor",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["Mini7"]
+      "apiSpecFileNames": ["23.08"]
     }
   ],
   "product": {

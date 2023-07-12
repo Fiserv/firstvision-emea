@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.57.12
+  version: 1.57.30
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -5275,10 +5275,7 @@ paths:
       - Account Maintenance
       summary: UserSecureSignon
       description: This service is used to modify some basic HR details about the
-        user and the accounts the user has in the various enterprise applications.<BR/><BR/><p>Fields
-        that are not provided in the Request object will be initialised to their default
-        values. All numeric fields are initialised to zero and alphanumeric fields
-        initialised to spaces</p>
+        user and the accounts the user has in the various enterprise applications.
       operationId: userSecureSignon_v1_fv_emea
       parameters:
       - name: Authorization
@@ -5403,7 +5400,41 @@ paths:
             : SERVICE FLAG IS INVALID<BR/>VPLMSMU39E : SERVICE NAME IS INVALID<BR/>VPLMSMU40E
             : CLIENT ID DOES NOT EXIST<BR/>VPLMSMU41E : HSM CALL FAILED<BR/>VPLMSMU42E
             : ORG GROUP PRIVILEGE NOT FOUND<BR/>VPLMSMU41S : USER ID DOES NOT EXIST<BR/>VPLMSMU44S
-            : USER ID ALREADY EXISTS<BR/>VPLMSMU45S : USER ID ALREADY EXISTS<BR/>'
+            : USER ID ALREADY EXISTS<BR/>VPLMSMU45S : USER ID ALREADY EXISTS<BR/>VPLMSMU46S
+            : REQUESTED CLIENT ID DOES MATCH WITH SIGNON CLIENT ID<BR/>VPLMSMU47E
+            : ERROR WRITING LOG RECORD<BR/>VPLMSMU48S : INVALID PASSWORD<BR/>VPLMSMU49S
+            : PASSWORD DECYPTION FAILURE<BR/>VPLMSMU50E : SCREEN PRIVILEGDE ERROR<BR/>VPLMSMU51E
+            : SERVICE PRIVILEGDE ERROR<BR/>VPLMSDU52E : DUPLICATE RECORD FOUND IN
+            WMX1 FILE<BR/>VPLMSDU53E : DUPLICATE RECORD FOUND IN WMX2 FILE<BR/>VPLMSDU54E
+            : DUPLICATE RECORD FOUND IN WMX3 FILE<BR/>VPLMSDU55E : DUPLICATE RECORD
+            FOUND IN SMXR FILE<BR/>VPLMSMUA1E : PASSWORD ATTENTION<BR/>VPLMSMUA2E
+            : FORCE PURGE<BR/>VPLMSMUA3E : USERID TIMED OUT<BR/>VPLMSMU52S : APPLICATION
+            PROCESSING USER CODE INVALID<BR/>VPLMSMU53S : APPLICATION PROCESSING FIELD
+            SECURITY CODE INVALID<BR/>VPLMSMU54S : INTERNATIONAL LANGUAGE USER CODE
+            INVALID<BR/>VPLMSMU55S : INTERNATIONAL LANGUAGE FIELD SECURITY CODE INVALID<BR/>VPLMSMU56S
+            : ACCOUNT MANAGEMENT USER CODE INVALID<BR/>VPLMSMU57S : ACCOUNT MANAGEMENT
+            USER CODE INVALID<BR/>VPLMSMU58S : CTRY CURRENCY CAT USER CODE INVALID<BR/>VPLMSMU59S
+            : CTRY CURRENCY CAT FIELD SECURITY CODE INVALID<BR/>VPLMSMU60S : COMMERCIAL
+            CARD USER CODE INVALID<BR/>VPLMSMU61S : COMMERCIAL CARD FIELD SECURITY
+            CODE INVALID<BR/>VPLMSMU62S : BUSINESS CARD USER CODE INVALID<BR/>VPLMSMU63S
+            : BUSINESS CARD FIELD SECURITY CODE INVALID<BR/>VPLMSMU64S : AUTHORIZATION
+            USER CODE INVALID<BR/>VPLMSMU65S : AUTHORIZATION FIELD SECURITY CODE INVALID<BR/>VPLMSMU66S
+            : REMOTE INTERFACE USER CODE INVALID<BR/>VPLMSMU67S : REMOTE INTERFACE
+            FIELD SECURITY CODE INVALID<BR/>VPLMSMU68S : CUSTOMER SERVICE USER CODE
+            INVALID<BR/>VPLMSMU69S : CUSTOMER SERVICE FIELD SECURITY CODE INVALID<BR/>VPLMSMU70S
+            : CLIENT SUPPORT USER CODE INVALID<BR/>VPLMSMU71S : CLIENT SUPPORT FIELD
+            SECURITY CODE INVALID<BR/>VPLMSMU72S : LETTER REQUESTS USER CODE INVALID<BR/>VPLMSMU73S
+            : LETTER REQUESTS FIELD SECURITY CODE INVALID<BR/>VPLMSMU74S : SECURITY
+            USER CODE INVALID<BR/>VPLMSMU75S : SECURITY FIELD SECURITY CODE INVALID<BR/>VPLMSMU76S
+            : COLLECTION MANAGEMENT USER CODE INVALID<BR/>VPLMSMU77S : COLLECTION
+            MANAGEMENT FIELD SECURITY CODE INVALID<BR/>VPLMSMU78S : EXCEPTION PROCESSING
+            USER CODE INVALID<BR/>VPLMSMU79S : EXCEPTION PROCESSING FIELD SECURITY
+            CODE INVALID<BR/>VPLMSMU80S : MERCHANT SETTLEMENT USER CODE INVALID<BR/>VPLMSMU81S
+            : MERCHANT SETTLEMENT FIELD SECURITY CODE INVALID<BR/>VPLMSMU82S : REWARD
+            MANAGEMENT USER CODE INVALID<BR/>VPLMSMU83S : REWARD MANAGEMENT FIELD
+            SECURITY CODE INVALID<BR/>VPLMSMU84S : OFFER MANAGEMENT USER CODE INVALID<BR/>VPLMSMU85S
+            : OFFER MANAGEMENT FIELD SECURITY CODE INVALID<BR/>VPLMSMU86S : TRAMS
+            REP ID INVALID<BR/>VPLMSMU87S : INSTALLMENT CANCEL INVALID<BR/>'
           content:
             application/json:
               schema:
@@ -9617,7 +9648,9 @@ paths:
       description: This service supports the manual authorization, authorization reversal
         and authorization refund requests, performing all the required validations
         and return the appropriate approved or declined or reversed or refunded response
-        to the calling service.
+        to the calling service.<BR/><BR/><p>Fields that are not provided in the Request
+        object will be initialised to their default values. All numeric fields are
+        initialised to zero and alphanumeric fields initialised to spaces</p>
       operationId: authorisationReversalandRequest_v2_fv_emea
       parameters:
       - name: Authorization
@@ -14670,6 +14703,22 @@ paths:
           description: 'ODS Error Exception: ODS returned a message with transaction
             status ERROR'
           content: {}
+        465:
+          description: 'Backend Response Code and message in odsMessages field: <BR/>
+            <BR/>VPL5SALZ1S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPL5SALZ2S
+            : SERVICE INPUT TO ACCT CARD LIST INQ IS AN INCORRECT LENGTH<BR/>VPL5SAL01S
+            : USER HAS NOT SIGNED ON PLEASE SIGNON<BR/>VPL5SALZ3S : FILE-TABLE USED
+            BY THIS SERVICE IS NOT FOUND<BR/>VPL5SAL03S : MOBILE NUMBER CANNOT BE
+            SPACES OR LOW VALUES<BR/>VPL5SAL04E : REFERENCE NUMBER MUST BE NUMERIC<BR/>VPL5SAL05S
+            : CARD NUMBER NOT FOUND<BR/>VPL5SAL06S : MOBILE NUMBER NOT FOUND IN SYSTEM<BR/>VPL5SAL07S
+            : CARD FILE UNAVAILABLE<BR/>VPL5SAL08S : LOGO FILE UNAVAILABLE<BR/>VPL5SAL09S
+            : LOGO NUMBER NOT FOUND<BR/>VPL5SAL10S : ACCOUNT FILE UNAVAILABLE<BR/>VPL5SAL11S
+            : ACCOUNT NOT FOUND<BR/>VPL5SAL12S : CUSTOMER FILE UNAVAILABLE<BR/>VPL5SAL13S
+            : CUSTOMER NUMBER NOT FOUND<BR/>'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Account Card List Inquiry v1
       x-region:
@@ -25750,8 +25799,21 @@ paths:
           content: {}
         465:
           description: 'Backend Response Code and message in odsMessages field: <BR/>
-            <BR/>VPL5SLL03S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
-            MINUTES<BR/>'
+            <BR/>VPL5SLL02S : APPLICATION IN NO-PROCESSING STATUS RE-TRY IN A FEW
+            MINUTES<BR/>VPL5SLL04 : ORG IS NOT NUMERIC OR GREATER THAN ZEROES OR NOT
+            BELOW  999<BR/>VPL5SLL05E : ACCOUNT NUMBER IS NOT NUMERIC OR NOT GREATER
+            THAN ZEROES<BR/>VPL5SLL06E : PLAN SEQUENCE IS NOT NUMERIC OR NOT GREATER
+            THAN ZEROES<BR/>VPL5SLL07E : JUMP PYMT NBR IS NOT NUMERIC OR GREATER THAN
+            120<BR/>VPL5SLL08E : JUMP PAYMENT NBR SHOULD NOT BE GREATER THAN THE MAX
+            TERM<BR/>VPL5SLL08I : JUMP PAYMENT NBR SHOULD NOT BE GREATER THAN THE
+            MAX TERM<BR/>VPL5SLL09E : FOREIGN INDICATOR SHOULD NOT BE EQUAL TO OTHER
+            THAN ''0'' OR ''1''<BR/>VPL5SLL10S : ORGANIZATION RECORD NOT FOUN OR IN
+            ADD PENDING STATUS<BR/>VPL5SLL11S : FOREIGN ORG NOT FOUND OR IN ADD PENDING
+            STATUS<BR/>VPL5SLL12S : ACCOUNT  NOT FOUND OR IN ADD PENDING STATUS<BR/>VPL5SLL13S
+            : ACCOUNT FILE READ DOES NOT VALID STATUS RETURN<BR/>VPL5SLL14S : PLAN
+            SEGMENT RECORD NOT FOUND<BR/>VPL5SLL15S : LOAN SCHEDULE RECORD NOT FOUND<BR/>VPL5SLL16S
+            : LOGO BASE RECORD NOT FOUND OR IN ADD PENDING STATUS<BR/>VPL5SLL17S :
+            JUMP TO PAYMENT NUMBER IS GREATER THAN OR EQUAL TO TERM<BR/>'
           content:
             application/json:
               schema:
@@ -32633,139 +32695,6 @@ paths:
       x-regions: EMEA,APAC
       x-display: Statement
       x-codegen-request-body-name: body
-  /fv_emea/v1/cardOnFileList:
-    post:
-      tags:
-      - Transaction Enrichment
-      summary: CardOnFileList
-      description: This service is used to receive a list of Brands that hold the
-        details of a specific card number on file.<BR/><BR/><p>Fields that are not
-        provided in the Request object will be initialised to their default values.
-        All numeric fields are initialised to zero and alphanumeric fields initialised
-        to spaces</p>
-      operationId: cardOnFileList_v1_fv_emea
-      parameters:
-      - name: Authorization
-        in: header
-        description: OAuth2.0 access token (Bearer token) that you get from security
-          API
-        required: true
-        schema:
-          type: string
-          default: Bearer <token>
-      - name: Content-Type
-        in: header
-        description: Request content type
-        schema:
-          type: string
-          default: application/json
-      - name: AppCode
-        in: header
-        description: Application code identifying the calling application within a
-          client system
-        schema:
-          type: string
-          default: 'Please reach out to FirstVision API team to get the right values
-            for your application. '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CardOnFileListRequest'
-        required: false
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CardOnFileListResponse'
-        400:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
-            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
-            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
-            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        401:
-          description: 'Unauthorized: Authorization failed due to missing or invalid
-            credentials. <BR/>Below are the error codes you can expect when connecting
-            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
-            Please try with valid values<BR/>API-Sec-002 - The client id provided
-            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
-            token is invalid. It may have expired, or maybe incorrect'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        403:
-          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
-            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
-            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
-            - Mismatch in scope. The access token does not have the permission to
-            access this resource'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        404:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-005 - Resource not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        429:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
-            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
-            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
-            this API. Please try after sometime
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        452:
-          description: 'System Exception: Internal processes not related to client
-            interaction with application are the cause of the failure'
-          content: {}
-        453:
-          description: 'Validation Exception: The request failed validation, modify
-            the request and resubmit'
-          content: {}
-        455:
-          description: 'ODS Error Exception: ODS returned a message with transaction
-            status ERROR'
-          content: {}
-        465:
-          description: 'Backend Response Code and message in odsMessages field: <BR/>
-            <BR/>VPE5SCO01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPE5SCO02S
-            : SERVICE INPUT TO CARD ON FILE FP SERVICE IS INCORRECT LENGTH<BR/>VPE5SCO03S
-            : USER HAS NOT SIGNED ON - PLEASE SIGNON<BR/>VPE5SCO04S : FILE-TABLE USED
-            BY THIS SERVICE IS MISSING<BR/>VPE5SCO05S : APPLICATION IN NO-PROCESSING
-            STATUS RETRY IN A FEW MINUTES<BR/>VPE5SCO06S : CARD ON FILE IS NOT ACTIVE
-            FOR CARD<BR/>VPE5SCO07S : TRANSACTION ENRICHMENT IS NOT ACIVE AT ORG LEVEL<BR/>VPE5SCO08S
-            : CLIENT ID MUST BE NUMERIC AND VALID<BR/>VPE5SCO09S : RECEIVED CARD NUMBER
-            IS NOT VALID<BR/>VPE5SCO10S : REQUESTED ORGANIZATION COULD NOT BE DETERMINED<BR/>VPE5SCO11S
-            : REQUESTED ORGANIZATION NUMBER IS NOT FOUND<BR/>VPE5SCO12S : FILE-TABLE
-            USED BY THIS SERVICE IS MISSING<BR/>VPE5SCO13S : APPLICATION IN NO-PROCESSING
-            STATUS RETRY IN A FEW MINUTES<BR/>VPE5SCO14S : ORGANIZATION FILE NOT AVAILABLE<BR/>VPE5SCO15S
-            : ORGANIZATION NUMBER NOT FOUND<BR/>VPE5SCO16S : CARD NOT FOUND ON AMED<BR/>'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-      deprecated: false
-      x-proxy-name: Card On File List v1
-      x-region:
-      - EMEA
-      - APAC
-      x-regions: EMEA,APAC
-      x-display: Transaction Enrichment
-      x-codegen-request-body-name: body
   /fv_emea/v1/customerFeedback:
     post:
       tags:
@@ -33320,135 +33249,6 @@ paths:
                 $ref: '#/components/schemas/FsErrorDetails'
       deprecated: false
       x-proxy-name: Enriched Transactions List v1
-      x-region:
-      - EMEA
-      - APAC
-      x-regions: EMEA,APAC
-      x-display: Transaction Enrichment
-      x-codegen-request-body-name: body
-  /fv_emea/v1/merchantCategory:
-    post:
-      tags:
-      - Transaction Enrichment
-      summary: MerchantCategory
-      description: This service is used to receive the Merchant category details from
-        First performance and pass them to Client.<BR/><BR/><p>Fields that are not
-        provided in the Request object will be initialised to their default values.
-        All numeric fields are initialised to zero and alphanumeric fields initialised
-        to spaces</p>
-      operationId: merchantCategory_v1_fv_emea
-      parameters:
-      - name: Authorization
-        in: header
-        description: OAuth2.0 access token (Bearer token) that you get from security
-          API
-        required: true
-        schema:
-          type: string
-          default: Bearer <token>
-      - name: Content-Type
-        in: header
-        description: Request content type
-        schema:
-          type: string
-          default: application/json
-      - name: AppCode
-        in: header
-        description: Application code identifying the calling application within a
-          client system
-        schema:
-          type: string
-          default: 'Please reach out to FirstVision API team to get the right values
-            for your application. '
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MerchantCategoryRequest'
-        required: false
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MerchantCategoryResponse'
-        400:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-003 - Invalid request. This could be because
-            of invalid data in the request or header, among other reasons.<BR/>API-Sec-004
-            - Invalid request. The client_assertion JWT is invalid<BR/>API-Sec-013
-            - The JWT has an invalid expiry. Pleases end a request with a valid JWT
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        401:
-          description: 'Unauthorized: Authorization failed due to missing or invalid
-            credentials. <BR/>Below are the error codes you can expect when connecting
-            over internet:<BR/><BR/>API-Sec-001 - The auth header has invalid values.
-            Please try with valid values<BR/>API-Sec-002 - The client id provided
-            is invalid. Please try with valid client id<BR/>API-Sec-007 - The access
-            token is invalid. It may have expired, or maybe incorrect'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        403:
-          description: 'Forbidden: Insufficient access for requested operation. <BR/>Below
-            are the error codes you can expect when connecting over internet:<BR/><BR/>API-Sec-006
-            - Replay attack detected. Please try again with valid data<BR/>API-Sec-008
-            - Mismatch in scope. The access token does not have the permission to
-            access this resource'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        404:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-005 - Resource not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        429:
-          description: Below are the error codes you can expect when connecting over
-            internet:<BR/><BR/>API-Sec-009 - You have exceeded the App level quota<BR/>API-Sec-010
-            - You have exceeded the Developer level quota<BR/>API-Sec-011 - You have
-            exceeded the Product level quota<BR/>API-Sec-012 - Too many requests for
-            this API. Please try after sometime
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-        452:
-          description: 'System Exception: Internal processes not related to client
-            interaction with application are the cause of the failure'
-          content: {}
-        453:
-          description: 'Validation Exception: The request failed validation, modify
-            the request and resubmit'
-          content: {}
-        455:
-          description: 'ODS Error Exception: ODS returned a message with transaction
-            status ERROR'
-          content: {}
-        465:
-          description: 'Backend Response Code and message in odsMessages field: <BR/>
-            <BR/>VPE5SFM01S : SERVICE COULD NOT OBTAIN STORAGE AREA<BR/>VPE5SFM02S
-            : SERVICE INPUT TO CARD ON FILE FP SERVICE IS INCORRECT LENGTH<BR/>VPE5SFM03S
-            : USER HAS NOT SIGNED ON - PLEASE SIGNON<BR/>VPE5SFM04S : FILE-TABLE USED
-            BY THIS SERVICE IS MISSING<BR/>VPE5SFM05S : APPLICATION IN NO-PROCESSING
-            STATUS RETRY IN A FEW MINUTES<BR/>VPE5SFM06S : TRANSACTION ENRICHMENT
-            IS NOT ACIVE AT ORG LEVEL<BR/>VPE5SFM07S : CLIENT ID MUST BE NUMERIC AND
-            VALID<BR/>VPE5SFM08S : SERVICE REQUEST LENGTH ERROR<BR/>VPE5SFM99I : FIRST
-            PERFORMANCE UNAVAILABLE<BR/>'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FsErrorDetails'
-      deprecated: false
-      x-proxy-name: Merchant Category v1
       x-region:
       - EMEA
       - APAC
@@ -36839,6 +36639,13 @@ components:
           description: ' Max length = 1, Digital card indicator. Valid values are:
             <UL><LI><EM>0-</EM>Physical plastic card only.</LI><LI><EM>1-</EM>Digital
             Card Only.</LI><LI><EM>2-</EM>Both Physical Plastic & Digital cards.</LI></UL>'
+        dmpRepNotifyIndicator:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Dynamic Minimum Payment Representative Notify
+            Indicator.Valid numeric values are ‘0’  and ‘1’.'
     AccountCustomFieldsUpdateResponse:
       type: object
       properties:
@@ -38582,6 +38389,10 @@ components:
         acctPrinAmtPct:
           type: string
           description: ' Max length = 9, Account Prinical Amount PCT'
+        dmpRepNotifyIndicator:
+          type: string
+          description: ' Max length = 1, Dynamic Minimum Payment Representative Notify
+            Indicator.Valid numeric values are ‘0’  and ‘1’.'
         dmpPmtInd:
           type: string
           description: ' Max length = 2, Dynamic minimum payment indicator'
@@ -39533,6 +39344,10 @@ components:
           description: ' Max length = 1, Disability indicator. Valid values are:A
             - Audio  B - Braille  H - Hard of hearing  L - Large print  C - CDROM  P
             - Plain text  E - Elderly  M - Mental difficulty  O - Others'
+        dmpPercentInd:
+          type: string
+          description: ' Max length = 1, Dynamic Minimum Payment Percent Indicator.Values:
+            ‘Spaces‘, ‘P’, ‘O’'
     AccountDisabilityIndicatorUpdateRequest:
       type: object
       properties:
@@ -43264,6 +43079,12 @@ components:
           type: string
           description: ' Max length = 17, Transaction for a specific amount to be
             extracted.'
+        cardNbrFilter:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Card number filter. Valid values are: <UL><LI><EM>Y
+            - </EM>Filter by card number</LI><LI><EM>N - </EM>Filter by account number(Default)</LI></UL>'
     AuthorisationsInquiryResponse2:
       type: object
       properties:
@@ -44871,15 +44692,6 @@ components:
             will be sent to FirstPerformance for Transaction Enrichment</LI><LI><EM>2
             - </EM>Authorizations will be sent to FirstPerformance, but no enriched
             data will be returned from the FirstPerformance</LI></UL>'
-        txnEnrichCof:
-          maxLength: 1
-          minLength: 0
-          pattern: ^[0-9]*$
-          type: string
-          description: ' Max length = 1, This field indicates cards eligible to use
-            the FirstPerformance Card on File API. Valid values are <UL><LI><EM>0
-            - </EM>Card is not eligible to call the Card on File API (default)</LI><LI><EM>1
-            - </EM>Card is eligible to call the Card on File API</LI></UL>'
     CardAddResponse:
       type: object
       properties:
@@ -47725,49 +47537,6 @@ components:
         careNeedTyp:
           type: string
           description: ' Max length = 1, Care need type flag'
-    CardOnFileListRequest:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/Header'
-        clientId:
-          maxLength: 5
-          minLength: 0
-          type: string
-          description: ' Max length = 5, Client ID'
-        cardNbr:
-          maxLength: 19
-          minLength: 0
-          type: string
-          description: ' Max length = 19, Card Number'
-        merchantStart:
-          maxLength: 60
-          minLength: 0
-          type: string
-          description: ' Max length = 60, Start Merchant'
-    CardOnFileListResponse:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/Header'
-        cardNbr:
-          type: string
-          description: ' Max length = 19, Card Number'
-        nbrReturnedItems:
-          type: string
-          description: ' Max length = 2, Number of returned items'
-        merchantData:
-          type: array
-          description: Merchant Data. This is a list of 50 items.<p>  This is a list
-            of size 50 elements.
-          items:
-            $ref: '#/components/schemas/MerchantDataForCardOnFileList1'
-        merchantNext:
-          type: string
-          description: ' Max length = 60, Merchant next in the occurrence'
-        merchantPrev:
-          type: string
-          description: ' Max length = 60, Merchant previous in the occurrence'
     CardReplacementRequest:
       required:
       - cardNbr
@@ -50476,19 +50245,6 @@ components:
             nbrOfOccur
           items:
             $ref: '#/components/schemas/OutputData2ForCardsListByCard2'
-    CategoryDataForMerchantCategory1:
-      type: object
-      properties:
-        categoryId:
-          type: string
-          description: ' Max length = 2, Reserved for future use.'
-        parentId:
-          type: string
-          description: ' Max length = 8, Reserved for future use.'
-        categoryName:
-          type: string
-          description: ' Max length = 40, Category name (pre-defined based on MCC
-            and brand information).'
     ClosingEndBalanceInquiryRequest:
       required:
       - acct
@@ -51964,6 +51720,36 @@ components:
             (Default) 1 = Visa corporate card relationship 2 = Visa purchasing card
             relationship 3 = HCS commercial card relationship, which can include Visa
             corporate cards, Visa purchasing cards, and/or MasterCard purchasing cards'
+        rmCorporateID:
+          maxLength: 10
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 10, Corporate ID'
+        rmContactName:
+          maxLength: 30
+          minLength: 0
+          type: string
+          description: ' Max length = 30, Contact Name'
+        rmUserDate1:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 1'
+        rmUserDate2:
+          type: string
+          description: 'Format: YYYYMMDD. User Date 2'
+        rmUserAmt1:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 1'
+        rmUserAmt2:
+          pattern: ^(-)?[0-9]{1,17}$
+          type: string
+          description: ' Max length = 17, User Amount 2'
+        rmUserField6:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, User Field 6'
         rmFiscalYearEnd:
           maxLength: 2
           minLength: 0
@@ -59498,10 +59284,10 @@ components:
           description: ' Max length = 20, Telephone number at the merchant location.'
         location.latitude:
           type: string
-          description: ' Max length = 12, Location latitude'
+          description: ' Max length = 16, Location latitude'
         location.longitude:
           type: string
-          description: ' Max length = 12, Location longitude'
+          description: ' Max length = 16, Location longitude'
         location.address.number:
           type: string
           description: ' Max length = 16, Address Number'
@@ -63384,85 +63170,13 @@ components:
     Header:
       type: object
       properties:
-        user:
-          type: string
-          description: Setting this value will assign OCS user id for internal ODS
-            Calls for auditing.
-        agent:
-          type: string
-          description: Agent, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-ACCT-LVL-3",
-            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-AGENT-NR",
-            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.AGENT",
-            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
-          example: "4000"
-        cycle:
-          type: string
-          description: Setting this value will assign cycle destination for backend
-            system, copyBookList = [{copybook:"MCATDSHB", fields:[{name:"&T.CYCLE",
-            length:"1", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CENTER",
-            length:"1", eventTypes:["TRAN"]}]}], eventTypeList:["TRAN"]
-          example: '"T"'
         clientNumber:
           type: string
-          description: Client Number, copyBookList = [{copybook:"CCNDPUBS", fields:[{name:"'PMXDS'-RI-CLIENT-ID",
-            length:"4", eventTypes:[""]}]}, {copybook:"CCTOKNWS", fields:[{name:"'XXX'-CLIENT-NR",
-            length:"4", eventTypes:["TOKEN"]}]}, {copybook:"MCATDSHB", fields:[{name:"&T.CLIENT",
-            length:"4", eventTypes:["TRAN"]}]}, {copybook:"MCPIPDAT", fields:[{name:"&T.CLIENT",
-            length:"4", eventTypes:["TRAN"]}]}], eventTypeList:["ALL"]
-          example: "1000"
-        system:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.System, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-1", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-SYSTEM-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.SYS", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "2000"
-        prin:
-          type: string
-          description: A client often has more than one Billing System/Prin.  A client
-            uses Billing System/Prins to segregate their expenses on their General
-            Ledger for accounting purposes.Principal, copyBookList = [{copybook:"CCNDPUBS",
-            fields:[{name:"'PMXDS'-RI-ACCT-LVL-2", length:"4", eventTypes:[""]}]},
-            {copybook:"CCTOKNWS", fields:[{name:"'XXX'-PRIN-NR", length:"4", eventTypes:["TOKEN"]}]},
-            {copybook:"MCATDSHB", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]},
-            {copybook:"MCPIPDAT", fields:[{name:"&T.PRIN", length:"4", eventTypes:["TRAN"]}]}],
-            eventTypeList:["ALL"]
-          example: "3000"
-        debug:
-          type: boolean
-          description: Setting this value to false will disable additional error details
-            from backend calls.
-          default: false
+          description: Client Number.
+          example: "10000"
         org:
           type: string
           description: Setting this value will assign to the organization identifier.
-        processor:
-          type: boolean
-          description: Setting this value to true will return processor information
-            on the response. Defaults to false
-          default: false
-        contentType:
-          type: string
-        retry:
-          type: integer
-          description: The retry count for the same request sent to First Data. This
-            is used for internal resubmission tracking.
-          format: int64
-        timeout:
-          type: integer
-          description: How long the request should be tried before timing out.
-          format: int64
-        siteId:
-          type: string
-          description: 'This field will be used by the service to determine the First
-            Track, First Dispute, Fraud Detection Work Center destination. Site Id
-            will be provided by these applications to the calling applications '
-          example: '"4201"'
     Hist3ForAccountDetailInquiry3:
       type: object
       properties:
@@ -71031,85 +70745,6 @@ components:
             field. Number of occurrences returned depends on the field nbrMemos
           items:
             $ref: '#/components/schemas/MemoDtl2ForMemoInquiry2'
-    MerchantCategoryRequest:
-      required:
-      - clientId
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/Header'
-        clientId:
-          maxLength: 5
-          minLength: 0
-          type: string
-          description: ' Max length = 5, CLIENT ID.'
-    MerchantCategoryResponse:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/Header'
-        nbrReturnedItems:
-          type: string
-          description: ' Max length = 2, Number of return items'
-        categoryData:
-          type: array
-          description: Occurs 50 times.<p>  This is a list of size 50 elements.
-          items:
-            $ref: '#/components/schemas/CategoryDataForMerchantCategory1'
-    MerchantDataForCardOnFileList1:
-      type: object
-      properties:
-        merchantScore:
-          type: string
-          description: ' Max length = 3, The confidence score that the brand has a
-            consumer’s card number stored on file. Range from 0 to 100.  (100 is most
-            certain).'
-        merchantRecurFlag:
-          type: string
-          description: ' Max length = 1, To indicate if any transactions had a recurring
-            transaction flag.'
-        merchantBillingUpd:
-          type: string
-          description: ' Max length = 1, Not currently used.'
-        merchantTxnCount:
-          type: string
-          description: ' Max length = 9, Total number of transactions for the brand.'
-        merchantPurchCount:
-          type: string
-          description: ' Max length = 9, Total number of purchases for the brand.'
-        merchantTxnDatetime:
-          type: string
-          description: ' Max length = 20, Last transaction date and time for the merchant.'
-        merchantFacilInd:
-          type: string
-          description: ' Max length = 1, To indicate if brand is a facilitator (not
-            exclusive).'
-        merchantWalletInd:
-          type: string
-          description: ' Max length = 1, To indicate if brand is a wallet provider
-            (not exclusive).'
-        merchantInd:
-          type: string
-          description: ' Max length = 1, To indicate if brand is a merchant  (not
-            exclusive).'
-        merchantBrandId:
-          type: string
-          description: ' Max length = 4, Reserved for future use.'
-        merchantName:
-          type: string
-          description: ' Max length = 60, Merchant brand/Company brand name'
-        merchantWebsite:
-          type: string
-          description: ' Max length = 60, Merchant brand /Company brand website address'
-        merchantPhoneNbr:
-          type: string
-          description: ' Max length = 20, Merchant brand/Company brand phone number'
-        merchantLogoUrl:
-          type: string
-          description: ' Max length = 120, Merchant logo url'
-        merchantLogoUpd:
-          type: string
-          description: ' Max length = 20, Datetime merchant Brand logo was last updated.'
     MissPmtCountHistForInstalmentPlanInquiry1:
       type: object
       properties:
@@ -71361,7 +70996,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, ACCT ORG'
+          description: ' Max length = 3, ACCT ORG, this field only allows numeric
+            values.'
         foreignUse:
           maxLength: 1
           minLength: 0
@@ -71377,7 +71013,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, CURR CODE'
+          description: ' Max length = 3, CURR CODE, this field only allows numeric
+            values.'
         actionCode:
           maxLength: 4
           minLength: 0
@@ -71416,19 +71053,22 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 11, TXN AMOUNT'
+          description: ' Max length = 11, TXN AMOUNT, this field only allows numeric
+            values.'
         planNbr:
           maxLength: 5
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 5, PLAN NBR'
+          description: ' Max length = 5, PLAN NBR, this field only allows numeric
+            values.'
         planSeq:
           maxLength: 2
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 2, PLAN SEQ'
+          description: ' Max length = 2, PLAN SEQ, this field only allows numeric
+            values.'
         deptCode:
           maxLength: 4
           minLength: 0
@@ -71444,13 +71084,14 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 9, STORE NBR'
+          description: ' Max length = 9, STORE NBR, this field only allows numeric
+            values.'
         skuNbr:
           maxLength: 9
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 9, SKU NBR'
+          description: ' Max length = 9, SKU NBR, this field only allows numeric values.'
         salesClerk:
           maxLength: 12
           minLength: 0
@@ -71466,7 +71107,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, LTR ORG'
+          description: ' Max length = 3, LTR ORG, this field only allows numeric values.'
         cardNbr:
           maxLength: 19
           minLength: 0
@@ -71477,7 +71118,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 4, CARD SEQ'
+          description: ' Max length = 4, CARD SEQ, this field only allows numeric
+            values.'
         ticketNbr:
           maxLength: 15
           minLength: 0
@@ -71493,7 +71135,8 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 14, REFERENCE NBR'
+          description: ' Max length = 14, REFERENCE NBR, this field only allows numeric
+            values.'
         insuranceCode:
           maxLength: 2
           minLength: 0
@@ -71504,7 +71147,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 3, ASM ORG'
+          description: ' Max length = 3, ASM ORG, this field only allows numeric values.'
         asmRep:
           maxLength: 3
           minLength: 0
@@ -71515,7 +71158,7 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 4, MCC'
+          description: ' Max length = 4, MCC, this field only allows numeric values.'
         tranDesc:
           maxLength: 40
           minLength: 0
@@ -71532,13 +71175,15 @@ components:
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 13, Currency Exchange Rate'
+          description: ' Max length = 13, Currency Exchange Rate, this field only
+            allows numeric values.'
         currencyExchangeRateNod:
           maxLength: 1
           minLength: 0
           pattern: ^[0-9]*$
           type: string
-          description: ' Max length = 1, Currency Exchange Rate Number of decimals'
+          description: ' Max length = 1, Currency Exchange Rate Number of decimals,
+            this field only allows numeric values.'
     MonetaryActionResponse:
       type: object
       properties:
@@ -85026,9 +84671,9 @@ components:
           maxLength: 1
           minLength: 0
           type: string
-          description: ' Max length = 1, req Type. Valid values are :<UL><LI><EM>
-            ''A'' -</EM> Add</LI><LI><EM> ''M'' -</EM> Modify</LI><LI><EM> ''D'' -</EM>
-            Delete (Mandatory)</LI><LI><EM> ''I'' -</EM>  Inquiry'
+          description: ' Max length = 1, Request Type. Valid values are: <UL><LI><EM>A
+            - </EM>Add</LI><LI><EM>M - </EM>Modify</LI><LI><EM>D - </EM>Delete (Mandatory)</LI><LI><EM>I
+            - </EM>Inquiry</LI><LI><EM>C - </EM>Copy</LI></UL>'
         onlineStatus:
           maxLength: 1
           minLength: 0
@@ -85234,6 +84879,197 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 1, 1 = Maker, 2 = Verifier (Optional)'
+        applProcUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Application Processing'
+        applProcFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Application Processing'
+        acctMngtUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User code for Account management'
+        acctMngtFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field code for Account management'
+        commCardUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Commercial Card'
+        commCardFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Commercial Card'
+        authUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Authorization'
+        authFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Authorization'
+        custServiceUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Customer Service'
+        custServiceFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Customer Service'
+        letterReqUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Letter Request'
+        letterReqFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Letter Request'
+        collectionMngtUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Collection management'
+        collectionMngtFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Collection management'
+        exceptProcUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Exception processing'
+        exceptProcFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Exception processing'
+        merchantSetlUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Merchant settlement'
+        merchantSetlFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Merchant settlement'
+        rewardMngtUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Reward Management'
+        rewardMngtFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Reward Management'
+        offerMngtUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Offer Management'
+        offerMngtFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Offer Management'
+        intlLangUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for International Language'
+        intlLangFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for International Language'
+        ctryCurrCatCodesUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Country, Currency Cat codes'
+        ctryCurrCatCodesFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Country, Currency Cat codes'
+        businessMsgUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Business Message'
+        businessMsgFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Business Message'
+        remoteIntrfcUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Remote Interface'
+        remoteIntrfcFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Remote Interface'
+        clientSupportUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Client Support'
+        clientSupportFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Client Support'
+        securityUc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, User Code for Security'
+        securityFc:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: ' Max length = 1, Field Code for Security'
+        tramsRepId:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: ' Max length = 8, Tramps Representative Identifier'
+        instCancel:
+          maxLength: 1
+          minLength: 0
+          pattern: ^[0-9]*$
+          type: string
+          description: ' Max length = 1, Instalment Cancel access. Valid values are:
+            <UL><LI><EM>0 - </EM>The operator will not have access to input the option
+            ‘C’ or ‘R’ in the selection field of ARTI03 screen</LI><LI><EM>1 - </EM>The
+            operator will have access to input option ‘C’ or ‘R’ in the selection
+            field of ARTI03 screen</LI></UL>'
+        copyName:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: ' Max length = 15, To be used when new user to be added by
+            copying details of existing user.'
     UserSecureSignonResponse:
       required:
       - client
@@ -85388,6 +85224,118 @@ components:
         dualControlFlag:
           type: string
           description: ' Max length = 1, 1 = Maker, 2 = Verifier (Optional)'
+        applProcUc:
+          type: string
+          description: ' Max length = 1, User Code for Application Processing'
+        applProcFc:
+          type: string
+          description: ' Max length = 1, Field Code for Application Processing'
+        acctMngtUc:
+          type: string
+          description: ' Max length = 1, User code for Account management'
+        acctMngtFc:
+          type: string
+          description: ' Max length = 1, Field code for Account management'
+        commCardUc:
+          type: string
+          description: ' Max length = 1, User Code for Commercial Card'
+        commCardFc:
+          type: string
+          description: ' Max length = 1, Field Code for Commercial Card'
+        authUc:
+          type: string
+          description: ' Max length = 1, User Code for Authorization'
+        authFc:
+          type: string
+          description: ' Max length = 1, Field Code for Authorization'
+        custServiceUc:
+          type: string
+          description: ' Max length = 1, User Code for Customer Service'
+        custServiceFc:
+          type: string
+          description: ' Max length = 1, Field Code for Customer Service'
+        letterReqUc:
+          type: string
+          description: ' Max length = 1, User Code for Letter Request'
+        letterReqFc:
+          type: string
+          description: ' Max length = 1, Field Code for Letter Request'
+        collectionMngtUc:
+          type: string
+          description: ' Max length = 1, User Code for Collection management'
+        collectionMngtFc:
+          type: string
+          description: ' Max length = 1, Field Code for Collection management'
+        exceptProcUc:
+          type: string
+          description: ' Max length = 1, User Code for Exception processing'
+        exceptProcFc:
+          type: string
+          description: ' Max length = 1, Field Code for Exception processing'
+        merchantSetlUc:
+          type: string
+          description: ' Max length = 1, User Code for Merchant settlement'
+        merchantSetlFc:
+          type: string
+          description: ' Max length = 1, Field Code for Merchant settlement'
+        rewardMngtUc:
+          type: string
+          description: ' Max length = 1, User Code for Reward Management'
+        rewardMngtFc:
+          type: string
+          description: ' Max length = 1, Field Code for Reward Management'
+        offerMngtUc:
+          type: string
+          description: ' Max length = 1, User Code for Offer Management'
+        offerMngtFc:
+          type: string
+          description: ' Max length = 1, Field Code for Offer Management'
+        intlLangUc:
+          type: string
+          description: ' Max length = 1, User Code for International Language'
+        intlLangFc:
+          type: string
+          description: ' Max length = 1, Field Code for International Language'
+        ctryCurrCatCodesUc:
+          type: string
+          description: ' Max length = 1, User Code for Country, Currency Cat codes'
+        ctryCurrCatCodesFc:
+          type: string
+          description: ' Max length = 1, Field Code for Country, Currency Cat codes'
+        businessMsgUc:
+          type: string
+          description: ' Max length = 1, User Code for Business Message'
+        businessMsgFc:
+          type: string
+          description: ' Max length = 1, Field Code for Business Message'
+        remoteIntrfcUc:
+          type: string
+          description: ' Max length = 1, User Code for Remote Interface'
+        remoteIntrfcFc:
+          type: string
+          description: ' Max length = 1, Field Code for Remote Interface'
+        clientSupportUc:
+          type: string
+          description: ' Max length = 1, User Code for Client Support'
+        clientSupportFc:
+          type: string
+          description: ' Max length = 1, Field Code for Client Support'
+        securityUc:
+          type: string
+          description: ' Max length = 1, User Code for Security'
+        securityFc:
+          type: string
+          description: ' Max length = 1, Field Code for Security'
+        tramsRepId:
+          type: string
+          description: ' Max length = 8, Tramps Representative Identifier'
+        instCancel:
+          type: string
+          description: ' Max length = 1, Instalment Cancel access. Valid values are:
+            <UL><LI><EM>0 - </EM>The operator will not have access to input the option
+            ‘C’ or ‘R’ in the selection field of ARTI03 screen</LI><LI><EM>1 - </EM>The
+            operator will have access to input option ‘C’ or ‘R’ in the selection
+            field of ARTI03 screen</LI></UL>'
     UserServiceTableForUserSecureSignon1:
       type: object
       properties:
@@ -85399,6 +85347,9 @@ components:
         serviceIeName:
           type: string
           description: ' Max length = 30, Service Name'
+        serviceVersion:
+          type: string
+          description: ' Max length = 6, Service Version'
     UserSvcTableForUserListInquiry1:
       type: object
       properties:
@@ -85423,6 +85374,11 @@ components:
           minLength: 0
           type: string
           description: ' Max length = 30, Service Name'
+        serviceVersion:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: ' Max length = 6, Service Version'
     ValidBcTableForProductBlockCodeList1:
       type: object
       properties:
