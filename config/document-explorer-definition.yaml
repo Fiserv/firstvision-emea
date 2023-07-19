@@ -29,7 +29,7 @@
 ################################################################################
 
 - sections:
-    - title: FirstVision-EMEA
+    - title: Getting Started
       link: docs/Introduction.md
       access: public
       groups: []
