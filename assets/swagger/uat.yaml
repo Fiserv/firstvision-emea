@@ -23,7 +23,7 @@ info:
     byte(s)</LI><LI>&lt;field&gt;  should be numeric and in the format - MMYY</LI><LI>&lt;field&gt;  should
     be numeric and in the format - YYMM</LI><LI>Invalid date in &lt;field&gt;.  Expected
     BasicISO Date - YYYYMMDD format</LI></OL></P>'
-  version: 1.57.30
+  version: 1.57.38
 servers:
 - url: https://cert.api.firstdata.com/api/fs
 paths:
@@ -6622,7 +6622,9 @@ paths:
             NOT FOUND IN FILE<BR/>VPL5SRI13S : VALID SCROLL VALUE IS P N AND SPACE<BR/>VPL5SRI14S
             : START ACCOUNT NUMBER MUST BE NUMERIC<BR/>VPL5SRI15S : SUBORDINATE ACCOUNT
             NUMBER NOT FOUND IN FILE<BR/>VPL5SRI16S : CARDorACCOUNTorRELATIONSHIP
-            NUMBER IS NOT FOUND ON FILE<BR/>VPL5SRI17S : LOGO NOT FOUND ON FILE_<BR/>'
+            NUMBER IS NOT FOUND ON FILE<BR/>VPL5SRI17S : LOGO NOT FOUND ON FILE_<BR/>VPL5SRI19S
+            : CUSTOMER CAN NOT BE FOUND<BR/>VPL5SRI20S : ACCOUNTorCARD CAN NOT BE
+            FOUND IN AMNA FILE<BR/>'
           content:
             application/json:
               schema:
@@ -41126,6 +41128,18 @@ components:
         ctdCashDepositAmt:
           type: string
           description: ' Max length = 17, Cycle to date cash deposit'
+        relOrg:
+          type: string
+          description: ' Max length = 3, Relationship Org'
+        comakerInd:
+          type: string
+          description: ' Max length = 1, This is co-maker, maker indicator. This values
+            are<UL><LI><EL>1 -</EL> NA</LI><LI><EL>2 -</EL>NA-COMAKER</LI></UL>'
+        naComakerData:
+          type: array
+          description: <p>  This is a list of size 2 elements.
+          items:
+            $ref: '#/components/schemas/NaComakerData2ForAccountsListByRelationship2'
     AcctDataForCustomerAccountsAndCardsList1:
       type: object
       properties:
@@ -71569,6 +71583,63 @@ components:
           description: ' Max length = 5, Field that defines the cardholder''s affiliation
             or affinity group. The values are user-defined. If EMBLEM ID is not provided
             it will be defaulted from the Card Logo setting'
+    NaComakerData2ForAccountsListByRelationship2:
+      type: object
+      properties:
+        title:
+          type: string
+          description: ' Max length = 20, This will contain the value of AMNA-TITLE'
+        firstName:
+          type: string
+          description: ' Max length = 40, This will contain the value of AMNA-FIRST-NAME'
+        middleName:
+          type: string
+          description: ' Max length = 40, This will contain the value of AMNA-MIDDLE-NAME'
+        lastName:
+          type: string
+          description: ' Max length = 40, This will contain the value of AMNA-LAST-NAME'
+        suffix:
+          type: string
+          description: ' Max length = 20, This will contain the value of AMNA-SUFFIX'
+        nameLine1:
+          type: string
+          description: ' Max length = 40, Name Line 1'
+        nameLine2:
+          type: string
+          description: ' Max length = 40, Name Line 1'
+        nameLine3:
+          type: string
+          description: ' Max length = 40, Name Line 1'
+        houseName:
+          type: string
+          description: ' Max length = 40, House Name'
+        houseNumber:
+          type: string
+          description: ' Max length = 20, House Number'
+        addr1:
+          type: string
+          description: ' Max length = 40, Address-1'
+        addr2:
+          type: string
+          description: ' Max length = 40, Address-2'
+        addr3:
+          type: string
+          description: ' Max length = 40, Address-3'
+        city:
+          type: string
+          description: ' Max length = 30, This will contain the value of AMNA-CITY'
+        state:
+          type: string
+          description: ' Max length = 3, State'
+        postalCode:
+          type: string
+          description: ' Max length = 10, Postal Code'
+        countryCode:
+          type: string
+          description: ' Max length = 3, Country Code'
+        country:
+          type: string
+          description: ' Max length = 30, This will contain the value of AMNA-COUNTRY'
     NaData3ForAccountDetailInquiry3:
       type: object
       properties:
@@ -74211,6 +74282,12 @@ components:
             notification when a new statement is available.  Values are:  values are:  0
             - Notification not required   1 - Notification required, softcopy only   2
             - Notification required, softcopy and hardcopy'
+        stmtNotifyMod:
+          type: string
+          description: ' Max length = 1, Statement Notification type:  Valid Values
+            are: <UL><LI><EM> 0 - </EM>NO NOTIFICATION (DEFAULT)</LI><LI><EM> 1 -
+            </EM> E-MAIL NOTIFICATION</LI><LI><EM> 2 - </EM> SMS (SHORT MESSAGE SERVICE)</LI><LI><EM>
+            3 - </EM>SMS AND EMAIL NOTIFICATION</LI></UL>'
         deathDateNotify:
           type: string
           description: 'Format: YYYYMMDD. Date of notification of death.'
@@ -74776,9 +74853,9 @@ components:
         expDate:
           maxLength: 4
           minLength: 0
-          pattern: ^[0-9][0-9](0[1-9]|1[012])$
+          pattern: ^(0[1-9]|1[012])[0-9][0-9]$
           type: string
-          description: 'Format: YYMM. Card Expiry date.'
+          description: 'Format: MMYY. Card Expiry date.'
         cardSecCd:
           maxLength: 4
           minLength: 0
