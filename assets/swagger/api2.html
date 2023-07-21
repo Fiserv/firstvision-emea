@@ -2,54 +2,54 @@
 <html>
 <head>
     <title>FirstVision API Explorer</title>
-    <script type="module">
-      import * as RapiDoc from 'https://unpkg.com/rapidoc@next/dist/rapidoc-min.js';
-    </script>
     <link rel="icon" type="image/x-icon" href="https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico">
     <style>
-      .custom-logo {
-        height: 60px;
-        width: auto;
-        margin: 10px;
-        margin-left: 40px;
-      }
-      .dev-studio-link {
-        position: fixed;
-        top: 40px;
-        right: 30px;
-        font-size: 18px;
-        text-decoration: none;
-        color: #000;
-      }
-      .dev-studio-link.hidden {
-        display: none;
-      }
+        .custom-logo {
+            height: 60px;
+            width: auto;
+            margin: 10px;
+            margin-left: 40px;
+        }
+        .dev-studio-link {
+            position: fixed;
+            top: 40px;
+            right: 30px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #000;
+        }
+        .dev-studio-link.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     
     <a
-      href="https://fiserv.github.io/firstvision-emea/"
-      target="_blank"
-      class="dev-studio-link"
+        href="https://fiserv.github.io/firstvision-emea/"
+        target="_blank"
+        class="dev-studio-link"
     >Home</a>
     
-    <div id="rapidoc-container"></div>
+    <div id="swagger-ui"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.52.0/swagger-ui-bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.52.0/swagger-ui-standalone-preset.js"></script>
 
     <script>
-        // Function to load RapiDoc with a Swagger file
-        function loadRapiDoc(specUrl) {
-            window.RapiDoc.init({
-                specUrl: specUrl,
+        // Function to load Swagger UI with a Swagger file
+        function loadSwaggerUI(specUrl) {
+            const ui = SwaggerUIBundle({
+                url: specUrl,
+                dom_id: '#swagger-ui',
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                layout: "BaseLayout",
+                deepLinking: true,
                 displayRequestDuration: true,
-                sortPropsAlphabetically: true,
-                theme: {
-                    spacing: '20px',
-                    fontFamily: 'Arial, sans-serif',
-                    fontSize: '16px',
-                    maxWidth: '100%'
-                },
-            }, document.getElementById('rapidoc-container'));
+            });
         }
 
         // Parse the URL to get the file name
@@ -59,7 +59,7 @@
         // Check if a specific Swagger file is specified in the URL
         if (swaggerFile) {
             var swaggerUrl = 'https://fiserv.github.io/firstvision-emea/assets/swagger/' + swaggerFile;
-            loadRapiDoc(swaggerUrl);
+            loadSwaggerUI(swaggerUrl);
         } else {
             // Array of Swagger file URLs
             var swaggerFiles = [
@@ -72,9 +72,9 @@
                 'https://fiserv.github.io/firstvision-emea/assets/swagger/uat-in.yaml',
             ];
 
-            // Loop through the Swagger file URLs and load RapiDoc for each file
+            // Loop through the Swagger file URLs and load Swagger UI for each file
             for (var i = 0; i < swaggerFiles.length; i++) {
-                loadRapiDoc(swaggerFiles[i]);
+                loadSwaggerUI(swaggerFiles[i]);
             }
         }
     </script>
@@ -90,7 +90,7 @@
         // Add the logo to the document
         document.body.insertBefore(
             logoImg,
-            document.getElementById("rapidoc-container")
+            document.getElementById("swagger-ui")
         );
     </script>
     <script>
