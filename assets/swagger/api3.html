@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FirstVision API Explorer</title>
+    <link rel="icon" type="image/x-icon" href="https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico">
+    <style>
+        .custom-logo {
+            height: 60px;
+            width: auto;
+            margin: 10px;
+            margin-left: 40px;
+        }
+        .dev-studio-link {
+            position: fixed;
+            top: 40px;
+            right: 30px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #000;
+        }
+        .dev-studio-link.hidden {
+            display: none;
+        }
+        #rapidoc-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <a
+        href="https://fiserv.github.io/firstvision-emea/"
+        target="_blank"
+        class="dev-studio-link"
+    >Home</a>
+    
+    <div id="rapidoc-container"></div>
+
+    <script type="module">
+      import * as RapiDoc from 'https://unpkg.com/rapidoc@latest/dist/rapidoc-min.js';
+    </script>
+
+    <script>
+        // Function to load RapiDoc with a Swagger file
+        function loadRapiDoc(specUrl) {
+            const specObj = {
+                specUrl: specUrl,
+                displayRequestDuration: true,
+                sortPropsAlphabetically: true,
+                theme: {
+                    spacing: '20px',
+                    fontFamily: 'Arial, sans-serif',
+                    fontSize: '16px',
+                    maxWidth: '100%'
+                },
+            };
+            const rapiDocEl = document.getElementById('rapidoc-container');
+            new RapiDoc(specObj, rapiDocEl);
+        }
+
+        // Parse the URL to get the file name
+        var urlParams = new URLSearchParams(window.location.search);
+        var swaggerFile = urlParams.get('file');
+
+        // Check if a specific Swagger file is specified in the URL
+        if (swaggerFile) {
+            var swaggerUrl = 'https://fiserv.github.io/firstvision-emea/assets/swagger/' + swaggerFile;
+            loadRapiDoc(swaggerUrl);
+        } else {
+            // Array of Swagger file URLs
+            var swaggerFiles = [
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/qa1.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/qa2.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/qa3.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/uat.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/qa-in.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/qa2-in.yaml',
+                'https://fiserv.github.io/firstvision-emea/assets/swagger/uat-in.yaml',
+            ];
+
+            // Loop through the Swagger file URLs and load RapiDoc for each file
+            for (var i = 0; i < swaggerFiles.length; i++) {
+                loadRapiDoc(swaggerFiles[i]);
+            }
+        }
+    </script>
+    <script>
+        // Add your logo URL here
+        var logoUrl =
+            "https://www.fiserv.com/content/dam/fiserv-ent/final-files/digital-graphics/fiserv-com-graphics/fiserv-logo-orange-ff6600.svg";
+        // Create an image element for the logo
+        var logoImg = document.createElement("img");
+        logoImg.src = logoUrl;
+        logoImg.classList.add("custom-logo");
+
+        // Add the logo to the document
+        document.body.insertBefore(
+            logoImg,
+            document.getElementById("rapidoc-container")
+        );
+    </script>
+    <script>
+        // Hide the button on scroll
+        var devStudioLink = document.querySelector('.dev-studio-link');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                devStudioLink.classList.add('hidden');
+            } else {
+                devStudioLink.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
