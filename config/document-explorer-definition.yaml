@@ -52,8 +52,8 @@
       groups: []
       open: true
       sections:
-        - title: Release 23-Mini-7
-          link: docs/release-notes/Future-Release-Notes/Mini7.md
+        - title: 2023 Future Releases
+          link: docs/release-notes/Future-Release-Notes/2023/2023.md
 - sections:
     - title: API Guide
       link: docs/API-guide.md
