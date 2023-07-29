@@ -9,4 +9,4 @@ Please click on respective release links to view details about the release
 
 Click on below link to stay updated on Future Releases.
 
-[Future Release Notes]()
+[Future Release Notes](https://developer.fiserv.com/product/FirstVisionEMEA/docs/?path=docs/release-notes/Future-Release-Notes/Future-Release-Notes.md&branch=preview)
