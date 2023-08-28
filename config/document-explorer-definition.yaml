@@ -35,17 +35,6 @@
       groups: []
       open: true
 - sections:
-    - title: Release Notes
-      link: docs/release-notes/Release-notes.md
-      access: public
-      groups: []
-      open: true
-      sections:
-        - title: Release 2022
-          link: docs/release-notes/Releases/2022/2022.md
-        - title: Release 2023
-          link: docs/release-notes/Releases/2023/2023.md
-- sections:
     - title: Future Release Notes
       link: docs/release-notes/Future-Release-Notes/Future-Release-Notes.md
       access: public
