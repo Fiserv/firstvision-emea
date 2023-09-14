@@ -25,12 +25,6 @@
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["23.10"]
-    },
-    {
-      "version": "23.09",
-      "versionType": "minor",
-      "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["23.09"]
     }
   ],
   "product": {
