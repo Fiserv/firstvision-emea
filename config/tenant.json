@@ -21,10 +21,10 @@
   ],
   "apiVersions": [
     {
-      "version": "23.10",
+      "version": "cat",
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["23.10"]
+      "apiSpecFileNames": ["cat"]
     }
   ],
   "product": {
