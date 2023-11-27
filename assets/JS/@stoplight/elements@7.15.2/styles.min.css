@@ -12079,7 +12079,7 @@ iframe {
     outline-offset: 2px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .sl-button-group>.sl-button:not(:first-child):not(:last-child) {
