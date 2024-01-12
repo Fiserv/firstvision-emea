@@ -48,6 +48,8 @@
           link: docs/release-notes/Releases/2022/2022.md
         - title: Release 2023
           link: docs/release-notes/Releases/2023/2023.md
+        - title: Release 2024
+          link: docs/release-notes/Releases/2024/2024.md
 - sections:
     - title: API Guide
       link: docs/API-guide.md
