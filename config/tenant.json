@@ -19,6 +19,7 @@
       ]
     }
   ],
+  "getStartedFilePath": "/docs/API-guide.md",
   "apiVersions": [
     {
       "version": "23.06",
