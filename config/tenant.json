@@ -22,7 +22,7 @@
   "getStartedFilePath": "/docs/API-guide.md",
   "apiVersions": [
     {
-      "version": "24.01",
+      "version": "24.02",
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
       "apiSpecFileNames": ["PROD/prod"]
