@@ -39,17 +39,6 @@ Client will need to supply their source IP address(es). Our iCTO team will  need
 
 #### 4. Fiserv will the carry out the rest of the internal configurations for the client
 
-**Fiserv to Client** [Download](https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/DigiCert_Global_CA_G2.cer.txt)
-
-Above certificate is fiserv cert file which we can share with clients. It is valid for both UAT and PROD. Client should change the .txt and change it to .cer before use.
-
-It can be downloaded from the Digicert site: <https://www.digicert.com/kb/digicert-root-certificates.htm>
-
-| Certificate                                                                                                                                                                           | validity                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **DigiCert Global CA G2 </br> [Download PEM](https://cacerts.digicert.com/DigiCertGlobalCAG2.crt.pem) [Download DER/CRT](https://cacerts.digicert.com/DigiCertGlobalCAG2.crt)**       | Issuer: DigiCert Global Root G2 </br> Valid until: 01/Aug/2028 </br> Serial #: 0C:8E:E0:C9:0D:6A:89:15:88:04:06:1E:E2:41:F9:AF </br> SHA1 Fingerprint: D6:AE:E3:16:31:F7:AB:C5:6B:9D:E8:AB:EC:CC:41:08:A6:26:B1:04 </br> SHA256 Fingerprint: 8F:AC:57:64:39:C9:FD:3E:F1:53:B5:1F:9E:DD:0D:38:1B:5D:F7:B8:75:59:CE:BE:CA:04:29:7D:D4:4A:63:9B                                                                                                                                                                                                                                                   |
-| **DigiCert Global Root G2 </br> [Download PEM](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) [Download DER/CRT](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)** | Valid until: 15/Jan/2038 </br>Serial #: 03:3A:F1:E6:A7:11:A9:A0:BB:28:64:B1:1D:09:FA:E5 </br>SHA1 Fingerprint: DF:3C:24:F9:BF:D6:66:76:1B:26:80:73:FE:06:D1:CC:8D:4F:82:A4 </br>SHA256 Fingerprint: CB:3C:CB:B7:60:31:E5:E0:13:8F:8D:D3:9A:23:F9:DE:47:FF:C3:5E:43:C1:14:4C:EA:27:D4:6A:5A:B1:CB:5 </br>Demo Sites for Root:  [Active Certificate](https://global-root-g2.chain-demos.digicert.com/ "Test my browser for this root certificate")   [expired](https://global-root-g2-expired.chain-demos.digicert.com/)  [revoked](https://global-root-g2-revoked.chain-demos.digicert.com/)    |
-
 ## Internet Access to FV APIs
 
 The following steps need to be carried out per environment (UAT, PROD, Sandbox)
@@ -77,7 +66,3 @@ Copy Consumer Key and Secret, and send securely to the Client. These credentials
 Apigee will support 2 authorisation and authentication methods. The first method is the simple client key+secret to request for an access token.  The second method supported will be the more complex OAUTH2 method using a JWT (Java Web Token) to request an Access Token
 
 The API Sandbox environment will allow for either methods. However, beyond the Sandbox (e.g. UAT, Prod), only the OAUTH2 method will be allowed
-
-### Connectivity Overview Diagram
-
-<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/API-connectivity.jpg">
