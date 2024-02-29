@@ -22,10 +22,10 @@
   "getStartedFilePath": "/docs/API-guide.md",
   "apiVersions": [
     {
-      "version": "24.02",
+      "version": "prod",
       "versionType": "major",
       "releaseNotesPath": "docs/release-notes/Release-notes.md",
-      "apiSpecFileNames": ["PROD/prod"]
+      "apiSpecFileNames": ["prod"]
     }
   ],
   "product": {
