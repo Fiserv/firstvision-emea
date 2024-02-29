@@ -4,8 +4,7 @@
 
 ## Release Notes
 
- - __[2023 Releases](https://raw.githubusercontent.com/Fiserv/firstvision-emea/blob/main/docs/release-notes/Releases/2024/2023.html)__
- - __[2024 Releases](https://raw.githubusercontent.com/Fiserv/firstvision-emea/blob/main/docs/release-notes/Releases/2024/2024.html)__
+ - __[2024 Releases](https://fiserv.github.io/firstvision-emea/docs/release-notes/Releases/2024/2024.html)__
 
 ## API Explorer
 
