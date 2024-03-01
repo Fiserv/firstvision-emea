@@ -1,3 +1,5 @@
+<link rel="icon" type="image/x-icon" href="https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico">
+
 # FirstVision API Documentation
 
 <p>FirstVision is our outsourced processing solution that meets your challenges head-on and transforms your technology capability. Built on core VisionPLUS® software, FirstVision™ provides an end-to-end solution that delivers global processing economies of scale plus fully integrated adjacent services that span the issuing lifecycle.</p>
