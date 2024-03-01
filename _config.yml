@@ -1,5 +1,6 @@
 title: FirstVision API Documentation
 show_downloads: false
 theme: jekyll-theme-cayman
+site_favicon: favicon.png
 github:
   is_project_page: false
