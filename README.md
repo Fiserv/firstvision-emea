@@ -1,3 +1,5 @@
+FirstVision is our outsourced processing solution that meets your challenges head-on and transforms your technology capability. Built on core VisionPLUS® software, FirstVision™ provides an end-to-end solution that delivers global processing economies of scale plus fully integrated adjacent services that span the issuing lifecycle.
+
 ## Release Notes
 
  - __[2024 Releases](https://fiserv.github.io/firstvision-emea/docs/release-notes/Releases/2024/2024.html)__
