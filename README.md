@@ -1,5 +1,3 @@
-# FirstVision API Documentation
-
 ## Release Notes
 
  - __[2024 Releases](https://fiserv.github.io/firstvision-emea/docs/release-notes/Releases/2024/2024.html)__
