@@ -1,4 +1,5 @@
-<link rel="icon" type="image/x-icon" href="https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico">
+<head><link rel="icon" type="image/x-icon" href="https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico">
+</head>
 
 # FirstVision API Documentation
 
