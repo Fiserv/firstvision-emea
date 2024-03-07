@@ -1,7 +1,5 @@
----
-layout: default
-title: FirstVision EMEA Documentation
----
+**Accelerating Your Time to Market** | **Helping You Ride the Latest Wave of Innovation** | **Enables Rapid Speed to Market**
+
 
 ## Product Overview
 
