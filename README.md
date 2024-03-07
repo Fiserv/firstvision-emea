@@ -1,6 +1,9 @@
-<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+---
+layout: default
+title: FirstVision EMEA Documentation
+---
 
-# FirstVision API Documentation
+## Product Overview
 
 * * *
 
