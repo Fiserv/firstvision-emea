@@ -1,6 +1,10 @@
 title: FirstVision API Documentation
 show_downloads: false
 #theme: jekyll-theme-cayman
-remote_theme: lewismiddleton/cayman-dark
 github:
   is_project_page: false
+navigation:
+  name_over_title: true
+  strip_par: true
+  sanitize: true
+  h_max: 3
