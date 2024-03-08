@@ -1,7 +1,6 @@
 title: FirstVision API Documentation
 show_downloads: false
 #theme: jekyll-theme-cayman
-remote_theme: tuur29/pages-themes-cayman
-darkmode: true
+remote_theme: lewismiddleton/cayman-dark
 github:
   is_project_page: false
