@@ -1,4 +1,3 @@
-
 # Fiserv API connectivity
 
 Fiserv allows two methods of connection to access FirstVision API. Below describes the 2 processes

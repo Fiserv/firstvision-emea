@@ -27,6 +27,9 @@
 # are granted or extended by this work or 
 # the delivery of this work
 ################################################################################
+- sections:
+    - title: Getting Started
+      link: docs/API-guide.md
 
 - sections:
     - title: FirstVision-EMEA
@@ -35,14 +38,18 @@
       groups: []
       open: true
 - sections:
-    - title: Future Release Notes
-      link: docs/release-notes/Future-Release-Notes/Future-Release-Notes.md
+    - title: Release Notes
+      link: docs/release-notes/Release-notes.md
       access: public
       groups: []
       open: true
       sections:
-        - title: 2023 Future Releases
-          link: docs/release-notes/Future-Release-Notes/2023/2023.md
+        - title: Release 2022
+          link: docs/release-notes/Releases/2022/2022.md
+        - title: Release 2023
+          link: docs/release-notes/Releases/2023/2023.md
+        - title: Release 2024
+          link: docs/release-notes/Releases/2024/2024.md
 - sections:
     - title: API Guide
       link: docs/API-guide.md
