@@ -19,7 +19,7 @@
       ]
     }
   ],
-  "getStartedFilePath": "/docs/API-guide.md",
+  "getStartedFilePath": "docs/get-started.md",
   "apiVersions": [
     {
       "version": "cat",
