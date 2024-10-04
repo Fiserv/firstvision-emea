@@ -20,7 +20,7 @@ Once you've registered, you'll receive Client Key and Secret. Using these detail
 
 Calling 'GenerateCCTokenWith JWT':
 
-URL : 'https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token/jwt/generate'
+URL : 'https://cert.emea.api.fiservapps.com/api/fs/fv_emea/security/v1/token/jwt/generate'
 
 Method : POST
 
@@ -60,7 +60,7 @@ JWT Claims
 
 `"sub" : "Insert Client Key Here",`
 
-`"aud" : "https://cert.api.firstdata.com/api/fs/fv_emea/security/v1/token",`
+`"aud" : "https://cert.emea.api.fiservapps.com/api/fs/fv_emea/security/v1/token",`
 
 `"iss" : "Insert Client Key Here",`
 
@@ -110,7 +110,7 @@ Calling APIs in other (UAT/Prod) environment and region (EMEA/APAC)
 
 The above process and steps can be used for calling APIs in other environment as well, but with following differences:
 
-**Domain Name**: This will be environment and region specific. Instead of '[http://cert.api.firstdata.com](http://cert.api.firstdata.com/)', the value will be '[http://prod.emea.api.fiservapps.com](http://prod.emea.api.fiservapps.com/)' for EMEA and '[http://prod.apac.api.fiservapps.com](http://prod.apac.api.fiservapps.com/)' for APAC in Production. Similarly the value for UAT will be '[http://cat.emea.api.fiservapps.com](http://cat.emea.api.fiservapps.com/)' and '[http://cat.apac.api.fiservapps.com](http://cat.apac.api.fiservapps.com/)' respectively.
+**Domain Name**: This will be environment and region specific. Instead of '[http://cert.emea.api.fiservapps.com](http://cert.emea.api.fiservapps.com/)', the value will be '[http://prod.emea.api.fiservapps.com](http://prod.emea.api.fiservapps.com/)' for EMEA and '[http://prod.apac.api.fiservapps.com](http://prod.apac.api.fiservapps.com/)' for APAC in Production. Similarly the value for UAT will be '[http://cat.emea.api.fiservapps.com](http://cat.emea.api.fiservapps.com/)' and '[http://cat.apac.api.fiservapps.com](http://cat.apac.api.fiservapps.com/)' respectively.
 
 **Base Path**: The value of base path is region specific. For EMEA the value will remain 'fv_emea' in complete URL ('https://prod.emea.api.fiservapps.com/api/fs/fv_emea/'...) whereas it'll be 'fv_apac' for accessing APAC specific APIs.
 
