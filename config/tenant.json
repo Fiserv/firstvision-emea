@@ -19,7 +19,7 @@
       ]
     }
   ],
-  "getStartedFilePath": "/docs/API-guide.md",
+  "getStartedFilePath": "docs/get-started.md",
   "apiVersions": [
     {
       "version": "cat",
@@ -31,7 +31,7 @@
   "product": {
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
-    "description": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
+    "description": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs.",
     "longDescription": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
     "apiSpecification": "/v1/apis/FirstVisionEMEA",
     "layout": "/v1/layouts/FirstVisionEMEA",
