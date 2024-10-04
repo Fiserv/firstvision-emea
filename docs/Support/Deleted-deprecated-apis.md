@@ -21,7 +21,6 @@ Deleted
 To Be Deleted
 -------------
 
-| Anticipated Deletion Date | Notice Date of Deprecation | API Name                                          |
-|---------------------------|----------------------------|---------------------------------------------------|
-| April 2024                | February 2024              | 1. v1/pinValidation <br/> 2. v1/loyaltyRedemption |
-| August 2024               | February 2024              | 1. v1/eppTransactionPlanAdd                       |
+| Anticipated Deletion Date | Notice Date of Deprecation  | API Name                                          |
+|---------------------------|-----------------------------|---------------------------------------------------|
+| March 2025                | September 2024              | 1. v1/eppTransactionPlanAdd <br/> 2. v1/pinValidation <br/> 3. v1/loyaltyRedemption <br/> 4. v1/merchantProductAdd <br/> 5. v1/merchantTerminalUpdate |
