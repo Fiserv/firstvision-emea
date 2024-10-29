@@ -39,7 +39,7 @@ Client will need to supply their source IP address(es). Our iCTO team will  need
 
 #### 4. Fiserv will the carry out the rest of the internal configurations for the client
 
-**Fiserv to Client** [Download](https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/DigiCert_Global_CA_G2.cer.txt)
+**Fiserv to Client** [Download](download/assets/DigiCert_Global_CA_G2.cer.txt)
 
 Above certificate is fiserv cert file which we can share with clients. It is valid for both UAT and PROD. Client should change the .txt and change it to .cer before use.
 
@@ -80,4 +80,4 @@ The API Sandbox environment will allow for either methods. However, beyond the S
 
 ### Connectivity Overview Diagram
 
-<img style="display:block;margin:0 auto;" src="https://raw.githubusercontent.com/Fiserv/firstvision-emea/develop/assets/images/API-connectivity.jpg">
+<img style="display:block;margin:0 auto;" src="/assets/images/API-connectivity.jpg">
