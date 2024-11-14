@@ -6,7 +6,7 @@ Open a new account. This message will generate the account, as well as the assoc
 
 NOTE: This sample request is the base of the message, however each client may require additional fields based on their individual settings. Work with your project team to identify these. The API message (link below) provides all the fields available for entry.
 
-### API to use: 
+### API to use 
 
 *[Account Maintenance > Customer Account Card Add](../api/?type=post&path=/fv_emea/v1/customerAccountCardAdd)*
 
