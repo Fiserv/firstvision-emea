@@ -11,7 +11,7 @@ The FirstVision Product API allows users to discover various financial products 
 Registration
 -------------
 
-Every API expects an Access Token to be passed as header parameter (Authorisation). The Access Token will be valid for 60 minutes. Please contact us *@DL-FirstVisionApiTeam@fiserv.com* to get Client Key and Secret created for you, which can be used for generating Access Token.
+Every API expects an Access Token to be passed as header parameter (Authorisation). The Access Token will be valid for 60 minutes. Please contact us <DL-FirstVisionApiTeam@fiserv.com> to get Client Key and Secret created for you, which can be used for generating Access Token.
 
 API Calls in Sandbox (Demo) environment
 ---------------------------------------
@@ -20,7 +20,7 @@ Once you've registered, you'll receive Client Key and Secret. Using these detail
 
 Calling 'GenerateCCTokenWith JWT':
 
-URL : 'https://cert.emea.api.fiservapps.com/api/fs/fv_emea/security/v1/token/jwt/generate'
+URL : '<https://cert.emea.api.fiservapps.com/api/fs/fv_emea/security/v1/token/jwt/generate>'
 
 Method : POST
 
@@ -112,6 +112,6 @@ The above process and steps can be used for calling APIs in other environment as
 
 **Domain Name**: This will be environment and region specific. Instead of '[http://cert.emea.api.fiservapps.com](http://cert.emea.api.fiservapps.com/)', the value will be '[http://prod.emea.api.fiservapps.com](http://prod.emea.api.fiservapps.com/)' for EMEA and '[http://prod.apac.api.fiservapps.com](http://prod.apac.api.fiservapps.com/)' for APAC in Production. Similarly the value for UAT will be '[http://cat.emea.api.fiservapps.com](http://cat.emea.api.fiservapps.com/)' and '[http://cat.apac.api.fiservapps.com](http://cat.apac.api.fiservapps.com/)' respectively.
 
-**Base Path**: The value of base path is region specific. For EMEA the value will remain 'fv_emea' in complete URL ('https://prod.emea.api.fiservapps.com/api/fs/fv_emea/'...) whereas it'll be 'fv_apac' for accessing APAC specific APIs.
+**Base Path**: The value of base path is region specific. For EMEA the value will remain 'fv_emea' in complete URL ('<https://prod.emea.api.fiservapps.com/api/fs/fv_emea/>'...) whereas it'll be 'fv_apac' for accessing APAC specific APIs.
 
 **Scope**: The scope header parameter will have region specific values. For EMEA it's '*emea_firstvision*' whereas '*apac_firstvision*' for calling APAC specific APIs.
