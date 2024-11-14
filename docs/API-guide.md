@@ -16,7 +16,7 @@ Step 2 - Finding the right use case
 
 Once you are familiar with the structure, and you know whether the Customer, the Account, or the Card is where you need to find information, go to the relevant section of the user guide. For example, if you're looking to update the credit limit on an account, you will go to the "Credit Limit" section, and find the use cases that best describes the function you are aiming to perform.
 
-<img style="display:block;margin:0 auto;" src="/assets/images/menu.jpg">
+<img style="display:block;margin:0 auto;" alt="menu" src="/assets/images/menu.jpg">
 
 Step 3 - Building the API request
 ---------------------------------
@@ -30,14 +30,14 @@ API Message to Use
 
 This is the API message within the portal that you need to look for. It gives you the section name following by the API message itself. Always use the latest version if there are more than one as older version may be deprecated.
 
-<img style="display:block;margin:0 auto;" src="/assets/images/api-message-to-use.jpg">
+<img style="display:block;margin:0 auto;" alt="api-message-to-use" src="/assets/images/api-message-to-use.jpg">
 
 View Schema
 ------------------
 
 In order to view the request / response fields, click "Request / Response Schema".
 
-<img style="display:block;margin:0 auto;" src="/assets/images/show-model.jpg">
+<img style="display:block;margin:0 auto;" alt="show-model" src="/assets/images/show-model.jpg">
 
 The following sections of the use case will guide you to the relevant fields:
 
