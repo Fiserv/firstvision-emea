@@ -4,7 +4,7 @@
 
 Retrieve information relevant to the payments of the account, including dates when payments are due as well as amounts.
 
-### API to use: 
+### API to use 
 
 *[Account Management > Account Detail Inquiry](../api/?type=post&path=/fv_emea/v3/accountDetailInquiry)*
 
