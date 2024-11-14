@@ -7,9 +7,9 @@ To download the latest swagger file please go to [API explorer](../api/?type=pos
 
 To download region specific prod swagger files.
 
-- [APAC API Swagger File](/assets/swagger/APAC/prod_apac.yml)
-- [EMEA API Swagger File](/assets/swagger/PROD/prod_emea.yaml)
+- [APAC API Swagger File](download/assets/swagger/APAC/prod_apac.yml)
+- [EMEA API Swagger File](download/assets/swagger/PROD/prod_emea.yaml)
 
 Download sandbox sample data.
 
-- [Sandbox Sample Data](/assets/SandboxSampleData.pdf)
+- [Sandbox Sample Data](download/assets/SandboxSampleData.pdf)
