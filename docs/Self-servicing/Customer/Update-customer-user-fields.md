@@ -4,7 +4,7 @@
 
 Update user fields on the Customer record.
 
-### API to use: 
+### API to use 
 
 *[Customer Records> Customer Data Update](../api/?type=post&path=/fv_emea/v2/customerDataUpdate)*
 

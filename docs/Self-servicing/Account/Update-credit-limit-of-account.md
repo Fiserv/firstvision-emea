@@ -4,7 +4,7 @@
 
 Here is how to update the total credit limit of the account. This applies to the overall limit on the account and not individual spend limits.
 
-### API to use: 
+### API to use 
 
 *[Credit Limit > Credit Limit Update](../api/?type=post&path=/fv_emea/v1/creditLimitUpdate)*
 
