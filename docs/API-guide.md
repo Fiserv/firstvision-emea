@@ -16,7 +16,7 @@ Step 2 - Finding the right use case
 
 Once you are familiar with the structure, and you know whether the Customer, the Account, or the Card is where you need to find information, go to the relevant section of the user guide. For example, if you're looking to update the credit limit on an account, you will go to the "Credit Limit" section, and find the use cases that best describes the function you are aiming to perform.
 
-<img style="display:block;margin:0 auto;" src="/assets/images/menu.jpg">
+<img style="display:block;margin:0 auto;" alt="menu" src="/assets/images/menu.jpg">
 
 Step 3 - Building the API request
 ---------------------------------
@@ -30,14 +30,14 @@ API Message to Use
 
 This is the API message within the portal that you need to look for. It gives you the section name following by the API message itself. Always use the latest version if there are more than one as older version may be deprecated.
 
-<img style="display:block;margin:0 auto;" src="/assets/images/api-message-to-use.jpg">
+<img style="display:block;margin:0 auto;" alt="api-message-to-use" src="/assets/images/api-message-to-use.jpg">
 
 View Schema
 ------------------
 
 In order to view the request / response fields, click "Request / Response Schema".
 
-<img style="display:block;margin:0 auto;" src="/assets/images/show-model.jpg">
+<img style="display:block;margin:0 auto;" alt="show-model" src="/assets/images/show-model.jpg">
 
 The following sections of the use case will guide you to the relevant fields:
 
@@ -65,16 +65,16 @@ General considerations
 **Decimal fields**: The actual decimal point needs to be calculated based on the processing parameter. Number of Decimals used is returned as part of the response. API Request and Response do not display the decimal point unless mentioned in description for field or service. However, the Response provides  "number of decimals " as an additional field. For example, "13000 " in the Request field is accepted as 130.00. In Response 130.00 will be displayed as 13000 with number of decimal=2. </br>
 
 **JSON Considerations**: </br>
-- To omit the field data from request objects, tag for the field should be omitted from the request altogether.
-- In the request object, numeric fields should not contain null strings (" ").
-- Date fields must conform to the format specified as part of that fields description.
-- In the response objects, any field that is alphanumeric with spaces as its value, will be omitted. </br>
+  To omit the field data from request objects, tag for the field should be omitted from the request altogether.
+  In the request object, numeric fields should not contain null strings (" ").
+  Date fields must conform to the format specified as part of that fields description.
+  In the response objects, any field that is alphanumeric with spaces as its value, will be omitted. </br>
 
 **General 453 Error Messages**:
-- &lt;field&gt; is required
-- &lt;field&gt; should be numeric
-- Length of &lt;field&gt; should not exceed &lt;n&gt; byte(s)
-- &lt;field&gt; should be numeric and should not exceed &lt;n&gt; byte(s)
-- &lt;field&gt; should be numeric and in the format - MMYY
-- &lt;field&gt; should be numeric and in the format - YYMM
-- Invalid date in &lt;field&gt; Expected BasicISO Date - YYYYMMDD format"
+  &lt;field&gt; is required
+  &lt;field&gt; should be numeric
+  Length of &lt;field&gt; should not exceed &lt;n&gt; byte(s)
+  &lt;field&gt; should be numeric and should not exceed &lt;n&gt; byte(s)
+  &lt;field&gt; should be numeric and in the format - MMYY
+  &lt;field&gt; should be numeric and in the format - YYMM
+  Invalid date in &lt;field&gt; Expected BasicISO Date - YYYYMMDD format"
