@@ -12,6 +12,7 @@ FirstVision is our outsourced processing solution that meets your challenges hea
 ## Release Notes
 
  - __[2024 Releases](https://fiserv.github.io/firstvision-emea/docs/release-notes/Releases/2024/2024.html)__
+ - __[2025 Releases](https://fiserv.github.io/firstvision-emea/docs/release-notes/Releases/2025/2025.html)__
 
 * * *
 
